@@ -1,22 +1,27 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
-  devtools: { enabled: true },
+  devtools: { enabled: false },
   css: ["~/assets/main.css"],
-  modules: ["@nuxtjs/i18n"],
-  i18n: {
-    strategy: "prefix_except_default", // Defaults to English at root '/'
-    defaultLocale: "en",
-    locales: [
-      { code: "en", iso: "en-US", name: "English" },
-      { code: "es", iso: "es-ES", name: "Español" },
-      { code: "jp", iso: "ja-JP", name: "日本語" },
-      { code: "fr", iso: "fr-FR", name: "Français" },
-    ],
-    detectBrowserLanguage: {
-      useCookie: true,
-      cookieKey: "i18n_redirected",
-      redirectOn: "root",
+  srcDir: "app/",
+  modules: ["@nuxtjs/i18n", "@nuxtjs/google-fonts"],
+  googleFonts: {
+    families: {
+      "DM Serif Display": [400, 700, 900],
+      "Source Sans 3": [400, 700], // A clean sans-serif for UI/Body text
     },
+    download: true,
+    inject: true,
+  },
+  i18n: {
+    langDir: "locales",
+    defaultLocale: "en",
+    strategy: "prefix_except_default",
+    locales: [
+      { code: "en", iso: "en-US", file: "en.json" },
+      { code: "es", iso: "es-ES", file: "es.json" },
+      { code: "jp", iso: "ja-JP", file: "jp.json" },
+      { code: "fr", iso: "fr-FR", file: "fr.json" },
+    ],
   },
 });

@@ -16,21 +16,22 @@ html {
 body {
   min-height: 100vh;
   line-height: 1.5;
+  background-color: #f2f2f2;
 }
 
 /* =========================
    VARIABLES
 ========================= */
 :root {
-  /* colors */
+  /* Language Theme Variables */
+  --color-en: #79addc; /* Cool Horizon */
+  --color-fr: #ffc09f; /* Peach Glow */
+  --color-es: #ffee93; /* Light Gold */
+  --color-jp: #adf7b6; /* Celadon */
 
-  /* typography */
-
-  /* spacing */
-
-  /* layout */
-
-  /* borders */
+  /* Neutral/Text defaults */
+  --text-dark: #111111;
+  --text-light: #ffffff;
 }
 
 /* =========================
