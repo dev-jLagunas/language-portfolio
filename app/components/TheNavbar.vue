@@ -1,6 +1,3 @@
-I have renamed the classes to be more intuitive (using single hyphens/camelCase
-as preferred) and restructured the CSS into a mobile-first hierarchy with
-explicit buckets for your breakpoints. ```vue
 <script setup>
 const { locale, setLocale } = useI18n();
 const isSidebarOpen = ref(false);
@@ -48,15 +45,20 @@ const toggleSidebar = () => {
         </a>
       </div>
 
-      <button
-        class="nav-hamburger"
-        @click="toggleSidebar"
-        aria-label="Open Menu"
-      >
-        <span class="hamburger-bar"></span>
-        <span class="hamburger-bar"></span>
-        <span class="hamburger-bar"></span>
-      </button>
+      <label class="hamburger">
+        <input
+          type="checkbox"
+          :checked="isSidebarOpen"
+          @change="toggleSidebar"
+        />
+        <svg viewBox="0 0 32 32">
+          <path
+            class="line line-top-bottom"
+            d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"
+          ></path>
+          <path class="line" d="M7 16 27 16"></path>
+        </svg>
+      </label>
     </div>
 
     <TheSidebar :is-open="isSidebarOpen" @close="isSidebarOpen = false" />
@@ -64,7 +66,6 @@ const toggleSidebar = () => {
 </template>
 
 <style scoped>
-/* --- BASE & THEMES --- */
 .nav-bar {
   width: 100%;
   padding: 0.5rem 1rem;
@@ -117,14 +118,44 @@ const toggleSidebar = () => {
   font-family: "Source Sans 3", sans-serif;
 }
 
-.hamburger-bar {
-  width: 30px;
-  height: 3px;
-  background-color: currentColor;
-  border-radius: 2px;
+.hamburger {
+  cursor: pointer;
+  display: none;
 }
 
-/* --- MOBILE FIRST (320px to 424px) --- */
+.hamburger input {
+  display: none;
+}
+
+.hamburger svg {
+  height: 3em;
+  transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.line {
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 3;
+  transition:
+    stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+    stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.line-top-bottom {
+  stroke-dasharray: 12 63;
+}
+
+.hamburger input:checked + svg {
+  transform: rotate(-45deg);
+}
+
+.hamburger input:checked + svg .line-top-bottom {
+  stroke-dasharray: 20 300;
+  stroke-dashoffset: -32.42;
+}
+
 @media (width >= 320px) {
   .nav-bar {
     position: fixed;
@@ -148,13 +179,13 @@ const toggleSidebar = () => {
   }
 
   .nav-name {
-    font-size: 1.25rem; /* Control text size here */
+    font-size: 1.25rem;
     font-weight: bold;
     line-height: 1.1;
   }
 
   .nav-tagline {
-    font-size: 0.8rem; /* Control tagline size here */
+    font-size: 0.8rem;
     margin-top: 0;
   }
 
@@ -162,20 +193,14 @@ const toggleSidebar = () => {
     display: none;
   }
 
-  .nav-hamburger {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    background: none;
-    border: none;
-    cursor: pointer;
+  .hamburger {
+    display: block;
   }
 }
 
-/* --- SMALL MOBILE TO TABLET (425px to 767px) --- */
 @media (width >= 425px) {
   .nav-name {
-    font-size: 2rem; /* Upscale for slightly larger mobile */
+    font-size: 2rem;
   }
 
   .nav-tagline {
@@ -183,7 +208,6 @@ const toggleSidebar = () => {
   }
 }
 
-/* --- TABLET & DESKTOP (768px and up) --- */
 @media (width >= 768px) {
   .nav-bar {
     position: sticky;
@@ -192,7 +216,7 @@ const toggleSidebar = () => {
     padding: 1rem 5rem;
   }
 
-  .nav-hamburger {
+  .hamburger {
     display: none;
   }
 
@@ -214,7 +238,6 @@ const toggleSidebar = () => {
     margin-top: -0.3rem;
   }
 
-  /* Language Switcher Styles */
   .lang-switcher {
     display: flex;
     gap: 0.5rem;
@@ -243,4 +266,3 @@ const toggleSidebar = () => {
   }
 }
 </style>
-```
