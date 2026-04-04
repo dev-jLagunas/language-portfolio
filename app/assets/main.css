@@ -29,6 +29,9 @@ body {
   --color-es: #ffee93; /* Light Gold */
   --color-jp: #adf7b6; /* Celadon */
 
+  --font-display: "DM Serif Display", serif;
+  --font-main: "Source Sans 3", sans-serif;
+
   /* Neutral/Text defaults */
   --text-dark: #111111;
   --text-light: #ffffff;

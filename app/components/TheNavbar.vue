@@ -24,7 +24,7 @@ const toggleSidebar = () => {
           class="nav-avatar"
         />
         <div class="nav-info">
-          <p class="nav-name">{{ $t("nav.my_name") }}</p>
+          <p class="nav-name">Juan Lagunas</p>
           <p class="nav-tagline">{{ $t("nav.my_tagline") }}</p>
         </div>
       </a>
@@ -78,6 +78,7 @@ const toggleSidebar = () => {
   overflow: hidden;
 }
 
+/* Theme Backgrounds */
 .theme-en {
   background-color: var(--color-en);
 }
@@ -119,14 +120,14 @@ const toggleSidebar = () => {
 }
 
 .nav-name {
-  font-family: "DM Serif Display", serif;
+  font-family: var(--font-display);
   font-size: 1.25rem;
   font-weight: bold;
   line-height: 1;
 }
 
 .nav-tagline {
-  font-family: "Source Sans 3", sans-serif;
+  font-family: var(--font-main);
   font-size: 0.8rem;
   opacity: 0.8;
 }
@@ -138,7 +139,7 @@ const toggleSidebar = () => {
 }
 
 .nav-desktop-content {
-  display: none; /* Mobile default */
+  display: none;
   align-items: center;
   gap: 2rem;
 }
@@ -147,7 +148,7 @@ const toggleSidebar = () => {
 @media (min-width: 768px) {
   .nav-inner {
     width: fit-content;
-    gap: 1rem;
+    gap: 2rem;
   }
 
   .nav-desktop-content {
@@ -163,7 +164,6 @@ const toggleSidebar = () => {
   }
 }
 
-/* Button & Switcher Styling */
 .lang-switcher {
   display: flex;
   gap: 0.5rem;
@@ -172,7 +172,7 @@ const toggleSidebar = () => {
 .lang-btn {
   background: none;
   border: none;
-  font-family: "Source Sans 3", sans-serif;
+  font-family: var(--font-main);
   font-weight: 700;
   font-size: 0.8rem;
   cursor: pointer;
@@ -188,7 +188,7 @@ const toggleSidebar = () => {
 .nav-booking-link {
   text-decoration: none;
   color: var(--text-dark);
-  font-family: "Source Sans 3", sans-serif;
+  font-family: var(--font-main);
   font-weight: 800;
   font-size: 0.9rem;
   padding: 0.6rem 1.2rem;
@@ -196,7 +196,6 @@ const toggleSidebar = () => {
   border-radius: 6px;
 }
 
-/* Hamburger UI */
 .hamburger {
   cursor: pointer;
   display: block;
@@ -205,10 +204,12 @@ const toggleSidebar = () => {
 .hamburger input {
   display: none;
 }
+
 .hamburger svg {
   height: 2.5rem;
   color: var(--text-dark);
 }
+
 .line {
   fill: none;
   stroke: currentColor;
@@ -217,12 +218,15 @@ const toggleSidebar = () => {
   stroke-width: 2.5;
   transition: 600ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 .line-top-bottom {
   stroke-dasharray: 12 63;
 }
+
 .hamburger input:checked + svg {
   transform: rotate(-45deg);
 }
+
 .hamburger input:checked + svg .line-top-bottom {
   stroke-dasharray: 20 300;
   stroke-dashoffset: -32.42;
