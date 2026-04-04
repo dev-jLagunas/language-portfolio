@@ -9,7 +9,7 @@
     <LandingTheFramework />
     <LandingTheTestimonials />
     <LandingTheSocialProof />
-    <LandingTheContactSection />
+    <TheMobileNavbar />
     <TheFooter />
   </main>
 </template>

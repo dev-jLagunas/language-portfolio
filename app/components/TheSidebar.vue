@@ -1,11 +1,12 @@
 <script setup>
 const { locale, setLocale } = useI18n();
-
-defineProps({
+const props = defineProps({
   isOpen: Boolean,
 });
 
 const emit = defineEmits(["close"]);
+
+const activeIndex = ref(0);
 
 const languages = [
   { code: "en", label: "EN" },
@@ -16,8 +17,9 @@ const languages = [
 
 const menuItems = [
   { label: "nav.who_i_help", href: "#who-i-help" },
-  { label: "nav.experience", href: "#experience" },
-  { label: "nav.links", href: "#links" },
+  { label: "nav.framework", href: "#framework" },
+  { label: "nav.testimonials", href: "#testimonials" },
+  { label: "nav.social_proof", href: "#social-proof" },
   { label: "nav.contact", href: "#contact" },
 ];
 
@@ -25,21 +27,30 @@ const handleLocaleChange = (code) => {
   setLocale(code);
 };
 
-const handleNavClick = () => {
+const handleNavClick = async (index, href) => {
+  activeIndex.value = index;
+  await new Promise((resolve) => setTimeout(resolve, 300));
+
+  const el = document.querySelector(href);
+  if (el) {
+    const offset = 80;
+    const top = el.getBoundingClientRect().top + window.pageYOffset - offset;
+    window.scrollTo({ top, behavior: "smooth" });
+  }
   emit("close");
 };
 </script>
 
 <template>
-  <Transition name="slide">
-    <div v-if="isOpen" class="sidebar-container">
+  <Transition name="slide-left">
+    <div v-if="isOpen" class="sidebar-overlay" @click.self="$emit('close')">
       <aside :class="['sidebar', `theme-${locale}`]">
         <button
           class="sidebar-close"
           @click="$emit('close')"
-          aria-label="Close menu"
+          aria-label="Close"
         >
-          ×
+          <span class="close-icon">×</span>
         </button>
 
         <nav class="sidebar-content">
@@ -59,46 +70,57 @@ const handleNavClick = () => {
 
           <div class="sidebar-divider"></div>
 
-          <div class="sidebar-section">
+          <div class="sidebar-section elevator-shaft">
+            <div class="shaft-line"></div>
             <ul class="nav-list">
-              <li v-for="item in menuItems" :key="item.href">
-                <a :href="item.href" class="nav-link" @click="handleNavClick">
+              <li v-for="(item, index) in menuItems" :key="item.href">
+                <button
+                  class="nav-link"
+                  @click="handleNavClick(index, item.href)"
+                >
+                  <span class="floor-num">0{{ index + 1 }}</span>
                   {{ $t(item.label) }}
-                </a>
+                </button>
               </li>
             </ul>
+
+            <div
+              class="elevator-avatar"
+              :style="{ transform: `translateY(${activeIndex * 62}px)` }"
+            >
+              <img src="/images/avatars/avatar-pointing.png" alt="Juan" />
+            </div>
           </div>
         </nav>
       </aside>
-
-      <img
-        src="/images/avatars/avatar-pointing.png"
-        class="sidebar-avatar"
-        alt="Pointing Avatar"
-      />
     </div>
   </Transition>
 </template>
 
 <style scoped>
-.sidebar-container {
+.sidebar-overlay {
   position: fixed;
   inset: 0;
-  z-index: 1000;
-  pointer-events: none;
+  z-index: 2000;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: flex-start; /* Slide from left */
 }
 
 .sidebar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  padding: 4rem 2rem;
-  box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
-  pointer-events: auto;
+  width: 100%;
+  max-width: 400px;
+  height: 100%;
+  background: white;
+  padding: 6rem 2rem;
+  position: relative;
+  box-shadow: 10px 0 30px rgba(0, 0, 0, 0.1);
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
   display: flex;
   flex-direction: column;
-  transition: background-color 0.4s ease;
 }
 
 .theme-en {
@@ -114,67 +136,115 @@ const handleNavClick = () => {
   background-color: var(--color-fr);
 }
 
+/* Close Button Styling & Micro-animations */
 .sidebar-close {
-  font-size: 2.5rem;
-  background: none;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #ff4d4d;
+  color: white;
   border: none;
   cursor: pointer;
-  position: absolute;
-  top: 1rem;
-  right: 1.5rem;
-  color: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(255, 77, 77, 0.3);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 2010;
+}
+
+.close-icon {
+  font-size: 2rem;
+  line-height: 1;
+  font-family: Arial, sans-serif;
+}
+
+.sidebar-close:hover {
+  background: #e63939;
+  transform: translateX(-50%) scale(1.1) rotate(90deg);
+  box-shadow: 0 6px 15px rgba(255, 77, 77, 0.5);
+}
+
+.sidebar-close:active {
+  transform: translateX(-50%) scale(0.9);
+}
+
+/* Desktop: Top-Center */
+@media (min-width: 768px) {
+  .sidebar-close {
+    top: 2rem;
+  }
+}
+
+/* Mobile: Bottom-Center */
+@media (max-width: 767px) {
+  .sidebar {
+    max-width: 85vw;
+    padding: 4rem 1.5rem 8rem;
+  }
+  .sidebar-close {
+    bottom: 2rem;
+  }
 }
 
 .sidebar-content {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.sidebar-section {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  margin-top: 1rem;
 }
 
 .section-label {
-  font-family: "Source Sans 3", sans-serif;
-  font-size: 0.75rem;
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
   text-transform: uppercase;
+  font-weight: 800;
   letter-spacing: 0.1em;
-  opacity: 0.7;
+  margin-bottom: 1rem;
+  opacity: 0.6;
 }
 
 .lang-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.5rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
 }
 
 .lang-btn {
+  padding: 8px;
+  border: 1px solid var(--text-dark);
+  background: transparent;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 0.75rem;
   cursor: pointer;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  background: rgba(255, 255, 255, 0.2);
-  font-family: "Source Sans 3", sans-serif;
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: inherit;
-  padding: 0.6rem;
-  border-radius: 8px;
-  transition: all 0.2s ease;
 }
 
 .lang-btn.is-active {
   background: var(--text-dark);
   color: white;
-  border-color: var(--text-dark);
 }
 
 .sidebar-divider {
   height: 1px;
-  background: currentColor;
+  background: var(--text-dark);
   opacity: 0.1;
-  width: 100%;
+  margin: 2.5rem 0;
+}
+
+.elevator-shaft {
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.shaft-line {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--text-dark);
+  opacity: 0.2;
 }
 
 .nav-list {
@@ -183,78 +253,51 @@ const handleNavClick = () => {
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 20px;
 }
 
 .nav-link {
-  font-family: "DM Serif Display", serif;
-  font-size: 1.75rem;
-  text-decoration: none;
+  background: none;
+  border: none;
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  text-align: left;
+  cursor: pointer;
   color: inherit;
-  transition: opacity 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
 
-.nav-link:active {
-  opacity: 0.6;
+.floor-num {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 900;
+  opacity: 0.4;
 }
 
-.sidebar-avatar {
+.elevator-avatar {
   position: absolute;
-  bottom: 55px;
-  object-fit: contain;
+  left: -35px;
+  top: -5px;
+  width: 70px;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  pointer-events: none;
 }
 
-/* --- TRANSITIONS --- */
-.slide-enter-active,
-.slide-leave-active {
-  transition: opacity 0.4s ease;
+.elevator-avatar img {
+  width: 100%;
 }
 
-.slide-enter-active .sidebar,
-.slide-leave-active .sidebar {
-  transition: transform 0.4s ease;
+/* Left-to-Right Slide Animation */
+.slide-left-enter-active,
+.slide-left-leave-active {
+  transition: all 0.4s ease-out;
 }
 
-.slide-enter-active .sidebar-avatar,
-.slide-leave-active .sidebar-avatar {
-  transition: transform 1s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.slide-enter-from .sidebar,
-.slide-leave-to .sidebar {
+.slide-left-enter-from,
+.slide-left-leave-to {
   transform: translateX(-100%);
-}
-
-.slide-enter-from .sidebar-avatar,
-.slide-leave-to .sidebar-avatar {
-  transform: translateX(100%);
-}
-
-.slide-enter-to .sidebar-avatar {
-  transform: translateX(-20px);
-}
-
-/* --- RESPONSIVE SIZES --- */
-@media (320px <= width <= 425px) {
-  .sidebar {
-    width: 260px;
-  }
-  .sidebar-avatar {
-    height: 250px;
-    right: -70px;
-  }
-  .nav-link {
-    font-size: 1.5rem;
-  }
-}
-
-@media (426px <= width <= 767px) {
-  .sidebar {
-    width: 320px;
-  }
-  .sidebar-avatar {
-    height: 300px;
-    right: -80px;
-  }
+  opacity: 0;
 }
 </style>
