@@ -1,4 +1,6 @@
 <script setup>
+import StatsSection from "./reusable/StatsSection.vue";
+
 const { locale, setLocale } = useI18n();
 const isSidebarOpen = ref(false);
 
@@ -60,7 +62,6 @@ const toggleSidebar = () => {
         </svg>
       </label>
     </div>
-
     <TheSidebar :is-open="isSidebarOpen" @close="isSidebarOpen = false" />
   </nav>
 </template>
