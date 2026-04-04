@@ -8,5 +8,8 @@
     <LandingWhoITeach />
     <LandingTheFramework />
     <LandingTheTestimonials />
+    <LandingTheSocialProof />
+    <LandingTheContactSection />
+    <TheFooter />
   </main>
 </template>
