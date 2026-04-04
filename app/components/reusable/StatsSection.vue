@@ -125,10 +125,7 @@ const statsList = [...sourceStats, ...sourceStats];
 /* --- Mobile Responsiveness --- */
 @media (width < 768px) {
   .marquee {
-    padding: 3rem 0;
-    position: fixed;
-    bottom: 20px;
-    left: 0;
+    padding: 0rem 0;
   }
   .stat-card {
     flex: 0 0 160px; /* Narrower cards on small screens */
