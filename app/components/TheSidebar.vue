@@ -102,8 +102,6 @@ const handleNavClick = async (index, href) => {
   position: fixed;
   inset: 0;
   z-index: 2000;
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(8px);
   display: flex;
   justify-content: flex-start; /* Slide from left */
 }
@@ -117,8 +115,7 @@ const handleNavClick = async (index, href) => {
   position: relative;
   box-shadow: 10px 0 30px rgba(0, 0, 0, 0.1);
   border-right: 1px solid rgba(0, 0, 0, 0.1);
-  border-top-right-radius: 12px;
-  border-bottom-right-radius: 12px;
+
   display: flex;
   flex-direction: column;
 }

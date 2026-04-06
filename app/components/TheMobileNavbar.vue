@@ -1,22 +1,49 @@
 <script setup>
 const { locale } = useI18n();
+const activeSection = ref("");
 
 const navItems = [
-  { label: "Students", href: "#who-i-help", icon: "👥" },
-  { label: "Framework", href: "#framework", icon: "⚙️" },
-  { label: "Testimonials", href: "#testimonials", icon: "💬" },
-  { label: "Links", href: "#social-proof", icon: "🔗" },
-  { label: "Contact", href: "#contact", icon: "✉️" },
+  { label: "Students", href: "#who-i-help", icon: "students-icon.png" },
+  { label: "Framework", href: "#framework", icon: "framework-icon.png" },
+  {
+    label: "Testimonials",
+    href: "#testimonials",
+    icon: "testimonials-icon.png",
+  },
+  { label: "Links", href: "#social-proof", icon: "links-icon.png" },
+  { label: "Contact", href: "#contact", icon: "contact-icon.png" },
 ];
 
 const scrollToSection = (href) => {
   const el = document.querySelector(href);
   if (el) {
-    const offset = 70; // Adjusted for top navbar height
+    const offset = 70;
     const top = el.getBoundingClientRect().top + window.pageYOffset - offset;
     window.scrollTo({ top, behavior: "smooth" });
   }
 };
+
+// Intersection Observer to track scroll position
+onMounted(() => {
+  const observerOptions = {
+    root: null,
+    rootMargin: "-20% 0px -70% 0px", // Trigger when section is in upper-mid viewport
+    threshold: 0,
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        activeSection.value = `#${entry.target.id}`;
+      }
+    });
+  }, observerOptions);
+
+  navItems.forEach((item) => {
+    const el = document.querySelector(item.href);
+    if (el) observer.observe(el);
+  });
+});
 </script>
 
 <template>
@@ -28,11 +55,20 @@ const scrollToSection = (href) => {
       <button
         v-for="item in navItems"
         :key="item.href"
-        class="mobile-nav-btn"
+        :class="[
+          'mobile-nav-btn',
+          { 'is-active': activeSection === item.href },
+        ]"
         @click="scrollToSection(item.href)"
       >
-        <span class="nav-icon">{{ item.icon }}</span>
-        <span class="nav-text">{{ $t(item.label) }}</span>
+        <div class="nav-icon-wrapper">
+          <img
+            :src="`/images/icons/${item.icon}`"
+            :alt="item.label"
+            class="nav-icon-img"
+          />
+        </div>
+        <span class="nav-text">{{ item.label }}</span>
       </button>
     </div>
   </nav>
@@ -47,12 +83,12 @@ const scrollToSection = (href) => {
   height: 65px;
   z-index: 900;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
-  display: none; /* Hidden by default */
+  display: none;
   transition: background-color 0.4s ease;
-  padding: 0 10px;
+  padding: 12px 10px;
 }
 
-/* Theme Backgrounds - Matches Navbar Logic */
+/* Theme Backgrounds */
 .theme-en {
   background-color: var(--color-en);
 }
@@ -71,7 +107,7 @@ const scrollToSection = (href) => {
   justify-content: space-around;
   align-items: center;
   height: 100%;
-  max-width: 500px;
+  max-width: 600px;
   margin: 0 auto;
 }
 
@@ -85,31 +121,57 @@ const scrollToSection = (href) => {
   flex: 1;
   gap: 4px;
   cursor: pointer;
-  color: var(--text-dark);
-  padding: 8px 0;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+  opacity: 0.8;
+  position: relative;
 }
 
-.nav-icon {
-  font-size: 1.2rem;
+.nav-icon-wrapper {
+  height: 24px;
+  width: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-icon-img {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
 }
 
 .nav-text {
   font-family: "Source Sans 3", sans-serif;
-  font-size: 0.65rem;
-  font-weight: 700;
+  font-size: 0.6rem;
+  font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  white-space: nowrap;
 }
 
-/* Visibility Trigger */
+/* Active State Styling */
+.mobile-nav-btn.is-active {
+  opacity: 1;
+  transform: translateY(-4px);
+}
+
+.mobile-nav-btn.is-active::after {
+  content: "";
+  position: absolute;
+  bottom: 4px;
+  width: 12px;
+  height: 2px;
+  background-color: var(--text-dark);
+  border-radius: 2px;
+}
+
 @media (max-width: 768px) {
   .mobile-tab-bar {
     display: block;
   }
 }
 
-/* Handle iPhone safe areas for newer models */
 @supports (padding-bottom: env(safe-area-inset-bottom)) {
   .mobile-tab-bar {
     height: calc(65px + env(safe-area-inset-bottom));

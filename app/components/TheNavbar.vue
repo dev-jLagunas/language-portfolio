@@ -128,7 +128,7 @@ const toggleSidebar = () => {
 
 .nav-tagline {
   font-family: var(--font-main);
-  font-size: 0.8rem;
+  font-size: 1rem;
   opacity: 0.8;
 }
 
@@ -156,7 +156,7 @@ const toggleSidebar = () => {
   }
 
   .nav-name {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
 
   .nav-avatar {
@@ -174,7 +174,7 @@ const toggleSidebar = () => {
   border: none;
   font-family: var(--font-main);
   font-weight: 700;
-  font-size: 0.8rem;
+  font-size: 01rem;
   cursor: pointer;
   opacity: 0.5;
 }
@@ -189,11 +189,31 @@ const toggleSidebar = () => {
   text-decoration: none;
   color: var(--text-dark);
   font-family: var(--font-main);
+  font-size: 1rem;
   font-weight: 800;
-  font-size: 0.9rem;
   padding: 0.6rem 1.2rem;
   border: 1.5px solid var(--text-dark);
   border-radius: 6px;
+
+  /* Animation Setup */
+  display: inline-block;
+  background-color: transparent;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1); /* Bouncy "grow" effect */
+}
+
+/* Hover State */
+.nav-booking-link:hover {
+  background-color: #222222;
+  color: var(--text-light); /* Ensure you have --white defined in :root */
+  transform: translateY(-2px); /* Slight lift */
+}
+
+/* Active/Click State */
+.nav-booking-link:active {
+  transform: translateY(0) scale(0.98); /* Tactile press effect */
 }
 
 .hamburger {

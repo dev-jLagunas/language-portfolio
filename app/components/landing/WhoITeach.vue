@@ -63,7 +63,6 @@ const students = [
 <style scoped>
 .teach-section {
   padding: 6rem 1.5rem;
-  background: white;
 }
 
 .container {
