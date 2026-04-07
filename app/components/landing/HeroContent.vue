@@ -1,12 +1,10 @@
 <template>
   <div class="hero-content">
-    <h1 class="hero-title">English Instructor</h1>
+    <h1 class="hero-title">{{ $t("hero.content.title") }}</h1>
     <p class="hero-copy">
-      Personalized coaching for high-agency professionals and students. From
-      Eiken prep to business presentations, I build the systems you need to
-      communicate with confidence.
+      {{ $t("hero.content.copy") }}
     </p>
-    <button class="hero-btn">Start Your Journey</button>
+    <button class="hero-btn">{{ $t("hero.content.cta") }}</button>
   </div>
 </template>
 

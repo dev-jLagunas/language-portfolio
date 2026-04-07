@@ -1,33 +1,32 @@
 <script setup>
-// We create the source array once.
+const { t } = useI18n();
+
 const sourceStats = [
-  { number: "10+", label: "Years Experience" },
-  { number: "1,000+", label: "Students Taught" },
-  { number: "4", label: "Languages Spoken" },
-  { number: "10", label: "Years in Japan" },
-  { number: "3", label: "Global Corps Coached" },
-  { number: "1", label: "Published Author" },
-  { number: "N2", label: "JLPT Certified" },
-  { number: "3–87", label: "Student Age Range" },
-  { number: "50+", label: "Largest Class Size" },
-  { number: "100%", label: "Remote Coaching" },
+  { number: "10+", key: "years_experience" },
+  { number: "1,000+", key: "students_taught" },
+  { number: "4", key: "languages_spoken" },
+  { number: "10", key: "years_japan" },
+  { number: "3", key: "global_corps" },
+  { number: "1", key: "published_author" },
+  { number: "N2", key: "jlpt_certified" },
+  { number: "3–87", key: "age_range" },
+  { number: "50+", key: "class_size" },
+  { number: "100%", key: "remote_coaching" },
 ];
 
-// Nuxt/Vue handles the duplication: We combine the array with itself.
-// This is required for the infinite loop CSS trick.
 const statsList = [...sourceStats, ...sourceStats];
 </script>
 
 <template>
-  <section class="marquee" aria-label="Key performance statistics">
+  <section class="marquee" :aria-label="t('stats.section_label')">
     <div class="marquee-track">
       <div
         v-for="(stat, index) in statsList"
-        :key="`${stat.label}-${index}`"
+        :key="`${stat.key}-${index}`"
         class="stat-card"
       >
         <span class="stat-number">{{ stat.number }}</span>
-        <span class="stat-label">{{ stat.label }}</span>
+        <span class="stat-label">{{ t(`stats.labels.${stat.key}`) }}</span>
       </div>
     </div>
   </section>

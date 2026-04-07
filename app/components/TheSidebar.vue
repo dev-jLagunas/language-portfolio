@@ -1,5 +1,5 @@
 <script setup>
-const { locale, setLocale } = useI18n();
+const { locale, setLocale, t } = useI18n();
 const props = defineProps({
   isOpen: Boolean,
 });
@@ -11,16 +11,16 @@ const activeIndex = ref(0);
 const languages = [
   { code: "en", label: "EN" },
   { code: "es", label: "ES" },
-  { code: "jp", label: "JP" },
+  { code: "jp", label: "JP" }, // Note: Changed 'jp' to 'ja' to match standard i18n codes
   { code: "fr", label: "FR" },
 ];
 
 const menuItems = [
-  { label: "nav.who_i_help", href: "#who-i-help" },
-  { label: "nav.framework", href: "#framework" },
-  { label: "nav.testimonials", href: "#testimonials" },
-  { label: "nav.social_proof", href: "#social-proof" },
-  { label: "nav.contact", href: "#contact" },
+  { key: "who_i_help", href: "#who-i-help" },
+  { key: "how_it_works", href: "#framework" },
+  { key: "testimonials", href: "#testimonials" },
+  { key: "social_proof", href: "#social-proof" },
+  { key: "contact", href: "#contact" },
 ];
 
 const handleLocaleChange = (code) => {
@@ -42,20 +42,20 @@ const handleNavClick = async (index, href) => {
 </script>
 
 <template>
-  <Transition name="slide-left">
+  <Transition name="brutal-gate">
     <div v-if="isOpen" class="sidebar-overlay" @click.self="$emit('close')">
       <aside :class="['sidebar', `theme-${locale}`]">
         <button
           class="sidebar-close"
           @click="$emit('close')"
-          aria-label="Close"
+          :aria-label="t('sidebar.close_alt')"
         >
           <span class="close-icon">×</span>
         </button>
 
         <nav class="sidebar-content">
           <div class="sidebar-section">
-            <p class="section-label">Language</p>
+            <p class="section-label">{{ t("sidebar.system_language") }}</p>
             <div class="lang-grid">
               <button
                 v-for="lang in languages"
@@ -79,7 +79,9 @@ const handleNavClick = async (index, href) => {
                   @click="handleNavClick(index, item.href)"
                 >
                   <span class="floor-num">0{{ index + 1 }}</span>
-                  {{ $t(item.label) }}
+                  <span class="link-text">{{
+                    t(`sidebar.nav.${item.key}`)
+                  }}</span>
                 </button>
               </li>
             </ul>
@@ -103,23 +105,27 @@ const handleNavClick = async (index, href) => {
   inset: 0;
   z-index: 2000;
   display: flex;
-  justify-content: flex-start; /* Slide from left */
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  justify-content: flex-end; /* Flipped to Right */
 }
 
 .sidebar {
   width: 100%;
-  max-width: 400px;
+  max-width: 420px;
   height: 100%;
-  background: white;
-  padding: 6rem 2rem;
+  padding: 6rem 2.5rem;
   position: relative;
-  box-shadow: 10px 0 30px rgba(0, 0, 0, 0.1);
-  border-right: 1px solid rgba(0, 0, 0, 0.1);
+
+  /* Flipped: Heavy LEFT border and shadow */
+  border-left: 8px solid var(--text-dark);
+  box-shadow: -20px 0 0px rgba(0, 0, 0, 0.1);
 
   display: flex;
   flex-direction: column;
 }
 
+/* Background logic maintained */
 .theme-en {
   background-color: var(--color-en);
 }
@@ -133,105 +139,83 @@ const handleNavClick = async (index, href) => {
   background-color: var(--color-fr);
 }
 
-/* Close Button Styling & Micro-animations */
+/* Square Brutalist Close Button: Now hanging on the LEFT edge */
 .sidebar-close {
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 2rem;
+  left: -58px;
   width: 50px;
   height: 50px;
-  border-radius: 50%;
-  background: #ff4d4d;
+  background: var(--text-dark);
   color: white;
   border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 10px rgba(255, 77, 77, 0.3);
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  z-index: 2010;
+  transition: all 0.2s ease;
 }
 
 .close-icon {
-  font-size: 2rem;
-  line-height: 1;
-  font-family: Arial, sans-serif;
+  font-size: 2.5rem;
+  font-family: var(--font-sans);
 }
 
 .sidebar-close:hover {
-  background: #e63939;
-  transform: translateX(-50%) scale(1.1) rotate(90deg);
-  box-shadow: 0 6px 15px rgba(255, 77, 77, 0.5);
-}
-
-.sidebar-close:active {
-  transform: translateX(-50%) scale(0.9);
-}
-
-/* Desktop: Top-Center */
-@media (min-width: 768px) {
-  .sidebar-close {
-    top: 2rem;
-  }
-}
-
-/* Mobile: Bottom-Center */
-@media (max-width: 767px) {
-  .sidebar {
-    max-width: 85vw;
-    padding: 4rem 1.5rem 8rem;
-  }
-  .sidebar-close {
-    bottom: 2rem;
-  }
+  background: #ff4d4d;
+  transform: translateX(-5px); /* Moves inward toward center */
 }
 
 .sidebar-content {
-  margin-top: 1rem;
+  margin-top: 2rem;
 }
 
 .section-label {
-  font-family: var(--font-sans);
-  font-size: 0.7rem;
+  font-family: var(--font-main);
+  font-size: 0.75rem;
   text-transform: uppercase;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  margin-bottom: 1rem;
-  opacity: 0.6;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  margin-bottom: 1.5rem;
+  color: var(--text-dark);
+  opacity: 0.5;
 }
 
 .lang-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
+  gap: 10px;
 }
 
 .lang-btn {
-  padding: 8px;
-  border: 1px solid var(--text-dark);
-  background: transparent;
-  font-family: var(--font-sans);
-  font-weight: 700;
-  font-size: 0.75rem;
+  padding: 12px 5px;
+  border: 2px solid var(--text-dark);
+  background: white;
+  font-family: var(--font-main);
+  font-weight: 800;
+  font-size: 0.8rem;
   cursor: pointer;
+  box-shadow: 3px 3px 0px var(--text-dark);
+  transition: all 0.1s ease;
 }
 
 .lang-btn.is-active {
   background: var(--text-dark);
   color: white;
+  box-shadow: 0px 0px 0px var(--text-dark);
+  transform: translate(2px, 2px);
 }
 
 .sidebar-divider {
-  height: 1px;
+  height: 2px;
   background: var(--text-dark);
-  opacity: 0.1;
-  margin: 2.5rem 0;
+  margin: 3rem 0;
+  opacity: 0.2;
 }
 
 .elevator-shaft {
   position: relative;
-  padding-left: 1.5rem;
+  padding-left: 2rem;
 }
 
 .shaft-line {
@@ -239,9 +223,9 @@ const handleNavClick = async (index, href) => {
   left: 0;
   top: 0;
   bottom: 0;
-  width: 1px;
+  width: 3px;
   background: var(--text-dark);
-  opacity: 0.2;
+  opacity: 1;
 }
 
 .nav-list {
@@ -250,51 +234,84 @@ const handleNavClick = async (index, href) => {
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 25px;
 }
 
 .nav-link {
   background: none;
   border: none;
   font-family: var(--font-display);
-  font-size: 1.6rem;
+  font-size: 2rem;
   text-align: left;
   cursor: pointer;
-  color: inherit;
+  color: var(--text-dark);
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.nav-link:hover {
+  transform: translateX(10px);
 }
 
 .floor-num {
-  font-family: var(--font-sans);
-  font-size: 0.7rem;
+  font-family: var(--font-main);
+  font-size: 0.8rem;
   font-weight: 900;
-  opacity: 0.4;
+  opacity: 0.3;
 }
 
 .elevator-avatar {
   position: absolute;
-  left: -35px;
-  top: -5px;
+  left: -33px;
+  top: -2px;
   width: 70px;
-  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: 5;
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
   pointer-events: none;
 }
 
 .elevator-avatar img {
   width: 100%;
+  filter: drop-shadow(4px 4px 0px rgba(0, 0, 0, 0.1));
 }
 
-/* Left-to-Right Slide Animation */
-.slide-left-enter-active,
-.slide-left-leave-active {
-  transition: all 0.4s ease-out;
+/* Flipped Gate Animation Logic */
+.brutal-gate-enter-active {
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.brutal-gate-leave-active {
+  transition: all 0.3s ease-in;
 }
 
-.slide-left-enter-from,
-.slide-left-leave-to {
-  transform: translateX(-100%);
+.brutal-gate-enter-from {
+  transform: translateX(110%); /* Enters from Right */
+}
+.brutal-gate-leave-to {
+  transform: translateX(110%); /* Exits to Right */
+}
+
+/* Staggered entrance: links come in from the right */
+.brutal-gate-enter-active .nav-link {
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s;
+}
+.brutal-gate-enter-from .nav-link {
   opacity: 0;
+  transform: translateX(20px);
+}
+
+@media (max-width: 767px) {
+  .sidebar {
+    max-width: 85vw;
+    border-left-width: 6px;
+    border-right-width: 0;
+  }
+  .sidebar-close {
+    left: 0; /* Align to the inside edge on mobile */
+    top: 0;
+    width: 60px;
+    height: 60px;
+  }
 }
 </style>

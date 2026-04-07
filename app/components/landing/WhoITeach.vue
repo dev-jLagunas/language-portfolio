@@ -77,7 +77,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section ref="container" class="teach-section">
+  <section ref="container" class="teach-section" id="who-i-help">
     <div class="content-limit">
       <h2 class="section-title">Who I Help</h2>
 

@@ -85,7 +85,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section ref="sectionRef" class="beyond-lab">
+  <section ref="sectionRef" class="beyond-lab" id="social-proof">
     <div class="container">
       <div class="header-flex">
         <h2 class="section-title">Beyond the Lab</h2>

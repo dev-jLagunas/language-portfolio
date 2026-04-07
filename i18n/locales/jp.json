@@ -4,5 +4,61 @@
     "my_tagline": "英語コーチ",
     "book_lesson": "レッスンを予約する",
     "avatar_alt": "フアンのアバター"
+  },
+  "sidebar": {
+    "system_language": "システム言語",
+    "close_alt": "閉じる",
+    "nav": {
+      "who_i_help": "対象となる方",
+      "how_it_works": "進め方",
+      "testimonials": "お客様の声",
+      "social_proof": "実績",
+      "contact": "お問い合わせ"
+    }
+  },
+  "hero": {
+    "content": {
+      "title": "英語講師",
+      "copy": "高い志を持つプロフェッショナルや学生のためのパーソナライズされたコーチング。英検対策からビジネスプレゼンテーションまで、自信を持ってコミュニケーションをとるために必要なシステムを構築します。",
+      "cta": "今すぐ始める"
+    },
+    "stage": {
+      "alt_student": "生徒",
+      "eiken": {
+        "student": "英検のスコアを上げたいです！",
+        "juan": "大丈夫です。まずは学習システムを構築しましょう。"
+      },
+      "travel": {
+        "student": "来月ロンドンに行きます！",
+        "juan": "楽しみですね！旅行英語の準備をしましょう。"
+      },
+      "business": {
+        "student": "金曜日に大事なプレゼンがあります。",
+        "juan": "一緒に最高のピッチに仕上げましょう。"
+      }
+    },
+    "specs": {
+      "location": "石川県_日本",
+      "education": "言語学_UCSD",
+      "bio": "猫4匹",
+      "level": "JLPT_N2",
+      "experience": "日本在住10年以上",
+      "type": "UXアーキテクト"
+    }
+  },
+  "stats": {
+    "section_label": "主要実績統計",
+    "labels": {
+      "years_experience": "経験年数",
+      "students_taught": "教えた生徒数",
+      "languages_spoken": "話せる言語数",
+      "years_japan": "日本在住歴",
+      "global_corps": "コーチング実績（グローバル企業）",
+      "published_author": "出版実績",
+      "jlpt_certified": "JLPT認定",
+      "age_range": "生徒の年齢層",
+      "class_size": "最大クラス規模",
+      "remote_coaching": "リモートコーチング"
+    }
   }
 }

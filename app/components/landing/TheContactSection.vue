@@ -57,7 +57,11 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section ref="sectionRef" :class="['contact-diagnostic', `theme-${locale}`]">
+  <section
+    ref="sectionRef"
+    :class="['contact-diagnostic', `theme-${locale}`]"
+    id="contact"
+  >
     <div class="container">
       <div class="split-layout">
         <div class="form-container">

@@ -4,5 +4,61 @@
     "my_tagline": "Entrenador de Inglés",
     "book_lesson": "Reservar Clase",
     "avatar_alt": "Avatar de Juan"
+  },
+  "sidebar": {
+    "system_language": "Idioma del sistema",
+    "close_alt": "Cerrar",
+    "nav": {
+      "who_i_help": "A quién ayudo",
+      "how_it_works": "Cómo funciona",
+      "testimonials": "Testimonios",
+      "social_proof": "Pruebas sociales",
+      "contact": "Contacto"
+    }
+  },
+  "hero": {
+    "content": {
+      "title": "Instructor de Inglés",
+      "copy": "Coaching personalizado para profesionales y estudiantes de alto nivel. Desde la preparación para el Eiken hasta presentaciones de negocios, construyo los sistemas que necesitas para comunicarte con confianza.",
+      "cta": "Comienza tu camino"
+    },
+    "stage": {
+      "alt_student": "Estudiante",
+      "eiken": {
+        "student": "¡Necesito ayuda con mi puntaje de Eiken!",
+        "juan": "Sin problema. Construyamos un sistema."
+      },
+      "travel": {
+        "student": "¡Viajo a Londres el próximo mes!",
+        "juan": "¡Qué emocionante! Preparemos tu inglés de viaje."
+      },
+      "business": {
+        "student": "Tengo una presentación importante el viernes.",
+        "juan": "Lograremos ese discurso juntos."
+      }
+    },
+    "specs": {
+      "location": "ISHIKAWA_JP",
+      "education": "LINGÜÍSTICA_UCSD",
+      "bio": "4_GATOS",
+      "level": "JLPT_N2",
+      "experience": "10+ AÑOS JPN",
+      "type": "ARQUITECTO_UX"
+    }
+  },
+  "stats": {
+    "section_label": "Estadísticas clave de rendimiento",
+    "labels": {
+      "years_experience": "Años de experiencia",
+      "students_taught": "Estudiantes enseñados",
+      "languages_spoken": "Idiomas hablados",
+      "years_japan": "Años en Japón",
+      "global_corps": "Empresas globales asesoradas",
+      "published_author": "Autor publicado",
+      "jlpt_certified": "Certificado JLPT",
+      "age_range": "Rango de edad de estudiantes",
+      "class_size": "Clase más grande",
+      "remote_coaching": "Coaching remoto"
+    }
   }
 }

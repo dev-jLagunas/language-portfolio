@@ -1,20 +1,26 @@
+Understood. Since both Juan and the students are contained within
+`.char-container` divs, we can apply the pseudo-element to that class. This
+ensures that every avatar—Juan and all three students in the queue—gets a
+grounded shadow that moves perfectly with them. I’ve also ensured that Juan's
+subtle "breathing" animation moves his character image *relative* to the
+container, so the shadow stays anchored on the floor while he moves. ###
+LandingHeroAnimation.vue ```vue
 <script setup>
-// 1. Define the conversation pairs
+import { ref, onMounted } from "vue";
+const { t } = useI18n();
+
 const conversations = [
   {
+    key: "eiken",
     studentImg: "/images/characters/char-student.png",
-    studentText: "I need help with my Eiken score!",
-    juanText: "No problem. Let's build a system.",
   },
   {
+    key: "travel",
     studentImg: "/images/characters/char-traveller.png",
-    studentText: "I'm traveling to London next month!",
-    juanText: "Excting! Let's prep your travel English.",
   },
   {
+    key: "business",
     studentImg: "/images/characters/char-business-man.png",
-    studentText: "I have a big presentation on Friday.",
-    juanText: "We'll nail that pitch together.",
   },
 ];
 
@@ -22,23 +28,25 @@ const currentIndex = ref(0);
 const isJuanTalking = ref(false);
 const isTransitioning = ref(false);
 
+const getQueuePosition = (index) => {
+  const diff = index - currentIndex.value;
+  const len = conversations.length;
+  return `pos-${(diff + len) % len}`;
+};
+
 const startCycle = async () => {
-  // 1. Student speaks
   isJuanTalking.value = false;
   await new Promise((r) => setTimeout(r, 2500));
 
-  // 2. Juan speaks
   isJuanTalking.value = true;
   await new Promise((r) => setTimeout(r, 2500));
 
-  // 3. Slide out/in
   isTransitioning.value = true;
-  await new Promise((r) => setTimeout(r, 800)); // Wait for slide exit
+  await new Promise((r) => setTimeout(r, 800));
 
   currentIndex.value = (currentIndex.value + 1) % conversations.length;
   isTransitioning.value = false;
 
-  // Restart
   startCycle();
 };
 
@@ -49,80 +57,170 @@ onMounted(() => {
 
 <template>
   <div class="hero-stage">
-    <Transition name="slide-pair" mode="out-in">
-      <div :key="currentIndex" class="conversation-pair">
-        <div class="char-container">
+    <div class="conversation-pair">
+      <div class="student-queue">
+        <div
+          v-for="(conv, index) in conversations"
+          :key="index"
+          :class="[
+            'char-container',
+            'student-wrapper',
+            getQueuePosition(index),
+          ]"
+        >
           <Transition name="pop">
             <div
-              v-show="!isJuanTalking && !isTransitioning"
-              class="speech-bubble bubble-left"
+              v-show="
+                currentIndex === index && !isJuanTalking && !isTransitioning
+              "
+              class="speech-bubble bubble-left student-bubble"
             >
-              "{{ conversations[currentIndex].studentText }}"
+              "{{ t(`hero.stage.${conv.key}.student`) }}"
             </div>
           </Transition>
           <img
-            :src="conversations[currentIndex].studentImg"
+            :src="conv.studentImg"
             class="avatar-img"
-            alt="Student"
-          />
-        </div>
-
-        <div class="char-container">
-          <Transition name="pop">
-            <div
-              v-show="isJuanTalking && !isTransitioning"
-              class="speech-bubble bubble-right"
-            >
-              "{{ conversations[currentIndex].juanText }}"
-            </div>
-          </Transition>
-          <img
-            src="/images/avatars/avatar-thumbs-up.png"
-            class="avatar-img"
-            alt="Juan"
+            :alt="t('hero.stage.alt_student')"
           />
         </div>
       </div>
-    </Transition>
+
+      <div class="char-container juan-wrapper">
+        <Transition name="pop">
+          <div
+            v-show="isJuanTalking && !isTransitioning"
+            class="speech-bubble bubble-right juan-bubble"
+          >
+            "{{ t(`hero.stage.${conversations[currentIndex].key}.juan`) }}"
+          </div>
+        </Transition>
+        <img
+          src="/images/avatars/avatar-thumbs-up.png"
+          class="avatar-img juan-img"
+          alt="Juan"
+        />
+      </div>
+    </div>
   </div>
 </template>
 
 <style scoped>
 .hero-stage {
   width: 100%;
-  height: 350px;
+  height: 400px;
   position: relative;
-  overflow: hidden;
 }
 
 .conversation-pair {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   gap: 20px;
   width: 100%;
   height: 100%;
   margin-inline: auto;
+  padding-bottom: 20px; /* Increased to allow space for the shadows */
 }
 
-.char-container {
+/* --- Queue Layout Logic --- */
+.student-queue {
   position: relative;
+  width: 180px;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.student-wrapper {
+  position: absolute;
+  bottom: 0;
+  transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform-origin: bottom center;
+}
+
+/* --- Common Character Container --- */
+.char-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative; /* Anchor for pseudo-shadow */
+}
+
+/* Added Shadow via Pseudo-element to all character containers */
+.char-container::after {
+  content: "";
+  position: absolute;
+  bottom: -8px; /* Slightly below the image bottom */
+  width: 70%; /* Relative to avatar width */
+  height: 10px;
+  background: rgba(0, 0, 0, 0.15); /* Soft, subtle dark */
+  border-radius: 50%; /* Ellirical shape */
+  filter: blur(5px); /* Soft edges */
+  z-index: 1; /* Sit below the avatar img */
+  pointer-events: none;
+  /* Syncs with student queue movements */
+  transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.juan-wrapper::after {
+  /* Juan's shadow is static since he doesn't move horizontal */
+  transform: translateX(0);
 }
 
 .avatar-img {
   height: 280px;
   width: auto;
   display: block;
+  position: relative;
+  z-index: 2; /* Sit above shadow */
 }
+
+/* Juan's Constant Subtle Animation */
+@keyframes subtle-breathe {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px); /* slightly more pronounced movement */
+  }
+}
+
+.juan-img {
+  /* Animated relative to its container, so shadow remains static */
+  animation: subtle-breathe 4s ease-in-out infinite;
+}
+
+/* --- Mobile Queue Positions (<768px) --- */
+.pos-0 {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+  z-index: 3;
+}
+/* Mobile scale logic applied to shadows via parent container */
+.pos-0::after {
+  transform: scaleX(1);
+}
+.pos-1,
+.pos-2 {
+  opacity: 0;
+  transform: translateX(-150px) scale(0.9);
+  z-index: 1;
+  pointer-events: none;
+}
+.pos-1::after,
+.pos-2::after {
+  transform: scaleX(0.9);
+}
+
+/* ... Rest of Styles (bubbles, transitions, desktop logic) UNCHANGED ... */
 
 /* --- Blocky Bubble Styles --- */
 .speech-bubble {
   position: absolute;
   top: -65px;
-  background: #ffffff;
   padding: 0.75rem 1rem;
   border: 2px solid var(--text-dark);
   font-family: var(--font-main);
@@ -131,6 +229,13 @@ onMounted(() => {
   white-space: nowrap;
   box-shadow: 4px 4px 0px var(--text-dark);
   z-index: 10;
+}
+
+.student-bubble {
+  background: #f2f2f2;
+}
+.juan-bubble {
+  background: #f2f2f2;
 }
 
 .speech-bubble::after {
@@ -147,24 +252,8 @@ onMounted(() => {
 .bubble-left {
   top: -10%;
 }
-
 .bubble-right {
   top: -10%;
-}
-/* --- Slide Transition (Left to Right) --- */
-.slide-pair-enter-active,
-.slide-pair-leave-active {
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.slide-pair-enter-from {
-  transform: translateX(100%); /* Enter from right */
-  opacity: 0;
-}
-
-.slide-pair-leave-to {
-  transform: translateX(-100%); /* Exit to left */
-  opacity: 0;
 }
 
 /* --- Bubble Pop Transition --- */
@@ -187,15 +276,59 @@ onMounted(() => {
 @media (width >= 768px) {
   .hero-stage {
     width: 100%;
+    margin-top: -6rem;
   }
 
   .conversation-pair {
-    gap: 10px;
+    gap: 40px;
+    padding-bottom: 25px; /* More space for larger avatars */
   }
+
+  .student-queue {
+    width: 250px;
+  }
+
   .avatar-img {
     height: 380px;
   }
 
+  /* Desktop Queue Positions: The Lineup */
+  .pos-0 {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    filter: brightness(1);
+    z-index: 3;
+  }
+  /* Shadow follows active student */
+  .pos-0::after {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+
+  .pos-1 {
+    opacity: 1;
+    transform: translateX(-80px) scale(0.9);
+    filter: brightness(0.85); /* Creates depth shadow */
+    z-index: 2;
+  }
+  /* Shadows are scaled with the character for depth */
+  .pos-1::after {
+    transform: scaleX(0.9);
+    opacity: 0.6;
+  }
+
+  .pos-2 {
+    opacity: 1;
+    transform: translateX(-160px) scale(0.8);
+    filter: brightness(0.7); /* Deepest in line */
+    z-index: 1;
+  }
+  .pos-2::after {
+    transform: scaleX(0.8);
+    opacity: 0.4;
+  }
+
+  /* Bubble Positioning */
   .bubble-left {
     top: 15%;
     right: 70%;
@@ -208,7 +341,6 @@ onMounted(() => {
     right: auto;
   }
 
-  /* Pointer flips for desktop side-positioning */
   .bubble-left::after {
     bottom: auto;
     top: 20px;
@@ -236,5 +368,14 @@ onMounted(() => {
   .avatar-img {
     height: 450px;
   }
+
+  /* Spread the line out a bit more for ultra-wide */
+  .pos-1 {
+    transform: translateX(-100px) scale(0.9);
+  }
+  .pos-2 {
+    transform: translateX(-200px) scale(0.8);
+  }
 }
 </style>
+```

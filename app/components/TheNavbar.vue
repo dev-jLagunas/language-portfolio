@@ -9,6 +9,12 @@ const languages = [
   { code: "fr", label: "FR" },
 ];
 
+const platforms = [
+  { name: "Cambly", url: "#", icon: "ph:video-camera-bold" },
+  { name: "NativeTalk", url: "#", icon: "ph:chats-bold" },
+  { name: "iTalki", url: "#", icon: "ph:student-bold" },
+];
+
 const toggleSidebar = () => {
   isSidebarOpen.value = !isSidebarOpen.value;
 };
@@ -18,6 +24,29 @@ const toggleSidebar = () => {
   <nav :class="['nav-bar', `theme-${locale}`]" aria-label="Main navigation">
     <div class="nav-inner">
       <a href="/" class="nav-brand">
+        <div class="logo-icon-wrap">
+          <svg
+            viewBox="0 0 32 32"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            class="logo-svg"
+          >
+            <rect
+              width="32"
+              height="32"
+              rx="4"
+              fill="currentColor"
+              fill-opacity="0.1"
+            />
+            <path
+              d="M16 8V24M8 16H24"
+              stroke="currentColor"
+              stroke-width="3"
+              stroke-linecap="square"
+            />
+          </svg>
+        </div>
+
         <img
           :src="`/images/avatars/avatar-${locale}.png`"
           :alt="$t('nav.avatar_alt')"
@@ -31,6 +60,19 @@ const toggleSidebar = () => {
 
       <div class="nav-actions">
         <div class="nav-desktop-content">
+          <div class="platform-nav">
+            <a
+              v-for="p in platforms"
+              :key="p.name"
+              :href="p.url"
+              class="platform-link"
+              :title="p.name"
+            >
+              <Icon :name="p.icon" />
+              <span>{{ p.name }}</span>
+            </a>
+          </div>
+
           <div class="lang-switcher" role="group">
             <button
               v-for="lang in languages"
@@ -41,6 +83,7 @@ const toggleSidebar = () => {
               {{ lang.label }}
             </button>
           </div>
+
           <a href="/contact" class="nav-booking-link">
             {{ $t("nav.book_lesson") }}
           </a>
@@ -105,6 +148,13 @@ const toggleSidebar = () => {
   align-items: center;
   text-decoration: none;
   color: var(--text-dark);
+  gap: 1rem;
+}
+
+.logo-icon-wrap {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
 }
 
 .nav-avatar {
@@ -120,14 +170,12 @@ const toggleSidebar = () => {
 .nav-info {
   margin-left: 4rem;
 }
-
 .nav-name {
   font-family: var(--font-display);
   font-size: 1.25rem;
   font-weight: bold;
   line-height: 1;
 }
-
 .nav-tagline {
   font-family: var(--font-main);
   font-size: 1rem;
@@ -146,21 +194,48 @@ const toggleSidebar = () => {
   gap: 2rem;
 }
 
+/* Platform Links (1024px+) */
+.platform-nav {
+  display: none;
+  gap: 1.25rem;
+}
+
+@media (min-width: 1024px) {
+  .platform-nav {
+    display: flex;
+    padding-right: 2rem;
+    border-right: 1.5px solid rgba(0, 0, 0, 0.1);
+  }
+}
+
+.platform-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: var(--text-dark);
+  transition: transform 0.2s ease;
+}
+
+.platform-link:hover {
+  transform: translateY(-2px);
+}
+.platform-link span {
+  font-family: var(--font-main);
+  font-size: 0.65rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
 /* Desktop Overrides */
 @media (min-width: 768px) {
-  .nav-inner {
-    width: fit-content;
-    gap: 4rem;
-  }
-
   .nav-desktop-content {
     display: flex;
   }
-
   .nav-name {
     font-size: 2rem;
   }
-
   .nav-avatar {
     height: 150px;
     left: -65px;
@@ -171,17 +246,15 @@ const toggleSidebar = () => {
   display: flex;
   gap: 0.5rem;
 }
-
 .lang-btn {
   background: none;
   border: none;
   font-family: var(--font-main);
   font-weight: 700;
-  font-size: 01rem;
+  font-size: 1rem;
   cursor: pointer;
   opacity: 0.5;
 }
-
 .lang-btn.is-active {
   opacity: 1;
   text-decoration: underline;
@@ -192,47 +265,35 @@ const toggleSidebar = () => {
   text-decoration: none;
   color: var(--text-dark);
   font-family: var(--font-main);
-  font-size: 1rem;
-  font-weight: 800;
+  font-size: 0.85rem;
+  font-weight: 900;
   padding: 0.6rem 1.2rem;
-  border: 1.5px solid var(--text-dark);
-  border-radius: 6px;
-
-  /* Animation Setup */
-  display: inline-block;
-  background-color: transparent;
-  transition:
-    background-color 0.2s ease,
-    color 0.2s ease,
-    transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1); /* Bouncy "grow" effect */
+  border: 2px solid var(--text-dark);
+  box-shadow: 4px 4px 0px var(--text-dark);
+  background-color: #fff;
+  text-transform: uppercase;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* Hover State */
 .nav-booking-link:hover {
-  background-color: #222222;
-  color: var(--text-light); /* Ensure you have --white defined in :root */
-  transform: translateY(-2px); /* Slight lift */
+  background-color: var(--text-dark);
+  color: #fff;
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 0px var(--text-dark);
 }
 
-/* Active/Click State */
-.nav-booking-link:active {
-  transform: translateY(0) scale(0.98); /* Tactile press effect */
-}
-
+/* Hamburger Styles Restored */
 .hamburger {
   cursor: pointer;
   display: block;
 }
-
 .hamburger input {
   display: none;
 }
-
 .hamburger svg {
   height: 2.5rem;
   color: var(--text-dark);
 }
-
 .line {
   fill: none;
   stroke: currentColor;
@@ -241,15 +302,12 @@ const toggleSidebar = () => {
   stroke-width: 2.5;
   transition: 600ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-
 .line-top-bottom {
   stroke-dasharray: 12 63;
 }
-
 .hamburger input:checked + svg {
   transform: rotate(-45deg);
 }
-
 .hamburger input:checked + svg .line-top-bottom {
   stroke-dasharray: 20 300;
   stroke-dashoffset: -32.42;

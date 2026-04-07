@@ -4,5 +4,61 @@
     "my_tagline": "Entraîneur Anglais",
     "book_lesson": "Réserver un cours",
     "avatar_alt": "Avatar de Juan"
+  },
+  "sidebar": {
+    "system_language": "Langue du système",
+    "close_alt": "Fermer",
+    "nav": {
+      "who_i_help": "Qui j'aide",
+      "how_it_works": "Comment ça marche",
+      "testimonials": "Témoignages",
+      "social_proof": "Preuve sociale",
+      "contact": "Contact"
+    }
+  },
+  "hero": {
+    "content": {
+      "title": "Instructeur d'Anglais",
+      "copy": "Coaching personnalisé pour les professionnels et étudiants ambitieux. De la préparation à l'Eiken aux présentations professionnelles, je conçois les systèmes dont vous avez besoin pour communiquer avec assurance.",
+      "cta": "Commencez votre parcours"
+    },
+    "stage": {
+      "alt_student": "Étudiant",
+      "eiken": {
+        "student": "J'ai besoin d'aide avec mon score Eiken !",
+        "juan": "Pas de problème. Construisons un système."
+      },
+      "travel": {
+        "student": "Je voyage à Londres le mois prochain !",
+        "juan": "Génial ! Préparons votre anglais de voyage."
+      },
+      "business": {
+        "student": "J'ai une présentation importante vendredi.",
+        "juan": "On va assurer ce pitch ensemble."
+      }
+    },
+    "specs": {
+      "location": "ISHIKAWA_JP",
+      "education": "LINGUISTIQUE_UCSD",
+      "bio": "4_CHATS",
+      "level": "JLPT_N2",
+      "experience": "10+ ANS JPN",
+      "type": "ARCHITECTE_UX"
+    }
+  },
+  "stats": {
+    "section_label": "Statistiques de performance clés",
+    "labels": {
+      "years_experience": "Années d'expérience",
+      "students_taught": "Élèves formés",
+      "languages_spoken": "Langues parlées",
+      "years_japan": "Années au Japon",
+      "global_corps": "Entreprises mondiales coachées",
+      "published_author": "Auteur publié",
+      "jlpt_certified": "Certifié JLPT",
+      "age_range": "Tranche d'âge des élèves",
+      "class_size": "Plus grande classe",
+      "remote_coaching": "Coaching à distance"
+    }
   }
 }

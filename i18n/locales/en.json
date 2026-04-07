@@ -8,5 +8,61 @@
     "experience": "Experience",
     "links": "Links",
     "contact": "Contact"
+  },
+  "sidebar": {
+    "system_language": "System Language",
+    "close_alt": "Close",
+    "nav": {
+      "who_i_help": "Who I Help",
+      "how_it_works": "How it Works",
+      "testimonials": "Testimonials",
+      "social_proof": "Social Proof",
+      "contact": "Contact"
+    }
+  },
+  "hero": {
+    "content": {
+      "title": "English Instructor",
+      "copy": "Personalized coaching for high-agency professionals and students. From Eiken prep to business presentations, I build the systems you need to communicate with confidence.",
+      "cta": "Start Your Journey"
+    },
+    "stage": {
+      "alt_student": "Student",
+      "eiken": {
+        "student": "I need help with my Eiken score!",
+        "juan": "No problem. Let's build a system."
+      },
+      "travel": {
+        "student": "I'm traveling to London next month!",
+        "juan": "Exciting! Let's prep your travel English."
+      },
+      "business": {
+        "student": "I have a big presentation on Friday.",
+        "juan": "We'll nail that pitch together."
+      }
+    },
+    "specs": {
+      "location": "ISHIKAWA_JP",
+      "education": "LINGÜÍSTICA_UCSD",
+      "bio": "4_GATOS",
+      "level": "JLPT_N2",
+      "experience": "10+ AÑOS JPN",
+      "type": "ARQUITECTO_UX"
+    }
+  },
+  "stats": {
+    "section_label": "Key performance statistics",
+    "labels": {
+      "years_experience": "Years Experience",
+      "students_taught": "Students Taught",
+      "languages_spoken": "Languages Spoken",
+      "years_japan": "Years in Japan",
+      "global_corps": "Global Corps Coached",
+      "published_author": "Published Author",
+      "jlpt_certified": "JLPT Certified",
+      "age_range": "Student Age Range",
+      "class_size": "Largest Class Size",
+      "remote_coaching": "Remote Coaching"
+    }
   }
 }

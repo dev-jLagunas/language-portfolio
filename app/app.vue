@@ -15,6 +15,7 @@ import TheContactSection from "./components/landing/TheContactSection.vue";
       <TheMobileNavbar />
       <TheContactSection />
       <TheFooter />
+      <ReusableBackToTop />
     </main>
   </div>
 </template>

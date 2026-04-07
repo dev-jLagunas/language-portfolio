@@ -53,7 +53,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section ref="sectionRef" class="framework-section">
+  <section ref="sectionRef" class="framework-section" id="framework">
     <div class="intro-block">
       <h2 class="section-title">How It Works</h2>
       <p class="section-subtitle">
