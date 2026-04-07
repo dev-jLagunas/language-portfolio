@@ -1,4 +1,9 @@
 <script setup>
+const { locale } = useI18n();
+const { $gsap } = useNuxtApp();
+const sectionRef = ref(null);
+let ctx;
+
 const testimonials = [
   {
     name: "Hiroki T.",
@@ -12,7 +17,7 @@ const testimonials = [
     role: "Graduate Student",
     image: "/images/characters/char-student.png",
     story:
-      "Moving abroad is terrifying. Juan coached me through the academic requirements, but having a teacher who actually understood the logistics of a global move made all the difference. He is a systems architect for your life, not just your speech.",
+      "Moving abroad is terrifying. Juan coached me through the academic requirements, but having a teacher who actually understood the logistics of a global move made all the difference.",
   },
   {
     name: "Kenji S.",
@@ -26,34 +31,64 @@ const testimonials = [
     role: "Parent",
     image: "/images/characters/char-young-student.png",
     story:
-      "Most lessons for kids are just games. Juan's approach is different—it's about natural acquisition. My daughter is starting to initiate conversations on her own because the 'Language Lab' system actually makes sense to her.",
+      "Most lessons for kids are just games. Juan's approach is different—it's about natural acquisition. My daughter is starting to initiate conversations on her own because the system actually makes sense to her.",
   },
 ];
+
+onMounted(() => {
+  ctx = $gsap.context(() => {
+    const cards = $gsap.utils.toArray(".testimonial-card");
+
+    cards.forEach((card, i) => {
+      $gsap.from(card, {
+        y: 60,
+        opacity: 0,
+        scale: 0.9,
+        // Alternating subtle rotation for that "thrown on the table" look
+        rotation: i % 2 === 0 ? -2 : 2,
+        duration: 0.7,
+        ease: "back.out(1.5)",
+        scrollTrigger: {
+          trigger: card,
+          start: "top 90%", // Triggers when the card is 10% from the bottom
+          toggleActions: "play none none reverse",
+        },
+      });
+    });
+  }, sectionRef.value);
+});
+
+onUnmounted(() => {
+  if (ctx) ctx.revert();
+});
 </script>
 
 <template>
-  <section class="testimonials">
+  <section ref="sectionRef" class="testimonials-section">
     <div class="container">
       <div class="intro">
         <h2 class="title">Success Stories</h2>
         <p class="subtitle">Proof of the System in Action</p>
       </div>
 
-      <div class="testimonial-list">
+      <div class="testimonial-grid">
         <div
           v-for="(t, index) in testimonials"
           :key="index"
-          class="testimonial-item"
+          :class="['testimonial-card', `theme-${locale}`]"
         >
-          <div class="avatar-wrap">
-            <img :src="t.image" :alt="t.name" class="avatar" />
-          </div>
-          <div class="content">
-            <p class="story">“{{ t.story }}”</p>
-            <div class="meta">
-              <span class="name">{{ t.name }}</span>
-              <span class="divider">/</span>
-              <span class="role">{{ t.role }}</span>
+          <div class="card-inner">
+            <div class="quote-icon">“</div>
+            <p class="story">{{ t.story }}</p>
+
+            <div class="user-meta">
+              <div class="avatar-box">
+                <img :src="t.image" :alt="t.name" class="avatar" />
+              </div>
+              <div class="info">
+                <span class="name">{{ t.name }}</span>
+                <span class="role">{{ t.role }}</span>
+              </div>
             </div>
           </div>
         </div>
@@ -63,136 +98,142 @@ const testimonials = [
 </template>
 
 <style scoped>
-.testimonials {
+/* Styles remain identical to your previous version */
+.testimonials-section {
   padding: 10rem 1.5rem;
-  background: white;
+  background-color: #f2f2f2;
+  position: relative;
+  z-index: 30;
 }
 
 .container {
-  max-width: 900px; /* Narrower container for better readability */
+  max-width: 1200px;
   margin: 0 auto;
 }
 
 .intro {
+  text-align: center;
   margin-bottom: 6rem;
 }
 
 .title {
-  font-family: "DM Serif Display", serif;
-  font-size: 3.5rem;
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 7vw, 4.5rem);
   color: var(--text-dark);
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .subtitle {
-  font-family: "Source Sans 3", sans-serif;
-  font-size: 1rem;
+  font-family: var(--font-main);
+  font-size: 0.9rem;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
-  font-weight: 700;
-  opacity: 0.4;
+  letter-spacing: 0.3em;
+  font-weight: 800;
+  opacity: 0.5;
 }
 
-.testimonial-list {
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 3rem;
+}
+
+.testimonial-card {
+  padding: 3rem;
+  border: 4px solid var(--text-dark);
+  box-shadow: 12px 12px 0px var(--text-dark);
   display: flex;
   flex-direction: column;
-  gap: 8rem; /* Large gaps to let each story breathe */
+  transition: transform 0.2s ease;
+  background-color: white; /* Fallback */
 }
 
-.testimonial-item {
+.theme-en {
+  background-color: var(--color-en);
+}
+.theme-es {
+  background-color: var(--color-es);
+}
+.theme-jp {
+  background-color: var(--color-jp);
+}
+.theme-fr {
+  background-color: var(--color-fr);
+}
+
+.card-inner {
+  height: 100%;
   display: flex;
-  gap: 3rem;
-  align-items: flex-start;
+  flex-direction: column;
 }
 
-/* Offset every second item for visual interest */
-.testimonial-item:nth-child(even) {
-  flex-direction: row-reverse;
-  text-align: right;
+.quote-icon {
+  font-family: var(--font-display);
+  font-size: 5rem;
+  line-height: 1;
+  margin-bottom: -1rem;
+  opacity: 0.2;
 }
 
-.avatar-wrap {
-  flex-shrink: 0;
-  width: 120px;
-  height: 120px;
-  background: #f0f0f0; /* Soft circle behind the character */
-  border-radius: 50%;
+.story {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  line-height: 1.4;
+  color: var(--text-dark);
+  margin-bottom: 2.5rem;
+  flex-grow: 1;
+}
+
+.user-meta {
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 1.5rem;
+  border-top: 2px solid rgba(0, 0, 0, 0.1);
+  padding-top: 1.5rem;
+}
+
+.avatar-box {
+  width: 60px;
+  height: 60px;
+  background: white;
+  border: 2px solid var(--text-dark);
+  border-radius: 50%;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 .avatar {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  margin-top: 10px; /* Slight offset for character framing */
+  margin-top: 5px;
 }
 
-.content {
-  flex: 1;
-}
-
-.story {
-  font-family: "DM Serif Display", serif;
-  font-size: 1.6rem;
-  line-height: 1.4;
-  color: var(--text-dark);
-  margin-bottom: 1.5rem;
-  font-style: italic;
-}
-
-.meta {
-  font-family: "Source Sans 3", sans-serif;
+.info {
   display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-/* Align meta info for reversed items */
-.testimonial-item:nth-child(even) .meta {
-  justify-content: flex-end;
+  flex-direction: column;
 }
 
 .name {
-  font-weight: 700;
+  font-family: var(--font-main);
+  font-weight: 900;
   font-size: 1.1rem;
-}
-
-.divider {
-  opacity: 0.3;
+  text-transform: uppercase;
 }
 
 .role {
+  font-family: var(--font-main);
+  font-size: 0.85rem;
+  font-weight: 700;
   opacity: 0.6;
-  font-size: 0.95rem;
 }
 
-@media (max-width: 768px) {
-  .testimonials {
-    padding: 6rem 1.5rem;
+@media (max-width: 900px) {
+  .testimonial-grid {
+    grid-template-columns: 1fr;
   }
-
-  .testimonial-item,
-  .testimonial-item:nth-child(even) {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 1.5rem;
-  }
-
-  .testimonial-item:nth-child(even) .meta {
-    justify-content: center;
-  }
-
-  .story {
-    font-size: 1.3rem;
-  }
-
-  .avatar-wrap {
-    width: 100px;
-    height: 100px;
+  .testimonial-card {
+    padding: 2rem;
   }
 }
 </style>

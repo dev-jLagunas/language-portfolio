@@ -1,4 +1,8 @@
 <script setup>
+const { $gsap } = useNuxtApp();
+const sectionRef = ref(null);
+let ctx;
+
 const resources = [
   {
     title: "Juan & Moe's Language Switch",
@@ -54,10 +58,34 @@ const secondaryLinks = [
   { name: "GitHub", link: "#", icon: "ph:github-logo" },
   { name: "Instagram", link: "#", icon: "ph:instagram-logo" },
 ];
+
+onMounted(() => {
+  ctx = $gsap.context(() => {
+    const cards = $gsap.utils.toArray(".resource-card");
+
+    cards.forEach((card) => {
+      $gsap.from(card, {
+        y: 50,
+        opacity: 0,
+        duration: 0.6,
+        ease: "back.out(1.4)",
+        scrollTrigger: {
+          trigger: card,
+          start: "top 92%", // Fires as the card peeks into view
+          toggleActions: "play none none reverse",
+        },
+      });
+    });
+  }, sectionRef.value);
+});
+
+onUnmounted(() => {
+  if (ctx) ctx.revert();
+});
 </script>
 
 <template>
-  <section class="beyond-lab">
+  <section ref="sectionRef" class="beyond-lab">
     <div class="container">
       <div class="header-flex">
         <h2 class="section-title">Beyond the Lab</h2>
@@ -82,9 +110,9 @@ const secondaryLinks = [
             <span class="type-tag">{{ item.type }}</span>
             <h3 class="resource-title">{{ item.title }}</h3>
             <p class="resource-desc">{{ item.desc }}</p>
-            <a :href="item.link" class="resource-link"
-              >{{ item.btnText }} <span>→</span></a
-            >
+            <a :href="item.link" class="resource-link">
+              {{ item.btnText }} <span>→</span>
+            </a>
           </div>
         </div>
       </div>
@@ -97,6 +125,8 @@ const secondaryLinks = [
   padding: 100px 20px;
   background: #ffffff;
   border-top: 1px solid #eee;
+  position: relative;
+  z-index: 40; /* High z-index to stay above previous layers */
 }
 
 .container {
@@ -114,7 +144,7 @@ const secondaryLinks = [
 }
 
 .section-title {
-  font-family: "DM Serif Display", serif;
+  font-family: var(--font-display);
   font-size: clamp(2.5rem, 5vw, 3.5rem);
   margin: 0;
 }
@@ -125,7 +155,7 @@ const secondaryLinks = [
 }
 
 .pill {
-  font-family: "Source Sans 3", sans-serif;
+  font-family: var(--font-main);
   font-weight: 700;
   font-size: 0.8rem;
   text-transform: uppercase;
@@ -152,18 +182,21 @@ const secondaryLinks = [
   background: #fcfcfc;
   border: 1px solid #eee;
   display: flex;
-  transition: border-color 0.3s ease;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .resource-card:hover {
   border-color: var(--text-dark);
+  box-shadow: 6px 6px 0px var(--text-dark); /* Subtle Brutalist hover */
 }
 
 .card-visual {
   width: 35%;
   background: #f0f0f0;
   display: flex;
-  align-items: flex-end; /* Character "sitting" on bottom */
+  align-items: flex-end;
   overflow: hidden;
 }
 
@@ -171,12 +204,14 @@ const secondaryLinks = [
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: grayscale(100%);
+  /* FLIPPED LOGIC: Color by default */
+  filter: grayscale(0%);
   transition: filter 0.4s ease;
 }
 
 .resource-card:hover .card-visual img {
-  filter: grayscale(0%);
+  /* FLIPPED LOGIC: Grayscale on hover */
+  filter: grayscale(100%);
 }
 
 .card-info {
@@ -187,7 +222,7 @@ const secondaryLinks = [
 }
 
 .type-tag {
-  font-family: "Source Sans 3", sans-serif;
+  font-family: var(--font-main);
   font-size: 0.65rem;
   font-weight: 900;
   text-transform: uppercase;
@@ -196,14 +231,14 @@ const secondaryLinks = [
 }
 
 .resource-title {
-  font-family: "DM Serif Display", serif;
+  font-family: var(--font-display);
   font-size: 1.35rem;
   line-height: 1.2;
   margin-bottom: 0.75rem;
 }
 
 .resource-desc {
-  font-family: "Source Sans 3", sans-serif;
+  font-family: var(--font-main);
   font-size: 0.9rem;
   color: #666;
   line-height: 1.4;
@@ -212,7 +247,7 @@ const secondaryLinks = [
 }
 
 .resource-link {
-  font-family: "Source Sans 3", sans-serif;
+  font-family: var(--font-main);
   font-weight: 800;
   font-size: 0.85rem;
   text-transform: uppercase;
