@@ -17,7 +17,7 @@ const TOTAL_SECTIONS = 5;
       <LandingTheFramework />
       <LandingTheTestimonials />
       <LandingTheSocialProof />
-      <TheContactSection />
+      <LandingTheContactSection />
 
       <TheFooter />
     </main>
