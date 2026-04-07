@@ -75,7 +75,6 @@ const toggleSidebar = () => {
   z-index: 1000;
   padding: 0.75rem 1.5rem;
   transition: background-color 0.4s ease;
-  overflow: hidden;
 }
 
 /* Theme Backgrounds */
@@ -98,6 +97,7 @@ const toggleSidebar = () => {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
 }
 
 .nav-brand {
@@ -108,15 +108,17 @@ const toggleSidebar = () => {
 }
 
 .nav-avatar {
-  height: 80px;
-  margin-left: -15px;
+  height: 100px;
   transform: rotate(-3deg);
   filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.15));
   pointer-events: none;
+  position: absolute;
+  left: -25px;
+  top: -15px;
 }
 
 .nav-info {
-  margin-left: 10px;
+  margin-left: 4rem;
 }
 
 .nav-name {
@@ -148,7 +150,7 @@ const toggleSidebar = () => {
 @media (min-width: 768px) {
   .nav-inner {
     width: fit-content;
-    gap: 2rem;
+    gap: 4rem;
   }
 
   .nav-desktop-content {
@@ -160,7 +162,8 @@ const toggleSidebar = () => {
   }
 
   .nav-avatar {
-    height: 110px;
+    height: 150px;
+    left: -65px;
   }
 }
 

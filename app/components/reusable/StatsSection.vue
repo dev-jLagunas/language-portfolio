@@ -57,6 +57,7 @@ const statsList = [...sourceStats, ...sourceStats];
     rgba(0, 0, 0, 1) 90%,
     rgba(0, 0, 0, 0) 100%
   );
+  margin-top: 4rem;
 }
 
 /* --- The Flexbox Track (Moves) --- */
@@ -91,7 +92,7 @@ const statsList = [...sourceStats, ...sourceStats];
 /* --- Typography (Matching your Brand Vibe) --- */
 .stat-number {
   font-family: "DM Serif Display", serif;
-  font-size: 2em;
+  font-size: 2rem;
   line-height: 1;
   color: var(--text-dark);
   margin-bottom: 0.25rem;
@@ -126,12 +127,13 @@ const statsList = [...sourceStats, ...sourceStats];
 @media (width < 768px) {
   .marquee {
     padding: 0rem 0;
+    margin-top: 4rem;
   }
   .stat-card {
     flex: 0 0 160px; /* Narrower cards on small screens */
   }
   .stat-number {
-    font-size: 2.5rem;
+    font-size: 1.5rem;
   }
   .stat-label {
     font-size: 0.75rem;
