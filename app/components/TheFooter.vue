@@ -1,12 +1,12 @@
 <script setup>
-const { locale, locales, setLocale } = useI18n();
+const { locale, locales, setLocale, t } = useI18n();
 const currentYear = new Date().getFullYear();
 
 const footerNav = {
   expertise: [
-    { name: "English Coaching", link: "/" },
-    { name: "UX Design Portfolio", link: "#" },
-    { name: "Systems Architecture", link: "#" },
+    { key: "coaching", link: "/" },
+    { key: "portfolio", link: "#" },
+    { key: "architecture", link: "#" },
   ],
   social: [
     { name: "YouTube", link: "#" },
@@ -15,15 +15,15 @@ const footerNav = {
     { name: "Medium", link: "#" },
   ],
   legal: [
-    { name: "Privacy Policy", link: "/privacy" },
-    { name: "Terms of Service", link: "/terms" },
+    { key: "privacy", link: "/privacy" },
+    { key: "terms", link: "/terms" },
   ],
 };
 
 const langNames = {
   en: "English",
   es: "Español",
-  jp: "日本語",
+  ja: "日本語", // Ensure this matches your standard code
   fr: "Français",
 };
 </script>
@@ -35,12 +35,11 @@ const langNames = {
         <div class="brand-column">
           <h2 class="footer-logo">JUAN<br />LAGUNAS<span>.</span></h2>
           <p class="brand-mission">
-            Systems Architect & High-Agency English Coach.<br />
-            Operating at the intersection of design and communication.
+            {{ t("footer.mission") }}
           </p>
 
           <div class="lang-switcher">
-            <span class="switcher-label">System Language</span>
+            <span class="switcher-label">{{ t("footer.switcher_label") }}</span>
             <div class="lang-pills">
               <button
                 v-for="lang in locales"
@@ -56,16 +55,20 @@ const langNames = {
 
         <div class="nav-group">
           <div class="nav-column">
-            <span class="column-title">Expertise</span>
+            <span class="column-title">{{
+              t("footer.columns.expertise")
+            }}</span>
             <ul>
-              <li v-for="item in footerNav.expertise" :key="item.name">
-                <NuxtLink :to="item.link">{{ item.name }}</NuxtLink>
+              <li v-for="item in footerNav.expertise" :key="item.key">
+                <NuxtLink :to="item.link">{{
+                  t(`footer.nav.${item.key}`)
+                }}</NuxtLink>
               </li>
             </ul>
           </div>
 
           <div class="nav-column">
-            <span class="column-title">Network</span>
+            <span class="column-title">{{ t("footer.columns.network") }}</span>
             <ul>
               <li v-for="item in footerNav.social" :key="item.name">
                 <a :href="item.link" target="_blank" rel="noopener">{{
@@ -79,21 +82,22 @@ const langNames = {
 
       <div class="footer-bottom">
         <div class="copyright">
-          © {{ currentYear }} Juan Lagunas. Ishikawa, Japan.
+          © {{ currentYear }} Juan Lagunas. {{ t("footer.location") }}
         </div>
 
         <div class="legal-links">
           <NuxtLink
             v-for="item in footerNav.legal"
-            :key="item.name"
+            :key="item.key"
             :to="item.link"
           >
-            {{ item.name }}
+            {{ t(`footer.nav.${item.key}`) }}
           </NuxtLink>
         </div>
 
         <div class="tech-stack">
-          Built with <strong>Nuxt 4</strong> & <strong>GSAP</strong>
+          {{ t("footer.built_with") }} <strong>Nuxt 4</strong> &
+          <strong>GSAP</strong>
         </div>
       </div>
     </div>

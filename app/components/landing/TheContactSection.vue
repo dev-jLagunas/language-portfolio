@@ -1,15 +1,11 @@
 <script setup>
-const { locale } = useI18n();
+const { locale, t } = useI18n();
 const { $gsap } = useNuxtApp();
 const sectionRef = ref(null);
 let ctx;
 
-const goals = [
-  "Business EQ / Soft Skills",
-  "Academic / Eiken Prep",
-  "General Fluency Architecture",
-  "Design & Creative Coaching",
-];
+// Mapped keys for the goal selector
+const goals = ["business", "academic", "fluency", "design"];
 
 const formData = reactive({
   name: "",
@@ -24,7 +20,6 @@ const submitForm = () => {
 
 onMounted(() => {
   ctx = $gsap.context(() => {
-    // Reveal the header and form fields
     $gsap.from(".animate-in", {
       y: 40,
       opacity: 0,
@@ -37,7 +32,6 @@ onMounted(() => {
       },
     });
 
-    // Reveal the identity card separately with a bit more "thud"
     $gsap.from(".identity-card", {
       x: 50,
       opacity: 0,
@@ -61,14 +55,15 @@ onUnmounted(() => {
     ref="sectionRef"
     :class="['contact-diagnostic', `theme-${locale}`]"
     id="contact"
+    data-step="5"
   >
     <div class="container">
       <div class="split-layout">
         <div class="form-container">
-          <span class="pre-title animate-in">Final Phase // Deployment</span>
-          <h2 class="display-serif animate-in">Need an English coach?</h2>
+          <span class="pre-title animate-in">{{ t("contact.pre_title") }}</span>
+          <h2 class="display-serif animate-in">{{ t("contact.title") }}</h2>
           <p class="ui-text animate-in">
-            Identify your primary bottleneck to begin the architecture shift.
+            {{ t("contact.subtitle") }}
           </p>
 
           <form @submit.prevent="submitForm" class="audit-form animate-in">
@@ -76,36 +71,38 @@ onUnmounted(() => {
               <input
                 v-model="formData.name"
                 type="text"
-                placeholder="Full Name"
+                :placeholder="t('contact.placeholders.name')"
                 required
               />
               <input
                 v-model="formData.email"
                 type="email"
-                placeholder="Email Address"
+                :placeholder="t('contact.placeholders.email')"
                 required
               />
             </div>
 
             <div class="goal-selector">
-              <label v-for="goal in goals" :key="goal" class="goal-pill">
+              <label v-for="goalKey in goals" :key="goalKey" class="goal-pill">
                 <input
                   type="radio"
                   v-model="formData.goal"
-                  :value="goal"
+                  :value="goalKey"
                   name="goal"
                 />
-                <span class="pill-btn">{{ goal }}</span>
+                <span class="pill-btn">{{
+                  t(`contact.goals.${goalKey}`)
+                }}</span>
               </label>
             </div>
 
             <textarea
               v-model="formData.message"
-              placeholder="Describe your current language stack or goals..."
+              :placeholder="t('contact.placeholders.message')"
             ></textarea>
 
             <button type="submit" class="submit-btn">
-              Execute System Switch <span>→</span>
+              {{ t("contact.cta") }} <span>→</span>
             </button>
           </form>
         </div>
@@ -113,7 +110,7 @@ onUnmounted(() => {
         <div class="identity-card">
           <div class="map-visual">
             <div class="location-tag">
-              <span class="dot"></span> Ishikawa, Japan
+              <span class="dot"></span> {{ t("contact.identity.location") }}
             </div>
           </div>
 
@@ -124,11 +121,9 @@ onUnmounted(() => {
               class="mini-avatar"
             />
             <h3 class="bio-name">Juan Lagunas</h3>
-            <p class="role">Systems Architect & Coach</p>
+            <p class="role">{{ t("contact.identity.role") }}</p>
             <p class="bio-text">
-              Operating from the coast of Ishikawa. I balance the precision of
-              UX design with high-agency language coaching. I don't just teach
-              English; I build communication systems that scale.
+              {{ t("contact.identity.bio") }}
             </p>
           </div>
         </div>

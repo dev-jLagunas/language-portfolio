@@ -1,32 +1,40 @@
 <script setup lang="ts">
-import TheContactSection from "./components/landing/TheContactSection.vue";
+const TOTAL_SECTIONS = 5;
 </script>
 
 <template>
   <div class="app-wrapper">
+    <TheNavbar />
+    <TheMobileNavbar />
+    <ReusableScrollNavigator :total="TOTAL_SECTIONS" />
+    <ReusableBackToTop />
+
     <main class="app">
-      <TheNavbar />
       <ReusableStatsSection />
       <LandingTheHero />
+
       <LandingWhoITeach />
       <LandingTheFramework />
       <LandingTheTestimonials />
       <LandingTheSocialProof />
-      <TheMobileNavbar />
       <TheContactSection />
+
       <TheFooter />
-      <ReusableBackToTop />
     </main>
   </div>
 </template>
 
 <style>
+/* Reset and Global Base */
 html,
 body {
   margin: 0;
   padding: 0;
-  /* Move the background color here so it's the absolute bottom layer */
   background-color: #f2f2f2;
+  color: var(--text-dark);
+  /* Smoothing for the Brutalist sharp lines */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .app-wrapper {
@@ -34,23 +42,17 @@ body {
   width: 100%;
   min-height: 100vh;
   overflow-x: hidden;
-  /* Force this to be the parent stacking context */
   z-index: 0;
 }
 
 .app {
   position: relative;
-  /* IMPORTANT: If any child section has a background color, 
-     it will cover the icons. Keep the main container transparent. */
   background: transparent;
   z-index: 2;
 }
 
-/* Temporary Debug: If you still see nothing, 
-   uncomment this to force the texture to the front */
-/* .texture-layer {
-  z-index: 9999 !important;
-  pointer-events: none;
-} 
-*/
+/* Ensure smooth scrolling across the whole OS context */
+html {
+  scroll-behavior: smooth;
+}
 </style>

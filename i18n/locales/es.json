@@ -60,5 +60,177 @@
       "class_size": "Clase más grande",
       "remote_coaching": "Coaching remoto"
     }
+  },
+  "who": {
+    "section_title": "A quién ayudo",
+    "students": {
+      "test_taker": {
+        "title": "El Examinado",
+        "description": "¿Te preparas para el Eiken, TOEFL o TOEIC? No solo 'estudiamos', construimos los modelos mentales, marcos de gestión de tiempo y sistemas de vocabulario específicos para arrasar en tu puntaje.",
+        "tags": {
+          "tag1": "Prep Eiken",
+          "tag2": "Estrategia",
+          "tag3": "Escritura Académica"
+        }
+      },
+      "professional": {
+        "title": "El Profesional",
+        "description": "¿Presentaciones de alto nivel, revisiones trimestrales o reuniones internacionales? Refinamos tu voz profesional para asegurar que domines la sala. Nos enfocamos en el 'EQ de Negocios'.",
+        "tags": {
+          "tag1": "Inglés de Negocios",
+          "tag2": "Hablar en Público",
+          "tag3": "EQ Corporativo"
+        }
+      },
+      "explorer": {
+        "title": "El Explorador",
+        "description": "¿Vas al extranjero por vacaciones o mudanza? Nos enfocamos en la comunicación práctica. Desde logística local hasta conversaciones profundas.",
+        "tags": {
+          "tag1": "Esenciales de Viaje",
+          "tag2": "Supervivencia",
+          "tag3": "Matices Culturales"
+        }
+      },
+      "next_gen": {
+        "title": "La Siguiente Gen",
+        "description": "Construyendo una base sólida para los más jóvenes. Usando un enfoque de 'Sistemas Primero', hacemos que la adquisición del lenguaje sea natural y efectiva.",
+        "tags": {
+          "tag1": "Adquisición Natural",
+          "tag2": "Confianza",
+          "tag3": "Interactivo"
+        }
+      }
+    }
+  },
+  "framework": {
+    "title": "Cómo funciona",
+    "subtitle": "Un sistema exclusivo de 3 pasos para profesionales.",
+    "steps": {
+      "step1": {
+        "title": "La Auditoría Estratégica",
+        "label": "Paso 01: Descubrimiento",
+        "description": "Comenzamos con una sesión de alto nivel. Sin pruebas genéricas. Mapeamos tus obstáculos profesionales, analizamos tu rendimiento actual e identificamos las áreas clave para mejorar de inmediato."
+      },
+      "step2": {
+        "title": "La Arquitectura",
+        "label": "Paso 02: Diseño",
+        "description": "Construyo tu hoja de ruta personalizada. Establecemos objetivos específicos y diseñamos los marcos —sistemas de vocabulario, plantillas de presentación o modelos mentales— necesarios para alcanzarlos."
+      },
+      "step3": {
+        "title": "Ejecución Estratégica",
+        "label": "Paso 03: Progreso",
+        "description": "Pasamos al coaching activo. Este es un ciclo de retroalimentación constante donde ejecutamos el plan, iteramos según el desempeño real y generamos el impulso necesario para el dominio a largo plazo."
+      }
+    }
+  },
+  "testimonials": {
+    "title": "Casos de éxito",
+    "subtitle": "El sistema en acción",
+    "items": {
+      "hiroki": {
+        "name": "Hiroki T.",
+        "role": "Project Manager",
+        "story": "Casi me había rendido con mi puntaje de TOEFL tras tres intentos fallidos. Juan no solo me enseñó inglés; me enseñó un sistema para manejar la presión del examen. Saber que entendía mi idioma nativo me dio la confianza para lograrlo."
+      },
+      "elena": {
+        "name": "Elena R.",
+        "role": "Estudiante de Posgrado",
+        "story": "Mudarse al extranjero es aterrador. Juan me asesoró con los requisitos académicos, pero tener un profesor que realmente entendiera la logística de una mudanza global marcó toda la diferencia."
+      },
+      "kenji": {
+        "name": "Kenji S.",
+        "role": "Director de Negocios",
+        "story": "Necesitaba liderar reuniones con nuestra sucursal europea. Juan se enfocó en el 'EQ de negocios'. Entiende los matices de cómo nos comunicamos, lo que le permitió cerrar la brecha entre mis pensamientos y mi expresión en inglés perfectamente."
+      },
+      "saki": {
+        "name": "Saki W.",
+        "role": "Madre de familia",
+        "story": "La mayoría de las clases para niños son solo juegos. El enfoque de Juan es distinto: se trata de adquisición natural. Mi hija está empezando a iniciar conversaciones por su cuenta porque el sistema realmente tiene sentido para ella."
+      }
+    }
+  },
+  "resources": {
+    "section_title": "Más allá del Lab",
+    "social": {
+      "github": "GitHub",
+      "instagram": "Instagram"
+    },
+    "items": {
+      "yt_challenge": {
+        "title": "Reto de idiomas: Juan & Moe",
+        "type": "Aprendizaje / YT",
+        "desc": "Retos de idiomas en tiempo real y guiones detallados. El sistema en acción.",
+        "btnText": "Ver canal"
+      },
+      "english_lab": {
+        "title": "The English Lab (Oficial)",
+        "type": "Educación / YT",
+        "desc": "Análisis profundos sobre lingüística y los sistemas de adquisición de idiomas acelerada.",
+        "btnText": "Ver canal"
+      },
+      "portfolio": {
+        "title": "Portafolio de Producto y UX",
+        "type": "Sistemas / Diseño",
+        "desc": "Pensamiento arquitectónico aplicado a productos digitales, ahora aplicado al lenguaje.",
+        "btnText": "Ver portafolio"
+      },
+      "behance": {
+        "title": "Casos de estudio en Behance",
+        "type": "Estrategia Visual",
+        "desc": "Desgloses visuales de sistemas de diseño e identidades de marca creadas por años.",
+        "btnText": "Ver Behance"
+      },
+      "medium": {
+        "title": "Blog en Medium",
+        "type": "Escritura / Lógica",
+        "desc": "Artículos sobre UX, pedagogía y la intersección entre arquitectura de sistemas y vida.",
+        "btnText": "Leer artículos"
+      },
+      "unsplash": {
+        "title": "Fotografía en Unsplash",
+        "type": "Visual / Estética",
+        "desc": "Capturas de alta calidad de la vida en Ishikawa y más. +1M de vistas globales.",
+        "btnText": "Ver galería"
+      }
+    }
+  },
+  "contact": {
+    "pre_title": "Fase Final // Despliegue",
+    "title": "¿Necesitas un coach de inglés?",
+    "subtitle": "Identifica tu principal obstáculo para iniciar el cambio de arquitectura.",
+    "placeholders": {
+      "name": "Nombre completo",
+      "email": "Correo electrónico",
+      "message": "Describe tu nivel actual u objetivos..."
+    },
+    "goals": {
+      "business": "EQ de Negocios / Soft Skills",
+      "academic": "Académico / Preparación Eiken",
+      "fluency": "Arquitectura de Fluidez General",
+      "design": "Coaching Creativo y de Diseño"
+    },
+    "cta": "Ejecutar cambio de sistema",
+    "identity": {
+      "location": "Ishikawa, Japón",
+      "role": "Arquitecto de Sistemas y Coach",
+      "bio": "Operando desde la costa de Ishikawa. Equilibro la precisión del diseño UX con un coaching de idiomas de alta autonomía. No solo enseño inglés; construyo sistemas de comunicación escalables."
+    }
+  },
+  "footer": {
+    "mission": "Arquitecto de Sistemas y Coach de Inglés. Operando en la intersección del diseño y la comunicación.",
+    "switcher_label": "Idioma del sistema",
+    "location": "Ishikawa, Japón.",
+    "built_with": "Construido con",
+    "columns": {
+      "expertise": "Especialidad",
+      "network": "Red"
+    },
+    "nav": {
+      "coaching": "Coaching de inglés",
+      "portfolio": "Portafolio de Diseño UX",
+      "architecture": "Arquitectura de Sistemas",
+      "privacy": "Política de Privacidad",
+      "terms": "Términos de Servicio"
+    }
   }
 }

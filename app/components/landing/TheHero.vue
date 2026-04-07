@@ -28,7 +28,6 @@
 <style scoped>
 .hero-canvas {
   width: 100%;
-  min-height: 110vh; /* Increased height to accommodate the upward shift */
   position: relative;
   background-color: #f2f2f2;
   overflow: hidden;
@@ -46,7 +45,7 @@
     linear-gradient(var(--text-dark) 1px, transparent 1px),
     linear-gradient(90deg, var(--text-dark) 1px, transparent 1px);
   background-size: 50px 50px;
-  opacity: 0.02;
+  opacity: 0.03;
 
   -webkit-mask-image: linear-gradient(
     to bottom,
@@ -114,7 +113,7 @@
 
 @media (max-width: 768px) {
   .content-wrapper {
-    padding-top: 3rem;
+    padding-top: 5rem;
   }
 }
 </style>

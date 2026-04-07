@@ -1,62 +1,45 @@
 <script setup>
+const { t } = useI18n();
 const { $gsap } = useNuxtApp();
 const sectionRef = ref(null);
 let ctx;
 
 const resources = [
   {
-    title: "Juan & Moe's Language Switch",
-    type: "Learning / YT",
-    desc: "Real-time language challenges and breakdown scripts. Seeing the system in action.",
+    key: "yt_challenge",
     link: "#",
-    btnText: "Watch Channel",
     img: "/images/avatars/avatar-pointing.png",
   },
   {
-    title: "The English Lab (Official)",
-    type: "Education / YT",
-    desc: "Deep dives into the linguistics and systems behind high-speed language acquisition.",
+    key: "english_lab",
     link: "#",
-    btnText: "Watch Channel",
     img: "/images/avatars/avatar-thumbs-up.png",
   },
   {
-    title: "Product & UX Portfolio",
-    type: "Systems / Design",
-    desc: "The architectural thinking applied to digital products, now applied to language.",
+    key: "portfolio",
     link: "#",
-    btnText: "View Portfolio",
     img: "/images/characters/char-professional.png",
   },
   {
-    title: "Behance Case Studies",
-    type: "Visual Strategy",
-    desc: "Visual breakdowns of design systems and brand identities created over the last decade.",
+    key: "behance",
     link: "#",
-    btnText: "View Behance",
     img: "/images/characters/char-student.png",
   },
   {
-    title: "Medium Blog",
-    type: "Writing / Logic",
-    desc: "Articles on UX, pedagogy, and the intersection of systems architecture and life.",
+    key: "medium",
     link: "#",
-    btnText: "Read Articles",
     img: "/images/characters/char-traveller.png",
   },
   {
-    title: "Unsplash Photography",
-    type: "Visual / Aesthetic",
-    desc: "High-quality captures from life in Ishikawa and beyond. 1M+ views globally.",
+    key: "unsplash",
     link: "#",
-    btnText: "View Gallery",
     img: "/images/characters/char-young-student.png",
   },
 ];
 
 const secondaryLinks = [
-  { name: "GitHub", link: "#", icon: "ph:github-logo" },
-  { name: "Instagram", link: "#", icon: "ph:instagram-logo" },
+  { key: "github", link: "#" },
+  { key: "instagram", link: "#" },
 ];
 
 onMounted(() => {
@@ -71,7 +54,7 @@ onMounted(() => {
         ease: "back.out(1.4)",
         scrollTrigger: {
           trigger: card,
-          start: "top 92%", // Fires as the card peeks into view
+          start: "top 92%",
           toggleActions: "play none none reverse",
         },
       });
@@ -85,33 +68,43 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section ref="sectionRef" class="beyond-lab" id="social-proof">
+  <section ref="sectionRef" class="beyond-lab" id="social-proof" data-step="4">
     <div class="container">
       <div class="header-flex">
-        <h2 class="section-title">Beyond the Lab</h2>
+        <h2 class="section-title">{{ t("resources.section_title") }}</h2>
         <div class="social-pills">
           <a
             v-for="s in secondaryLinks"
-            :key="s.name"
+            :key="s.key"
             :href="s.link"
             class="pill"
           >
-            {{ s.name }}
+            {{ t(`resources.social.${s.key}`) }}
           </a>
         </div>
       </div>
 
       <div class="resource-grid">
-        <div v-for="item in resources" :key="item.title" class="resource-card">
+        <div v-for="item in resources" :key="item.key" class="resource-card">
           <div class="card-visual">
-            <img :src="item.img" :alt="item.title" loading="lazy" />
+            <img
+              :src="item.img"
+              :alt="t(`resources.items.${item.key}.title`)"
+              loading="lazy"
+            />
           </div>
           <div class="card-info">
-            <span class="type-tag">{{ item.type }}</span>
-            <h3 class="resource-title">{{ item.title }}</h3>
-            <p class="resource-desc">{{ item.desc }}</p>
+            <span class="type-tag">{{
+              t(`resources.items.${item.key}.type`)
+            }}</span>
+            <h3 class="resource-title">
+              {{ t(`resources.items.${item.key}.title`) }}
+            </h3>
+            <p class="resource-desc">
+              {{ t(`resources.items.${item.key}.desc`) }}
+            </p>
             <a :href="item.link" class="resource-link">
-              {{ item.btnText }} <span>→</span>
+              {{ t(`resources.items.${item.key}.btnText`) }} <span>→</span>
             </a>
           </div>
         </div>
@@ -119,11 +112,10 @@ onUnmounted(() => {
     </div>
   </section>
 </template>
-
 <style scoped>
 .beyond-lab {
   padding: 100px 20px;
-  background: #ffffff;
+  background: #f2f2f2;
   border-top: 1px solid #eee;
   position: relative;
   z-index: 40; /* High z-index to stay above previous layers */

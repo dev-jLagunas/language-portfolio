@@ -1,35 +1,17 @@
 <script setup>
+const { t } = useI18n();
 const { $gsap } = useNuxtApp();
 const sectionRef = ref(null);
 const scrollRef = ref(null);
 let ctx;
 
-const steps = [
-  {
-    title: "The Strategic Audit",
-    label: "Step 01: Discovery",
-    description:
-      "We start with a high-bandwidth session. No generic tests. We map your professional hurdles, analyze your current output, and identify the high-leverage areas where you need to improve immediately.",
-  },
-  {
-    title: "The Architecture",
-    label: "Step 02: Design",
-    description:
-      "I build your proprietary roadmap. We set specific, high-agency goals and design the frameworks—vocabulary systems, presentation templates, or mental models—required to get you there.",
-  },
-  {
-    title: "Strategic Execution",
-    label: "Step 03: Progress",
-    description:
-      "We move into active coaching. This is a feedback-heavy loop where we execute the plan, iterate based on real-world performance, and build the momentum needed for long-term mastery.",
-  },
-];
+// We use keys to map to the localized content in our JSON files
+const steps = [{ key: "step1" }, { key: "step2" }, { key: "step3" }];
 
 onMounted(() => {
   ctx = $gsap.context(() => {
     const cards = $gsap.utils.toArray(".step-card");
 
-    // Only run horizontal scroll on desktop
     if (window.innerWidth > 768) {
       $gsap.to(cards, {
         xPercent: -100 * (cards.length - 1),
@@ -37,8 +19,7 @@ onMounted(() => {
         scrollTrigger: {
           trigger: sectionRef.value,
           pin: true,
-          scrub: 1, // Smooth "catch-up"
-          // End is calculated based on cards count to make it feel natural
+          scrub: 1,
           end: () => "+=" + sectionRef.value.offsetWidth * (cards.length - 1),
           invalidateOnRefresh: true,
         },
@@ -53,11 +34,16 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section ref="sectionRef" class="framework-section" id="framework">
+  <section
+    ref="sectionRef"
+    class="framework-section"
+    id="framework"
+    data-step="2"
+  >
     <div class="intro-block">
-      <h2 class="section-title">How It Works</h2>
+      <h2 class="section-title">{{ t("framework.title") }}</h2>
       <p class="section-subtitle">
-        A proprietary 3-step system for professionals.
+        {{ t("framework.subtitle") }}
       </p>
     </div>
 
@@ -65,9 +51,15 @@ onUnmounted(() => {
       <div ref="scrollRef" class="horizontal-track">
         <div v-for="(step, index) in steps" :key="index" class="step-card">
           <div class="card-inner">
-            <span class="step-tag">{{ step.label }}</span>
-            <h3 class="step-title">{{ step.title }}</h3>
-            <p class="step-description">{{ step.description }}</p>
+            <span class="step-tag">{{
+              t(`framework.steps.${step.key}.label`)
+            }}</span>
+            <h3 class="step-title">
+              {{ t(`framework.steps.${step.key}.title`) }}
+            </h3>
+            <p class="step-description">
+              {{ t(`framework.steps.${step.key}.description`) }}
+            </p>
             <span class="bg-number">{{ index + 1 }}</span>
           </div>
         </div>

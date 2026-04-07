@@ -1,37 +1,30 @@
 <script setup>
-const { locale } = useI18n();
+const { locale, t } = useI18n(); // Standard usage
 const { $gsap } = useNuxtApp();
 const container = ref(null);
 let ctx;
 
+// We use keys to reference the translations in our JSON files
 const students = [
   {
+    key: "test_taker",
     image: "/images/characters/char-student.png",
-    title: "The Test-Taker",
-    description:
-      "Preparing for Eiken, TOEFL, or TOEIC? We don't just 'study'—we build the specific mental models, time-management frameworks, and vocabulary systems needed to crush your target score.",
-    tags: ["Eiken Prep", "Test Strategy", "Academic Writing"],
+    tags: ["tag1", "tag2", "tag3"],
   },
   {
+    key: "professional",
     image: "/images/characters/char-business-man.png",
-    title: "The Professional",
-    description:
-      "High-stakes presentations, quarterly reviews, or daily international meetings? We refine your professional voice to ensure you command the room. We focus on 'Business EQ'.",
-    tags: ["Business English", "Public Speaking", "Corporate EQ"],
+    tags: ["tag1", "tag2", "tag3"],
   },
   {
+    key: "explorer",
     image: "/images/characters/char-traveller.png",
-    title: "The Explorer",
-    description:
-      "Heading abroad for a holiday, a move, or a sabbatical? We focus on practical, high-agency communication. From navigating local logistics to deep-dive conversations.",
-    tags: ["Travel Essentials", "Survival English", "Cultural Nuance"],
+    tags: ["tag1", "tag2", "tag3"],
   },
   {
+    key: "next_gen",
     image: "/images/characters/char-young-student.png",
-    title: "The Next Gen",
-    description:
-      "Building a rock-solid foundation for younger learners. Using high-interest topics and a 'Systems First' approach, we make language acquisition natural and highly effective.",
-    tags: ["Natural Acquisition", "Confidence Building", "Interactive"],
+    tags: ["tag1", "tag2", "tag3"],
   },
 ];
 
@@ -40,7 +33,6 @@ onMounted(() => {
     const cards = $gsap.utils.toArray(".student-card");
 
     cards.forEach((card, i) => {
-      // 1. The Pinning Logic
       $gsap.to(card, {
         scrollTrigger: {
           trigger: card,
@@ -54,7 +46,6 @@ onMounted(() => {
         },
       });
 
-      // 2. The Scaling/Fade Logic
       if (i < cards.length - 1) {
         $gsap.to(card.querySelector(".card-inner"), {
           scale: 0.9,
@@ -77,9 +68,9 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section ref="container" class="teach-section" id="who-i-help">
+  <section ref="container" class="teach-section" id="who-i-help" data-step="1">
     <div class="content-limit">
-      <h2 class="section-title">Who I Help</h2>
+      <h2 class="section-title">{{ t("who.section_title") }}</h2>
 
       <div class="stack-wrapper">
         <div
@@ -89,15 +80,22 @@ onUnmounted(() => {
         >
           <div :class="['card-inner', `theme-${locale}`]">
             <div class="card-image">
-              <img :src="student.image" :alt="student.title" />
+              <img
+                :src="student.image"
+                :alt="t(`who.students.${student.key}.title`)"
+              />
             </div>
             <div class="card-content">
-              <h3 class="card-title">{{ student.title }}</h3>
-              <p class="card-text">{{ student.description }}</p>
+              <h3 class="card-title">
+                {{ t(`who.students.${student.key}.title`) }}
+              </h3>
+              <p class="card-text">
+                {{ t(`who.students.${student.key}.description`) }}
+              </p>
               <div class="tag-group">
-                <span v-for="tag in student.tags" :key="tag" class="tag">{{
-                  tag
-                }}</span>
+                <span v-for="tagKey in student.tags" :key="tagKey" class="tag">
+                  {{ t(`who.students.${student.key}.tags.${tagKey}`) }}
+                </span>
               </div>
             </div>
           </div>

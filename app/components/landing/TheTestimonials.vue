@@ -1,38 +1,14 @@
 <script setup>
-const { locale } = useI18n();
+const { locale, t } = useI18n();
 const { $gsap } = useNuxtApp();
 const sectionRef = ref(null);
 let ctx;
 
 const testimonials = [
-  {
-    name: "Hiroki T.",
-    role: "Project Manager",
-    image: "/images/characters/char-business-man.png",
-    story:
-      "I had almost given up on my TOEFL score after three failed attempts. Juan didn't just teach me English; he taught me a system to manage the test pressure. Knowing he understood my native language gave me the confidence to finally push through.",
-  },
-  {
-    name: "Elena R.",
-    role: "Graduate Student",
-    image: "/images/characters/char-student.png",
-    story:
-      "Moving abroad is terrifying. Juan coached me through the academic requirements, but having a teacher who actually understood the logistics of a global move made all the difference.",
-  },
-  {
-    name: "Kenji S.",
-    role: "Business Director",
-    image: "/images/characters/char-traveller.png",
-    story:
-      "I needed to lead meetings with our European branch. Juan focused on 'Business EQ'. He understands the nuances of how we communicate, which allowed him to bridge the gap between my thoughts and my English delivery perfectly.",
-  },
-  {
-    name: "Saki W.",
-    role: "Parent",
-    image: "/images/characters/char-young-student.png",
-    story:
-      "Most lessons for kids are just games. Juan's approach is different—it's about natural acquisition. My daughter is starting to initiate conversations on her own because the system actually makes sense to her.",
-  },
+  { key: "hiroki", image: "/images/characters/char-business-man.png" },
+  { key: "elena", image: "/images/characters/char-student.png" },
+  { key: "kenji", image: "/images/characters/char-traveller.png" },
+  { key: "saki", image: "/images/characters/char-young-student.png" },
 ];
 
 onMounted(() => {
@@ -44,13 +20,12 @@ onMounted(() => {
         y: 60,
         opacity: 0,
         scale: 0.9,
-        // Alternating subtle rotation for that "thrown on the table" look
         rotation: i % 2 === 0 ? -2 : 2,
         duration: 0.7,
         ease: "back.out(1.5)",
         scrollTrigger: {
           trigger: card,
-          start: "top 90%", // Triggers when the card is 10% from the bottom
+          start: "top 90%",
           toggleActions: "play none none reverse",
         },
       });
@@ -64,30 +39,43 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section ref="sectionRef" class="testimonials-section" id="testimonials">
+  <section
+    ref="sectionRef"
+    class="testimonials-section"
+    id="testimonials"
+    data-step="3"
+  >
     <div class="container">
       <div class="intro">
-        <h2 class="title">Success Stories</h2>
-        <p class="subtitle">Proof of the System in Action</p>
+        <h2 class="title">{{ t("testimonials.title") }}</h2>
+        <p class="subtitle">{{ t("testimonials.subtitle") }}</p>
       </div>
 
       <div class="testimonial-grid">
         <div
-          v-for="(t, index) in testimonials"
+          v-for="(item, index) in testimonials"
           :key="index"
           :class="['testimonial-card', `theme-${locale}`]"
         >
           <div class="card-inner">
             <div class="quote-icon">“</div>
-            <p class="story">{{ t.story }}</p>
+            <p class="story">{{ t(`testimonials.items.${item.key}.story`) }}</p>
 
             <div class="user-meta">
               <div class="avatar-box">
-                <img :src="t.image" :alt="t.name" class="avatar" />
+                <img
+                  :src="item.image"
+                  :alt="t(`testimonials.items.${item.key}.name`)"
+                  class="avatar"
+                />
               </div>
               <div class="info">
-                <span class="name">{{ t.name }}</span>
-                <span class="role">{{ t.role }}</span>
+                <span class="name">{{
+                  t(`testimonials.items.${item.key}.name`)
+                }}</span>
+                <span class="role">{{
+                  t(`testimonials.items.${item.key}.role`)
+                }}</span>
               </div>
             </div>
           </div>
