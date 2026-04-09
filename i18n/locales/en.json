@@ -22,9 +22,9 @@
   },
   "hero": {
     "content": {
-      "title": "English Instructor",
-      "copy": "Personalized coaching for high-agency professionals and students. From Eiken prep to business presentations, I build the systems you need to communicate with confidence.",
-      "cta": "Start Your Journey"
+      "title": "English Teacher & Coach",
+      "copy": "Move your life forward with better English. I am an award-winning teacher with a background in Linguistics and product design. I provide straightforward, high-level instruction for people who are serious about their progress.",
+      "cta": "Start now"
     },
     "stage": {
       "alt_student": "Student",
@@ -70,171 +70,190 @@
     "students": {
       "test_taker": {
         "title": "The Test-Taker",
-        "description": "Preparing for Eiken, TOEFL, or TOEIC? We don't just 'study'—we build the specific mental models, time-management frameworks, and vocabulary systems needed to crush your target score.",
+        "description": "Preparing for Eiken, TOEFL, or TOEIC? I help you bridge the gap between knowing grammar and hitting your target score. I’ve helped students secure the scores they needed to move abroad and change their lives.",
         "tags": {
-          "tag1": "Eiken Prep",
-          "tag2": "Test Strategy",
-          "tag3": "Academic Writing"
+          "tag1": "Eiken / TOEFL",
+          "tag2": "Proven Strategy",
+          "tag3": "Score Growth"
         }
       },
       "professional": {
         "title": "The Professional",
-        "description": "High-stakes presentations, quarterly reviews, or daily international meetings? We refine your professional voice to ensure you command the room. We focus on 'Business EQ'.",
+        "description": "High-stakes meetings or international presentations? I’ve taught at global companies like Fujitsu and Hino. We refine your professional voice so you can lead with confidence in any corporate environment.",
         "tags": {
           "tag1": "Business English",
-          "tag2": "Public Speaking",
-          "tag3": "Corporate EQ"
+          "tag2": "Corporate Skill",
+          "tag3": "Clear Speaking"
         }
       },
       "explorer": {
-        "title": "The Explorer",
-        "description": "Heading abroad for a holiday, a move, or a sabbatical? We focus on practical, high-agency communication. From navigating local logistics to deep-dive conversations.",
+        "title": "The Expat",
+        "description": "Moving abroad or living in a new country? I know the isolation of the language barrier. I focus on practical communication and the cultural nuance you need to actually feel at home anywhere in the world.",
         "tags": {
-          "tag1": "Travel Essentials",
-          "tag2": "Survival English",
-          "tag3": "Cultural Nuance"
+          "tag1": "Relocation Prep",
+          "tag2": "Real World Use",
+          "tag3": "Cultural Flow"
         }
       },
       "next_gen": {
-        "title": "The Next Gen",
-        "description": "Building a rock-solid foundation for younger learners. Using high-interest topics and a 'Systems First' approach, we make language acquisition natural and highly effective.",
+        "title": "The Academic",
+        "description": "For University students and researchers. Drawing on my history tutoring graduate students and professors, I help you master the high-level English required for academic success and international research.",
         "tags": {
-          "tag1": "Natural Acquisition",
-          "tag2": "Confidence Building",
-          "tag3": "Interactive"
+          "tag1": "University Prep",
+          "tag2": "Research Focus",
+          "tag3": "Advanced Study"
         }
       }
     }
   },
   "framework": {
-    "title": "How It Works",
-    "subtitle": "A proprietary 3-step system for professionals.",
+    "title": "My 5-Point System",
+    "subtitle": "A complete approach for serious students.",
     "steps": {
       "step1": {
-        "title": "The Strategic Audit",
-        "label": "Step 01: Discovery",
-        "description": "We start with a high-bandwidth session. No generic tests. We map your professional hurdles, analyze your current output, and identify the high-leverage areas where you need to improve immediately."
+        "title": "The Diagnostic Audit",
+        "label": "Point 01",
+        "description": "We don't do generic placement tests. I analyze your current speech and writing to find the specific bottlenecks holding you back from the next level."
       },
       "step2": {
-        "title": "The Architecture",
-        "label": "Step 02: Design",
-        "description": "I build your proprietary roadmap. We set specific, high-agency goals and design the frameworks—vocabulary systems, presentation templates, or mental models—required to get you there."
+        "title": "Linguistic Logic",
+        "label": "Point 02",
+        "description": "I use my background in Linguistics to explain the 'why' behind the language. Once you understand the system, you stop memorizing and start communicating."
       },
       "step3": {
-        "title": "Strategic Execution",
-        "label": "Step 03: Progress",
-        "description": "We move into active coaching. This is a feedback-heavy loop where we execute the plan, iterate based on real-world performance, and build the momentum needed for long-term mastery."
+        "title": "High-Stakes Prep",
+        "label": "Point 03",
+        "description": "We focus on the moments that matter. Whether it's a TOEFL exam, a corporate presentation, or a visa interview, we build the exact tools you need to succeed."
+      },
+      "step4": {
+        "title": "Cultural Nuance",
+        "label": "Point 04",
+        "description": "English is more than just words. I teach you the social 'unwritten rules' and pragmatics I've learned from living and working in global environments."
+      },
+      "step5": {
+        "title": "The Work Loop",
+        "label": "Point 05",
+        "description": "I provide direct, honest feedback. We iterate on your progress with the same intensity I bring to my own work. No fluff—just steady, measurable growth."
       }
     }
   },
   "testimonials": {
     "title": "Success Stories",
-    "subtitle": "Proof of the System in Action",
+    "subtitle": "Real Results from Real People",
     "items": {
       "hiroki": {
-        "name": "Hiroki T.",
-        "role": "Project Manager",
-        "story": "I had almost given up on my TOEFL score after three failed attempts. Juan didn't just teach me English; he taught me a system to manage the test pressure. Knowing he understood my native language gave me the confidence to finally push through."
+        "name": "Satoshi M.",
+        "role": "Business Executive",
+        "story": "Six months before moving to the U.S., I needed to improve my TOEIC score and prepare for daily life. Juan prepped me for everything—from the test to social nuances. Two years later, I still see the impact of that training."
       },
       "elena": {
-        "name": "Elena R.",
-        "role": "Graduate Student",
-        "story": "Moving abroad is terrifying. Juan coached me through the academic requirements, but having a teacher who actually understood the logistics of a global move made all the difference."
+        "name": "Mina K.",
+        "role": "University Student",
+        "story": "I needed a specific TOEFL score to study abroad. After several attempts on my own, I worked with Juan and passed on my first try after only three months. He helped me make my goal of moving abroad a reality."
       },
       "kenji": {
-        "name": "Kenji S.",
-        "role": "Business Director",
-        "story": "I needed to lead meetings with our European branch. Juan focused on 'Business EQ'. He understands the nuances of how we communicate, which allowed him to bridge the gap between my thoughts and my English delivery perfectly."
+        "name": "Dr. Park",
+        "role": "University Professor",
+        "story": "During my sabbatical at UCSD, Juan pushed my English in a way that was challenging but highly effective for my research. Despite our different backgrounds, he understood exactly how to help me adjust and grow."
       },
       "saki": {
-        "name": "Saki W.",
-        "role": "Parent",
-        "story": "Most lessons for kids are just games. Juan's approach is different—it's about natural acquisition. My daughter is starting to initiate conversations on her own because the system actually makes sense to her."
+        "name": "Takumi O.",
+        "role": "Professional Learner",
+        "story": "I used to be very shy and worried about my grammar. Juan helped me realize that English is about communication and personality. Now, I'm the one making jokes and leading conversations in group settings."
       }
     }
   },
   "resources": {
-    "section_title": "Beyond the Lab",
+    "section_title": "Outside of Teaching",
+    "common": {
+      "details": "Details"
+    },
     "social": {
       "github": "GitHub",
       "instagram": "Instagram"
     },
     "items": {
+      "language_friends": {
+        "title": "Language Friends Series",
+        "type": "Author / Children's Books",
+        "desc": "A series of books designed for natural language acquisition through storytelling.",
+        "details": "Language Friends is a children's book series launched on Amazon. Drawing on my background in linguistics, these stories focus on natural acquisition patterns rather than rote memorization. They are built to help young learners (and parents) engage with English through high-interest narratives and clear visual systems.",
+        "btnText": "View on Amazon"
+      },
       "yt_challenge": {
         "title": "Juan & Moe's Language Switch",
         "type": "Learning / YT",
         "desc": "Real-time language challenges and breakdown scripts. Seeing the system in action.",
+        "details": "This YouTube channel documents a real-time language challenge with my wife. We document the struggle, the systems, and the breakthroughs of learning in a bilingual environment. It provides students with a look at how a high-agency approach to language actually works in daily life.",
         "btnText": "Watch Channel"
       },
       "english_lab": {
         "title": "The English Lab (Official)",
         "type": "Education / YT",
         "desc": "Deep dives into the linguistics and systems behind high-speed language acquisition.",
+        "details": "The English Lab is where I break down the mechanics of English. I move away from 'classroom' English and focus on the systems—phonology, syntax, and pragmatics—that allow adults to communicate at a professional level quickly.",
         "btnText": "Watch Channel"
       },
       "portfolio": {
         "title": "Product & UX Portfolio",
         "type": "Systems / Design",
         "desc": "The architectural thinking applied to digital products, now applied to language.",
+        "details": "My work as a Product Designer and Systems Architect. This portfolio showcases how I solve disorganized problems through structured, usable, and scalable digital solutions. I apply this same 'Systems First' mindset to how I teach English.",
         "btnText": "View Portfolio"
       },
       "behance": {
         "title": "Behance Case Studies",
         "type": "Visual Strategy",
         "desc": "Visual breakdowns of design systems and brand identities created over the last decade.",
+        "details": "A collection of visual design systems and brand identities. These case studies highlight my focus on information architecture and the visual communication strategies I've used for various global clients.",
         "btnText": "View Behance"
       },
       "medium": {
         "title": "Medium Blog",
         "type": "Writing / Logic",
         "desc": "Articles on UX, pedagogy, and the intersection of systems architecture and life.",
+        "details": "I write about the intersection of design, language, and logic. My articles explore how we can use architectural thinking to improve our learning habits, our work-flows, and our ability to communicate complex ideas.",
         "btnText": "Read Articles"
-      },
-      "unsplash": {
-        "title": "Unsplash Photography",
-        "type": "Visual / Aesthetic",
-        "desc": "High-quality captures from life in Ishikawa and beyond. 1M+ views globally.",
-        "btnText": "View Gallery"
       }
     }
   },
   "contact": {
-    "pre_title": "Final Phase // Deployment",
-    "title": "Need an English coach?",
-    "subtitle": "Identify your primary bottleneck to begin the architecture shift.",
+    "pre_title": "Next Steps",
+    "title": "Let’s talk about your English.",
+    "subtitle": "Tell me where you’re currently stuck and what you want to achieve.",
     "placeholders": {
-      "name": "Full Name",
-      "email": "Email Address",
-      "message": "Describe your current language stack or goals..."
+      "name": "Your Name",
+      "email": "Your Email",
+      "message": "What are your goals or current challenges with English?"
     },
     "goals": {
-      "business": "Business EQ / Soft Skills",
-      "academic": "Academic / Eiken Prep",
-      "fluency": "General Fluency Architecture",
-      "design": "Design & Creative Coaching"
+      "business": "Business & Soft Skills",
+      "academic": "Academic & Test Prep",
+      "fluency": "Speaking & Fluency",
+      "design": "Creative & Design Focus"
     },
-    "cta": "Execute System Switch",
+    "cta": "Send Message",
     "identity": {
       "location": "Ishikawa, Japan",
-      "role": "Systems Architect & Coach",
-      "bio": "Operating from the coast of Ishikawa. I balance the precision of UX design with high-agency language coaching. I don't just teach English; I build communication systems that scale."
+      "role": "Designer & English Coach",
+      "bio": "I live and work on the coast of Ishikawa. I use my background in UX design and linguistics to help professionals communicate clearly and confidently. No fluff—just practical tools to help you get your point across."
     }
   },
   "footer": {
-    "mission": "Systems Architect & High-Agency English Coach. Operating at the intersection of design and communication.",
-    "switcher_label": "System Language",
-    "location": "Ishikawa, Japan.",
-    "built_with": "Built with",
+    "mission": "Breaking down language systems to help professionals communicate with clarity and confidence. From UX design to high-agency coaching.",
+    "switcher_label": "Select Language",
     "columns": {
       "expertise": "Expertise",
       "network": "Network"
     },
     "nav": {
-      "coaching": "English Coaching",
-      "portfolio": "UX Design Portfolio",
-      "architecture": "Systems Architecture",
-      "privacy": "Privacy Policy",
-      "terms": "Terms of Service"
-    }
+      "lab": "The English Lab",
+      "design": "Product Design",
+      "method": "Systems & Logic",
+      "privacy": "Privacy",
+      "terms": "Terms"
+    },
+    "location": "Operating from Ishikawa, Japan.",
+    "built_with": "Built with"
   }
 }

@@ -18,9 +18,9 @@
   },
   "hero": {
     "content": {
-      "title": "Instructeur d'Anglais",
-      "copy": "Coaching personnalisé pour les professionnels et étudiants ambitieux. De la préparation à l'Eiken aux présentations professionnelles, je conçois les systèmes dont vous avez besoin pour communiquer avec assurance.",
-      "cta": "Commencez votre parcours"
+      "title": "Enseignant et Coach d'Anglais",
+      "copy": "Faites progresser votre vie grâce à un meilleur anglais. Enseignant primé avec une formation en linguistique et en design. Je propose un enseignement direct et de haut niveau pour ceux qui sont sérieux dans leur progression.",
+      "cta": "Commencer maintenant"
     },
     "stage": {
       "alt_student": "Étudiant",
@@ -65,172 +65,191 @@
     "section_title": "Qui j'aide",
     "students": {
       "test_taker": {
-        "title": "Le Candidat",
-        "description": "Préparation à l'Eiken, au TOEFL ou au TOEIC ? On ne se contente pas d'étudier : on bâtit les modèles mentaux et les systèmes nécessaires pour maximiser votre score.",
+        "title": "Préparation aux Examens",
+        "description": "Vous préparez l'Eiken, le TOEFL ou le TOEIC ? Je vous aide à franchir l'étape entre la grammaire et le score visé. J'ai aidé de nombreux étudiants à obtenir les résultats nécessaires pour s'installer à l'étranger.",
         "tags": {
-          "tag1": "Prépa Eiken",
-          "tag2": "Stratégie",
-          "tag3": "Rédaction Académique"
+          "tag1": "Eiken / TOEFL",
+          "tag2": "Stratégie Prouvée",
+          "tag3": "Objectif Score"
         }
       },
       "professional": {
         "title": "Le Professionnel",
-        "description": "Présentations à enjeux ou réunions internationales ? Nous affinons votre voix professionnelle pour que vous maîtrisiez votre audience. Focus sur l'EQ Business.",
+        "description": "Réunions stratégiques ou présentations internationales ? J'ai enseigné chez Fujitsu et Hino. Nous affinons votre voix professionnelle pour que vous puissiez diriger avec confiance en milieu corporatif.",
         "tags": {
-          "tag1": "Anglais Business",
-          "tag2": "Prise de Parole",
-          "tag3": "EQ Entreprise"
+          "tag1": "Anglais des Affaires",
+          "tag2": "Compétence Pro",
+          "tag3": "Clarté d'Expression"
         }
       },
       "explorer": {
-        "title": "L'Explorateur",
-        "description": "Départ à l'étranger pour les vacances ou un déménagement ? On se concentre sur la communication pratique, de la logistique aux discussions de fond.",
+        "title": "L'Expatrié",
+        "description": "Vous partez vivre à l'étranger ? Je connais l'isolement lié à la barrière de la langue. Je me concentre sur la communication pratique et les nuances culturelles pour que vous soyez chez vous partout.",
         "tags": {
-          "tag1": "Essentiels Voyage",
-          "tag2": "Anglais de Survie",
-          "tag3": "Nuances Culturelles"
+          "tag1": "Préparation Expat",
+          "tag2": "Usage Réel",
+          "tag3": "Aisance Culturelle"
         }
       },
       "next_gen": {
-        "title": "La Prochaine Génération",
-        "description": "Bâtir des bases solides pour les plus jeunes. Avec une approche systémique, nous rendons l'acquisition de la langue naturelle et efficace.",
+        "title": "L'Académique",
+        "description": "Pour les étudiants et chercheurs. Fort de mon expérience avec des doctorants et professeurs, je vous aide à maîtriser l'anglais de haut niveau requis pour la réussite académique internationale.",
         "tags": {
-          "tag1": "Acquisition Naturelle",
-          "tag2": "Confiance",
-          "tag3": "Interactif"
+          "tag1": "Prépa Université",
+          "tag2": "Focus Recherche",
+          "tag3": "Études Avancées"
         }
       }
     }
   },
   "framework": {
-    "title": "Comment ça marche",
-    "subtitle": "Un système exclusif en 3 étapes pour les professionnels.",
+    "title": "Mon Système en 5 Points",
+    "subtitle": "Une approche complète pour les étudiants sérieux.",
     "steps": {
       "step1": {
-        "title": "L'Audit Stratégique",
-        "label": "Étape 01 : Découverte",
-        "description": "Nous commençons par une session intensive. Aucun test générique. Nous cartographions vos obstacles, analysons vos résultats actuels et identifions les leviers d'amélioration immédiate."
+        "title": "Audit Diagnostique",
+        "label": "Point 01",
+        "description": "Pas de tests de niveau génériques. J'analyse votre expression orale et écrite pour identifier les blocages spécifiques qui vous empêchent de progresser."
       },
       "step2": {
-        "title": "L'Architecture",
-        "label": "Étape 02 : Conception",
-        "description": "Je conçois votre feuille de route personnalisée. Nous fixons des objectifs ambitieux et créons les outils —systèmes de vocabulaire, modèles de présentation ou structures mentales— nécessaires pour y parvenir."
+        "title": "Logique Linguistique",
+        "label": "Point 02",
+        "description": "J'utilise ma formation en linguistique pour expliquer le 'pourquoi' de la langue. Une fois le système compris, vous arrêtez de mémoriser pour enfin communiquer."
       },
       "step3": {
-        "title": "Exécution Stratégique",
-        "label": "Étape 03 : Progression",
-        "description": "Nous passons au coaching actif. Une boucle de rétroaction continue où nous exécutons le plan, itérons selon vos performances réelles et créons la dynamique nécessaire vers une maîtrise durable."
+        "title": "Préparation Stratégique",
+        "label": "Point 03",
+        "description": "Nous nous concentrons sur les moments clés. Qu'il s'agisse du TOEFL, d'une présentation en entreprise ou d'un entretien de visa, nous créons les outils nécessaires à votre réussite."
+      },
+      "step4": {
+        "title": "Nuances Culturelles",
+        "label": "Point 04",
+        "description": "L'anglais ne se résume pas aux mots. Je vous enseigne les 'règles non écrites' et la pragmatique sociale apprises en vivant et travaillant dans des environnements mondiaux."
+      },
+      "step5": {
+        "title": "Le Cycle de Travail",
+        "label": "Point 05",
+        "description": "Je fournis des retours directs et honnêtes. Nous travaillons sur votre progression avec la même intensité que je consacre à mes propres projets. Pas de blabla, juste des résultats."
       }
     }
   },
   "testimonials": {
     "title": "Témoignages",
-    "subtitle": "Le système en action",
+    "subtitle": "Des Résultats Réels",
     "items": {
       "hiroki": {
-        "name": "Hiroki T.",
-        "role": "Chef de projet",
-        "story": "J'avais presque abandonné le TOEFL après trois échecs. Juan ne m'a pas seulement enseigné l'anglais ; il m'a donné un système pour gérer la pression. Le fait qu'il comprenne ma langue maternelle m'a donné la confiance nécessaire pour réussir."
+        "name": "Satoshi M.",
+        "role": "Cadre Dirigeant",
+        "story": "Six mois avant de m'installer aux États-Unis, je devais améliorer mon TOEIC et préparer ma vie quotidienne. Juan m'a préparé à tout, de l'examen aux nuances sociales. Deux ans plus tard, l'impact est toujours là."
       },
       "elena": {
-        "name": "Elena R.",
-        "role": "Étudiante en Master",
-        "story": "S'installer à l'étranger est terrifiant. Juan m'a coachée pour les exigences académiques, mais avoir un professeur qui comprend la logistique d'un déménagement international a fait toute la différence."
+        "name": "Mina K.",
+        "role": "Étudiante",
+        "story": "J'avais besoin d'un score TOEFL spécifique pour étudier à l'étranger. Après plusieurs échecs seule, j'ai travaillé avec Juan et j'ai réussi dès le premier essai en trois mois. Il m'a aidée à concrétiser mon départ."
       },
       "kenji": {
-        "name": "Kenji S.",
-        "role": "Directeur Commercial",
-        "story": "Je devais diriger des réunions avec notre branche européenne. Juan s'est concentré sur l'intelligence émotionnelle en affaires. Il comprend les nuances de notre communication, ce qui lui a permis de parfaitement traduire mes pensées en anglais."
+        "name": "Dr. Park",
+        "role": "Professeur d'Université",
+        "story": "Pendant mon congé sabbatique à l'UCSD, Juan a poussé mon anglais d'une manière exigeante mais très efficace pour mes recherches. Il a su exactement comment m'aider à m'adapter et à progresser."
       },
       "saki": {
-        "name": "Saki W.",
-        "role": "Parent",
-        "story": "La plupart des cours pour enfants ne sont que des jeux. L'approche de Juan est différente : il s'agit d'acquisition naturelle. Ma fille commence à engager des conversations d'elle-même car le système est logique pour elle."
+        "name": "Takumi O.",
+        "role": "Apprenant Adulte",
+        "story": "J'étais très timide et inquiet pour ma grammaire. Juan m'a aidé à comprendre que l'anglais est avant tout une question de communication. Maintenant, c'est moi qui fais des blagues et qui mène les conversations."
       }
     }
   },
   "resources": {
-    "section_title": "Au-delà du Lab",
+    "section_title": "En dehors de l'enseignement",
+    "common": {
+      "details": "Détails"
+    },
     "social": {
       "github": "GitHub",
       "instagram": "Instagram"
     },
     "items": {
+      "language_friends": {
+        "title": "Série Language Friends",
+        "type": "Auteur / Livres Jeunesse",
+        "desc": "Une série de livres conçus pour l'acquisition naturelle de la langue par le récit.",
+        "details": "Language Friends est une série de livres pour enfants lancée sur Amazon. S'appuyant sur ma formation en linguistique, ces histoires se concentrent sur les modes d'acquisition naturelle plutôt que sur la mémorisation par cœur.",
+        "btnText": "Voir sur Amazon"
+      },
       "yt_challenge": {
-        "title": "Le défi linguistique de Juan & Moe",
+        "title": "Language Switch de Juan & Moe",
         "type": "Apprentissage / YT",
-        "desc": "Défis linguistiques en temps réel et scripts détaillés. Le système en action.",
+        "desc": "Défis linguistiques en temps réel. Voir le système en action.",
+        "details": "Cette chaîne YouTube documente un défi linguistique en temps réel avec ma femme. Nous documentons les systèmes et les avancées de l'apprentissage dans un environnement bilingue.",
         "btnText": "Voir la chaîne"
       },
       "english_lab": {
         "title": "The English Lab (Officiel)",
         "type": "Éducation / YT",
-        "desc": "Analyses approfondies sur la linguistique et les systèmes d'acquisition rapide des langues.",
+        "desc": "Plongées dans la linguistique et les systèmes d'acquisition rapide des langues.",
+        "details": "C'est ici que je décortique la mécanique de l'anglais. Je m'éloigne de l'anglais 'scolaire' pour me concentrer sur les systèmes qui permettent aux adultes de communiquer au niveau professionnel.",
         "btnText": "Voir la chaîne"
       },
       "portfolio": {
         "title": "Portfolio Produit & UX",
         "type": "Systèmes / Design",
-        "desc": "La pensée architecturale appliquée aux produits numériques, désormais appliquée au langage.",
+        "desc": "La pensée architecturale appliquée aux produits numériques et au langage.",
+        "details": "Mon travail en tant que Product Designer. Ce portfolio montre comment je résous des problèmes désorganisés grâce à des solutions numériques structurées et évolutives.",
         "btnText": "Voir le portfolio"
       },
       "behance": {
-        "title": "Études de cas Behance",
+        "title": "Études de Cas Behance",
         "type": "Stratégie Visuelle",
-        "desc": "Analyses visuelles de systèmes de design et d'identités de marque créés depuis 10 ans.",
+        "desc": "Analyses visuelles de systèmes de design créés au cours de la dernière décennie.",
+        "details": "Une collection de systèmes de design visuel et d'identités de marque. Ces études de cas mettent en avant mon approche de l'architecture de l'information.",
         "btnText": "Voir Behance"
       },
       "medium": {
         "title": "Blog Medium",
         "type": "Écriture / Logique",
-        "desc": "Articles sur l'UX, la pédagogie et l'intersection entre l'architecture système et la vie.",
+        "desc": "Articles sur l'UX, la pédagogie et l'intersection des systèmes et de la vie.",
+        "details": "J'écris sur l'intersection du design, de la langue et de la logique. Mes articles explorent comment utiliser la pensée architecturale pour améliorer nos habitudes d'apprentissage.",
         "btnText": "Lire les articles"
-      },
-      "unsplash": {
-        "title": "Photographie Unsplash",
-        "type": "Visuel / Esthétique",
-        "desc": "Captures de haute qualité de la vie à Ishikawa et ailleurs. +1M de vues globales.",
-        "btnText": "Voir la galerie"
       }
     }
   },
   "contact": {
-    "pre_title": "Phase Finale // Déploiement",
-    "title": "Besoin d'un coach d'anglais ?",
-    "subtitle": "Identifiez votre principal obstacle pour amorcer le changement d'architecture.",
+    "pre_title": "Prochaines étapes",
+    "title": "Parlons de votre anglais.",
+    "subtitle": "Dites-moi où vous bloquez et ce que vous aimeriez accomplir.",
     "placeholders": {
-      "name": "Nom complet",
-      "email": "Adresse e-mail",
-      "message": "Décrivez votre niveau actuel ou vos objectifs..."
+      "name": "Votre nom",
+      "email": "Votre e-mail",
+      "message": "Quels sont vos objectifs ou vos défis actuels avec l'anglais ?"
     },
     "goals": {
-      "business": "Intelligence Émotionnelle / Soft Skills",
-      "academic": "Académique / Préparation Eiken",
-      "fluency": "Architecture de Fluidité Générale",
-      "design": "Coaching Design & Créatif"
+      "business": "Business & Soft Skills",
+      "academic": "Académique & Examens",
+      "fluency": "Fluidité & Conversation",
+      "design": "Design & Créativité"
     },
-    "cta": "Exécuter le changement de système",
+    "cta": "Envoyer le message",
     "identity": {
       "location": "Ishikawa, Japon",
-      "role": "Architecte Systèmes & Coach",
-      "bio": "Basé sur la côte d'Ishikawa. Je concilie la précision du design UX avec un coaching linguistique à haute autonomie. Je ne me contente pas d'enseigner l'anglais ; je bâtis des systèmes de communication évolutifs."
+      "role": "Designer & Coach d'anglais",
+      "bio": "Basé sur la côte d'Ishikawa. J'utilise mon expérience en design UX et en linguistique pour aider les professionnels à communiquer avec clarté et assurance. Pas de blabla—juste des outils pratiques pour vous aider à progresser."
     }
   },
   "footer": {
-    "mission": "Architecte Systèmes & Coach d'Anglais. À l'intersection du design et de la communication.",
-    "switcher_label": "Langue du système",
-    "location": "Ishikawa, Japon.",
-    "built_with": "Propulsé par",
+    "mission": "Décortiquer les systèmes linguistiques pour aider les professionnels à communiquer avec clarté et assurance. Du design UX au coaching de haut niveau.",
+    "switcher_label": "Choisir la langue",
     "columns": {
       "expertise": "Expertise",
       "network": "Réseau"
     },
     "nav": {
-      "coaching": "Coaching d'anglais",
-      "portfolio": "Portfolio Design UX",
-      "architecture": "Architecture Systèmes",
-      "privacy": "Politique de Confidentialité",
-      "terms": "Conditions d'Utilisation"
-    }
+      "lab": "The English Lab",
+      "design": "Design Produit",
+      "method": "Systèmes & Logique",
+      "privacy": "Confidentialité",
+      "terms": "Conditions"
+    },
+    "location": "Basé à Ishikawa, Japon.",
+    "built_with": "Réalisé avec"
   }
 }

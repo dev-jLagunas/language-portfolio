@@ -6,7 +6,13 @@ const scrollRef = ref(null);
 let ctx;
 
 // We use keys to map to the localized content in our JSON files
-const steps = [{ key: "step1" }, { key: "step2" }, { key: "step3" }];
+const steps = [
+  { key: "step1" },
+  { key: "step2" },
+  { key: "step3" },
+  { key: "step4" },
+  { key: "step5" },
+];
 
 onMounted(() => {
   ctx = $gsap.context(() => {

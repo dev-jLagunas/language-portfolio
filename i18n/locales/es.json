@@ -18,9 +18,9 @@
   },
   "hero": {
     "content": {
-      "title": "Instructor de Inglés",
-      "copy": "Coaching personalizado para profesionales y estudiantes de alto nivel. Desde la preparación para el Eiken hasta presentaciones de negocios, construyo los sistemas que necesitas para comunicarte con confianza.",
-      "cta": "Comienza tu camino"
+      "title": "Profesor y Coach de Inglés",
+      "copy": "Avanza en tu vida con un mejor inglés. Soy un profesor galardonado con formación en Lingüística y diseño de productos. Ofrezco una enseñanza directa y de alto nivel para personas que se toman en serio su progreso.",
+      "cta": "Empieza ahora"
     },
     "stage": {
       "alt_student": "Estudiante",
@@ -65,172 +65,191 @@
     "section_title": "A quién ayudo",
     "students": {
       "test_taker": {
-        "title": "El Examinado",
-        "description": "¿Te preparas para el Eiken, TOEFL o TOEIC? No solo 'estudiamos', construimos los modelos mentales, marcos de gestión de tiempo y sistemas de vocabulario específicos para arrasar en tu puntaje.",
+        "title": "El Estudiante de Exámenes",
+        "description": "¿Te preparas para el Eiken, TOEFL o TOEIC? Te ayudo a cerrar la brecha entre saber gramática y alcanzar tu puntaje ideal. He ayudado a estudiantes a obtener los resultados necesarios para mudarse al extranjero.",
         "tags": {
-          "tag1": "Prep Eiken",
-          "tag2": "Estrategia",
-          "tag3": "Escritura Académica"
+          "tag1": "Eiken / TOEFL",
+          "tag2": "Estrategia Real",
+          "tag3": "Mejora de Puntaje"
         }
       },
       "professional": {
         "title": "El Profesional",
-        "description": "¿Presentaciones de alto nivel, revisiones trimestrales o reuniones internacionales? Refinamos tu voz profesional para asegurar que domines la sala. Nos enfocamos en el 'EQ de Negocios'.",
+        "description": "¿Reuniones críticas o presentaciones internacionales? He enseñado en empresas globales como Fujitsu e Hino. Refinamos tu voz profesional para que lideres con confianza en cualquier entorno corporativo.",
         "tags": {
           "tag1": "Inglés de Negocios",
-          "tag2": "Hablar en Público",
-          "tag3": "EQ Corporativo"
+          "tag2": "Habilidad Corporativa",
+          "tag3": "Comunicación Clara"
         }
       },
       "explorer": {
-        "title": "El Explorador",
-        "description": "¿Vas al extranjero por vacaciones o mudanza? Nos enfocamos en la comunicación práctica. Desde logística local hasta conversaciones profundas.",
+        "title": "El Expatriado",
+        "description": "¿Te mudas o ya vives en otro país? Conozco el aislamiento de la barrera lingüística. Me enfoco en la comunicación práctica y los matices culturales que necesitas para sentirte en casa en cualquier lugar.",
         "tags": {
-          "tag1": "Esenciales de Viaje",
-          "tag2": "Supervivencia",
-          "tag3": "Matices Culturales"
+          "tag1": "Preparación de Mudanza",
+          "tag2": "Uso del Mundo Real",
+          "tag3": "Fluidez Cultural"
         }
       },
       "next_gen": {
-        "title": "La Siguiente Gen",
-        "description": "Construyendo una base sólida para los más jóvenes. Usando un enfoque de 'Sistemas Primero', hacemos que la adquisición del lenguaje sea natural y efectiva.",
+        "title": "El Académico",
+        "description": "Para estudiantes universitarios e investigadores. Basado en mi experiencia con profesores y graduados, te ayudo a dominar el inglés de alto nivel necesario para el éxito académico y la investigación.",
         "tags": {
-          "tag1": "Adquisición Natural",
-          "tag2": "Confianza",
-          "tag3": "Interactivo"
+          "tag1": "Preparación Universitaria",
+          "tag2": "Enfoque Académico",
+          "tag3": "Estudio Avanzado"
         }
       }
     }
   },
   "framework": {
-    "title": "Cómo funciona",
-    "subtitle": "Un sistema exclusivo de 3 pasos para profesionales.",
+    "title": "Mi Sistema de 5 Puntos",
+    "subtitle": "Un enfoque completo para estudiantes comprometidos.",
     "steps": {
       "step1": {
-        "title": "La Auditoría Estratégica",
-        "label": "Paso 01: Descubrimiento",
-        "description": "Comenzamos con una sesión de alto nivel. Sin pruebas genéricas. Mapeamos tus obstáculos profesionales, analizamos tu rendimiento actual e identificamos las áreas clave para mejorar de inmediato."
+        "title": "Auditoría Diagnóstica",
+        "label": "Punto 01",
+        "description": "No hacemos pruebas de nivel genéricas. Analizo tu habla y escritura actuales para encontrar los obstáculos específicos que te impiden alcanzar el siguiente nivel."
       },
       "step2": {
-        "title": "La Arquitectura",
-        "label": "Paso 02: Diseño",
-        "description": "Construyo tu hoja de ruta personalizada. Establecemos objetivos específicos y diseñamos los marcos —sistemas de vocabulario, plantillas de presentación o modelos mentales— necesarios para alcanzarlos."
+        "title": "Lógica Lingüística",
+        "label": "Punto 02",
+        "description": "Uso mi formación en Lingüística para explicar el 'porqué' detrás del idioma. Una vez que entiendes el sistema, dejas de memorizar y empiezas a comunicar."
       },
       "step3": {
-        "title": "Ejecución Estratégica",
-        "label": "Paso 03: Progreso",
-        "description": "Pasamos al coaching activo. Este es un ciclo de retroalimentación constante donde ejecutamos el plan, iteramos según el desempeño real y generamos el impulso necesario para el dominio a largo plazo."
+        "title": "Preparación de Alto Nivel",
+        "label": "Punto 03",
+        "description": "Nos enfocamos en los momentos importantes. Ya sea un examen TOEFL, una presentación corporativa o una entrevista de visa, creamos las herramientas exactas para tu éxito."
+      },
+      "step4": {
+        "title": "Matices Culturales",
+        "label": "Punto 04",
+        "description": "El inglés es más que solo palabras. Te enseño las 'reglas no escritas' y la pragmática social que he aprendido viviendo y trabajando en entornos globales."
+      },
+      "step5": {
+        "title": "El Ciclo de Trabajo",
+        "label": "Punto 05",
+        "description": "Ofrezco retroalimentación directa y honesta. Iteramos sobre tu progreso con la misma intensidad que aplico a mi propio trabajo. Sin rodeos, solo crecimiento constante."
       }
     }
   },
   "testimonials": {
-    "title": "Casos de éxito",
-    "subtitle": "El sistema en acción",
+    "title": "Historias de Éxito",
+    "subtitle": "Resultados Reales de Personas Reales",
     "items": {
       "hiroki": {
-        "name": "Hiroki T.",
-        "role": "Project Manager",
-        "story": "Casi me había rendido con mi puntaje de TOEFL tras tres intentos fallidos. Juan no solo me enseñó inglés; me enseñó un sistema para manejar la presión del examen. Saber que entendía mi idioma nativo me dio la confianza para lograrlo."
+        "name": "Satoshi M.",
+        "role": "Ejecutivo de Negocios",
+        "story": "Seis meses antes de mudarme a EE. UU., necesitaba mejorar mi TOEIC y prepararme para la vida diaria. Juan me preparó para todo, desde el examen hasta los matices sociales. Dos años después, sigo viendo el impacto."
       },
       "elena": {
-        "name": "Elena R.",
-        "role": "Estudiante de Posgrado",
-        "story": "Mudarse al extranjero es aterrador. Juan me asesoró con los requisitos académicos, pero tener un profesor que realmente entendiera la logística de una mudanza global marcó toda la diferencia."
+        "name": "Mina K.",
+        "role": "Estudiante Universitaria",
+        "story": "Necesitaba un puntaje TOEFL específico para estudiar en el extranjero. Después de varios intentos por mi cuenta, trabajé con Juan y lo logré en el primer intento tras solo tres meses. Él hizo realidad mi meta de mudarme."
       },
       "kenji": {
-        "name": "Kenji S.",
-        "role": "Director de Negocios",
-        "story": "Necesitaba liderar reuniones con nuestra sucursal europea. Juan se enfocó en el 'EQ de negocios'. Entiende los matices de cómo nos comunicamos, lo que le permitió cerrar la brecha entre mis pensamientos y mi expresión en inglés perfectamente."
+        "name": "Dr. Park",
+        "role": "Profesor Universitario",
+        "story": "Durante mi estancia en UCSD, Juan impulsó mi inglés de una manera desafiante pero efectiva para mi investigación. A pesar de nuestras diferencias, entendió exactamente cómo ayudarme a adaptarme y crecer."
       },
       "saki": {
-        "name": "Saki W.",
-        "role": "Madre de familia",
-        "story": "La mayoría de las clases para niños son solo juegos. El enfoque de Juan es distinto: se trata de adquisición natural. Mi hija está empezando a iniciar conversaciones por su cuenta porque el sistema realmente tiene sentido para ella."
+        "name": "Takumi O.",
+        "role": "Estudiante Profesional",
+        "story": "Solía ser muy tímido y me preocupaba mi gramática. Juan me ayudó a entender que el inglés se trata de comunicación y personalidad. Ahora soy yo quien hace bromas y lidera las conversaciones en grupo."
       }
     }
   },
   "resources": {
-    "section_title": "Más allá del Lab",
+    "section_title": "Fuera de la Enseñanza",
+    "common": {
+      "details": "Detalles"
+    },
     "social": {
       "github": "GitHub",
       "instagram": "Instagram"
     },
     "items": {
+      "language_friends": {
+        "title": "Serie Language Friends",
+        "type": "Autor / Libros Infantiles",
+        "desc": "Una serie de libros diseñados para la adquisición natural del lenguaje a través de cuentos.",
+        "details": "Language Friends es una serie de libros infantiles lanzada en Amazon. Basándome en mi formación en lingüística, estas historias se centran en patrones de adquisición natural en lugar de la memorización. Están diseñadas para ayudar a los jóvenes alumnos a interactuar con el inglés a través de narrativas interesantes.",
+        "btnText": "Ver en Amazon"
+      },
       "yt_challenge": {
-        "title": "Reto de idiomas: Juan & Moe",
+        "title": "Language Switch de Juan y Moe",
         "type": "Aprendizaje / YT",
-        "desc": "Retos de idiomas en tiempo real y guiones detallados. El sistema en acción.",
-        "btnText": "Ver canal"
+        "desc": "Desafíos lingüísticos en tiempo real. Observando el sistema en acción.",
+        "details": "Este canal de YouTube documenta un desafío lingüístico con mi esposa. Documentamos el esfuerzo, los sistemas y los avances de aprender en un entorno bilingüe. Ofrece a los estudiantes una visión de cómo funciona un enfoque de alta agencia en la vida diaria.",
+        "btnText": "Ver Canal"
       },
       "english_lab": {
         "title": "The English Lab (Oficial)",
         "type": "Educación / YT",
-        "desc": "Análisis profundos sobre lingüística y los sistemas de adquisición de idiomas acelerada.",
-        "btnText": "Ver canal"
+        "desc": "Análisis profundos sobre la lingüística y los sistemas de adquisición de idiomas.",
+        "details": "The English Lab es donde desgloso la mecánica del inglés. Me alejo del inglés de 'salón de clases' y me enfoco en los sistemas —fonología, sintaxis y pragmática— que permiten a los adultos comunicarse a nivel profesional rápidamente.",
+        "btnText": "Ver Canal"
       },
       "portfolio": {
         "title": "Portafolio de Producto y UX",
         "type": "Sistemas / Diseño",
-        "desc": "Pensamiento arquitectónico aplicado a productos digitales, ahora aplicado al lenguaje.",
-        "btnText": "Ver portafolio"
+        "desc": "El pensamiento arquitectónico aplicado a productos digitales y al lenguaje.",
+        "details": "Mi trabajo como Diseñador de Productos y Arquitecto de Sistemas. Este portafolio muestra cómo resuelvo problemas desorganizados mediante soluciones digitales estructuradas y escalables. Aplico esta misma mentalidad a mi enseñanza.",
+        "btnText": "Ver Portafolio"
       },
       "behance": {
-        "title": "Casos de estudio en Behance",
+        "title": "Casos de Estudio en Behance",
         "type": "Estrategia Visual",
-        "desc": "Desgloses visuales de sistemas de diseño e identidades de marca creadas por años.",
+        "desc": "Desgloses visuales de sistemas de diseño y marcas creadas en la última década.",
+        "details": "Una colección de sistemas de diseño visual e identidades de marca. Estos estudios destacan mi enfoque en la arquitectura de la información y las estrategias de comunicación visual para clientes globales.",
         "btnText": "Ver Behance"
       },
       "medium": {
         "title": "Blog en Medium",
         "type": "Escritura / Lógica",
-        "desc": "Artículos sobre UX, pedagogía y la intersección entre arquitectura de sistemas y vida.",
-        "btnText": "Leer artículos"
-      },
-      "unsplash": {
-        "title": "Fotografía en Unsplash",
-        "type": "Visual / Estética",
-        "desc": "Capturas de alta calidad de la vida en Ishikawa y más. +1M de vistas globales.",
-        "btnText": "Ver galería"
+        "desc": "Artículos sobre UX, pedagogía y la intersección entre sistemas y vida.",
+        "details": "Escribo sobre la intersección del diseño, el lenguaje y la lógica. Mis artículos exploran cómo podemos usar el pensamiento arquitectónico para mejorar nuestros hábitos de aprendizaje y flujos de trabajo.",
+        "btnText": "Leer Artículos"
       }
     }
   },
   "contact": {
-    "pre_title": "Fase Final // Despliegue",
-    "title": "¿Necesitas un coach de inglés?",
-    "subtitle": "Identifica tu principal obstáculo para iniciar el cambio de arquitectura.",
+    "pre_title": "Próximos Pasos",
+    "title": "Hablemos de tu inglés.",
+    "subtitle": "Cuéntame en qué estás atascado y qué es lo que quieres lograr.",
     "placeholders": {
-      "name": "Nombre completo",
-      "email": "Correo electrónico",
-      "message": "Describe tu nivel actual u objetivos..."
+      "name": "Tu nombre",
+      "email": "Tu correo",
+      "message": "¿Cuáles son tus metas o desafíos actuales con el idioma?"
     },
     "goals": {
-      "business": "EQ de Negocios / Soft Skills",
-      "academic": "Académico / Preparación Eiken",
-      "fluency": "Arquitectura de Fluidez General",
-      "design": "Coaching Creativo y de Diseño"
+      "business": "Negocios y Soft Skills",
+      "academic": "Académico y Exámenes",
+      "fluency": "Fluidez y Conversación",
+      "design": "Enfoque Creativo y Diseño"
     },
-    "cta": "Ejecutar cambio de sistema",
+    "cta": "Enviar mensaje",
     "identity": {
       "location": "Ishikawa, Japón",
-      "role": "Arquitecto de Sistemas y Coach",
-      "bio": "Operando desde la costa de Ishikawa. Equilibro la precisión del diseño UX con un coaching de idiomas de alta autonomía. No solo enseño inglés; construyo sistemas de comunicación escalables."
+      "role": "Diseñador y Coach de Inglés",
+      "bio": "Vivo y trabajo en la costa de Ishikawa. Utilizo mi experiencia en diseño UX y lingüística para ayudar a profesionales a comunicarse con claridad y confianza. Sin rodeos—solo herramientas prácticas para ayudarte a avanzar."
     }
   },
   "footer": {
-    "mission": "Arquitecto de Sistemas y Coach de Inglés. Operando en la intersección del diseño y la comunicación.",
-    "switcher_label": "Idioma del sistema",
-    "location": "Ishikawa, Japón.",
-    "built_with": "Construido con",
+    "mission": "Desglosando sistemas lingüísticos para ayudar a profesionales a comunicarse con claridad y confianza. Del diseño UX al coaching de alta agencia.",
+    "switcher_label": "Seleccionar Idioma",
     "columns": {
-      "expertise": "Especialidad",
+      "expertise": "Experiencia",
       "network": "Red"
     },
     "nav": {
-      "coaching": "Coaching de inglés",
-      "portfolio": "Portafolio de Diseño UX",
-      "architecture": "Arquitectura de Sistemas",
-      "privacy": "Política de Privacidad",
-      "terms": "Términos de Servicio"
-    }
+      "lab": "The English Lab",
+      "design": "Diseño de Producto",
+      "method": "Sistemas y Lógica",
+      "privacy": "Privacidad",
+      "terms": "Términos"
+    },
+    "location": "Operando desde Ishikawa, Japón.",
+    "built_with": "Construido con"
   }
 }

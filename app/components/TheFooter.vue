@@ -4,15 +4,16 @@ const currentYear = new Date().getFullYear();
 
 const footerNav = {
   expertise: [
-    { key: "coaching", link: "/" },
-    { key: "portfolio", link: "#" },
-    { key: "architecture", link: "#" },
+    { key: "lab", link: "#testimonials" }, // Coaching/Lab
+    { key: "design", link: "#social-proof" }, // Portfolio/UX
+    { key: "method", link: "#methodology" }, // Systems/Architecture
   ],
-  social: [
-    { name: "YouTube", link: "#" },
-    { name: "Instagram", link: "#" },
-    { name: "Behance", link: "#" },
-    { name: "Medium", link: "#" },
+  network: [
+    { name: "Language Switch", link: "https://youtube.com/@moeandjuan" },
+    { name: "The English Lab", link: "https://youtube.com/@theenglishlab" },
+    { name: "Behance", link: "https://behance.net/juan-lagunas" },
+    { name: "Language Friends", link: "https://amazon.com/author/juanlagunas" },
+    { name: "Photography", link: "#" },
   ],
   legal: [
     { key: "privacy", link: "/privacy" },
@@ -23,7 +24,7 @@ const footerNav = {
 const langNames = {
   en: "English",
   es: "Español",
-  ja: "日本語", // Ensure this matches your standard code
+  ja: "日本語",
   fr: "Français",
 };
 </script>
@@ -60,9 +61,7 @@ const langNames = {
             }}</span>
             <ul>
               <li v-for="item in footerNav.expertise" :key="item.key">
-                <NuxtLink :to="item.link">{{
-                  t(`footer.nav.${item.key}`)
-                }}</NuxtLink>
+                <a :href="item.link">{{ t(`footer.nav.${item.key}`) }}</a>
               </li>
             </ul>
           </div>
@@ -70,7 +69,7 @@ const langNames = {
           <div class="nav-column">
             <span class="column-title">{{ t("footer.columns.network") }}</span>
             <ul>
-              <li v-for="item in footerNav.social" :key="item.name">
+              <li v-for="item in footerNav.network" :key="item.name">
                 <a :href="item.link" target="_blank" rel="noopener">{{
                   item.name
                 }}</a>
