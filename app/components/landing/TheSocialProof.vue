@@ -112,13 +112,15 @@ onUnmounted(() => {
     </div>
   </section>
 </template>
+
+```css
 <style scoped>
 .beyond-lab {
-  padding: 100px 20px;
-  background: #f2f2f2;
-  border-top: 1px solid #eee;
+  padding: var(--section-padding);
+  background-color: var(--bg-main);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
   position: relative;
-  z-index: 40; /* High z-index to stay above previous layers */
+  z-index: 40;
 }
 
 .container {
@@ -139,6 +141,7 @@ onUnmounted(() => {
   font-family: var(--font-display);
   font-size: clamp(2.5rem, 5vw, 3.5rem);
   margin: 0;
+  color: var(--text-dark);
 }
 
 .social-pills {
@@ -147,6 +150,7 @@ onUnmounted(() => {
 }
 
 .pill {
+  /* Mapping to .b-pill logic from main.css */
   font-family: var(--font-main);
   font-weight: 700;
   font-size: 0.8rem;
@@ -157,11 +161,11 @@ onUnmounted(() => {
   text-decoration: none;
   border-radius: 100px;
   transition: all 0.2s ease;
-}
 
-.pill:hover {
-  background: var(--text-dark);
-  color: white;
+  &:hover {
+    background: var(--text-dark);
+    color: var(--text-light);
+  }
 }
 
 .resource-grid {
@@ -171,17 +175,18 @@ onUnmounted(() => {
 }
 
 .resource-card {
-  background: #fcfcfc;
-  border: 1px solid #eee;
+  background: var(--bg-card);
+  border: 1px solid rgba(0, 0, 0, 0.05);
   display: flex;
   transition:
     border-color 0.3s ease,
     box-shadow 0.3s ease;
-}
 
-.resource-card:hover {
-  border-color: var(--text-dark);
-  box-shadow: 6px 6px 0px var(--text-dark); /* Subtle Brutalist hover */
+  &:hover {
+    border-color: var(--text-dark);
+    /* Custom 6px shadow preserved for specific visual weight, using system color */
+    box-shadow: 6px 6px 0px var(--text-dark);
+  }
 }
 
 .card-visual {
@@ -190,19 +195,17 @@ onUnmounted(() => {
   display: flex;
   align-items: flex-end;
   overflow: hidden;
-}
 
-.card-visual img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  /* FLIPPED LOGIC: Color by default */
-  filter: grayscale(0%);
-  transition: filter 0.4s ease;
+  & img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(0%);
+    transition: filter 0.4s ease;
+  }
 }
 
 .resource-card:hover .card-visual img {
-  /* FLIPPED LOGIC: Grayscale on hover */
   filter: grayscale(100%);
 }
 
@@ -227,6 +230,7 @@ onUnmounted(() => {
   font-size: 1.35rem;
   line-height: 1.2;
   margin-bottom: 0.75rem;
+  color: var(--text-dark);
 }
 
 .resource-desc {
@@ -248,31 +252,38 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   gap: 5px;
-}
 
-.resource-link span {
-  transition: transform 0.2s ease;
+  & span {
+    transition: transform 0.2s ease;
+  }
 }
 
 .resource-card:hover .resource-link span {
   transform: translateX(5px);
 }
 
-@media (max-width: 768px) {
+/* =========================
+   MEDIA QUERIES
+   ========================= */
+@media (width <= 768px) {
   .header-flex {
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
   }
+
   .resource-card {
     flex-direction: column;
   }
+
   .card-visual,
   .card-info {
     width: 100%;
   }
+
   .card-visual {
     height: 150px;
   }
 }
 </style>
+```

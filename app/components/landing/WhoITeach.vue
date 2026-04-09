@@ -108,8 +108,8 @@ onUnmounted(() => {
 <style scoped>
 .teach-section {
   position: relative;
-  background-color: #f2f2f2;
-  padding: 6rem 1.5rem 0 1.5rem;
+  background-color: var(--bg-main);
+  padding: 6rem var(--space-unit) 0 var(--space-unit);
   z-index: 5;
 }
 
@@ -140,9 +140,8 @@ onUnmounted(() => {
 }
 
 .card-inner {
-  /* Removed static white background to allow themes to work */
-  border: 4px solid var(--text-dark);
-  box-shadow: 12px 12px 0px var(--text-dark);
+  border: var(--brutalist-border-thick);
+  box-shadow: var(--shadow-lg);
   border-radius: 20px;
   display: grid;
   grid-template-columns: 1fr 1.5fr;
@@ -152,10 +151,10 @@ onUnmounted(() => {
   width: 100%;
   transform-origin: center top;
   backface-visibility: hidden;
-  transition: background-color 0.4s ease; /* Smooth color shift on lang change */
+  transition: background-color 0.4s ease;
 }
 
-/* Theme color logic integrated */
+/* Theme Integration */
 .theme-en {
   background-color: var(--color-en);
 }
@@ -179,6 +178,7 @@ onUnmounted(() => {
   font-family: var(--font-display);
   font-size: clamp(1.8rem, 4vw, 2.5rem);
   margin-bottom: 1.5rem;
+  color: var(--text-dark);
 }
 
 .card-text {
@@ -186,6 +186,7 @@ onUnmounted(() => {
   font-size: 1.15rem;
   line-height: 1.6;
   margin-bottom: 2rem;
+  color: var(--text-dark);
 }
 
 .tag-group {
@@ -196,26 +197,55 @@ onUnmounted(() => {
 
 .tag {
   background: var(--text-dark);
-  color: white;
+  color: var(--text-light);
   padding: 0.6rem 1rem;
   border-radius: 4px;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 800;
   text-transform: uppercase;
 }
 
-@media (max-width: 850px) {
+/* =========================
+   MEDIA QUERIES (iPhone 13 / Mobile Fix)
+   ========================= */
+@media (width <= 850px) {
+  .student-card {
+    margin-bottom: 30vh;
+  }
+
   .card-inner {
     grid-template-columns: 1fr;
-    padding: 2rem;
-    gap: 1.5rem;
+    /* Reduced padding to ensure card fits within pinned viewport */
+    padding: 1.5rem;
+    gap: 1rem;
     text-align: center;
+    /* Lowered border-radius for cleaner Lite-Brutalist mobile look */
+    border-radius: 12px;
   }
+
+  .card-image img {
+    /* Significantly reduced max-height for mobile visibility */
+    max-height: 180px;
+  }
+
+  .card-title {
+    margin-bottom: 0.75rem;
+    font-size: 1.6rem;
+  }
+
+  .card-text {
+    font-size: 1rem;
+    margin-bottom: 1.25rem;
+    line-height: 1.4;
+  }
+
   .tag-group {
     justify-content: center;
   }
-  .student-card {
-    margin-bottom: 30vh;
+
+  .tag {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.65rem;
   }
 }
 </style>

@@ -1,6 +1,6 @@
 /* =========================
-   RESET / BASE
-========================= */
+   1. RESET & BASE
+   ========================= */
 *,
 *::before,
 *::after {
@@ -11,56 +11,211 @@
 
 html {
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+  /* System-wide font scale */
+  font-size: 16px;
 }
 
 body {
   min-height: 100vh;
   line-height: 1.5;
-  background-color: #f2f2f2;
+  background-color: var(--bg-main);
+  color: var(--text-dark);
+  font-family: var(--font-main);
+  overflow-x: hidden;
 }
 
 /* =========================
-   VARIABLES
-========================= */
+   2. SYSTEM DESIGN TOKENS
+   ========================= */
 :root {
-  /* Language Theme Variables */
-  --color-en: #79addc; /* Cool Horizon */
-  --color-fr: #ffc09f; /* Peach Glow */
-  --color-es: #ffee93; /* Light Gold */
-  --color-jp: #adf7b6; /* Celadon */
+  /* Brand Colors */
+  --color-en: #79addc;
+  --color-fr: #ffc09f;
+  --color-es: #ffee93;
+  --color-jp: #adf7b6;
 
+  /* Core Palette */
+  --text-dark: #111111;
+  --text-light: #ffffff;
+  --bg-main: #f2f2f2;
+  --bg-card: #fcfcfc;
+
+  /* Brutalist Geometry */
+  --border-weight: 3px;
+  --border-thick: 4px;
+  --brutalist-border: var(--border-weight) solid var(--text-dark);
+  --brutalist-border-thick: var(--border-thick) solid var(--text-dark);
+
+  /* Hard Shadows */
+  --shadow-sm: 4px 4px 0px var(--text-dark);
+  --shadow-md: 8px 8px 0px var(--text-dark);
+  --shadow-lg: 12px 12px 0px var(--text-dark);
+  --shadow-xl: 15px 15px 0px var(--text-dark);
+
+  /* Typography */
   --font-display: "DM Serif Display", serif;
   --font-main: "Source Sans 3", sans-serif;
 
-  /* Neutral/Text defaults */
-  --text-dark: #111111;
-  --text-light: #ffffff;
+  /* Spacing System */
+  --space-unit: 1rem;
+  --section-padding: 120px 1.5rem;
 }
 
 /* =========================
-   GLOBAL ELEMENTS
-========================= */
+   3. TYPOGRAPHY SYSTEM
+   ========================= */
+h1,
+.display-xl {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 6rem);
+  line-height: 1.1;
+}
+
+h2,
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  line-height: 1.2;
+}
+
+.pre-title {
+  font-family: var(--font-main);
+  font-weight: 900;
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+.ui-text {
+  font-family: var(--font-main);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
 
 /* =========================
-   TYPOGRAPHY
-========================= */
+   4. LAYOUT & CONTAINERS
+   ========================= */
+.container {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section-wrapper {
+  padding: var(--section-padding);
+  position: relative;
+  width: 100%;
+}
 
 /* =========================
-   LAYOUT
-========================= */
+   5. BRUTALIST COMPONENTS
+   ========================= */
+
+/* The Card Mixin */
+.b-card {
+  background: var(--bg-card);
+  border: var(--brutalist-border);
+  box-shadow: var(--shadow-md);
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+
+  &:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: var(--shadow-lg);
+  }
+}
+
+/* The Button Mixin */
+.b-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background: var(--text-dark);
+  color: white;
+  border: none;
+  font-family: var(--font-main);
+  font-weight: 900;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+
+  &:hover {
+    box-shadow: var(--shadow-md);
+    transform: translate(-2px, -2px);
+  }
+
+  &:active {
+    transform: translate(0, 0);
+    box-shadow: none;
+  }
+}
+
+/* The Pill Mixin */
+.b-pill {
+  padding: 6px 16px;
+  border: 1px solid var(--text-dark);
+  border-radius: 100px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--text-dark);
+  transition: all 0.2s;
+
+  &:hover {
+    background: var(--text-dark);
+    color: var(--text-light);
+  }
+}
 
 /* =========================
-   UTILITIES
-========================= */
+   6. UTILITIES
+   ========================= */
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.grid-halves {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+/* Grid Texture Overlay */
+.texture-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--text-dark) 1px, transparent 1px),
+    linear-gradient(90deg, var(--text-dark) 1px, transparent 1px);
+  background-size: 50px 50px;
+  opacity: 0.03;
+}
 
 /* =========================
-   COMPONENTS
-========================= */
+   7. MEDIA QUERIES (MODERN RANGE)
+   ========================= */
+@media (width <= 1024px) {
+  .grid-halves {
+    grid-template-columns: 1fr;
+  }
+}
 
-/* =========================
-   ANIMATIONS
-========================= */
+@media (width <= 768px) {
+  :root {
+    --section-padding: 80px 1rem;
+  }
 
-/* =========================
-   MEDIA QUERIES
-========================= */
+  .container {
+    padding: 0 1rem;
+  }
+}

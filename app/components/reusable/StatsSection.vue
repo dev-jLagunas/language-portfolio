@@ -33,15 +33,12 @@ const statsList = [...sourceStats, ...sourceStats];
 </template>
 
 <style scoped>
-/* --- Marquee Container --- */
 .marquee {
   width: 100%;
   padding: 1em 0;
-  /* Subtle backdrop */
-  background-color: #f2f2f2;
-  overflow: hidden; /* Hide the overflow on the left/right */
+  background-color: var(--bg-main);
+  overflow: hidden;
   position: relative;
-  /* Optional: Adds a subtle mask/fade effect on the edges */
   -webkit-mask-image: linear-gradient(
     to right,
     rgba(0, 0, 0, 0) 0%,
@@ -59,38 +56,30 @@ const statsList = [...sourceStats, ...sourceStats];
   margin-top: 4rem;
 }
 
-/* --- The Flexbox Track (Moves) --- */
 .marquee-track {
   display: flex;
   align-items: center;
-  /* Gap between individual stat cards */
   gap: 2rem;
-  /* Calculate the width to fit 20 items + gaps */
   width: calc((200px * 20) + (2rem * 19));
-  /* Define and execute the infinite scroll animation */
   animation: scrollMarquee 40s linear infinite;
 
-  /* UX Polish: Pauses when user hovers or taps on a mobile screen */
   &:hover {
     animation-play-state: paused;
   }
 }
 
-/* --- Individual Stat Card Structure --- */
 .stat-card {
-  /* Fix the width of each card so the marquee math is predictable */
   flex: 0 0 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   padding: 1rem;
-  background-color: #f2f2f2;
+  background-color: var(--bg-main);
 }
 
-/* --- Typography (Matching your Brand Vibe) --- */
 .stat-number {
-  font-family: "DM Serif Display", serif;
+  font-family: var(--font-display);
   font-size: 2rem;
   line-height: 1;
   color: var(--text-dark);
@@ -98,48 +87,48 @@ const statsList = [...sourceStats, ...sourceStats];
 }
 
 .stat-label {
-  font-family: "Source Sans 3", sans-serif;
+  font-family: var(--font-main);
   font-size: 0.85rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   opacity: 0.8;
   color: var(--text-dark);
-  white-space: nowrap; /* Prevent label text wrapping */
+  white-space: nowrap;
 }
 
-/* --- The Animation Logic --- */
 @keyframes scrollMarquee {
   0% {
-    /* Start at zero */
     transform: translateX(0);
   }
   100% {
-    /* Scroll exactly half of the duplicated list's total width */
-    transform: translateX(
-      calc(-100px * 20)
-    ); /* Total cards (20) * Half width (100) */
+    transform: translateX(calc(-100px * 20));
   }
 }
 
-/* --- Mobile Responsiveness --- */
-@media (width < 768px) {
+/* =========================
+   MEDIA QUERIES
+   ========================= */
+@media (width <= 768px) {
   .marquee {
     padding: 0rem 0;
     margin-top: 4rem;
   }
+
   .stat-card {
-    flex: 0 0 160px; /* Narrower cards on small screens */
+    flex: 0 0 160px;
   }
+
   .stat-number {
     font-size: 1.5rem;
   }
+
   .stat-label {
     font-size: 0.75rem;
   }
+
   @keyframes scrollMarquee {
     100% {
-      /* Adjust calculation for mobile card width (160px) */
       transform: translateX(calc(-80px * 20));
     }
   }

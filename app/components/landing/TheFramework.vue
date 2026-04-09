@@ -76,8 +76,8 @@ onUnmounted(() => {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: #f2f2f2;
-  z-index: 20; /* Curtain effect to cover previous section */
+  background-color: var(--bg-main);
+  z-index: 20;
   overflow: hidden;
 }
 
@@ -96,6 +96,7 @@ onUnmounted(() => {
 .section-subtitle {
   font-family: var(--font-main);
   font-weight: 700;
+  color: var(--text-dark);
   opacity: 0.6;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -109,19 +110,19 @@ onUnmounted(() => {
 .horizontal-track {
   display: flex;
   gap: 4rem;
-  width: fit-content;
+  width: fit-content; /* Critical for GSAP horizontal scroll logic */
 }
 
 .step-card {
-  width: 75vw; /* Each card takes up 75% of viewport width */
+  width: 75vw;
   max-width: 600px;
   flex-shrink: 0;
 }
 
 .card-inner {
-  background: white;
-  border: 4px solid var(--text-dark);
-  box-shadow: 12px 12px 0px var(--text-dark);
+  background: var(--text-light);
+  border: var(--brutalist-border-thick);
+  box-shadow: var(--shadow-lg);
   padding: 4rem 3rem;
   position: relative;
   overflow: hidden;
@@ -134,7 +135,7 @@ onUnmounted(() => {
 .step-tag {
   display: inline-block;
   background: var(--text-dark);
-  color: white;
+  color: var(--text-light);
   padding: 0.5rem 1rem;
   font-size: 0.7rem;
   font-weight: 900;
@@ -148,6 +149,7 @@ onUnmounted(() => {
   margin-bottom: 1.5rem;
   line-height: 1.1;
   z-index: 2;
+  color: var(--text-dark);
 }
 
 .step-description {
@@ -170,8 +172,10 @@ onUnmounted(() => {
   pointer-events: none;
 }
 
-/* Mobile: Revert to standard vertical stack for UX clarity */
-@media (max-width: 768px) {
+/* =========================
+   MEDIA QUERIES
+   ========================= */
+@media (width <= 768px) {
   .framework-section {
     height: auto;
     padding: 6rem 1.5rem;

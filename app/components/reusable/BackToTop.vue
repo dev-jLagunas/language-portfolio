@@ -34,8 +34,8 @@ onUnmounted(() => {
   position: fixed;
   bottom: 30px;
   right: 30px;
-  width: 56px;
-  height: 56px;
+  width: 46px;
+  height: 46px;
   z-index: 1000;
   cursor: pointer;
 
@@ -73,10 +73,10 @@ onUnmounted(() => {
 
 @media (max-width: 768px) {
   .brutal-top-btn {
-    bottom: 20px;
+    bottom: 100px;
     right: 20px;
-    width: 48px;
-    height: 48px;
+    width: 40px;
+    height: 40px;
     border-width: 3px;
     box-shadow: 6px 6px 0px var(--text-dark);
   }

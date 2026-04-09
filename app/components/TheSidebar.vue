@@ -107,7 +107,7 @@ const handleNavClick = async (index, href) => {
   display: flex;
   background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(4px);
-  justify-content: flex-end; /* Flipped to Right */
+  justify-content: flex-end;
 }
 
 .sidebar {
@@ -116,16 +116,14 @@ const handleNavClick = async (index, href) => {
   height: 100%;
   padding: 6rem 2.5rem;
   position: relative;
-
-  /* Flipped: Heavy LEFT border and shadow */
+  /* Visual Signature: Extra heavy left border */
   border-left: 8px solid var(--text-dark);
   box-shadow: -20px 0 0px rgba(0, 0, 0, 0.1);
-
   display: flex;
   flex-direction: column;
 }
 
-/* Background logic maintained */
+/* Theme Backgrounds */
 .theme-en {
   background-color: var(--color-en);
 }
@@ -139,7 +137,6 @@ const handleNavClick = async (index, href) => {
   background-color: var(--color-fr);
 }
 
-/* Square Brutalist Close Button: Now hanging on the LEFT edge */
 .sidebar-close {
   position: absolute;
   top: 2rem;
@@ -147,23 +144,23 @@ const handleNavClick = async (index, href) => {
   width: 50px;
   height: 50px;
   background: var(--text-dark);
-  color: white;
+  color: var(--text-light);
   border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.2s ease;
+
+  &:hover {
+    background: #ff4d4d;
+    transform: translateX(-5px);
+  }
 }
 
 .close-icon {
-  font-size: 2.5rem;
-  font-family: var(--font-sans);
-}
-
-.sidebar-close:hover {
-  background: #ff4d4d;
-  transform: translateX(-5px); /* Moves inward toward center */
+  font-size: 2rem;
+  font-family: var(--font-main);
 }
 
 .sidebar-content {
@@ -189,21 +186,21 @@ const handleNavClick = async (index, href) => {
 
 .lang-btn {
   padding: 12px 5px;
-  border: 2px solid var(--text-dark);
-  background: white;
+  border: var(--brutalist-border);
+  background: var(--text-light);
   font-family: var(--font-main);
   font-weight: 800;
   font-size: 0.8rem;
   cursor: pointer;
-  box-shadow: 3px 3px 0px var(--text-dark);
+  box-shadow: var(--shadow-sm);
   transition: all 0.1s ease;
-}
 
-.lang-btn.is-active {
-  background: var(--text-dark);
-  color: white;
-  box-shadow: 0px 0px 0px var(--text-dark);
-  transform: translate(2px, 2px);
+  &.is-active {
+    background: var(--text-dark);
+    color: var(--text-light);
+    box-shadow: none;
+    transform: translate(2px, 2px);
+  }
 }
 
 .sidebar-divider {
@@ -225,7 +222,6 @@ const handleNavClick = async (index, href) => {
   bottom: 0;
   width: 3px;
   background: var(--text-dark);
-  opacity: 1;
 }
 
 .nav-list {
@@ -241,7 +237,8 @@ const handleNavClick = async (index, href) => {
   background: none;
   border: none;
   font-family: var(--font-display);
-  font-size: 2rem;
+  /* Responsive text scaling to prevent "massive" mobile sizing */
+  font-size: clamp(1.5rem, 5vw, 2.25rem);
   text-align: left;
   cursor: pointer;
   color: var(--text-dark);
@@ -249,10 +246,10 @@ const handleNavClick = async (index, href) => {
   align-items: center;
   gap: 1rem;
   transition: transform 0.2s ease;
-}
 
-.nav-link:hover {
-  transform: translateX(10px);
+  &:hover {
+    transform: translateX(10px);
+  }
 }
 
 .floor-num {
@@ -277,7 +274,6 @@ const handleNavClick = async (index, href) => {
   filter: drop-shadow(4px 4px 0px rgba(0, 0, 0, 0.1));
 }
 
-/* Flipped Gate Animation Logic */
 .brutal-gate-enter-active {
   transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
@@ -285,14 +281,11 @@ const handleNavClick = async (index, href) => {
   transition: all 0.3s ease-in;
 }
 
-.brutal-gate-enter-from {
-  transform: translateX(110%); /* Enters from Right */
-}
+.brutal-gate-enter-from,
 .brutal-gate-leave-to {
-  transform: translateX(110%); /* Exits to Right */
+  transform: translateX(110%);
 }
 
-/* Staggered entrance: links come in from the right */
 .brutal-gate-enter-active .nav-link {
   transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s;
 }
@@ -301,17 +294,33 @@ const handleNavClick = async (index, href) => {
   transform: translateX(20px);
 }
 
-@media (max-width: 767px) {
+/* =========================
+   MEDIA QUERIES
+   ========================= */
+@media (width <= 768px) {
   .sidebar {
     max-width: 85vw;
+    padding: 5rem 1.5rem;
     border-left-width: 6px;
-    border-right-width: 0;
   }
+
   .sidebar-close {
-    left: 0; /* Align to the inside edge on mobile */
+    left: 0;
     top: 0;
     width: 60px;
     height: 60px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .nav-link {
+    /* Hard override for mobile clarity */
+    font-size: 1.5rem;
+    gap: 0.75rem;
+  }
+
+  .elevator-shaft {
+    padding-left: 1.5rem;
   }
 }
 </style>
+```

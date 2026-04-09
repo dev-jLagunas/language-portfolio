@@ -116,11 +116,11 @@ const toggleSidebar = () => {
   left: 0;
   width: 100%;
   z-index: 1000;
-  padding: 0.75rem 1.5rem;
+  padding: 0.75rem var(--space-unit);
   transition: background-color 0.4s ease;
 }
 
-/* Theme Backgrounds */
+/* Theme Backgrounds - Linked to Language Tokens */
 .theme-en {
   background-color: var(--color-en);
 }
@@ -135,7 +135,7 @@ const toggleSidebar = () => {
 }
 
 .nav-inner {
-  max-width: 1400px;
+  max-width: 1400px; /* Aligned with .container width */
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -148,7 +148,7 @@ const toggleSidebar = () => {
   align-items: center;
   text-decoration: none;
   color: var(--text-dark);
-  gap: 1rem;
+  gap: var(--space-unit);
 }
 
 .logo-icon-wrap {
@@ -170,12 +170,14 @@ const toggleSidebar = () => {
 .nav-info {
   margin-left: 4rem;
 }
+
 .nav-name {
   font-family: var(--font-display);
   font-size: 1.25rem;
   font-weight: bold;
   line-height: 1;
 }
+
 .nav-tagline {
   font-family: var(--font-main);
   font-size: 1rem;
@@ -194,13 +196,13 @@ const toggleSidebar = () => {
   gap: 2rem;
 }
 
-/* Platform Links (1024px+) */
+/* Platform Links (Logical Range Syntax) */
 .platform-nav {
   display: none;
   gap: 1.25rem;
 }
 
-@media (min-width: 1024px) {
+@media (width >= 1024px) {
   .platform-nav {
     display: flex;
     padding-right: 2rem;
@@ -215,21 +217,22 @@ const toggleSidebar = () => {
   text-decoration: none;
   color: var(--text-dark);
   transition: transform 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  & span {
+    font-family: var(--font-main);
+    font-size: 0.65rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
 }
 
-.platform-link:hover {
-  transform: translateY(-2px);
-}
-.platform-link span {
-  font-family: var(--font-main);
-  font-size: 0.65rem;
-  font-weight: 900;
-  text-transform: uppercase;
-  margin-top: 2px;
-}
-
-/* Desktop Overrides */
-@media (min-width: 768px) {
+/* Desktop Overrides (Modern Range Syntax) */
+@media (width >= 768px) {
   .nav-desktop-content {
     display: flex;
   }
@@ -246,6 +249,7 @@ const toggleSidebar = () => {
   display: flex;
   gap: 0.5rem;
 }
+
 .lang-btn {
   background: none;
   border: none;
@@ -254,46 +258,51 @@ const toggleSidebar = () => {
   font-size: 1rem;
   cursor: pointer;
   opacity: 0.5;
-}
-.lang-btn.is-active {
-  opacity: 1;
-  text-decoration: underline;
-  text-underline-offset: 4px;
+
+  &.is-active {
+    opacity: 1;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
 }
 
+/* Integrated Brutalist Logic */
 .nav-booking-link {
   text-decoration: none;
   color: var(--text-dark);
+  background-color: var(--text-light);
   font-family: var(--font-main);
   font-size: 0.85rem;
   font-weight: 900;
   padding: 0.6rem 1.2rem;
-  border: 2px solid var(--text-dark);
-  box-shadow: 4px 4px 0px var(--text-dark);
-  background-color: #fff;
+  border: var(--brutalist-border); /* 3px System Border */
+  box-shadow: var(--shadow-sm); /* 4px Hard Shadow */
   text-transform: uppercase;
   transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  &:hover {
+    background-color: var(--text-dark);
+    color: var(--text-light);
+    transform: translate(2px, 2px);
+    box-shadow: none;
+  }
 }
 
-.nav-booking-link:hover {
-  background-color: var(--text-dark);
-  color: #fff;
-  transform: translate(2px, 2px);
-  box-shadow: 0px 0px 0px var(--text-dark);
-}
-
-/* Hamburger Styles Restored */
+/* Hamburger UI */
 .hamburger {
   cursor: pointer;
   display: block;
+
+  & input {
+    display: none;
+  }
+
+  & svg {
+    height: 2.5rem;
+    color: var(--text-dark);
+  }
 }
-.hamburger input {
-  display: none;
-}
-.hamburger svg {
-  height: 2.5rem;
-  color: var(--text-dark);
-}
+
 .line {
   fill: none;
   stroke: currentColor;
@@ -302,14 +311,17 @@ const toggleSidebar = () => {
   stroke-width: 2.5;
   transition: 600ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 .line-top-bottom {
   stroke-dasharray: 12 63;
 }
+
 .hamburger input:checked + svg {
   transform: rotate(-45deg);
-}
-.hamburger input:checked + svg .line-top-bottom {
-  stroke-dasharray: 20 300;
-  stroke-dashoffset: -32.42;
+
+  & .line-top-bottom {
+    stroke-dasharray: 20 300;
+    stroke-dashoffset: -32.42;
+  }
 }
 </style>

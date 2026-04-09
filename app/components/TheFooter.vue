@@ -106,8 +106,8 @@ const langNames = {
 
 <style scoped>
 .main-footer {
-  padding: 100px 20px 40px;
-  border-top: 4px solid var(--text-dark);
+  padding: 100px 1.5rem 40px;
+  border-top: var(--brutalist-border-thick);
   position: relative;
   z-index: 50;
   transition:
@@ -115,7 +115,7 @@ const langNames = {
     color 0.4s ease;
 }
 
-/* Theme color logic integrated */
+/* Theme Backgrounds */
 .theme-en {
   background-color: var(--color-en);
   color: var(--text-dark);
@@ -151,10 +151,10 @@ const langNames = {
   line-height: 0.85;
   letter-spacing: -0.04em;
   margin-bottom: 1.5rem;
-}
 
-.footer-logo span {
-  color: #ff4d4d;
+  & span {
+    color: #ff4d4d;
+  }
 }
 
 .brand-mission {
@@ -166,20 +166,19 @@ const langNames = {
   margin-bottom: 3rem;
 }
 
-/* Language Switcher */
 .lang-switcher {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-}
 
-.switcher-label {
-  font-family: var(--font-main);
-  font-size: 0.65rem;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  opacity: 0.5;
+  & .switcher-label {
+    font-family: var(--font-main);
+    font-size: 0.65rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.5;
+  }
 }
 
 .lang-pills {
@@ -200,16 +199,15 @@ const langNames = {
   cursor: pointer;
   transition: all 0.2s ease;
   opacity: 0.6;
+
+  &:hover,
+  &.active {
+    background: var(--text-dark);
+    color: var(--text-light);
+    opacity: 1;
+  }
 }
 
-.lang-pill:hover,
-.lang-pill.active {
-  background: var(--text-dark);
-  color: #fff;
-  opacity: 1;
-}
-
-/* Nav Groups */
 .nav-group {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -231,26 +229,25 @@ ul {
   list-style: none;
   padding: 0;
   margin: 0;
+
+  & li {
+    margin-bottom: 0.75rem;
+
+    & a {
+      font-family: var(--font-main);
+      color: inherit;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 600;
+      transition: opacity 0.2s ease;
+
+      &:hover {
+        opacity: 0.4;
+      }
+    }
+  }
 }
 
-ul li {
-  margin-bottom: 0.75rem;
-}
-
-ul li a {
-  font-family: var(--font-main);
-  color: inherit;
-  text-decoration: none;
-  font-size: 1.1rem;
-  font-weight: 600;
-  transition: opacity 0.2s ease;
-}
-
-ul li a:hover {
-  opacity: 0.4;
-}
-
-/* Bottom Bar */
 .footer-bottom {
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   padding-top: 40px;
@@ -265,18 +262,21 @@ ul li a:hover {
 .legal-links {
   display: flex;
   gap: 2rem;
-}
 
-.legal-links a {
-  color: inherit;
-  text-decoration: none;
+  & a {
+    color: inherit;
+    text-decoration: none;
+  }
 }
 
 .tech-stack strong {
   font-weight: 800;
 }
 
-@media (max-width: 768px) {
+/* =========================
+   MEDIA QUERIES
+   ========================= */
+@media (width <= 768px) {
   .footer-grid {
     grid-template-columns: 1fr;
     gap: 4rem;
@@ -286,6 +286,7 @@ ul li a:hover {
     flex-direction: column;
     align-items: flex-start;
     gap: 2rem;
+    padding-bottom: 80px; /* Space for Mobile Tab Bar */
   }
 
   .legal-links {

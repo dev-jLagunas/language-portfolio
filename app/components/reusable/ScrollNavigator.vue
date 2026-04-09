@@ -103,13 +103,14 @@ onBeforeUnmount(() => {
   pointer-events: none;
 }
 
-/* --- Entrance/Exit Animation --- */
 .pop-in-enter-active {
   transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
+
 .pop-in-leave-active {
   transition: all 0.3s ease-in;
 }
+
 .pop-in-enter-from,
 .pop-in-leave-to {
   opacity: 0;
@@ -126,25 +127,25 @@ onBeforeUnmount(() => {
 .step-box {
   width: 12px;
   height: 32px;
-  background: white;
-  border: 2px solid var(--text-dark);
+  background: var(--text-light);
+  border: var(--brutalist-border);
   cursor: pointer;
   position: relative;
   transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
   padding: 0;
-}
 
-.step-box:hover {
-  background: #eee;
-  transform: translateX(-4px);
-  box-shadow: 4px 0px 0px var(--text-dark);
-}
+  &:hover {
+    background: #eee;
+    transform: translateX(-4px);
+    box-shadow: 4px 0px 0px var(--text-dark);
+  }
 
-.step-box.is-active {
-  background: var(--text-dark);
-  height: 48px;
-  transform: translateX(-6px);
-  box-shadow: 6px 0px 0px rgba(0, 0, 0, 0.2);
+  &.is-active {
+    background: var(--text-dark);
+    height: 48px;
+    transform: translateX(-6px);
+    box-shadow: 6px 0px 0px rgba(0, 0, 0, 0.2);
+  }
 }
 
 .step-label {
@@ -160,6 +161,7 @@ onBeforeUnmount(() => {
   opacity: 0;
   transition: opacity 0.2s ease;
   pointer-events: none;
+  white-space: nowrap;
 }
 
 .step-box:hover .step-label,
@@ -175,10 +177,10 @@ onBeforeUnmount(() => {
   display: flex;
   align-items: center;
   gap: 4px;
-  background: white;
+  background: var(--text-light);
   padding: 4px 8px;
-  border: 2px solid var(--text-dark);
-  box-shadow: 4px 4px 0px var(--text-dark);
+  border: var(--brutalist-border);
+  box-shadow: var(--shadow-sm);
   pointer-events: auto;
 }
 
@@ -187,20 +189,25 @@ onBeforeUnmount(() => {
   font-size: 0.8rem;
 }
 
-@media (max-width: 1024px) {
+/* =========================
+   MEDIA QUERIES
+   ========================= */
+@media (width <= 1024px) {
   .step-navigator {
     right: 1rem;
   }
+
   .step-box {
     width: 8px;
     height: 24px;
-  }
-  .step-box.is-active {
-    height: 36px;
+
+    &.is-active {
+      height: 36px;
+    }
   }
 }
 
-@media (max-width: 600px) {
+@media (width <= 600px) {
   .step-navigator {
     display: none;
   }

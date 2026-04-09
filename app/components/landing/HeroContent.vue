@@ -14,11 +14,14 @@
   z-index: 20;
   margin-top: -2rem;
   width: 100%;
-  padding-inline: 1rem;
+  padding-inline: var(--space-unit);
 }
 
 .hero-title {
   font-family: var(--font-display);
+  /* Sizing follows the display-xl logic from main.css */
+  font-size: clamp(3rem, 8vw, 6rem);
+  line-height: 1.1;
   color: var(--text-dark);
   margin-bottom: 1rem;
 }
@@ -28,31 +31,46 @@
   font-size: 1.1rem;
   color: var(--text-dark);
   margin-top: -1rem;
-  line-height: 1.2;
+  line-height: 1.4; /* Slightly increased for better readability */
 }
 
 .hero-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   font-family: var(--font-main);
-  font-weight: 800;
+  font-weight: 900;
   padding: 1rem 2.5rem;
   background: var(--text-dark);
-  color: white;
+  color: var(--text-light);
   border: none;
+  /* Maintains your 8px aesthetic while utilizing system font/color */
   border-radius: 8px;
   cursor: pointer;
   font-size: 1rem;
   margin-top: 2rem;
-  transition: transform 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .hero-btn:hover {
-  transform: scale(1.05);
+  transform: translateY(-3px);
+  /* Integrating system shadow for the hover "pop" */
+  box-shadow: var(--shadow-md);
 }
 
+/* =========================
+   MEDIA QUERIES
+   ========================= */
 @media (width >= 768px) {
   .hero-title {
+    /* Scale logic mapped to system display tokens */
     font-size: 5rem;
   }
+
   .hero-copy {
     font-size: 1.25rem;
   }

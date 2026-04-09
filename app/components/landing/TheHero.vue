@@ -29,7 +29,7 @@
 .hero-canvas {
   width: 100%;
   position: relative;
-  background-color: #f2f2f2;
+  background-color: var(--bg-main);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -67,7 +67,6 @@
 .canvas-specs {
   display: none;
   position: absolute;
-  /* Shifted up significantly to frame the character duo */
   top: 220px;
   flex-direction: column;
   gap: 10px;
@@ -85,7 +84,23 @@
   text-transform: uppercase;
 }
 
-@media (min-width: 1024px) {
+/* --- 3. Main Container --- */
+.content-wrapper {
+  max-width: 1400px; /* Aligns with system container width */
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 5;
+}
+
+/* =========================
+   MEDIA QUERIES
+   ========================= */
+@media (width >= 1024px) {
   .canvas-specs {
     display: flex;
   }
@@ -98,20 +113,7 @@
   }
 }
 
-/* --- 3. Main Container --- */
-.content-wrapper {
-  max-width: 1400px;
-  width: 100%;
-  margin: 0 auto;
-  padding-top: 8rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  z-index: 5;
-}
-
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .content-wrapper {
     padding-top: 5rem;
   }

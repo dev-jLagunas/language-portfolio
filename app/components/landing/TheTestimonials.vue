@@ -86,10 +86,9 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
-/* Styles remain identical to your previous version */
 .testimonials-section {
-  padding: 10rem 1.5rem;
-  background-color: #f2f2f2;
+  padding: var(--section-padding);
+  background-color: var(--bg-main);
   position: relative;
   z-index: 30;
 }
@@ -102,22 +101,22 @@ onUnmounted(() => {
 .intro {
   text-align: center;
   margin-bottom: 6rem;
-}
 
-.title {
-  font-family: var(--font-display);
-  font-size: clamp(3rem, 7vw, 4.5rem);
-  color: var(--text-dark);
-  margin-bottom: 1rem;
-}
+  & .title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 7vw, 4.5rem);
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+  }
 
-.subtitle {
-  font-family: var(--font-main);
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  letter-spacing: 0.3em;
-  font-weight: 800;
-  opacity: 0.5;
+  & .subtitle {
+    font-family: var(--font-main);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    font-weight: 800;
+    opacity: 0.5;
+  }
 }
 
 .testimonial-grid {
@@ -128,14 +127,16 @@ onUnmounted(() => {
 
 .testimonial-card {
   padding: 3rem;
-  border: 4px solid var(--text-dark);
-  box-shadow: 12px 12px 0px var(--text-dark);
+  /* System Integration: Heavy Brutalist lines and large offset shadow */
+  border: var(--brutalist-border-thick);
+  box-shadow: var(--shadow-lg);
   display: flex;
   flex-direction: column;
   transition: transform 0.2s ease;
-  background-color: white; /* Fallback */
+  background-color: var(--bg-card);
 }
 
+/* Theme Backgrounds mapped to design tokens */
 .theme-en {
   background-color: var(--color-en);
 }
@@ -153,23 +154,24 @@ onUnmounted(() => {
   height: 100%;
   display: flex;
   flex-direction: column;
-}
 
-.quote-icon {
-  font-family: var(--font-display);
-  font-size: 5rem;
-  line-height: 1;
-  margin-bottom: -1rem;
-  opacity: 0.2;
-}
+  & .quote-icon {
+    font-family: var(--font-display);
+    font-size: 5rem;
+    line-height: 1;
+    margin-bottom: -1rem;
+    opacity: 0.2;
+    color: var(--text-dark);
+  }
 
-.story {
-  font-family: var(--font-display);
-  font-size: 1.4rem;
-  line-height: 1.4;
-  color: var(--text-dark);
-  margin-bottom: 2.5rem;
-  flex-grow: 1;
+  & .story {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    line-height: 1.4;
+    color: var(--text-dark);
+    margin-bottom: 2.5rem;
+    flex-grow: 1;
+  }
 }
 
 .user-meta {
@@ -178,48 +180,54 @@ onUnmounted(() => {
   gap: 1.5rem;
   border-top: 2px solid rgba(0, 0, 0, 0.1);
   padding-top: 1.5rem;
+
+  & .avatar-box {
+    width: 60px;
+    height: 60px;
+    background: var(--text-light);
+    border: var(--brutalist-border); /* Linked to 3px system border */
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+
+    & .avatar {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      margin-top: 5px;
+    }
+  }
+
+  & .info {
+    display: flex;
+    flex-direction: column;
+
+    & .name {
+      font-family: var(--font-main);
+      font-weight: 900;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      color: var(--text-dark);
+    }
+
+    & .role {
+      font-family: var(--font-main);
+      font-size: 0.85rem;
+      font-weight: 700;
+      opacity: 0.6;
+      color: var(--text-dark);
+    }
+  }
 }
 
-.avatar-box {
-  width: 60px;
-  height: 60px;
-  background: white;
-  border: 2px solid var(--text-dark);
-  border-radius: 50%;
-  overflow: hidden;
-  flex-shrink: 0;
-}
-
-.avatar {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  margin-top: 5px;
-}
-
-.info {
-  display: flex;
-  flex-direction: column;
-}
-
-.name {
-  font-family: var(--font-main);
-  font-weight: 900;
-  font-size: 1.1rem;
-  text-transform: uppercase;
-}
-
-.role {
-  font-family: var(--font-main);
-  font-size: 0.85rem;
-  font-weight: 700;
-  opacity: 0.6;
-}
-
-@media (max-width: 900px) {
+/* =========================
+   MEDIA QUERIES
+   ========================= */
+@media (width <= 900px) {
   .testimonial-grid {
     grid-template-columns: 1fr;
   }
+
   .testimonial-card {
     padding: 2rem;
   }

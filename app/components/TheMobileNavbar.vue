@@ -80,15 +80,15 @@ onMounted(() => {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 65px;
+  height: 70px;
   z-index: 900;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  /* Integration: Use system border for the top edge */
+  border-top: var(--brutalist-border);
   display: none;
   transition: background-color 0.4s ease;
-  padding: 12px 10px;
+  padding: 0 10px;
 }
 
-/* Theme Backgrounds */
 .theme-en {
   background-color: var(--color-en);
 }
@@ -118,55 +118,60 @@ onMounted(() => {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  height: 80%;
   flex: 1;
-  gap: 4px;
+  gap: 2px;
   cursor: pointer;
-  transition:
-    transform 0.2s ease,
-    opacity 0.2s ease;
-  opacity: 0.8;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  opacity: 0.7;
   position: relative;
+  color: var(--text-dark);
 }
 
 .nav-icon-wrapper {
-  height: 24px;
-  width: 24px;
+  height: 28px;
+  width: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: transform 0.2s ease;
 }
 
 .nav-icon-img {
-  height: 30px;
+  height: 100%;
   width: auto;
   object-fit: contain;
 }
 
 .nav-text {
-  font-family: "Source Sans 3", sans-serif;
-  font-size: 0.6rem;
-  font-weight: 800;
+  font-family: var(--font-main);
+  font-size: 0.7rem;
+  font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
-/* Active State Styling */
+/* 
+   Active State: "Brutalist Pop" 
+   Replaces the broken line logic with a physical "lifted card" aesthetic 
+*/
 .mobile-nav-btn.is-active {
   opacity: 1;
-  transform: translateY(-4px);
+  background: var(--text-light);
+  border: 2px solid var(--text-dark);
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-12px);
+  z-index: 2;
 }
 
-.mobile-nav-btn.is-active::after {
-  content: "";
-  position: absolute;
-  bottom: 4px;
-  width: 12px;
-  height: 2px;
-  background-color: var(--text-dark);
-  border-radius: 2px;
+.mobile-nav-btn.is-active .nav-icon-wrapper {
+  transform: scale(1.1);
 }
 
-@media (max-width: 768px) {
+/* =========================
+   MEDIA QUERIES
+   ========================= */
+@media (width <= 768px) {
   .mobile-tab-bar {
     display: block;
   }
@@ -174,8 +179,13 @@ onMounted(() => {
 
 @supports (padding-bottom: env(safe-area-inset-bottom)) {
   .mobile-tab-bar {
-    height: calc(65px + env(safe-area-inset-bottom));
+    height: calc(70px + env(safe-area-inset-bottom));
     padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .mobile-nav-btn.is-active {
+    /* Adjust lift for safe areas to keep it balanced */
+    transform: translateY(-15px);
   }
 }
 </style>
