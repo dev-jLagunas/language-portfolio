@@ -15,10 +15,6 @@ const footerNav = {
     { name: "Language Friends", link: "https://amazon.com/author/juanlagunas" },
     { name: "Photography", link: "#" },
   ],
-  legal: [
-    { key: "privacy", link: "/privacy" },
-    { key: "terms", link: "/terms" },
-  ],
 };
 
 const langNames = {
