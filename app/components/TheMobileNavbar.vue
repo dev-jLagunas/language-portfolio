@@ -23,6 +23,13 @@ const scrollToSection = (href) => {
   }
 };
 
+// Handle clearing active state when at the very top (Hero section)
+const handleScroll = () => {
+  if (window.scrollY < 50) {
+    activeSection.value = "";
+  }
+};
+
 onMounted(() => {
   const observerOptions = {
     root: null,
@@ -34,6 +41,14 @@ onMounted(() => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         activeSection.value = `#${entry.target.id}`;
+      } else {
+        // If the first section moves below the trigger zone, we are back in the Hero
+        if (
+          entry.target.id === "who-i-help" &&
+          entry.boundingClientRect.top > 0
+        ) {
+          activeSection.value = "";
+        }
       }
     });
   }, observerOptions);
@@ -42,6 +57,12 @@ onMounted(() => {
     const el = document.querySelector(item.href);
     if (el) observer.observe(el);
   });
+
+  window.addEventListener("scroll", handleScroll);
+});
+
+onUnmounted(() => {
+  window.removeEventListener("scroll", handleScroll);
 });
 </script>
 
@@ -174,16 +195,16 @@ onMounted(() => {
 /* Specific fix for very small mobile screens */
 @media (width <= 425px) {
   .mobile-tab-bar {
-    padding: 0 4px; /* Narrower horizontal padding */
+    padding: 0 4px;
   }
 
   .nav-text {
-    font-size: 0.6rem; /* Slightly smaller text to prevent overlap */
-    letter-spacing: 0; /* Remove extra tracking to save space */
+    font-size: 0.6rem;
+    letter-spacing: 0;
   }
 
   .nav-icon-wrapper {
-    height: 24px; /* Slightly smaller icons */
+    height: 24px;
     width: 24px;
   }
 }

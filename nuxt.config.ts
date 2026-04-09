@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
   css: ["~/assets/main.css"],
   srcDir: "app/",
-  modules: ["@nuxtjs/i18n", "@nuxtjs/google-fonts"],
+  modules: ["@nuxtjs/i18n", "@nuxtjs/google-fonts", "@nuxt/icon"],
   googleFonts: {
     families: {
       "DM Serif Display": [400, 700, 900],

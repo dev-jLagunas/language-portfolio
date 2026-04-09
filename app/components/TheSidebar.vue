@@ -11,7 +11,7 @@ const activeIndex = ref(0);
 const languages = [
   { code: "en", label: "EN" },
   { code: "es", label: "ES" },
-  { code: "jp", label: "JP" }, // Note: Changed 'jp' to 'ja' to match standard i18n codes
+  { code: "jp", label: "JP" },
   { code: "fr", label: "FR" },
 ];
 
@@ -21,6 +21,12 @@ const menuItems = [
   { key: "testimonials", href: "#testimonials" },
   { key: "social_proof", href: "#social-proof" },
   { key: "contact", href: "#contact" },
+];
+
+const platforms = [
+  { name: "Cambly", url: "#" },
+  { name: "NativeTalk", url: "#" },
+  { name: "iTalki", url: "#" },
 ];
 
 const handleLocaleChange = (code) => {
@@ -70,10 +76,31 @@ const handleNavClick = async (index, href) => {
 
           <div class="sidebar-divider"></div>
 
+          <div class="sidebar-section">
+            <p class="section-label">Platforms</p>
+            <div class="platform-grid">
+              <a
+                v-for="platform in platforms"
+                :key="platform.name"
+                :href="platform.url"
+                target="_blank"
+                class="platform-link"
+              >
+                {{ platform.name }}
+              </a>
+            </div>
+          </div>
+
+          <div class="sidebar-divider"></div>
+
           <div class="sidebar-section elevator-shaft">
             <div class="shaft-line"></div>
             <ul class="nav-list">
-              <li v-for="(item, index) in menuItems" :key="item.href">
+              <li
+                v-for="(item, index) in menuItems"
+                :key="item.href"
+                class="nav-item"
+              >
                 <button
                   class="nav-link"
                   @click="handleNavClick(index, item.href)"
@@ -88,10 +115,18 @@ const handleNavClick = async (index, href) => {
 
             <div
               class="elevator-avatar"
-              :style="{ transform: `translateY(${activeIndex * 62}px)` }"
+              :style="{
+                transform: `translateY(calc(var(--var-step-height) * ${activeIndex}))`,
+              }"
             >
               <img src="/images/avatars/avatar-pointing.png" alt="Juan" />
             </div>
+          </div>
+
+          <div class="sidebar-section resume-section">
+            <NuxtLink to="/resume" class="resume-btn" @click="$emit('close')">
+              View Full Resume
+            </NuxtLink>
           </div>
         </nav>
       </aside>
@@ -112,18 +147,17 @@ const handleNavClick = async (index, href) => {
 
 .sidebar {
   width: 100%;
-  max-width: 420px;
+  max-width: 550px;
   height: 100%;
-  padding: 6rem 2.5rem;
   position: relative;
-  /* Visual Signature: Extra heavy left border */
   border-left: 8px solid var(--text-dark);
   box-shadow: -20px 0 0px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
+  overflow: visible;
+  --var-step-height: 62px;
 }
 
-/* Theme Backgrounds */
 .theme-en {
   background-color: var(--color-en);
 }
@@ -151,11 +185,12 @@ const handleNavClick = async (index, href) => {
   align-items: center;
   justify-content: center;
   transition: all 0.2s ease;
+  z-index: 100;
+}
 
-  &:hover {
-    background: #ff4d4d;
-    transform: translateX(-5px);
-  }
+.sidebar-close:hover {
+  background: #ff4d4d;
+  transform: translateX(-5px);
 }
 
 .close-icon {
@@ -164,16 +199,18 @@ const handleNavClick = async (index, href) => {
 }
 
 .sidebar-content {
-  margin-top: 2rem;
+  overflow-y: auto;
+  flex: 1;
+  padding: 6rem 2.5rem;
 }
 
 .section-label {
   font-family: var(--font-main);
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   text-transform: uppercase;
   font-weight: 900;
   letter-spacing: 0.15em;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   color: var(--text-dark);
   opacity: 0.5;
 }
@@ -184,30 +221,40 @@ const handleNavClick = async (index, href) => {
   gap: 10px;
 }
 
-.lang-btn {
-  padding: 12px 5px;
+.platform-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.lang-btn,
+.platform-link {
+  padding: 10px 5px;
   border: var(--brutalist-border);
   background: var(--text-light);
   font-family: var(--font-main);
   font-weight: 800;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
+  text-align: center;
+  text-decoration: none;
+  color: var(--text-dark);
   cursor: pointer;
   box-shadow: var(--shadow-sm);
-  transition: all 0.1s ease;
+}
 
-  &.is-active {
-    background: var(--text-dark);
-    color: var(--text-light);
-    box-shadow: none;
-    transform: translate(2px, 2px);
-  }
+.lang-btn.is-active,
+.platform-link:hover {
+  background: var(--text-dark);
+  color: var(--text-light);
+  box-shadow: none;
+  transform: translate(2px, 2px);
 }
 
 .sidebar-divider {
   height: 2px;
   background: var(--text-dark);
-  margin: 3rem 0;
-  opacity: 0.2;
+  margin: 2.5rem 0;
+  opacity: 0.15;
 }
 
 .elevator-shaft {
@@ -230,14 +277,19 @@ const handleNavClick = async (index, href) => {
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 20px;
+}
+
+.nav-item {
+  height: 42px;
+  display: flex;
+  align-items: center;
 }
 
 .nav-link {
   background: none;
   border: none;
   font-family: var(--font-display);
-  /* Responsive text scaling to prevent "massive" mobile sizing */
   font-size: clamp(1.5rem, 5vw, 2.25rem);
   text-align: left;
   cursor: pointer;
@@ -245,11 +297,6 @@ const handleNavClick = async (index, href) => {
   display: flex;
   align-items: center;
   gap: 1rem;
-  transition: transform 0.2s ease;
-
-  &:hover {
-    transform: translateX(10px);
-  }
 }
 
 .floor-num {
@@ -262,9 +309,8 @@ const handleNavClick = async (index, href) => {
 .elevator-avatar {
   position: absolute;
   left: -33px;
-  top: -2px;
+  top: -10px;
   width: 70px;
-  z-index: 5;
   transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
   pointer-events: none;
 }
@@ -272,36 +318,41 @@ const handleNavClick = async (index, href) => {
 .elevator-avatar img {
   width: 100%;
   filter: drop-shadow(4px 4px 0px rgba(0, 0, 0, 0.1));
+  transform: scaleX(-1);
 }
 
-.brutal-gate-enter-active {
-  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-.brutal-gate-leave-active {
-  transition: all 0.3s ease-in;
+.resume-section {
+  margin-top: 2rem;
+  padding-bottom: 2rem;
 }
 
-.brutal-gate-enter-from,
-.brutal-gate-leave-to {
-  transform: translateX(110%);
+.resume-btn {
+  display: block;
+  width: 100%;
+  background: var(--text-light);
+  border: var(--brutalist-border-thick);
+  color: var(--text-dark);
+  padding: 1.2rem;
+  text-align: center;
+  text-decoration: none;
+  font-family: var(--font-main);
+  font-weight: 900;
+  text-transform: uppercase;
+  box-shadow: var(--shadow-lg);
+  transition: all 0.2s ease;
 }
 
-.brutal-gate-enter-active .nav-link {
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s;
-}
-.brutal-gate-enter-from .nav-link {
-  opacity: 0;
-  transform: translateX(20px);
+.resume-btn:hover {
+  background: var(--text-dark);
+  color: var(--text-light);
+  transform: translate(-4px, -4px);
+  box-shadow: 8px 8px 0px #000;
 }
 
-/* =========================
-   MEDIA QUERIES
-   ========================= */
 @media (width <= 768px) {
   .sidebar {
     max-width: 85vw;
-    padding: 5rem 1.5rem;
-    border-left-width: 6px;
+    --var-step-height: 45px;
   }
 
   .sidebar-close {
@@ -312,15 +363,51 @@ const handleNavClick = async (index, href) => {
     box-shadow: var(--shadow-sm);
   }
 
+  .sidebar-content {
+    padding: 5rem 1.5rem 3rem 1.5rem;
+  }
+
+  .sidebar-divider {
+    margin: 1.25rem 0;
+  }
+
+  .nav-list {
+    gap: 10px;
+  }
+
+  .nav-item {
+    height: 35px;
+  }
+
   .nav-link {
-    /* Hard override for mobile clarity */
     font-size: 1.5rem;
     gap: 0.75rem;
   }
 
-  .elevator-shaft {
-    padding-left: 1.5rem;
+  .elevator-avatar {
+    width: 55px;
+    left: -25px;
+    top: -5px;
+  }
+
+  .resume-section {
+    margin-top: 1.5rem;
+  }
+
+  .resume-btn {
+    padding: 0.8rem;
+    font-size: 0.9rem;
   }
 }
+
+.brutal-gate-enter-active {
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.brutal-gate-leave-active {
+  transition: all 0.3s ease-in;
+}
+.brutal-gate-enter-from,
+.brutal-gate-leave-to {
+  transform: translateX(110%);
+}
 </style>
-```
