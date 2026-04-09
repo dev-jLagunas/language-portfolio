@@ -182,6 +182,7 @@ const toggleSidebar = () => {
   font-family: var(--font-main);
   font-size: 1rem;
   opacity: 0.8;
+  margin-top: 0.2rem;
 }
 
 .nav-actions {

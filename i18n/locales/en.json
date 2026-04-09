@@ -1,7 +1,7 @@
 {
   "nav": {
     "my_name": "Juan Lagunas",
-    "my_tagline": "English Coach",
+    "my_tagline": "English Teacher & Coach",
     "book_lesson": "Contact Me",
     "avatar_alt": "Juan Avatar",
     "who_i_help": "Who I Help",
@@ -210,12 +210,12 @@
         "details": "My work as a Product Designer and Systems Architect. This portfolio showcases how I solve disorganized problems through structured, usable, and scalable digital solutions. I apply this same 'Systems First' mindset to how I teach English.",
         "btnText": "View Portfolio"
       },
-      "behance": {
-        "title": "Behance Case Studies",
-        "type": "Visual Strategy",
-        "desc": "Visual breakdowns of design systems and brand identities created over the last decade.",
-        "details": "A collection of visual design systems and brand identities. These case studies highlight my focus on information architecture and the visual communication strategies I've used for various global clients.",
-        "btnText": "View Behance"
+      "unsplash": {
+        "title": "Photography",
+        "type": "Visual Perspective",
+        "desc": "A personal collection of moments captured while exploring the world through a lens.",
+        "details": "I love the process of photography. There is something grounding about spending an afternoon walking around and capturing life as it happens. It's how I reset my creative systems. Please check out my work.",
+        "btnText": "View Photos"
       },
       "medium": {
         "title": "Medium Blog",

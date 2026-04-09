@@ -1,7 +1,7 @@
 {
   "nav": {
     "my_name": "Juan Lagunas",
-    "my_tagline": "Entrenador de Inglés",
+    "my_tagline": "Profesor y Coach de Inglés",
     "book_lesson": "Reservar Clase",
     "avatar_alt": "Avatar de Juan"
   },
@@ -199,12 +199,12 @@
         "details": "The English Lab es donde desgloso la mecánica del inglés. Me alejo del inglés de 'salón de clases' y me enfoco en los sistemas —fonología, sintaxis y pragmática— que permiten a los adultos comunicarse a nivel profesional rápidamente.",
         "btnText": "Ver Canal"
       },
-      "portfolio": {
-        "title": "Portafolio de Producto y UX",
-        "type": "Sistemas / Diseño",
-        "desc": "El pensamiento arquitectónico aplicado a productos digitales y al lenguaje.",
-        "details": "Mi trabajo como Diseñador de Productos y Arquitecto de Sistemas. Este portafolio muestra cómo resuelvo problemas desorganizados mediante soluciones digitales estructuradas y escalables. Aplico esta misma mentalidad a mi enseñanza.",
-        "btnText": "Ver Portafolio"
+      "unsplash": {
+        "title": "Fotografía",
+        "type": "Perspectiva Visual",
+        "desc": "Una colección personal de momentos capturados explorando el mundo a través del lente.",
+        "details": "Me encanta el proceso fotográfico. Pasar una tarde caminando y capturando la vida tal como sucede es algo que me centra. Es mi forma de reiniciar mis sistemas creativos. Te invito a ver mi trabajo.",
+        "btnText": "Ver Fotos"
       },
       "behance": {
         "title": "Casos de Estudio en Behance",

@@ -100,7 +100,7 @@ onUnmounted(() => {
 
 .intro {
   text-align: center;
-  margin-bottom: 6rem;
+  margin-bottom: 4rem;
 
   & .title {
     font-family: var(--font-display);

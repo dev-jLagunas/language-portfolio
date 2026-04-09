@@ -31,10 +31,10 @@ const resources = [
     hasModal: true,
   },
   {
-    key: "behance",
-    link: "https://behance.net/juan-lagunas",
+    key: "unsplash",
+    link: "https://unsplash.com/@jlag_photos",
     img: "/images/links/unsplash-img.png",
-    hasModal: false,
+    hasModal: true,
   },
   {
     key: "medium",
@@ -212,7 +212,6 @@ onUnmounted(() => {
 .beyond-lab {
   padding: var(--section-padding) 0;
   background-color: var(--bg-main);
-  border-top: 2px solid var(--text-dark);
   position: relative;
   overflow: hidden;
   margin-bottom: 4rem;

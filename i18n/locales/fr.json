@@ -1,7 +1,7 @@
 {
   "nav": {
     "my_name": "Juan Lagunas",
-    "my_tagline": "Entraîneur Anglais",
+    "my_tagline": "Enseignant et Coach d'Anglais",
     "book_lesson": "Réserver un cours",
     "avatar_alt": "Avatar de Juan"
   },
@@ -199,12 +199,12 @@
         "details": "C'est ici que je décortique la mécanique de l'anglais. Je m'éloigne de l'anglais 'scolaire' pour me concentrer sur les systèmes qui permettent aux adultes de communiquer au niveau professionnel.",
         "btnText": "Voir la chaîne"
       },
-      "portfolio": {
-        "title": "Portfolio Produit & UX",
-        "type": "Systèmes / Design",
-        "desc": "La pensée architecturale appliquée aux produits numériques et au langage.",
-        "details": "Mon travail en tant que Product Designer. Ce portfolio montre comment je résous des problèmes désorganisés grâce à des solutions numériques structurées et évolutives.",
-        "btnText": "Voir le portfolio"
+      "unsplash": {
+        "title": "Photo",
+        "type": "Perspective Visuelle",
+        "desc": "Une collection personnelle de moments capturés en explorant le monde à travers l'objectif.",
+        "details": "J'adore le processus de la photographie. Passer une après-midi à marcher et à capturer la vie telle qu'elle se présente me permet de me ressourcer. C'est ainsi que je réinitialise mes systèmes créatifs. N'hésitez pas à jeter un coup d'œil à mon travail.",
+        "btnText": "Voir les Photos"
       },
       "behance": {
         "title": "Études de Cas Behance",
