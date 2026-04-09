@@ -51,18 +51,18 @@
     }
   },
   "stats": {
-    "section_label": "Key performance statistics",
+    "section_label": "Key Metrics and Capabilities",
     "labels": {
-      "years_experience": "Years Experience",
-      "students_taught": "Students Taught",
+      "ux_systems": "Years UX & Systems",
+      "professionals_coached": "Professionals Coached",
       "languages_spoken": "Languages Spoken",
       "years_japan": "Years in Japan",
-      "global_corps": "Global Corps Coached",
-      "published_author": "Published Author",
       "jlpt_certified": "JLPT Certified",
-      "age_range": "Student Age Range",
-      "class_size": "Largest Class Size",
-      "remote_coaching": "Remote Coaching"
+      "core_framework": "Core Framework",
+      "generic_tests": "Generic Tests",
+      "linguistics": "Linguistics Background",
+      "tech_channels": "Language Channels",
+      "remote_architecture": "Remote Architecture"
     }
   },
   "who": {
@@ -102,6 +102,15 @@
           "tag1": "University Prep",
           "tag2": "Research Focus",
           "tag3": "Advanced Study"
+        }
+      },
+      "hobbyist": {
+        "title": "The Lifelong Learner",
+        "description": "Learning for the sake of mastery? You don’t need English for a job, but you’re serious about the craft. I help you treat language as a project, focusing on the logic and systems that make fluency a rewarding intellectual pursuit.",
+        "tags": {
+          "tag1": "Personal Growth",
+          "tag2": "Systems Logic",
+          "tag3": "Deep Mastery"
         }
       }
     }

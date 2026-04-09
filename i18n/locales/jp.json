@@ -47,18 +47,18 @@
     }
   },
   "stats": {
-    "section_label": "主要実績統計",
+    "section_label": "主要指標と実績",
     "labels": {
-      "years_experience": "経験年数",
-      "students_taught": "教えた生徒数",
-      "languages_spoken": "話せる言語数",
+      "ux_systems": "UX・システム設計歴",
+      "professionals_coached": "指導した専門職数",
+      "languages_spoken": "習得言語数",
       "years_japan": "日本在住歴",
-      "global_corps": "コーチング実績（グローバル企業）",
-      "published_author": "出版実績",
-      "jlpt_certified": "JLPT認定",
-      "age_range": "生徒の年齢層",
-      "class_size": "最大クラス規模",
-      "remote_coaching": "リモートコーチング"
+      "jlpt_certified": "JLPT 認定（N2）",
+      "core_framework": "独自の5段階メソッド",
+      "generic_tests": "形式的なテスト排除",
+      "linguistics": "言語学専攻（UCSD）",
+      "tech_channels": "配信チャンネル数",
+      "remote_architecture": "完全リモート対応"
     }
   },
   "who": {
@@ -98,6 +98,15 @@
           "tag1": "大学学習準備",
           "tag2": "研究・論文対策",
           "tag3": "高度な英語学習"
+        }
+      },
+      "hobbyist": {
+        "title": "知的探究心を持つ学習者",
+        "description": "習得そのものを楽しんでいますか？仕事で必要というわけではなくても、真剣に取り組みたい。そんなあなたのために、言語を一つのプロジェクトとして捉え、流暢さを手に入れるための論理とシステムを構築するお手伝いをします。",
+        "tags": {
+          "tag1": "自己研鑽",
+          "tag2": "システム思考",
+          "tag3": "深い習得"
         }
       }
     }

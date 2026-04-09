@@ -12,14 +12,13 @@
 .hero-content {
   text-align: center;
   z-index: 20;
-  margin-top: -2rem;
+  margin-top: -8rem;
   width: 100%;
   padding-inline: var(--space-unit);
 }
 
 .hero-title {
   font-family: var(--font-display);
-  /* Sizing follows the display-xl logic from main.css */
   font-size: clamp(3rem, 8vw, 6rem);
   line-height: 1.1;
   color: var(--text-dark);
@@ -30,8 +29,8 @@
   font-family: var(--font-main);
   font-size: 1.1rem;
   color: var(--text-dark);
-  margin-top: -1rem;
-  line-height: 1.4; /* Slightly increased for better readability */
+  margin-top: -0.5rem;
+  line-height: 1.3;
 }
 
 .hero-btn {
@@ -68,7 +67,7 @@
 @media (width >= 768px) {
   .hero-title {
     /* Scale logic mapped to system display tokens */
-    font-size: 5rem;
+    font-size: 4rem;
   }
 
   .hero-copy {
@@ -78,12 +77,18 @@
 
 @media (width >= 1024px) {
   .hero-title {
-    font-size: 7rem;
+    font-size: 5.5rem;
   }
 
   .hero-copy {
-    width: 75%;
     margin-inline: auto;
+    padding-inline: 4rem;
+  }
+}
+
+@media (width >= 1440px) {
+  .hero-title {
+    font-size: 7rem;
   }
 }
 </style>

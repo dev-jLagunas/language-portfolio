@@ -47,18 +47,18 @@
     }
   },
   "stats": {
-    "section_label": "Estadísticas clave de rendimiento",
+    "section_label": "Métricas clave y Capacidades",
     "labels": {
-      "years_experience": "Años de experiencia",
-      "students_taught": "Estudiantes enseñados",
+      "ux_systems": "Años UX y Sistemas",
+      "professionals_coached": "Profesionales Coacheados",
       "languages_spoken": "Idiomas hablados",
       "years_japan": "Años en Japón",
-      "global_corps": "Empresas globales asesoradas",
-      "published_author": "Autor publicado",
       "jlpt_certified": "Certificado JLPT",
-      "age_range": "Rango de edad de estudiantes",
-      "class_size": "Clase más grande",
-      "remote_coaching": "Coaching remoto"
+      "core_framework": "Marco de Trabajo Central",
+      "generic_tests": "Pruebas Genéricas",
+      "linguistics": "Formación en Lingüística",
+      "tech_channels": "Canales de Idiomas",
+      "remote_architecture": "Arquitectura Remota"
     }
   },
   "who": {
@@ -98,6 +98,15 @@
           "tag1": "Preparación Universitaria",
           "tag2": "Enfoque Académico",
           "tag3": "Estudio Avanzado"
+        }
+      },
+      "hobbyist": {
+        "title": "El Aprendiz Constante",
+        "description": "¿Aprendes por el puro gusto de dominarlo? No necesitas el inglés para el trabajo, pero te tomas el proceso en serio. Te ayudo a tratar el idioma como un proyecto, enfocándonos en la lógica que hace de la fluidez un reto intelectual gratificante.",
+        "tags": {
+          "tag1": "Crecimiento Personal",
+          "tag2": "Lógica de Sistemas",
+          "tag3": "Dominio Profundo"
         }
       }
     }

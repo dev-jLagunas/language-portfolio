@@ -47,18 +47,18 @@
     }
   },
   "stats": {
-    "section_label": "Statistiques de performance clés",
+    "section_label": "Indicateurs clés et Compétences",
     "labels": {
-      "years_experience": "Années d'expérience",
-      "students_taught": "Élèves formés",
-      "languages_spoken": "Langues parlées",
+      "ux_systems": "Années UX & Systèmes",
+      "professionals_coached": "Professionnels Coachés",
+      "languages_spoken": "Langues Parlées",
       "years_japan": "Années au Japon",
-      "global_corps": "Entreprises mondiales coachées",
-      "published_author": "Auteur publié",
       "jlpt_certified": "Certifié JLPT",
-      "age_range": "Tranche d'âge des élèves",
-      "class_size": "Plus grande classe",
-      "remote_coaching": "Coaching à distance"
+      "core_framework": "Méthodologie Centrale",
+      "generic_tests": "Tests Génériques",
+      "linguistics": "Formation Linguistique",
+      "tech_channels": "Chaînes de Langues",
+      "remote_architecture": "Architecture à Distance"
     }
   },
   "who": {
@@ -98,6 +98,15 @@
           "tag1": "Prépa Université",
           "tag2": "Focus Recherche",
           "tag3": "Études Avancées"
+        }
+      },
+      "hobbyist": {
+        "title": "Le Passionné Motivé",
+        "description": "Apprendre pour le plaisir de maîtriser ? Vous n'avez pas besoin de l'anglais pour le travail, mais vous êtes sérieux. Je vous aide à traiter la langue comme un projet, en me concentrant sur la logique qui fait de la fluidité une quête intellectuelle enrichissante.",
+        "tags": {
+          "tag1": "Développement Personnel",
+          "tag2": "Logique Système",
+          "tag3": "Maîtrise Approfondie"
         }
       }
     }

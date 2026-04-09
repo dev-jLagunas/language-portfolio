@@ -2,16 +2,15 @@
 const { t } = useI18n();
 
 const sourceStats = [
-  { number: "10+", key: "years_experience" },
-  { number: "1,000+", key: "students_taught" },
+  { number: "3+", key: "ux_systems" },
+  { number: "1,000+", key: "professionals_coached" },
   { number: "4", key: "languages_spoken" },
-  { number: "10", key: "years_japan" },
-  { number: "3", key: "global_corps" },
-  { number: "1", key: "published_author" },
+  { number: "10+", key: "years_japan" },
   { number: "N2", key: "jlpt_certified" },
-  { number: "3–87", key: "age_range" },
-  { number: "50+", key: "class_size" },
-  { number: "100%", key: "remote_coaching" },
+  { number: "5-Pt", key: "core_framework" },
+  { number: "UCSD", key: "linguistics" },
+  { number: "2", key: "tech_channels" },
+  { number: "100%", key: "remote_architecture" },
 ];
 
 const statsList = [...sourceStats, ...sourceStats];

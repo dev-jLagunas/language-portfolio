@@ -168,7 +168,7 @@ const toggleSidebar = () => {
 }
 
 .nav-info {
-  margin-left: 4rem;
+  margin-left: 1rem;
 }
 
 .nav-name {
@@ -239,9 +239,14 @@ const toggleSidebar = () => {
   .nav-name {
     font-size: 2rem;
   }
+
+  .nav-info {
+    margin-left: 3rem;
+  }
   .nav-avatar {
     height: 150px;
-    left: -65px;
+    left: -35px;
+    top: -25px;
   }
 }
 

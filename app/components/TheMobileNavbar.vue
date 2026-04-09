@@ -23,11 +23,10 @@ const scrollToSection = (href) => {
   }
 };
 
-// Intersection Observer to track scroll position
 onMounted(() => {
   const observerOptions = {
     root: null,
-    rootMargin: "-20% 0px -70% 0px", // Trigger when section is in upper-mid viewport
+    rootMargin: "-20% 0px -70% 0px",
     threshold: 0,
   };
 
@@ -82,7 +81,6 @@ onMounted(() => {
   width: 100%;
   height: 70px;
   z-index: 900;
-  /* Integration: Use system border for the top edge */
   border-top: var(--brutalist-border);
   display: none;
   transition: background-color 0.4s ease;
@@ -151,10 +149,6 @@ onMounted(() => {
   letter-spacing: 0.05em;
 }
 
-/* 
-   Active State: "Brutalist Pop" 
-   Replaces the broken line logic with a physical "lifted card" aesthetic 
-*/
 .mobile-nav-btn.is-active {
   opacity: 1;
   background: var(--text-light);
@@ -177,6 +171,23 @@ onMounted(() => {
   }
 }
 
+/* Specific fix for very small mobile screens */
+@media (width <= 425px) {
+  .mobile-tab-bar {
+    padding: 0 4px; /* Narrower horizontal padding */
+  }
+
+  .nav-text {
+    font-size: 0.6rem; /* Slightly smaller text to prevent overlap */
+    letter-spacing: 0; /* Remove extra tracking to save space */
+  }
+
+  .nav-icon-wrapper {
+    height: 24px; /* Slightly smaller icons */
+    width: 24px;
+  }
+}
+
 @supports (padding-bottom: env(safe-area-inset-bottom)) {
   .mobile-tab-bar {
     height: calc(70px + env(safe-area-inset-bottom));
@@ -184,7 +195,6 @@ onMounted(() => {
   }
 
   .mobile-nav-btn.is-active {
-    /* Adjust lift for safe areas to keep it balanced */
     transform: translateY(-15px);
   }
 }

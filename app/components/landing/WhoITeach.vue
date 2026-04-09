@@ -7,23 +7,28 @@ let ctx;
 // We use keys to reference the translations in our JSON files
 const students = [
   {
-    key: "test_taker",
-    image: "/images/characters/char-student.png",
+    key: "hobbyist",
+    image: "/images/characters/avatar-grandma.png",
     tags: ["tag1", "tag2", "tag3"],
   },
   {
     key: "professional",
-    image: "/images/characters/char-business-man.png",
+    image: "/images/characters/avatar-businesswoman.png",
     tags: ["tag1", "tag2", "tag3"],
   },
   {
     key: "explorer",
-    image: "/images/characters/char-traveller.png",
+    image: "/images/characters/avatar-expat.png",
     tags: ["tag1", "tag2", "tag3"],
   },
   {
     key: "next_gen",
-    image: "/images/characters/char-young-student.png",
+    image: "/images/characters/avatar-prof.png",
+    tags: ["tag1", "tag2", "tag3"],
+  },
+  {
+    key: "test_taker",
+    image: "/images/characters/char-student.png",
     tags: ["tag1", "tag2", "tag3"],
   },
 ];
@@ -122,8 +127,8 @@ onUnmounted(() => {
   font-family: var(--font-display);
   font-size: clamp(2.5rem, 6vw, 4rem);
   text-align: center;
-  margin-bottom: 5rem;
   color: var(--text-dark);
+  margin-bottom: 2rem;
 }
 
 .stack-wrapper {

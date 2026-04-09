@@ -132,6 +132,7 @@ onMounted(() => {
   height: 100%;
   margin-inline: auto;
   padding-bottom: 10px;
+  margin-top: -6rem;
 }
 
 /* --- Queue Layout Logic (Preserved) --- */
@@ -198,12 +199,12 @@ onMounted(() => {
   position: absolute;
   top: -65px;
   padding: 0.75rem 1rem;
-  border: var(--brutalist-border); /* Linked to System 3px */
+  border: var(--brutalist-border);
   font-family: var(--font-main);
   font-weight: 800;
   font-size: 0.85rem;
   white-space: nowrap;
-  box-shadow: var(--shadow-sm); /* Linked to System 4px shadow */
+  box-shadow: var(--shadow-sm);
   background: var(--bg-main);
   z-index: 10;
 
@@ -219,9 +220,16 @@ onMounted(() => {
   }
 }
 
-.bubble-left,
-.bubble-right {
+.bubble-left {
   top: -10%;
+  left: -30px;
+  transform: rotate(-15deg);
+}
+
+.bubble-right {
+  top: -7%;
+  right: 10px;
+  transform: rotate(15deg);
 }
 
 /* --- Bubble Pop Transition --- */
@@ -248,7 +256,7 @@ onMounted(() => {
    ========================= */
 @media (width >= 768px) {
   .hero-stage {
-    margin-top: -6rem;
+    margin-top: -3rem;
   }
 
   .conversation-pair {
@@ -304,7 +312,7 @@ onMounted(() => {
   }
 
   .bubble-right {
-    top: 15%;
+    top: -8%;
     left: 70%;
     right: auto;
 
@@ -325,6 +333,9 @@ onMounted(() => {
    MEDIA QUERIES (1024px+)
    ========================= */
 @media (width >= 1024px) {
+  .hero-stage {
+    margin-top: 0;
+  }
   .avatar-img {
     height: 450px;
   }
