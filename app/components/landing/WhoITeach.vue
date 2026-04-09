@@ -84,6 +84,13 @@ onUnmounted(() => {
           class="student-card"
         >
           <div :class="['card-inner', `theme-${locale}`]">
+            <img
+              src="/images/avatars/avatar-guiding.png"
+              class="guiding-avatar"
+              alt=""
+              aria-hidden="true"
+            />
+
             <div class="card-image">
               <img
                 :src="student.image"
@@ -145,6 +152,7 @@ onUnmounted(() => {
 }
 
 .card-inner {
+  position: relative; /* Added for absolute avatar positioning */
   border: var(--brutalist-border-thick);
   box-shadow: var(--shadow-lg);
   border-radius: 20px;
@@ -157,6 +165,16 @@ onUnmounted(() => {
   transform-origin: center top;
   backface-visibility: hidden;
   transition: background-color 0.4s ease;
+}
+
+/* Guiding Avatar CSS */
+.guiding-avatar {
+  position: absolute;
+  bottom: -100px; /* Sits flush with the bottom border */
+  left: -50px; /* Slight breakout to enhance the brutalist depth */
+  height: 150px;
+  z-index: 10;
+  pointer-events: none; /* Prevents interaction issues */
 }
 
 /* Theme Integration */
@@ -175,7 +193,7 @@ onUnmounted(() => {
 
 .card-image img {
   width: 100%;
-  max-height: 350px;
+  max-height: 400px;
   object-fit: contain;
 }
 
@@ -226,6 +244,12 @@ onUnmounted(() => {
     text-align: center;
     /* Lowered border-radius for cleaner Lite-Brutalist mobile look */
     border-radius: 12px;
+  }
+
+  .guiding-avatar {
+    height: 120px; /* Scaled down heavily for mobile bounds */
+    left: -50px;
+    bottom: -70px;
   }
 
   .card-image img {

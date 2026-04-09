@@ -68,6 +68,14 @@ onUnmounted(() => {
             </p>
             <span class="bg-number">{{ index + 1 }}</span>
           </div>
+
+          <!-- Avatar injected conditionally into the final step -->
+          <img
+            v-if="index === steps.length - 1"
+            src="/images/avatars/avatar-pushing.png"
+            class="pushing-avatar"
+            alt="Juan pushing"
+          />
         </div>
       </div>
     </div>
@@ -123,6 +131,7 @@ onUnmounted(() => {
   width: 75vw;
   max-width: 600px;
   flex-shrink: 0;
+  position: relative; /* Container for absolute avatar positioning */
 }
 
 .card-inner {
@@ -176,6 +185,24 @@ onUnmounted(() => {
   opacity: 0.05;
   z-index: 1;
   pointer-events: none;
+}
+
+/* Avatar default hidden for mobile */
+.pushing-avatar {
+  position: absolute;
+  right: -425px;
+  bottom: -100px;
+  height: 500px;
+  pointer-events: none;
+  z-index: 1;
+  display: none;
+}
+
+/* Enable avatar only when horizontal scroll is active */
+@media (width > 768px) {
+  .pushing-avatar {
+    display: block;
+  }
 }
 
 /* =========================

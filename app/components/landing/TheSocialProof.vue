@@ -9,37 +9,37 @@ const resources = [
   {
     key: "language_friends",
     link: "https://amazon.com/author/juanlagunas",
-    img: "/images/books/language-friends-cover.png",
+    img: "/images/links/language-friends-img.png",
     hasModal: true,
   },
   {
     key: "yt_challenge",
     link: "https://youtube.com/@moeandjuan",
-    img: "/images/avatars/avatar-pointing.png",
+    img: "/images/links/language-switch-img.png",
     hasModal: true,
   },
   {
     key: "english_lab",
     link: "https://youtube.com/@theenglishlab",
-    img: "/images/avatars/avatar-thumbs-up.png",
+    img: "/images/links/language-lab-img.png",
     hasModal: true,
   },
   {
     key: "portfolio",
     link: "https://juan-lagunas.com",
-    img: "/images/characters/char-professional.png",
+    img: "/images/links/ux-portfolio-img.png",
     hasModal: true,
   },
   {
     key: "behance",
     link: "https://behance.net/juan-lagunas",
-    img: "/images/characters/char-student.png",
+    img: "/images/links/unsplash-img.png",
     hasModal: false,
   },
   {
     key: "medium",
     link: "#",
-    img: "/images/characters/char-traveller.png",
+    img: "/images/links/medium-blog.png",
     hasModal: true,
   },
 ];

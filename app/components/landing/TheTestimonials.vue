@@ -193,8 +193,9 @@ onUnmounted(() => {
     & .avatar {
       width: 100%;
       height: 100%;
-      object-fit: contain;
-      margin-top: 5px;
+      object-fit: cover;
+      object-position: top;
+      background-color: var(--bg-main);
     }
   }
 
