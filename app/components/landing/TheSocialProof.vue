@@ -495,6 +495,12 @@ onUnmounted(() => {
   text-align: right;
 }
 
+.social-pills {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 .pill {
   font-family: var(--font-main);
   font-weight: 800;
@@ -505,11 +511,33 @@ onUnmounted(() => {
   border: 2px solid var(--text-dark);
   color: var(--text-dark);
   display: inline-block;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  background: transparent;
+}
+
+.pill:hover {
+  background: var(--text-dark);
+  color: var(--bg-main);
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0px var(--text-dark);
 }
 
 .pill.primary {
   background: var(--text-dark);
   color: var(--bg-main);
+}
+
+.pill.primary:hover {
+  background: var(--text-light);
+  color: var(--text-dark);
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0px var(--text-dark);
+}
+
+.pill:active {
+  transform: translate(0, 0);
+  box-shadow: none;
 }
 
 /* MODAL ANIMATIONS */
@@ -545,6 +573,12 @@ onUnmounted(() => {
   }
   .modal-layout {
     padding: 1.5rem;
+  }
+}
+
+@media (width >= 768px) {
+  .social-pills {
+    flex-direction: row;
   }
 }
 </style>

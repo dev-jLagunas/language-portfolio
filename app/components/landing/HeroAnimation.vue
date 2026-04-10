@@ -295,9 +295,9 @@ onMounted(() => {
 
   /* Bubble Re-positioning */
   .bubble-left {
-    top: 15%;
-    right: 70%;
-    left: auto;
+    top: 2%;
+    left: -175px;
+    transform: rotate(0deg);
 
     &::after {
       bottom: auto;
@@ -312,9 +312,9 @@ onMounted(() => {
   }
 
   .bubble-right {
-    top: -8%;
-    left: 70%;
-    right: auto;
+    top: -19%;
+    right: 25px;
+    transform: rotate(0deg);
 
     &::after {
       bottom: auto;
@@ -346,6 +346,22 @@ onMounted(() => {
 
   .pos-2 {
     transform: translateX(-200px) scale(0.8);
+  }
+
+  .bubble-left {
+    top: 8%;
+    left: -200px;
+  }
+
+  .bubble-right {
+    right: 125px;
+    top: -27%;
+  }
+}
+
+@media (width >= 1440px) {
+  .bubble-right {
+    right: 200px;
   }
 }
 </style>
