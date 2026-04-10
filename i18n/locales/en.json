@@ -255,6 +255,11 @@
       "location": "Ishikawa, Japan",
       "role": "Designer & English Coach",
       "bio": "I live and work on the coast of Ishikawa. I use my background in UX design and linguistics to help professionals communicate clearly and confidently. No fluff—just practical tools to help you get your point across."
+    },
+    "success": {
+      "title": "Entry Logged.",
+      "subtitle": "System received your diagnostic. I'll review your goals and reach out within 24 hours.",
+      "cta": "Send another entry"
     }
   },
   "footer": {

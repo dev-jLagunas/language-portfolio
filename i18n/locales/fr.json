@@ -251,6 +251,11 @@
       "location": "Ishikawa, Japon",
       "role": "Designer & Coach d'anglais",
       "bio": "Basé sur la côte d'Ishikawa. J'utilise mon expérience en design UX et en linguistique pour aider les professionnels à communiquer avec clarté et assurance. Pas de blabla—juste des outils pratiques pour vous aider à progresser."
+    },
+    "success": {
+      "title": "Entrée Enregistrée.",
+      "subtitle": "Le système a reçu votre diagnostic. J'examinerai vos objectifs et je vous contacterai d'ici 24 heures.",
+      "cta": "Envoyer une autre entrée"
     }
   },
   "footer": {

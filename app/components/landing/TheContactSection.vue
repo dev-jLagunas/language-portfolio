@@ -2,6 +2,7 @@
 const { locale, t } = useI18n();
 const { $gsap } = useNuxtApp();
 const sectionRef = ref(null);
+const isSubmitted = ref(false); // New reactive state
 let ctx;
 
 const goals = ["business", "academic", "fluency", "design"];
@@ -13,7 +14,6 @@ const formData = reactive({
   message: "",
 });
 
-// Helper for Netlify to process AJAX form data
 const encode = (data) => {
   return Object.keys(data)
     .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
@@ -21,7 +21,6 @@ const encode = (data) => {
 };
 
 const submitForm = () => {
-  // Built-in HTML validation handles the 'required' checks before this fires
   fetch("/", {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -31,14 +30,18 @@ const submitForm = () => {
     }),
   })
     .then(() => {
-      alert("System Entry Successful. I will contact you soon.");
-      // Reset form
+      isSubmitted.value = true; // Swap the UI
+      // Reset form data for potential resubmission
       formData.name = "";
       formData.email = "";
       formData.goal = "";
       formData.message = "";
     })
     .catch((error) => alert("System Error: " + error));
+};
+
+const resetForm = () => {
+  isSubmitted.value = false;
 };
 
 onMounted(() => {
@@ -85,70 +88,99 @@ onUnmounted(() => {
         <div class="form-container">
           <span class="pre-title animate-in">{{ t("contact.pre_title") }}</span>
           <h2 class="display-serif animate-in">{{ t("contact.title") }}</h2>
-          <p class="ui-text animate-in">
-            {{ t("contact.subtitle") }}
-          </p>
 
-          <form
-            name="contact-diagnostic"
-            method="POST"
-            data-netlify="true"
-            netlify-honeypot="bot-field"
-            @submit.prevent="submitForm"
-            class="audit-form animate-in"
-          >
-            <input type="hidden" name="form-name" value="contact-diagnostic" />
-            <p class="hidden">
-              <label
-                >Don’t fill this out if you’re human: <input name="bot-field"
-              /></label>
-            </p>
+          <Transition name="form-swap" mode="out-in">
+            <div v-if="!isSubmitted" key="form-view">
+              <p class="ui-text animate-in">
+                {{ t("contact.subtitle") }}
+              </p>
 
-            <div class="input-group">
-              <input
-                v-model="formData.name"
-                name="name"
-                type="text"
-                :placeholder="t('contact.placeholders.name')"
-                required
-                minlength="2"
-              />
-              <input
-                v-model="formData.email"
-                name="email"
-                type="email"
-                :placeholder="t('contact.placeholders.email')"
-                required
-              />
-            </div>
-
-            <div class="goal-selector">
-              <label v-for="goalKey in goals" :key="goalKey" class="goal-pill">
+              <form
+                name="contact-diagnostic"
+                method="POST"
+                data-netlify="true"
+                netlify-honeypot="bot-field"
+                @submit.prevent="submitForm"
+                class="audit-form animate-in"
+              >
                 <input
-                  type="radio"
-                  v-model="formData.goal"
-                  :value="goalKey"
-                  name="goal"
-                  required
+                  type="hidden"
+                  name="form-name"
+                  value="contact-diagnostic"
                 />
-                <span class="pill-btn">{{
-                  t(`contact.goals.${goalKey}`)
-                }}</span>
-              </label>
+                <p class="hidden">
+                  <label
+                    >Don’t fill this out if you’re human:
+                    <input name="bot-field"
+                  /></label>
+                </p>
+
+                <div class="input-group">
+                  <input
+                    v-model="formData.name"
+                    name="name"
+                    type="text"
+                    :placeholder="t('contact.placeholders.name')"
+                    required
+                    minlength="2"
+                  />
+                  <input
+                    v-model="formData.email"
+                    name="email"
+                    type="email"
+                    :placeholder="t('contact.placeholders.email')"
+                    required
+                  />
+                </div>
+
+                <div class="goal-selector">
+                  <label
+                    v-for="goalKey in goals"
+                    :key="goalKey"
+                    class="goal-pill"
+                  >
+                    <input
+                      type="radio"
+                      v-model="formData.goal"
+                      :value="goalKey"
+                      name="goal"
+                      required
+                    />
+                    <span class="pill-btn">{{
+                      t(`contact.goals.${goalKey}`)
+                    }}</span>
+                  </label>
+                </div>
+
+                <textarea
+                  v-model="formData.message"
+                  name="message"
+                  :placeholder="t('contact.placeholders.message')"
+                  required
+                  minlength="10"
+                ></textarea>
+
+                <button type="submit" class="submit-btn">
+                  {{ t("contact.cta") }} <span>→</span>
+                </button>
+              </form>
             </div>
 
-            <textarea
-              v-model="formData.message"
-              name="message"
-              :placeholder="t('contact.placeholders.message')"
-              required
-              minlength="10"
-            ></textarea>
-
-            <button type="submit" class="submit-btn">
-              {{ t("contact.cta") }} <span>→</span>
-            </button>
-          </form>
+            <div v-else key="success-view" class="success-card">
+              <div class="success-visual">
+                <img
+                  src="/images/avatars/avatar-sitting.png"
+                  alt="Success"
+                  class="success-avatar"
+                />
+              </div>
+              <h3 class="success-title">{{ t("contact.success.title") }}</h3>
+              <p class="success-text">{{ t("contact.success.subtitle") }}</p>
+              <button @click="resetForm" class="b-button reset-btn">
+                {{ t("contact.success.cta") }}
+              </button>
+            </div>
+          </Transition>
         </div>
 
         <div class="identity-card">
@@ -270,20 +302,10 @@ textarea {
   outline: none;
 }
 
-/* Form HTML Validation Styles */
-input:invalid:not(:placeholder-shown) {
-  border-color: #ff4d4d;
-}
-
-.hidden {
-  display: none;
-}
-
 .goal-selector {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
-  margin: 0.5rem 0;
 }
 
 .goal-pill input {
@@ -296,20 +318,15 @@ input:invalid:not(:placeholder-shown) {
   border: 2px solid var(--text-dark);
   background: var(--text-light);
   font-family: var(--font-main);
-  font-size: 0.85rem;
   font-weight: 800;
+  font-size: 0.85rem;
   cursor: pointer;
-  transition: all 0.2s ease;
 }
 
 .goal-pill input:checked + .pill-btn {
   background: var(--text-dark);
   color: var(--text-light);
   transform: translate(2px, 2px);
-}
-
-textarea {
-  min-height: 140px;
 }
 
 .submit-btn {
@@ -320,16 +337,9 @@ textarea {
   font-family: var(--font-main);
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
   cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
   box-shadow: var(--shadow-md);
-  transition:
-    transform 0.2s,
-    box-shadow 0.2s;
+  transition: all 0.2s;
 }
 
 .submit-btn:hover {
@@ -338,7 +348,65 @@ textarea {
 }
 
 /* -------------------------
-   IDENTITY CARD & MAP
+   SUCCESS CARD
+   ------------------------- */
+.success-card {
+  background: var(--text-light);
+  border: var(--brutalist-border-thick);
+  box-shadow: var(--shadow-xl);
+  padding: 4rem 3rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.success-avatar {
+  height: 180px;
+  margin-bottom: 2rem;
+  filter: drop-shadow(var(--shadow-md));
+}
+
+.success-title {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.success-text {
+  font-family: var(--font-main);
+  font-size: 1.25rem;
+  line-height: 1.6;
+  max-width: 450px;
+  margin-bottom: 2.5rem;
+}
+
+.reset-btn {
+  background: var(--text-dark);
+  color: var(--text-light);
+  padding: 1rem 2rem;
+}
+
+/* -------------------------
+   TRANSITIONS
+   ------------------------- */
+.form-swap-enter-active {
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.form-swap-leave-active {
+  transition: all 0.3s ease-in;
+}
+.form-swap-enter-from {
+  opacity: 0;
+  transform: translateY(30px);
+}
+.form-swap-leave-to {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+
+/* -------------------------
+   IDENTITY CARD
    ------------------------- */
 .identity-card {
   background: var(--text-light);
@@ -350,12 +418,11 @@ textarea {
 }
 
 .map-visual {
-  height: 280px; /* Increased to fit the image */
+  height: 280px;
   background-color: #eee;
   position: relative;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
   border-bottom: var(--brutalist-border-thick);
 }
 
@@ -398,13 +465,11 @@ textarea {
   margin-bottom: 1.5rem;
   border: 2px solid var(--text-dark);
   border-radius: 50%;
-  background: var(--bg-main);
 }
 
 .bio-name {
   font-family: var(--font-display);
   font-size: 2rem;
-  margin-bottom: 0.25rem;
 }
 
 .role {
@@ -420,23 +485,22 @@ textarea {
   font-family: var(--font-main);
   font-size: 1rem;
   line-height: 1.6;
-  color: #333;
 }
 
-/* -------------------------
-   MEDIA QUERIES
-   ------------------------- */
 @media (width <= 1024px) {
   .split-layout {
     grid-template-columns: 1fr;
-    gap: 4rem;
   }
   .identity-card {
     position: static;
     max-width: 600px;
   }
-  .audit-form .input-group {
+  .input-group {
     grid-template-columns: 1fr;
   }
+}
+
+.hidden {
+  display: none;
 }
 </style>
