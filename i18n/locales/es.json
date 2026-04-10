@@ -253,9 +253,9 @@
       "bio": "Vivo y trabajo en la costa de Ishikawa. Utilizo mi experiencia en diseño UX y lingüística para ayudar a profesionales a comunicarse con claridad y confianza. Sin rodeos—solo herramientas prácticas para ayudarte a avanzar."
     },
     "success": {
-      "title": "Entrada Registrada.",
-      "subtitle": "Sistema recibió tu diagnóstico. Revisaré tus metas y me pondré en contacto contigo en menos de 24 horas.",
-      "cta": "Enviar otra entrada"
+      "title": "¡Recibido!",
+      "subtitle": "Gracias por la información. Voy a revisar tus objetivos ahora mismo y te responderé personalmente en menos de 24 horas.",
+      "cta": "Enviar otro mensaje"
     }
   },
   "footer": {

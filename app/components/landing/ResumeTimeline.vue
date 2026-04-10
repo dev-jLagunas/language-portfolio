@@ -16,6 +16,20 @@ const timelineKeys = [
   "youtube",
 ];
 
+// Mapping of timeline keys to visual image paths based on the provided clues
+const visualMap = {
+  irc: "/images/visuals/english-assistant-visual.png",
+  ucsd: "/images/visuals/ucsd-linguistics-visual.png",
+  eia: "/images/visuals/english-action-visual.png",
+  aeon: "/images/visuals/aeon-school-visual.png",
+  westgate: "/images/visuals/meiji-university-visual.png",
+  boe: "/images/visuals/alt-school-visual.png",
+  cafe: "/images/visuals/cafe-triangle-visual.png",
+  freelance: "/images/visuals/ux-design-visual.png",
+  friends: "/images/visuals/language-friends-visuals.png",
+  youtube: "/images/visuals/youtube-channels-visual.png",
+};
+
 const activeIndex = ref(0);
 let autoPlayInterval = null;
 
@@ -131,7 +145,13 @@ onUnmounted(() => {
           </div>
 
           <div class="card-image-slot">
-            <div class="img-placeholder-pattern"></div>
+            <img
+              v-if="visualMap[key]"
+              :src="visualMap[key]"
+              :alt="t(`resume.items.${key}.role`)"
+              class="visual-img"
+            />
+            <div v-else class="img-placeholder-pattern"></div>
           </div>
 
           <div class="card-body">
@@ -304,7 +324,21 @@ onUnmounted(() => {
   overflow: hidden;
 }
 
+.visual-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: opacity 0.4s ease;
+}
+
 .img-placeholder-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   background-image: repeating-linear-gradient(
@@ -373,7 +407,7 @@ onUnmounted(() => {
   }
 }
 
-@media (width <= 1440px) {
+@media (width >= 1440px) {
   .title-wrapper {
     margin-left: 4rem;
   }
