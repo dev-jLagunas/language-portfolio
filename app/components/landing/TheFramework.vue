@@ -1,17 +1,16 @@
 <script setup>
-const { t } = useI18n();
+const { locale, t } = useI18n();
 const { $gsap } = useNuxtApp();
 const sectionRef = ref(null);
 const scrollRef = ref(null);
 let ctx;
 
-// We use keys to map to the localized content in our JSON files
 const steps = [
-  { key: "step1" },
-  { key: "step2" },
-  { key: "step3" },
-  { key: "step4" },
-  { key: "step5" },
+  { key: "step1", icon: "ph:magnifying-glass-bold" },
+  { key: "step2", icon: "ph:brain-bold" },
+  { key: "step3", icon: "ph:target-bold" },
+  { key: "step4", icon: "ph:globe-hemisphere-west-bold" },
+  { key: "step5", icon: "ph:arrows-clockwise-bold" },
 ];
 
 onMounted(() => {
@@ -57,9 +56,13 @@ onUnmounted(() => {
       <div ref="scrollRef" class="horizontal-track">
         <div v-for="(step, index) in steps" :key="index" class="step-card">
           <div class="card-inner">
-            <span class="step-tag">{{
-              t(`framework.steps.${step.key}.label`)
-            }}</span>
+            <div class="step-header">
+              <Icon :name="step.icon" class="step-icon" />
+              <span :class="['step-tag', `theme-${locale}`]">
+                {{ t(`framework.steps.${step.key}.label`) }}
+              </span>
+            </div>
+
             <h3 class="step-title">
               {{ t(`framework.steps.${step.key}.title`) }}
             </h3>
@@ -69,7 +72,6 @@ onUnmounted(() => {
             <span class="bg-number">{{ index + 1 }}</span>
           </div>
 
-          <!-- Avatar injected conditionally into the final step -->
           <img
             v-if="index === steps.length - 1"
             src="/images/avatars/avatar-pushing.png"
@@ -124,14 +126,14 @@ onUnmounted(() => {
 .horizontal-track {
   display: flex;
   gap: 4rem;
-  width: fit-content; /* Critical for GSAP horizontal scroll logic */
+  width: fit-content;
 }
 
 .step-card {
   width: 75vw;
   max-width: 600px;
   flex-shrink: 0;
-  position: relative; /* Container for absolute avatar positioning */
+  position: relative;
 }
 
 .card-inner {
@@ -141,27 +143,62 @@ onUnmounted(() => {
   padding: 4rem 3rem;
   position: relative;
   overflow: hidden;
-  height: 450px;
+  height: 425px; /* Slight height bump for icon spacing */
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
+/* -------------------------
+   NEW ICON & TAG STYLES
+   ------------------------- */
+.step-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  z-index: 2;
+}
+
+.step-icon {
+  font-size: 2.5rem;
+  color: var(--text-dark);
+}
+
 .step-tag {
   display: inline-block;
-  background: var(--text-dark);
-  color: var(--text-light);
   padding: 0.5rem 1rem;
   font-size: 0.7rem;
   font-weight: 900;
-  margin-bottom: 2rem;
   width: fit-content;
+  border: 2px solid var(--text-dark);
+  color: var(--text-dark);
+  text-transform: uppercase;
+  box-shadow: 3px 3px 0px var(--text-dark);
+  transition: background-color 0.4s ease;
 }
 
+/* Theme Background Colors */
+.step-tag.theme-en {
+  background-color: var(--color-en);
+}
+.step-tag.theme-es {
+  background-color: var(--color-es);
+}
+.step-tag.theme-jp {
+  background-color: var(--color-jp);
+}
+.step-tag.theme-fr {
+  background-color: var(--color-fr);
+}
+
+/* -------------------------
+   CONTENT STYLES
+   ------------------------- */
 .step-title {
   font-family: var(--font-display);
   font-size: 2.5rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
   line-height: 1.1;
   z-index: 2;
   color: var(--text-dark);
@@ -182,12 +219,11 @@ onUnmounted(() => {
   font-family: var(--font-display);
   font-size: 12rem;
   color: var(--text-dark);
-  opacity: 0.05;
+  opacity: 0.2;
   z-index: 1;
   pointer-events: none;
 }
 
-/* Avatar default hidden for mobile */
 .pushing-avatar {
   position: absolute;
   right: -425px;
@@ -198,7 +234,6 @@ onUnmounted(() => {
   display: none;
 }
 
-/* Enable avatar only when horizontal scroll is active */
 @media (width > 768px) {
   .pushing-avatar {
     display: block;

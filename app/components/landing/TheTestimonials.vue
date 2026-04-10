@@ -5,10 +5,10 @@ const sectionRef = ref(null);
 let ctx;
 
 const testimonials = [
-  { key: "hiroki", image: "/images/characters/char-business-man.png" },
-  { key: "elena", image: "/images/characters/char-student.png" },
-  { key: "kenji", image: "/images/characters/char-traveller.png" },
-  { key: "saki", image: "/images/characters/char-young-student.png" },
+  { key: "hiroki", image: "/images/characters/avatar-satoshi.png" },
+  { key: "elena", image: "/images/characters/avatar-mina.png" },
+  { key: "kenji", image: "/images/characters/avatar-park.png" },
+  { key: "saki", image: "/images/characters/avatar-takumi.png" },
 ];
 
 onMounted(() => {
@@ -20,7 +20,7 @@ onMounted(() => {
         y: 60,
         opacity: 0,
         scale: 0.9,
-        rotation: i % 2 === 0 ? -2 : 2,
+        rotation: i % 2 === 0 ? -1 : 1,
         duration: 0.7,
         ease: "back.out(1.5)",
         scrollTrigger: {
@@ -47,7 +47,7 @@ onUnmounted(() => {
   >
     <div class="container">
       <div class="intro">
-        <h2 class="title">{{ t("testimonials.title") }}</h2>
+        <h2 class="display-xl">{{ t("testimonials.title") }}</h2>
         <p class="subtitle">{{ t("testimonials.subtitle") }}</p>
       </div>
 
@@ -57,26 +57,32 @@ onUnmounted(() => {
           :key="index"
           :class="['testimonial-card', `theme-${locale}`]"
         >
-          <div class="card-inner">
-            <div class="quote-icon">“</div>
-            <p class="story">{{ t(`testimonials.items.${item.key}.story`) }}</p>
+          <div class="texture-grid"></div>
 
+          <div class="card-inner">
             <div class="user-meta">
-              <div class="avatar-box">
-                <img
-                  :src="item.image"
-                  :alt="t(`testimonials.items.${item.key}.name`)"
-                  class="avatar"
-                />
-              </div>
-              <div class="info">
-                <span class="name">{{
-                  t(`testimonials.items.${item.key}.name`)
-                }}</span>
-                <span class="role">{{
-                  t(`testimonials.items.${item.key}.role`)
-                }}</span>
-              </div>
+              <span class="name">{{
+                t(`testimonials.items.${item.key}.name`)
+              }}</span>
+              <span class="role">{{
+                t(`testimonials.items.${item.key}.role`)
+              }}</span>
+            </div>
+
+            <div class="story-wrapper">
+              <span class="quote-mark open">“</span>
+              <p class="story">
+                {{ t(`testimonials.items.${item.key}.story`) }}
+              </p>
+              <span class="quote-mark close">”</span>
+            </div>
+
+            <div class="image-anchor">
+              <img
+                :src="item.image"
+                :alt="t(`testimonials.items.${item.key}.name`)"
+                class="pinned-polaroid"
+              />
             </div>
           </div>
         </div>
@@ -100,7 +106,7 @@ onUnmounted(() => {
 
 .intro {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 5rem;
 
   & .title {
     font-family: var(--font-display);
@@ -121,22 +127,25 @@ onUnmounted(() => {
 
 .testimonial-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 8rem 3rem; /* Extra vertical gap for the breakout image */
 }
 
+/* -------------------------
+   CARD ARCHITECTURE
+   ------------------------- */
 .testimonial-card {
+  position: relative;
   padding: 3rem;
-  /* System Integration: Heavy Brutalist lines and large offset shadow */
   border: var(--brutalist-border-thick);
   box-shadow: var(--shadow-lg);
   display: flex;
   flex-direction: column;
-  transition: transform 0.2s ease;
   background-color: var(--bg-card);
+  overflow: visible;
+  transition: transform 0.3s ease;
 }
 
-/* Theme Backgrounds mapped to design tokens */
 .theme-en {
   background-color: var(--color-en);
 }
@@ -150,75 +159,120 @@ onUnmounted(() => {
   background-color: var(--color-fr);
 }
 
+.texture-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+  z-index: 0;
+  pointer-events: none;
+}
+
 .card-inner {
+  position: relative;
+  z-index: 2;
   height: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center; /* Center content for better alignment with polaroid */
+  text-align: center;
+}
 
-  & .quote-icon {
-    font-family: var(--font-display);
-    font-size: 5rem;
-    line-height: 1;
-    margin-bottom: -1rem;
-    opacity: 0.2;
+/* -------------------------
+   HEADER (NAME & ROLE)
+   ------------------------- */
+.user-meta {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2.5rem;
+  width: 100%;
+
+  & .name {
+    font-family: var(--font-main);
+    font-weight: 900;
+    font-size: 1.4rem;
+    text-transform: uppercase;
     color: var(--text-dark);
+    letter-spacing: 0.02em;
   }
 
-  & .story {
-    font-family: var(--font-display);
-    font-size: 1.4rem;
-    line-height: 1.4;
+  & .role {
+    font-family: var(--font-main);
+    font-size: 0.8rem;
+    font-weight: 700;
+    opacity: 0.5;
     color: var(--text-dark);
-    margin-bottom: 2.5rem;
-    flex-grow: 1;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
   }
 }
 
-.user-meta {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  border-top: 2px solid rgba(0, 0, 0, 0.1);
-  padding-top: 1.5rem;
+/* -------------------------
+   STORY & QUOTES
+   ------------------------- */
+.story-wrapper {
+  position: relative;
+  padding: 0 1rem;
+  margin-bottom: 4rem; /* Space for polaroid below */
+}
 
-  & .avatar-box {
-    width: 60px;
-    height: 60px;
-    background: var(--text-light);
-    border: var(--brutalist-border); /* Linked to 3px system border */
-    border-radius: 50%;
-    overflow: hidden;
-    flex-shrink: 0;
+.story {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  line-height: 1.3;
+  color: var(--text-dark);
+  position: relative;
+  z-index: 1;
+  text-align: start;
+}
 
-    & .avatar {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top;
-      background-color: var(--bg-main);
-    }
-  }
+.quote-mark {
+  font-family: var(--font-display);
+  font-size: 8rem;
+  color: var(--text-dark);
+  opacity: 0.15;
+  line-height: 1;
+  position: absolute;
+  user-select: none;
+}
 
-  & .info {
-    display: flex;
-    flex-direction: column;
+.quote-mark.open {
+  top: -45px;
+  left: -30px;
+  transform: rotate(-15deg);
+}
 
-    & .name {
-      font-family: var(--font-main);
-      font-weight: 900;
-      font-size: 1.1rem;
-      text-transform: uppercase;
-      color: var(--text-dark);
-    }
+.quote-mark.close {
+  bottom: -100px;
+  right: 10px;
+  transform: rotate(15deg);
+}
 
-    & .role {
-      font-family: var(--font-main);
-      font-size: 0.85rem;
-      font-weight: 700;
-      opacity: 0.6;
-      color: var(--text-dark);
-    }
-  }
+/* -------------------------
+   CENTERED PINNED POLAROID
+   ------------------------- */
+.image-anchor {
+  position: relative;
+  width: 100%;
+  height: 60px; /* Acts as a spacer for the absolute image */
+}
+
+.pinned-polaroid {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 225px; /* Bigger presence as requested */
+  height: auto;
+  z-index: 10;
+  filter: drop-shadow(8px 8px 0px rgba(0, 0, 0, 0.2));
+  transition: transform 0.3s ease;
+}
+
+.testimonial-card:hover .pinned-polaroid {
+  transform: translateX(-50%) translateY(-5px) scale(1.02);
 }
 
 /* =========================
@@ -227,10 +281,25 @@ onUnmounted(() => {
 @media (width <= 900px) {
   .testimonial-grid {
     grid-template-columns: 1fr;
+    gap: 8rem;
   }
 
   .testimonial-card {
-    padding: 2rem;
+    padding: 2rem 0.5rem;
+  }
+
+  .story {
+    font-size: 1.25rem;
+  }
+
+  .pinned-polaroid {
+    width: 200px;
+  }
+}
+
+@media (width >= 1024px) {
+  .pinned-polaroid {
+    width: 240px;
   }
 }
 </style>

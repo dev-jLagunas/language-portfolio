@@ -302,6 +302,15 @@ onUnmounted(() => {
   transition: background-color 0.4s ease;
 }
 
+.pre-title {
+  font-family: var(--font-main);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  font-weight: 800;
+  opacity: 0.5;
+}
+
 .job-id {
   font-family: var(--font-main);
   font-weight: 900;

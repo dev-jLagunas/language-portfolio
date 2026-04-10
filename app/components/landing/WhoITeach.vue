@@ -53,7 +53,7 @@ onMounted(() => {
       if (i < cards.length - 1) {
         $gsap.to(card.querySelector(".card-inner"), {
           scale: 0.9,
-          opacity: 0.3,
+          opacity: 0.1,
           scrollTrigger: {
             trigger: cards[i + 1],
             start: "top 80%",
@@ -159,7 +159,6 @@ onUnmounted(() => {
   position: relative;
   border: var(--brutalist-border-thick);
   box-shadow: var(--shadow-lg);
-  border-radius: 20px;
   display: grid;
   grid-template-columns: 1fr 1.5fr;
   align-items: center;
@@ -243,7 +242,6 @@ onUnmounted(() => {
     padding: 1.5rem;
     gap: 1rem;
     text-align: center;
-    border-radius: 12px;
   }
 
   .guiding-avatar {

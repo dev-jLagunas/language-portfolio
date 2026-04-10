@@ -154,6 +154,10 @@
   "testimonials": {
     "title": "Success Stories",
     "subtitle": "Real Results from Real People",
+    "labels": {
+      "log": "LOG NO.",
+      "verified": "VERIFIED RESULT"
+    },
     "items": {
       "hiroki": {
         "name": "Satoshi M.",
