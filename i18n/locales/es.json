@@ -12,9 +12,18 @@
       "who_i_help": "A quién ayudo",
       "how_it_works": "Cómo funciona",
       "testimonials": "Testimonios",
+      "resume_timeline": "Trayectoria",
       "social_proof": "Pruebas sociales",
       "contact": "Contacto"
     }
+  },
+  "mobile_nav": {
+    "students": "Alumnos",
+    "system": "Sistema",
+    "testimonials": "Reseñas",
+    "resume": "CV",
+    "links": "Enlaces",
+    "contact": "Contacto"
   },
   "hero": {
     "content": {
@@ -260,5 +269,71 @@
     },
     "location": "Operando desde Ishikawa, Japón.",
     "built_with": "Construido con"
+  },
+  "resume": {
+    "title": "Trayectoria Profesional",
+    "tagline": "Un resumen de mi carrera",
+    "items": {
+      "irc": {
+        "year": "2011",
+        "company": "IRC",
+        "role": "Asistente de Profesor",
+        "desc": "Apoyo en la enseñanza de inglés a refugiados iraquíes; enfoque en la integración cultural y lingüística inicial."
+      },
+      "ucsd": {
+        "year": "2012 — 2015",
+        "company": "UC San Diego",
+        "role": "Licenciatura en Lingüística",
+        "desc": "Especialización en sistemas estructurales y patrones cognitivos del lenguaje."
+      },
+      "eia": {
+        "year": "2012 — 2015",
+        "company": "English in Action",
+        "role": "Compañero Lingüístico",
+        "desc": "Voluntario como socio lingüístico para estudiantes y profesores internacionales para cerrar brechas de comunicación."
+      },
+      "aeon": {
+        "year": "2015 — 2018",
+        "company": "AEON (Japón)",
+        "role": "Profesor de Distinción",
+        "desc": "Enseñé a más de 500 alumnos; asignado a empresas globales como Fujitsu y Komatsu; capacitador de otros educadores."
+      },
+      "westgate": {
+        "year": "2018 — 2019",
+        "company": "Westgate",
+        "role": "Instructor Universitario",
+        "desc": "Programas intensivos de inglés en la Universidad de Tokio y la Universidad de Meiji (Campus Izumi)."
+      },
+      "boe": {
+        "year": "2019 — 2020",
+        "company": "Junta de Educación",
+        "role": "ALT de Contratación Directa",
+        "desc": "Especialista en idiomas para escuelas locales; enfoque en la entrega del currículo y participación estudiantil."
+      },
+      "cafe": {
+        "year": "2021 — 2024",
+        "company": "Cafe Triangle",
+        "role": "Propietario y Operador",
+        "desc": "Gestión del diseño espacial y lógica de negocio en un entorno autónomo de alta responsabilidad."
+      },
+      "freelance": {
+        "year": "2023 — Presente",
+        "company": "Laboratorio de Diseño",
+        "role": "Diseñador de Producto y UX",
+        "desc": "Arquitecto de sistemas autodidacta; creación de soluciones digitales escalables desde una perspectiva estructural."
+      },
+      "friends": {
+        "year": "2025",
+        "company": "Language Friends",
+        "role": "Autor y Fundador",
+        "desc": "Lanzamiento de una serie de libros infantiles digitales diseñados para la exposición temprana al inglés."
+      },
+      "youtube": {
+        "year": "2026",
+        "company": "YouTube",
+        "role": "Educador de Contenido",
+        "desc": "Enseñanza de inglés y documentación de retos en japonés para mostrar la lógica del aprendizaje real."
+      }
+    }
   }
 }

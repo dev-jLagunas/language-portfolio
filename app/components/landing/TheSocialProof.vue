@@ -88,7 +88,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section ref="sectionRef" class="beyond-lab" id="social-proof">
+  <section ref="sectionRef" class="beyond-lab" id="social-proof" data-step="5">
     <div class="container">
       <div class="header-flex">
         <h2 class="section-title">{{ t("resources.section_title") }}</h2>

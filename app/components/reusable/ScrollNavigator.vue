@@ -3,9 +3,11 @@ import { ref, onMounted, onBeforeUnmount, computed } from "vue";
 
 const props = defineProps<{ total: number }>();
 const activeIndex = ref(0);
+const userActive = ref(true);
+let inactivityTimer: ReturnType<typeof setTimeout> | null = null;
 
-// Navigator is only visible if we are in a tracked section (activeIndex > 0)
-const isVisible = computed(() => activeIndex.value >= 1);
+// Navigator is visible if in a tracked section AND user has moved recently
+const isVisible = computed(() => activeIndex.value >= 1 && userActive.value);
 
 let observer: IntersectionObserver | null = null;
 
@@ -22,22 +24,33 @@ function scrollToSection(index: number) {
   }
 }
 
-// Resets the index to 0 when at the very top of the page
+const resetInactivityTimer = () => {
+  userActive.value = true;
+
+  if (inactivityTimer) clearTimeout(inactivityTimer);
+
+  inactivityTimer = setTimeout(() => {
+    userActive.value = false;
+  }, 1000);
+};
+
 const handleTopDetection = () => {
   if (window.scrollY < 100) {
     activeIndex.value = 0;
   }
+  resetInactivityTimer();
 };
 
 onMounted(() => {
   window.addEventListener("scroll", handleTopDetection);
+  // Initial timer start
+  resetInactivityTimer();
 
   const sections = document.querySelectorAll<HTMLElement>("[data-step]");
 
   observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        // Only update index if the section is truly in the "active" middle zone
         if (!entry.isIntersecting) return;
 
         const index = Number(entry.target.getAttribute("data-step"));
@@ -56,6 +69,7 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
   window.removeEventListener("scroll", handleTopDetection);
+  if (inactivityTimer) clearTimeout(inactivityTimer);
   observer?.disconnect();
   observer = null;
 });

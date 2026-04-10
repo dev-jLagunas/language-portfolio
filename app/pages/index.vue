@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const TOTAL_SECTIONS = 5;
+const TOTAL_SECTIONS = 6;
 </script>
 
 <template>
@@ -13,6 +13,7 @@ const TOTAL_SECTIONS = 5;
       <LandingWhoITeach />
       <LandingTheFramework />
       <LandingTheTestimonials />
+      <LandingResumeTimeline />
       <LandingTheSocialProof />
       <LandingTheContactSection />
     </main>

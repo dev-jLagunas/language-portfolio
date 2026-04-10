@@ -18,6 +18,15 @@ const platforms = [
 const toggleSidebar = () => {
   isSidebarOpen.value = !isSidebarOpen.value;
 };
+
+const scrollToSection = (href) => {
+  const el = document.querySelector(href);
+  if (el) {
+    const offset = 70;
+    const top = el.getBoundingClientRect().top + window.pageYOffset - offset;
+    window.scrollTo({ top, behavior: "smooth" });
+  }
+};
 </script>
 
 <template>
@@ -84,9 +93,9 @@ const toggleSidebar = () => {
             </button>
           </div>
 
-          <a href="/contact" class="nav-booking-link">
+          <button @click="scrollToSection('#contact')" class="nav-booking-link">
             {{ $t("nav.book_lesson") }}
-          </a>
+          </button>
         </div>
 
         <label class="hamburger">

@@ -12,9 +12,18 @@
       "who_i_help": "Qui j'aide",
       "how_it_works": "Comment ça marche",
       "testimonials": "Témoignages",
+      "resume_timeline": "Parcours",
       "social_proof": "Preuve sociale",
       "contact": "Contact"
     }
+  },
+  "mobile_nav": {
+    "students": "Élèves",
+    "system": "Système",
+    "testimonials": "Avis",
+    "resume": "CV",
+    "links": "Liens",
+    "contact": "Contact"
   },
   "hero": {
     "content": {
@@ -232,7 +241,7 @@
       "message": "Quels sont vos objectifs ou vos défis actuels avec l'anglais ?"
     },
     "goals": {
-      "business": "Business & Soft Skills",
+      "business": "Compétences Commerciales",
       "academic": "Académique & Examens",
       "fluency": "Fluidité & Conversation",
       "design": "Design & Créativité"
@@ -260,5 +269,71 @@
     },
     "location": "Basé à Ishikawa, Japon.",
     "built_with": "Réalisé avec"
+  },
+  "resume": {
+    "title": "Parcours Professionnel",
+    "tagline": "Un aperçu de mon parcours",
+    "items": {
+      "irc": {
+        "year": "2011",
+        "company": "IRC",
+        "role": "Assistant d'Enseignement",
+        "desc": "Soutien à l'enseignement de l'anglais pour les réfugiés irakiens ; axé sur l'intégration culturelle et linguistique initiale."
+      },
+      "ucsd": {
+        "year": "2012 — 2015",
+        "company": "UC San Diego",
+        "role": "Diplôme en Linguistique",
+        "desc": "Spécialisation dans les systèmes structurels et les schémas cognitifs du langage."
+      },
+      "eia": {
+        "year": "2012 — 2015",
+        "company": "English in Action",
+        "role": "Partenaire Linguistique",
+        "desc": "Bénévole en tant que partenaire pour les étudiants et professeurs internationaux afin de faciliter la communication."
+      },
+      "aeon": {
+        "year": "2015 — 2018",
+        "company": "AEON (Japon)",
+        "role": "Enseignant d'Excellence",
+        "desc": "Formation de plus de 500 élèves ; détaché auprès d'entreprises mondiales (Fujitsu, Komatsu) ; formateur d'enseignants."
+      },
+      "westgate": {
+        "year": "2018 — 2019",
+        "company": "Westgate",
+        "role": "Instructeur Universitaire",
+        "desc": "Programmes intensifs d'anglais à l'Université de Tokyo et à l'Université de Meiji (Campus Izumi)."
+      },
+      "boe": {
+        "year": "2019 — 2020",
+        "company": "Conseil de l'Éducation",
+        "role": "ALT en Recrutement Direct",
+        "desc": "Spécialiste linguistique pour les écoles locales ; axé sur la mise en œuvre du programme et l'engagement des élèves."
+      },
+      "cafe": {
+        "year": "2021 — 2024",
+        "company": "Cafe Triangle",
+        "role": "Propriétaire et Gérant",
+        "desc": "Gestion du design spatial et de la logique commerciale dans un environnement autonome de haute responsabilité."
+      },
+      "freelance": {
+        "year": "2023 — Présent",
+        "company": "Design Lab",
+        "role": "Designer Produit & UX",
+        "desc": "Architecte système autodidacte ; création de solutions numériques évolutives via un prisme linguistique et structurel."
+      },
+      "friends": {
+        "year": "2025",
+        "company": "Language Friends",
+        "role": "Auteur et Fondateur",
+        "desc": "Lancement d'une série de livres numériques pour enfants, conçue pour une première immersion en anglais."
+      },
+      "youtube": {
+        "year": "2026",
+        "company": "YouTube",
+        "role": "Éducateur de Contenu",
+        "desc": "Enseignement de l'anglais et documentation de défis en japonais pour illustrer la logique d'apprentissage réelle."
+      }
+    }
   }
 }

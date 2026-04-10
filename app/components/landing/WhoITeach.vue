@@ -1,10 +1,9 @@
 <script setup>
-const { locale, t } = useI18n(); // Standard usage
+const { locale, t } = useI18n();
 const { $gsap } = useNuxtApp();
 const container = ref(null);
 let ctx;
 
-// We use keys to reference the translations in our JSON files
 const students = [
   {
     key: "hobbyist",
@@ -74,6 +73,8 @@ onUnmounted(() => {
 
 <template>
   <section ref="container" class="teach-section" id="who-i-help" data-step="1">
+    <div class="texture-grid"></div>
+
     <div class="content-limit">
       <h2 class="section-title">{{ t("who.section_title") }}</h2>
 
@@ -123,11 +124,14 @@ onUnmounted(() => {
   background-color: var(--bg-main);
   padding: 6rem var(--space-unit) 0 var(--space-unit);
   z-index: 5;
+  overflow: hidden;
 }
 
 .content-limit {
+  position: relative;
   max-width: 1000px;
   margin: 0 auto;
+  z-index: 2;
 }
 
 .section-title {
@@ -152,7 +156,7 @@ onUnmounted(() => {
 }
 
 .card-inner {
-  position: relative; /* Added for absolute avatar positioning */
+  position: relative;
   border: var(--brutalist-border-thick);
   box-shadow: var(--shadow-lg);
   border-radius: 20px;
@@ -167,17 +171,15 @@ onUnmounted(() => {
   transition: background-color 0.4s ease;
 }
 
-/* Guiding Avatar CSS */
 .guiding-avatar {
   position: absolute;
-  bottom: -100px; /* Sits flush with the bottom border */
-  left: -50px; /* Slight breakout to enhance the brutalist depth */
+  bottom: -100px;
+  left: -50px;
   height: 150px;
   z-index: 10;
-  pointer-events: none; /* Prevents interaction issues */
+  pointer-events: none;
 }
 
-/* Theme Integration */
 .theme-en {
   background-color: var(--color-en);
 }
@@ -238,22 +240,19 @@ onUnmounted(() => {
 
   .card-inner {
     grid-template-columns: 1fr;
-    /* Reduced padding to ensure card fits within pinned viewport */
     padding: 1.5rem;
     gap: 1rem;
     text-align: center;
-    /* Lowered border-radius for cleaner Lite-Brutalist mobile look */
     border-radius: 12px;
   }
 
   .guiding-avatar {
-    height: 120px; /* Scaled down heavily for mobile bounds */
+    height: 120px;
     left: -50px;
     bottom: -70px;
   }
 
   .card-image img {
-    /* Significantly reduced max-height for mobile visibility */
     max-height: 180px;
   }
 

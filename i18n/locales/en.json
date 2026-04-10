@@ -9,6 +9,14 @@
     "links": "Links",
     "contact": "Contact"
   },
+  "mobile_nav": {
+    "students": "Students",
+    "system": "System",
+    "testimonials": "Reviews",
+    "resume": "Resume",
+    "links": "Links",
+    "contact": "Contact"
+  },
   "sidebar": {
     "system_language": "System Language",
     "close_alt": "Close",
@@ -16,6 +24,7 @@
       "who_i_help": "Who I Help",
       "how_it_works": "How it Works",
       "testimonials": "Testimonials",
+      "resume_timeline": "Resume Timeline",
       "social_proof": "Social Proof",
       "contact": "Contact"
     }
@@ -264,5 +273,71 @@
     },
     "location": "Operating from Ishikawa, Japan.",
     "built_with": "Built with"
+  },
+  "resume": {
+    "title": "Resume Timeline",
+    "tagline": "A quick overview of my career",
+    "items": {
+      "irc": {
+        "year": "2011",
+        "company": "IRC",
+        "role": "Teacher Assistant",
+        "desc": "Assisted in teaching English to Iraqi refugees; focused on initial cultural and linguistic integration."
+      },
+      "ucsd": {
+        "year": "2012 — 2015",
+        "company": "UC San Diego",
+        "role": "Linguistics Degree",
+        "desc": "Completed Bachelor's in Linguistics; specialized in structural systems and cognitive patterns of language."
+      },
+      "eia": {
+        "year": "2012 — 2015",
+        "company": "English in Action",
+        "role": "English Partner",
+        "desc": "Volunteered as a linguistic partner for international students and professors to bridge communication gaps."
+      },
+      "aeon": {
+        "year": "2015 — 2018",
+        "company": "AEON (Japan)",
+        "role": "Teacher of Distinction",
+        "desc": "Taught 500+ students; dispatched to global firms like Fujitsu and Komatsu; trained other educators."
+      },
+      "westgate": {
+        "year": "2018 — 2019",
+        "company": "Westgate",
+        "role": "University Instructor",
+        "desc": "Taught intensive English programs at Tokyo University and Meiji University (Izumi Campus)."
+      },
+      "boe": {
+        "year": "2019 — 2020",
+        "company": "Board of Education",
+        "role": "Direct Hire ALT",
+        "desc": "Language specialist for local schools; focused on curriculum delivery and student engagement."
+      },
+      "cafe": {
+        "year": "2021 — 2024",
+        "company": "Cafe Triangle",
+        "role": "Owner & Operator",
+        "desc": "Managed end-to-end spatial design and business logic in a high-accountability autonomous environment."
+      },
+      "freelance": {
+        "year": "2023 — Present",
+        "company": "Design Lab",
+        "role": "UX & Product Designer",
+        "desc": "Self-taught systems architect; building scalable digital solutions through a linguistic and structural lens."
+      },
+      "friends": {
+        "year": "2025",
+        "company": "Language Friends",
+        "role": "Author & Founder",
+        "desc": "Launched a digital-first children's book series designed for early-stage English exposure."
+      },
+      "youtube": {
+        "year": "2026",
+        "company": "YouTube",
+        "role": "Content Educator",
+        "desc": "Teaching English and documenting Japanese language challenges to show real-world learning logic."
+      }
+    }
   }
 }

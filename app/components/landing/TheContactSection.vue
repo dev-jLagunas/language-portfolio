@@ -4,7 +4,6 @@ const { $gsap } = useNuxtApp();
 const sectionRef = ref(null);
 let ctx;
 
-// Mapped keys for the goal selector
 const goals = ["business", "academic", "fluency", "design"];
 
 const formData = reactive({
@@ -14,8 +13,32 @@ const formData = reactive({
   message: "",
 });
 
+// Helper for Netlify to process AJAX form data
+const encode = (data) => {
+  return Object.keys(data)
+    .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+    .join("&");
+};
+
 const submitForm = () => {
-  console.log("System Entry Triggered:", formData);
+  // Built-in HTML validation handles the 'required' checks before this fires
+  fetch("/", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: encode({
+      "form-name": "contact-diagnostic",
+      ...formData,
+    }),
+  })
+    .then(() => {
+      alert("System Entry Successful. I will contact you soon.");
+      // Reset form
+      formData.name = "";
+      formData.email = "";
+      formData.goal = "";
+      formData.message = "";
+    })
+    .catch((error) => alert("System Error: " + error));
 };
 
 onMounted(() => {
@@ -55,7 +78,7 @@ onUnmounted(() => {
     ref="sectionRef"
     :class="['contact-diagnostic', `theme-${locale}`]"
     id="contact"
-    data-step="5"
+    data-step="6"
   >
     <div class="container">
       <div class="split-layout">
@@ -66,16 +89,33 @@ onUnmounted(() => {
             {{ t("contact.subtitle") }}
           </p>
 
-          <form @submit.prevent="submitForm" class="audit-form animate-in">
+          <form
+            name="contact-diagnostic"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            @submit.prevent="submitForm"
+            class="audit-form animate-in"
+          >
+            <input type="hidden" name="form-name" value="contact-diagnostic" />
+            <p class="hidden">
+              <label
+                >Don’t fill this out if you’re human: <input name="bot-field"
+              /></label>
+            </p>
+
             <div class="input-group">
               <input
                 v-model="formData.name"
+                name="name"
                 type="text"
                 :placeholder="t('contact.placeholders.name')"
                 required
+                minlength="2"
               />
               <input
                 v-model="formData.email"
+                name="email"
                 type="email"
                 :placeholder="t('contact.placeholders.email')"
                 required
@@ -89,6 +129,7 @@ onUnmounted(() => {
                   v-model="formData.goal"
                   :value="goalKey"
                   name="goal"
+                  required
                 />
                 <span class="pill-btn">{{
                   t(`contact.goals.${goalKey}`)
@@ -98,7 +139,10 @@ onUnmounted(() => {
 
             <textarea
               v-model="formData.message"
+              name="message"
               :placeholder="t('contact.placeholders.message')"
+              required
+              minlength="10"
             ></textarea>
 
             <button type="submit" class="submit-btn">
@@ -112,6 +156,11 @@ onUnmounted(() => {
             <div class="location-tag">
               <span class="dot"></span> {{ t("contact.identity.location") }}
             </div>
+            <img
+              src="/images/visuals/ishikawa-map-brutalist.png"
+              alt="Ishikawa Japan Map"
+              class="custom-map-img"
+            />
           </div>
 
           <div class="bio-content">
@@ -133,14 +182,16 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
+/* -------------------------
+   LAYOUT & THEME
+   ------------------------- */
 .contact-diagnostic {
   padding: var(--section-padding);
   position: relative;
-  z-index: 45; /* Sits between content and footer */
+  z-index: 45;
   transition: background-color 0.4s ease;
 }
 
-/* Theme Integration */
 .theme-en {
   background-color: var(--color-en);
 }
@@ -166,7 +217,9 @@ onUnmounted(() => {
   align-items: start;
 }
 
-/* Form Styling */
+/* -------------------------
+   FORM ELEMENTS
+   ------------------------- */
 .pre-title {
   display: block;
   font-family: var(--font-main);
@@ -197,24 +250,33 @@ onUnmounted(() => {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+}
 
-  & .input-group {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-  }
+.input-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
 
-  & input,
-  & textarea {
-    padding: 1.2rem;
-    background: var(--text-light);
-    border: var(--brutalist-border);
-    box-shadow: var(--shadow-sm);
-    font-family: var(--font-main);
-    font-size: 1rem;
-    font-weight: 600;
-    outline: none;
-  }
+input,
+textarea {
+  padding: 1.2rem;
+  background: var(--text-light);
+  border: var(--brutalist-border);
+  box-shadow: var(--shadow-sm);
+  font-family: var(--font-main);
+  font-size: 1rem;
+  font-weight: 600;
+  outline: none;
+}
+
+/* Form HTML Validation Styles */
+input:invalid:not(:placeholder-shown) {
+  border-color: #ff4d4d;
+}
+
+.hidden {
+  display: none;
 }
 
 .goal-selector {
@@ -222,28 +284,28 @@ onUnmounted(() => {
   flex-wrap: wrap;
   gap: 0.75rem;
   margin: 0.5rem 0;
+}
 
-  & .goal-pill input {
-    display: none;
-  }
+.goal-pill input {
+  display: none;
+}
 
-  & .pill-btn {
-    display: block;
-    padding: 10px 18px;
-    border: 2px solid var(--text-dark);
-    background: var(--text-light);
-    font-family: var(--font-main);
-    font-size: 0.85rem;
-    font-weight: 800;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
+.pill-btn {
+  display: block;
+  padding: 10px 18px;
+  border: 2px solid var(--text-dark);
+  background: var(--text-light);
+  font-family: var(--font-main);
+  font-size: 0.85rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
 
-  & .goal-pill input:checked + .pill-btn {
-    background: var(--text-dark);
-    color: var(--text-light);
-    transform: translate(2px, 2px);
-  }
+.goal-pill input:checked + .pill-btn {
+  background: var(--text-dark);
+  color: var(--text-light);
+  transform: translate(2px, 2px);
 }
 
 textarea {
@@ -268,103 +330,111 @@ textarea {
   transition:
     transform 0.2s,
     box-shadow 0.2s;
-
-  &:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.3);
-  }
 }
 
-/* Identity Card */
+.submit-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.3);
+}
+
+/* -------------------------
+   IDENTITY CARD & MAP
+   ------------------------- */
 .identity-card {
   background: var(--text-light);
   border: var(--brutalist-border-thick);
   box-shadow: var(--shadow-xl);
   position: sticky;
   top: 120px;
+  overflow: hidden;
 }
 
 .map-visual {
-  height: 220px;
+  height: 280px; /* Increased to fit the image */
   background-color: #eee;
-  background-image: url("https://st3.depositphotos.com/2559749/14580/v/450/depositphotos_145801721-stock-illustration-ishikawa-prefecture-map.jpg");
-  background-size: cover;
-  background-position: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: var(--brutalist-border-thick);
+}
+
+.custom-map-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.location-tag {
+  position: absolute;
+  top: 20px;
+  z-index: 5;
+  background: var(--text-light);
+  padding: 10px 20px;
+  border: 2px solid var(--text-dark);
+  font-family: var(--font-main);
+  font-weight: 900;
+  font-size: 0.8rem;
+  text-transform: uppercase;
   display: flex;
   align-items: center;
-  justify-content: center;
-  border-bottom: var(--brutalist-border-thick);
+  gap: 10px;
+}
 
-  & .location-tag {
-    background: var(--text-light);
-    padding: 10px 20px;
-    border: 2px solid var(--text-dark);
-    font-family: var(--font-main);
-    font-weight: 900;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    & .dot {
-      width: 10px;
-      height: 10px;
-      background: #ff4d4d;
-      border-radius: 50%;
-    }
-  }
+.location-tag .dot {
+  width: 10px;
+  height: 10px;
+  background: #ff4d4d;
+  border-radius: 50%;
 }
 
 .bio-content {
   padding: 3rem;
-
-  & .mini-avatar {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 1.5rem;
-    border: 2px solid var(--text-dark);
-    border-radius: 50%;
-    background: var(--bg-main);
-  }
-
-  & .bio-name {
-    font-family: var(--font-display);
-    font-size: 2rem;
-    margin-bottom: 0.25rem;
-  }
-
-  & .role {
-    font-family: var(--font-main);
-    font-weight: 800;
-    text-transform: uppercase;
-    font-size: 0.75rem;
-    color: #888;
-    margin-bottom: 1.5rem;
-  }
-
-  & .bio-text {
-    font-family: var(--font-main);
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #333;
-  }
 }
 
-/* =========================
+.mini-avatar {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 1.5rem;
+  border: 2px solid var(--text-dark);
+  border-radius: 50%;
+  background: var(--bg-main);
+}
+
+.bio-name {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  margin-bottom: 0.25rem;
+}
+
+.role {
+  font-family: var(--font-main);
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  color: #888;
+  margin-bottom: 1.5rem;
+}
+
+.bio-text {
+  font-family: var(--font-main);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* -------------------------
    MEDIA QUERIES
-   ========================= */
+   ------------------------- */
 @media (width <= 1024px) {
   .split-layout {
     grid-template-columns: 1fr;
     gap: 4rem;
   }
-
   .identity-card {
     position: static;
     max-width: 600px;
   }
-
   .audit-form .input-group {
     grid-template-columns: 1fr;
   }

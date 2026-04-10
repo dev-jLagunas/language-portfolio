@@ -1,17 +1,14 @@
 <script setup>
-const { locale } = useI18n();
+const { locale, t } = useI18n();
 const activeSection = ref("");
 
 const navItems = [
-  { label: "Students", href: "#who-i-help", icon: "students-icon.png" },
-  { label: "Framework", href: "#framework", icon: "framework-icon.png" },
-  {
-    label: "Testimonials",
-    href: "#testimonials",
-    icon: "testimonials-icon.png",
-  },
-  { label: "Links", href: "#social-proof", icon: "links-icon.png" },
-  { label: "Contact", href: "#contact", icon: "contact-icon.png" },
+  { key: "students", href: "#who-i-help", icon: "students-icon.png" },
+  { key: "system", href: "#framework", icon: "framework-icon.png" },
+  { key: "testimonials", href: "#testimonials", icon: "testimonials-icon.png" },
+  { key: "resume", href: "#resume-timeline", icon: "resume-icon.png" },
+  { key: "links", href: "#social-proof", icon: "links-icon.png" },
+  { key: "contact", href: "#contact", icon: "contact-icon.png" },
 ];
 
 const scrollToSection = (href) => {
@@ -23,7 +20,6 @@ const scrollToSection = (href) => {
   }
 };
 
-// Handle clearing active state when at the very top (Hero section)
 const handleScroll = () => {
   if (window.scrollY < 50) {
     activeSection.value = "";
@@ -42,7 +38,6 @@ onMounted(() => {
       if (entry.isIntersecting) {
         activeSection.value = `#${entry.target.id}`;
       } else {
-        // If the first section moves below the trigger zone, we are back in the Hero
         if (
           entry.target.id === "who-i-help" &&
           entry.boundingClientRect.top > 0
@@ -84,11 +79,11 @@ onUnmounted(() => {
         <div class="nav-icon-wrapper">
           <img
             :src="`/images/icons/${item.icon}`"
-            :alt="item.label"
+            :alt="t(`mobile_nav.${item.key}`)"
             class="nav-icon-img"
           />
         </div>
-        <span class="nav-text">{{ item.label }}</span>
+        <span class="nav-text">{{ t(`mobile_nav.${item.key}`) }}</span>
       </button>
     </div>
   </nav>
@@ -168,6 +163,7 @@ onUnmounted(() => {
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  text-align: center;
 }
 
 .mobile-nav-btn.is-active {
@@ -192,20 +188,19 @@ onUnmounted(() => {
   }
 }
 
-/* Specific fix for very small mobile screens */
+/* Hard override for narrow mobile screens to prevent overcrowding */
 @media (width <= 425px) {
   .mobile-tab-bar {
     padding: 0 4px;
   }
 
   .nav-text {
-    font-size: 0.6rem;
-    letter-spacing: 0;
+    display: none; /* Hide text entirely to rely on icons */
   }
 
   .nav-icon-wrapper {
-    height: 24px;
-    width: 24px;
+    height: 26px;
+    width: 26px;
   }
 }
 

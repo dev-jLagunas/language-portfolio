@@ -19,6 +19,7 @@ const menuItems = [
   { key: "who_i_help", href: "#who-i-help" },
   { key: "how_it_works", href: "#framework" },
   { key: "testimonials", href: "#testimonials" },
+  { key: "resume_timeline", href: "#resume-timeline" },
   { key: "social_proof", href: "#social-proof" },
   { key: "contact", href: "#contact" },
 ];
@@ -121,12 +122,6 @@ const handleNavClick = async (index, href) => {
             >
               <img src="/images/avatars/avatar-pointing.png" alt="Juan" />
             </div>
-          </div>
-
-          <div class="sidebar-section resume-section">
-            <NuxtLink to="/resume" class="resume-btn" @click="$emit('close')">
-              View Full Resume
-            </NuxtLink>
           </div>
         </nav>
       </aside>
@@ -253,7 +248,7 @@ const handleNavClick = async (index, href) => {
 .sidebar-divider {
   height: 2px;
   background: var(--text-dark);
-  margin: 2.5rem 0;
+  margin: 2rem 0;
   opacity: 0.15;
 }
 
@@ -321,34 +316,6 @@ const handleNavClick = async (index, href) => {
   transform: scaleX(-1);
 }
 
-.resume-section {
-  margin-top: 2rem;
-  padding-bottom: 2rem;
-}
-
-.resume-btn {
-  display: block;
-  width: 100%;
-  background: var(--text-light);
-  border: var(--brutalist-border-thick);
-  color: var(--text-dark);
-  padding: 1.2rem;
-  text-align: center;
-  text-decoration: none;
-  font-family: var(--font-main);
-  font-weight: 900;
-  text-transform: uppercase;
-  box-shadow: var(--shadow-lg);
-  transition: all 0.2s ease;
-}
-
-.resume-btn:hover {
-  background: var(--text-dark);
-  color: var(--text-light);
-  transform: translate(-4px, -4px);
-  box-shadow: 8px 8px 0px #000;
-}
-
 @media (width <= 768px) {
   .sidebar {
     max-width: 85vw;
@@ -388,15 +355,6 @@ const handleNavClick = async (index, href) => {
     width: 55px;
     left: -25px;
     top: -5px;
-  }
-
-  .resume-section {
-    margin-top: 1.5rem;
-  }
-
-  .resume-btn {
-    padding: 0.8rem;
-    font-size: 0.9rem;
   }
 }
 
