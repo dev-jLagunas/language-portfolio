@@ -164,19 +164,14 @@ onMounted(() => {
   display: block;
 }
 
-/* Juan's Constant Subtle Animation */
-@keyframes subtle-breathe {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-6px);
-  }
+.juan-img {
+  margin-right: 1rem;
 }
 
-.juan-img {
-  animation: subtle-breathe 4s ease-in-out infinite;
+@media (width >= 425px) {
+  .juan-img {
+    margin-right: 3rem;
+  }
 }
 
 /* --- Mobile Queue Positions --- */
@@ -361,7 +356,7 @@ onMounted(() => {
 
 @media (width >= 1440px) {
   .bubble-right {
-    right: 200px;
+    right: 250px;
   }
 }
 </style>
