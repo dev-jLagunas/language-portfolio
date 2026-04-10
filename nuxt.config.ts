@@ -24,4 +24,9 @@ export default defineNuxtConfig({
       { code: "fr", iso: "fr-FR", file: "fr.json" },
     ],
   },
+  nitro: {
+    prerender: {
+      routes: ["/"],
+    },
+  },
 });
