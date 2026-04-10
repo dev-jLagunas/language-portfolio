@@ -1,8 +1,8 @@
 {
   "nav": {
     "my_name": "フアン・ラグナス",
-    "my_tagline": "英語教師 兼 コーチ",
-    "book_lesson": "レッスンを予約する",
+    "my_tagline": "英語講師・コーチ",
+    "book_lesson": "お問い合わせ",
     "avatar_alt": "フアンのアバター"
   },
   "sidebar": {
@@ -13,7 +13,7 @@
       "how_it_works": "進め方",
       "testimonials": "お客様の声",
       "resume_timeline": "経歴タイムライン",
-      "social_proof": "実績",
+      "social_proof": "講師以外の活動",
       "contact": "お問い合わせ"
     }
   },
@@ -29,7 +29,7 @@
     "content": {
       "title": "英語教師 兼 コーチ",
       "copy": "質の高い英語力で、人生を次のステージへ。言語学の学位を持ち、数々の受賞歴がある講師が指導します。本気で上達を目指す大人の方へ、無駄のない実戦的なレッスンを提供します。",
-      "cta": "今すぐ始める"
+      "cta": "相談してみる"
     },
     "stage": {
       "alt_student": "生徒",

@@ -195,6 +195,10 @@ onUnmounted(() => {
   padding-bottom: 2rem;
   position: relative;
   z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
 }
 
 .download-btn {
@@ -399,18 +403,6 @@ onUnmounted(() => {
   transform: translateX(150%) scale(0.6);
   opacity: 0;
   pointer-events: none;
-}
-
-@media (width >= 1220px) {
-  .title-wrapper {
-    margin-left: 2rem;
-  }
-}
-
-@media (width >= 1440px) {
-  .title-wrapper {
-    margin-left: 4rem;
-  }
 }
 
 @media (width <= 768px) {

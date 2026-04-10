@@ -2,12 +2,15 @@
 import { ref, onMounted, onBeforeUnmount, computed } from "vue";
 
 const props = defineProps<{ total: number }>();
-const activeIndex = ref(0);
+
+// Use the Global Tracker instead of local ref
+const { activeIndex, setActiveIndex } = useSectionTracker();
+
 const userActive = ref(true);
 let inactivityTimer: ReturnType<typeof setTimeout> | null = null;
 
-// Navigator is visible if in a tracked section AND user has moved recently
-const isVisible = computed(() => activeIndex.value >= 1 && userActive.value);
+// Navigator is visible if we are past the Hero (index >= 0) and user is active
+const isVisible = computed(() => activeIndex.value >= 0 && userActive.value);
 
 let observer: IntersectionObserver | null = null;
 
@@ -31,19 +34,19 @@ const resetInactivityTimer = () => {
 
   inactivityTimer = setTimeout(() => {
     userActive.value = false;
-  }, 1000);
+  }, 3000);
 };
 
 const handleTopDetection = () => {
   if (window.scrollY < 100) {
-    activeIndex.value = 0;
+    // Set to -1 to hide navigator and reset sidebar elevator to "neutral"
+    setActiveIndex(-1);
   }
   resetInactivityTimer();
 };
 
 onMounted(() => {
   window.addEventListener("scroll", handleTopDetection);
-  // Initial timer start
   resetInactivityTimer();
 
   const sections = document.querySelectorAll<HTMLElement>("[data-step]");
@@ -53,8 +56,12 @@ onMounted(() => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
 
-        const index = Number(entry.target.getAttribute("data-step"));
-        if (!isNaN(index)) activeIndex.value = index;
+        const stepAttr = entry.target.getAttribute("data-step");
+        if (stepAttr) {
+          const stepIndex = Number(stepAttr);
+          // Global tracker is 0-indexed to match sidebar arrays
+          setActiveIndex(stepIndex - 1);
+        }
       });
     },
     {
@@ -87,7 +94,7 @@ onBeforeUnmount(() => {
           v-for="n in total"
           :key="n"
           @click="scrollToSection(n)"
-          :class="['step-box', { 'is-active': n === activeIndex }]"
+          :class="['step-box', { 'is-active': n === activeIndex + 1 }]"
           :aria-label="`Scroll to section ${n}`"
         >
           <span class="step-label">0{{ n }}</span>
@@ -95,7 +102,7 @@ onBeforeUnmount(() => {
       </div>
 
       <div class="step-counter">
-        <span class="current">{{ activeIndex }}</span>
+        <span class="current">{{ activeIndex + 1 }}</span>
         <span class="divider">/</span>
         <span class="total">{{ total }}</span>
       </div>
@@ -139,7 +146,8 @@ onBeforeUnmount(() => {
 }
 
 .step-box {
-  width: 12px;
+  /* Thicker clickable area for better UX */
+  width: 28px;
   height: 32px;
   background: var(--text-light);
   border: var(--brutalist-border);
@@ -212,7 +220,7 @@ onBeforeUnmount(() => {
   }
 
   .step-box {
-    width: 8px;
+    width: 20px; /* Still thick enough on smaller tablets */
     height: 24px;
 
     &.is-active {

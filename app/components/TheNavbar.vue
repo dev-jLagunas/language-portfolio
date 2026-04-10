@@ -234,7 +234,7 @@ const scrollToSection = (href) => {
 
   & span {
     font-family: var(--font-main);
-    font-size: 0.65rem;
+    font-size: 0.75rem;
     font-weight: 900;
     text-transform: uppercase;
     margin-top: 2px;

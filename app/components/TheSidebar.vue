@@ -1,12 +1,12 @@
 <script setup>
 const { locale, setLocale, t } = useI18n();
+const { activeIndex, setActiveIndex } = useSectionTracker(); // Shared Global State
+
 const props = defineProps({
   isOpen: Boolean,
 });
 
 const emit = defineEmits(["close"]);
-
-const activeIndex = ref(0);
 
 const languages = [
   { code: "en", label: "EN" },
@@ -35,7 +35,9 @@ const handleLocaleChange = (code) => {
 };
 
 const handleNavClick = async (index, href) => {
-  activeIndex.value = index;
+  // Update the global state immediately so the avatar starts moving
+  setActiveIndex(index);
+
   await new Promise((resolve) => setTimeout(resolve, 300));
 
   const el = document.querySelector(href);
@@ -120,7 +122,7 @@ const handleNavClick = async (index, href) => {
                 transform: `translateY(calc(var(--var-step-height) * ${activeIndex}))`,
               }"
             >
-              <img src="/images/avatars/avatar-pointing.png" alt="Juan" />
+              <img src="/images/avatars/avatar-elevator.png" alt="Juan" />
             </div>
           </div>
         </nav>

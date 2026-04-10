@@ -1,10 +1,29 @@
+<script setup>
+const scrollToSection = (href) => {
+  const el = document.querySelector(href);
+
+  if (el) {
+    const offset = 80;
+    const elementPosition = el.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth",
+    });
+  }
+};
+</script>
+
 <template>
   <div class="hero-content">
     <h1 class="hero-title">{{ $t("hero.content.title") }}</h1>
     <p class="hero-copy">
       {{ $t("hero.content.copy") }}
     </p>
-    <button class="hero-btn">{{ $t("hero.content.cta") }}</button>
+    <button @click="scrollToSection('#contact')" class="hero-btn">
+      {{ $t("hero.content.cta") }}
+    </button>
   </div>
 </template>
 

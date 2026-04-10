@@ -2,7 +2,7 @@
   "nav": {
     "my_name": "Juan Lagunas",
     "my_tagline": "Profesor y Coach de Inglés",
-    "book_lesson": "Reservar Clase",
+    "book_lesson": "Contáctame",
     "avatar_alt": "Avatar de Juan"
   },
   "sidebar": {
@@ -13,7 +13,7 @@
       "how_it_works": "Cómo funciona",
       "testimonials": "Testimonios",
       "resume_timeline": "Trayectoria",
-      "social_proof": "Pruebas sociales",
+      "social_proof": "Más allá de las clases",
       "contact": "Contacto"
     }
   },
@@ -29,7 +29,7 @@
     "content": {
       "title": "Profesor y Coach de Inglés",
       "copy": "Avanza en tu vida con un mejor inglés. Soy un profesor galardonado con formación en Lingüística y diseño de productos. Ofrezco una enseñanza directa y de alto nivel para personas que se toman en serio su progreso.",
-      "cta": "Empieza ahora"
+      "cta": "Hablemos"
     },
     "stage": {
       "alt_student": "Estudiante",

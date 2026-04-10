@@ -3,11 +3,7 @@
     "my_name": "Juan Lagunas",
     "my_tagline": "English Teacher & Coach",
     "book_lesson": "Contact Me",
-    "avatar_alt": "Juan Avatar",
-    "who_i_help": "Who I Help",
-    "experience": "Experience",
-    "links": "Links",
-    "contact": "Contact"
+    "avatar_alt": "Juan Avatar"
   },
   "mobile_nav": {
     "students": "Students",
@@ -25,7 +21,7 @@
       "how_it_works": "How it Works",
       "testimonials": "Testimonials",
       "resume_timeline": "Resume Timeline",
-      "social_proof": "Social Proof",
+      "social_proof": "Outside of Teaching",
       "contact": "Contact"
     }
   },
@@ -33,7 +29,7 @@
     "content": {
       "title": "English Teacher & Coach",
       "copy": "Move your life forward with better English. I am an award-winning teacher with a background in Linguistics and product design. I provide straightforward, high-level instruction for people who are serious about their progress.",
-      "cta": "Start now"
+      "cta": "Get in touch"
     },
     "stage": {
       "alt_student": "Student",

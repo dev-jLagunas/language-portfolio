@@ -1,8 +1,8 @@
 {
   "nav": {
     "my_name": "Juan Lagunas",
-    "my_tagline": "Enseignant et Coach d'Anglais",
-    "book_lesson": "Réserver un cours",
+    "my_tagline": "Professeur & Coach d'Anglais",
+    "book_lesson": "Me contacter",
     "avatar_alt": "Avatar de Juan"
   },
   "sidebar": {
@@ -13,7 +13,7 @@
       "how_it_works": "Comment ça marche",
       "testimonials": "Témoignages",
       "resume_timeline": "Parcours",
-      "social_proof": "Preuve sociale",
+      "social_proof": "En dehors de l'enseignement",
       "contact": "Contact"
     }
   },
@@ -29,7 +29,7 @@
     "content": {
       "title": "Enseignant et Coach d'Anglais",
       "copy": "Faites progresser votre vie grâce à un meilleur anglais. Enseignant primé avec une formation en linguistique et en design. Je propose un enseignement direct et de haut niveau pour ceux qui sont sérieux dans leur progression.",
-      "cta": "Commencer maintenant"
+      "cta": "Me contacter"
     },
     "stage": {
       "alt_student": "Étudiant",

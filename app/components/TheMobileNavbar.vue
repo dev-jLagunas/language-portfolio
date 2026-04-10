@@ -1,6 +1,8 @@
 <script setup>
 const { locale, t } = useI18n();
-const activeSection = ref("");
+
+// Access the global source of truth
+const { activeIndex } = useSectionTracker();
 
 const navItems = [
   { key: "students", href: "#who-i-help", icon: "students-icon.png" },
@@ -14,51 +16,12 @@ const navItems = [
 const scrollToSection = (href) => {
   const el = document.querySelector(href);
   if (el) {
+    // 70px offset matches your mobile bar height exactly
     const offset = 70;
     const top = el.getBoundingClientRect().top + window.pageYOffset - offset;
     window.scrollTo({ top, behavior: "smooth" });
   }
 };
-
-const handleScroll = () => {
-  if (window.scrollY < 50) {
-    activeSection.value = "";
-  }
-};
-
-onMounted(() => {
-  const observerOptions = {
-    root: null,
-    rootMargin: "-20% 0px -70% 0px",
-    threshold: 0,
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        activeSection.value = `#${entry.target.id}`;
-      } else {
-        if (
-          entry.target.id === "who-i-help" &&
-          entry.boundingClientRect.top > 0
-        ) {
-          activeSection.value = "";
-        }
-      }
-    });
-  }, observerOptions);
-
-  navItems.forEach((item) => {
-    const el = document.querySelector(item.href);
-    if (el) observer.observe(el);
-  });
-
-  window.addEventListener("scroll", handleScroll);
-});
-
-onUnmounted(() => {
-  window.removeEventListener("scroll", handleScroll);
-});
 </script>
 
 <template>
@@ -68,12 +31,9 @@ onUnmounted(() => {
   >
     <div class="mobile-nav-inner">
       <button
-        v-for="item in navItems"
+        v-for="(item, index) in navItems"
         :key="item.href"
-        :class="[
-          'mobile-nav-btn',
-          { 'is-active': activeSection === item.href },
-        ]"
+        :class="['mobile-nav-btn', { 'is-active': activeIndex === index }]"
         @click="scrollToSection(item.href)"
       >
         <div class="nav-icon-wrapper">
@@ -90,6 +50,9 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
+/* -------------------------
+   LAYOUT & THEME
+   ------------------------- */
 .mobile-tab-bar {
   position: fixed;
   bottom: 0;
@@ -125,6 +88,9 @@ onUnmounted(() => {
   margin: 0 auto;
 }
 
+/* -------------------------
+   BUTTONS & ICONS
+   ------------------------- */
 .mobile-nav-btn {
   background: none;
   border: none;
@@ -166,6 +132,7 @@ onUnmounted(() => {
   text-align: center;
 }
 
+/* ACTIVE STATE */
 .mobile-nav-btn.is-active {
   opacity: 1;
   background: var(--text-light);
@@ -179,25 +146,22 @@ onUnmounted(() => {
   transform: scale(1.1);
 }
 
-/* =========================
-   MEDIA QUERIES
-   ========================= */
+/* -------------------------
+   RESPONSIVE & SAFE AREA
+   ------------------------- */
 @media (width <= 768px) {
   .mobile-tab-bar {
     display: block;
   }
 }
 
-/* Hard override for narrow mobile screens to prevent overcrowding */
 @media (width <= 425px) {
   .mobile-tab-bar {
     padding: 0 4px;
   }
-
   .nav-text {
-    display: none; /* Hide text entirely to rely on icons */
+    display: none;
   }
-
   .nav-icon-wrapper {
     height: 26px;
     width: 26px;
@@ -209,7 +173,6 @@ onUnmounted(() => {
     height: calc(70px + env(safe-area-inset-bottom));
     padding-bottom: env(safe-area-inset-bottom);
   }
-
   .mobile-nav-btn.is-active {
     transform: translateY(-15px);
   }
