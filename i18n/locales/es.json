@@ -215,12 +215,12 @@
         "details": "Me encanta el proceso fotográfico. Pasar una tarde caminando y capturando la vida tal como sucede es algo que me centra. Es mi forma de reiniciar mis sistemas creativos. Te invito a ver mi trabajo.",
         "btnText": "Ver Fotos"
       },
-      "behance": {
-        "title": "Casos de Estudio en Behance",
-        "type": "Estrategia Visual",
-        "desc": "Desgloses visuales de sistemas de diseño y marcas creadas en la última década.",
-        "details": "Una colección de sistemas de diseño visual e identidades de marca. Estos estudios destacan mi enfoque en la arquitectura de la información y las estrategias de comunicación visual para clientes globales.",
-        "btnText": "Ver Behance"
+      "portfolio": {
+        "title": "Portafolio de UX y Producto",
+        "type": "Sistemas / Diseño",
+        "desc": "El pensamiento arquitectónico aplicado a productos digitales, ahora aplicado al idioma.",
+        "details": "Mi trabajo como Diseñador de Producto. Este portafolio muestra cómo resuelvo problemas desorganizados a través de soluciones digitales estructuradas, utilizables y escalables. Aplico esta misma mentalidad de 'Sistemas Primero' a mi forma de enseñar inglés.",
+        "btnText": "Ver Portafolio"
       },
       "medium": {
         "title": "Blog en Medium",

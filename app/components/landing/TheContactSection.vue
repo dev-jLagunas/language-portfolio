@@ -1,8 +1,9 @@
 <script setup>
 const { locale, t } = useI18n();
+const { currentTheme, isChangingLanguage } = useTheme();
 const { $gsap } = useNuxtApp();
 const sectionRef = ref(null);
-const isSubmitted = ref(false); // New reactive state
+const isSubmitted = ref(false);
 let ctx;
 
 const goals = ["business", "academic", "fluency", "design"];
@@ -30,8 +31,7 @@ const submitForm = () => {
     }),
   })
     .then(() => {
-      isSubmitted.value = true; // Swap the UI
-      // Reset form data for potential resubmission
+      isSubmitted.value = true;
       formData.name = "";
       formData.email = "";
       formData.goal = "";
@@ -43,6 +43,11 @@ const submitForm = () => {
 const resetForm = () => {
   isSubmitted.value = false;
 };
+
+watch(locale, async () => {
+  await nextTick();
+  ScrollTrigger.refresh();
+});
 
 onMounted(() => {
   ctx = $gsap.context(() => {
@@ -79,12 +84,14 @@ onUnmounted(() => {
 <template>
   <section
     ref="sectionRef"
-    :class="['contact-diagnostic', `theme-${locale}`]"
+    :class="['contact-diagnostic', currentTheme]"
     id="contact"
     data-step="6"
   >
     <div class="container">
-      <div class="split-layout">
+      <div
+        :class="['split-layout', { 'is-transitioning': isChangingLanguage }]"
+      >
         <div class="form-container">
           <span class="pre-title animate-in">{{ t("contact.pre_title") }}</span>
           <h2 class="display-serif animate-in">{{ t("contact.title") }}</h2>
@@ -130,6 +137,7 @@ onUnmounted(() => {
                     type="email"
                     :placeholder="t('contact.placeholders.email')"
                     required
+                    minlength="5"
                   />
                 </div>
 
@@ -214,14 +222,15 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
-/* -------------------------
-   LAYOUT & THEME
-   ------------------------- */
 .contact-diagnostic {
   padding: var(--section-padding);
   position: relative;
   z-index: 45;
   transition: background-color 0.4s ease;
+}
+
+.is-transitioning {
+  opacity: 0.8;
 }
 
 .theme-en {
@@ -247,11 +256,9 @@ onUnmounted(() => {
   grid-template-columns: 1.2fr 0.8fr;
   gap: 5rem;
   align-items: start;
+  transition: opacity 0.3s ease;
 }
 
-/* -------------------------
-   FORM ELEMENTS
-   ------------------------- */
 .pre-title {
   display: block;
   font-family: var(--font-main);
@@ -347,9 +354,6 @@ textarea {
   box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.3);
 }
 
-/* -------------------------
-   SUCCESS CARD
-   ------------------------- */
 .success-card {
   background: var(--text-light);
   border: var(--brutalist-border-thick);
@@ -387,9 +391,6 @@ textarea {
   padding: 1rem 2rem;
 }
 
-/* -------------------------
-   TRANSITIONS
-   ------------------------- */
 .form-swap-enter-active {
   transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
@@ -405,9 +406,6 @@ textarea {
   transform: translateY(-30px);
 }
 
-/* -------------------------
-   IDENTITY CARD
-   ------------------------- */
 .identity-card {
   background: var(--text-light);
   border: var(--brutalist-border-thick);
@@ -494,6 +492,7 @@ textarea {
   .identity-card {
     position: static;
     max-width: 600px;
+    margin: 0 auto;
   }
   .input-group {
     grid-template-columns: 1fr;
@@ -504,3 +503,4 @@ textarea {
   display: none;
 }
 </style>
+```

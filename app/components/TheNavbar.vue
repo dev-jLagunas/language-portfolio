@@ -1,5 +1,5 @@
 <script setup>
-const { locale, setLocale } = useI18n();
+const { currentTheme, changeLanguage } = useTheme();
 const isSidebarOpen = ref(false);
 
 const languages = [
@@ -8,6 +8,10 @@ const languages = [
   { code: "jp", label: "JP" },
   { code: "fr", label: "FR" },
 ];
+
+const activeLocaleCode = computed(() =>
+  currentTheme.value.replace("theme-", ""),
+);
 
 const platforms = [
   { name: "Cambly", url: "#", icon: "ph:video-camera-bold" },
@@ -30,7 +34,7 @@ const scrollToSection = (href) => {
 </script>
 
 <template>
-  <nav :class="['nav-bar', `theme-${locale}`]" aria-label="Main navigation">
+  <nav :class="['nav-bar', currentTheme]" aria-label="Main navigation">
     <div class="nav-inner">
       <a href="/" class="nav-brand">
         <div class="logo-icon-wrap">
@@ -57,7 +61,7 @@ const scrollToSection = (href) => {
         </div>
 
         <img
-          :src="`/images/avatars/avatar-${locale}.png`"
+          :src="`/images/avatars/avatar-${activeLocaleCode}.png`"
           :alt="$t('nav.avatar_alt')"
           class="nav-avatar"
         />
@@ -86,8 +90,11 @@ const scrollToSection = (href) => {
             <button
               v-for="lang in languages"
               :key="lang.code"
-              :class="['lang-btn', { 'is-active': locale === lang.code }]"
-              @click="setLocale(lang.code)"
+              :class="[
+                'lang-btn',
+                { 'is-active': currentTheme === `theme-${lang.code}` },
+              ]"
+              @click="changeLanguage(lang.code)"
             >
               {{ lang.label }}
             </button>

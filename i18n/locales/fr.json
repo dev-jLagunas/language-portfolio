@@ -215,12 +215,12 @@
         "details": "J'adore le processus de la photographie. Passer une après-midi à marcher et à capturer la vie telle qu'elle se présente me permet de me ressourcer. C'est ainsi que je réinitialise mes systèmes créatifs. N'hésitez pas à jeter un coup d'œil à mon travail.",
         "btnText": "Voir les Photos"
       },
-      "behance": {
-        "title": "Études de Cas Behance",
-        "type": "Stratégie Visuelle",
-        "desc": "Analyses visuelles de systèmes de design créés au cours de la dernière décennie.",
-        "details": "Une collection de systèmes de design visuel et d'identités de marque. Ces études de cas mettent en avant mon approche de l'architecture de l'information.",
-        "btnText": "Voir Behance"
+      "portfolio": {
+        "title": "Portfolio Produit & UX",
+        "type": "Systèmes / Design",
+        "desc": "La réflexion architecturale appliquée aux produits numériques, désormais appliquée au langage.",
+        "details": "Mon travail en tant que Product Designer. Ce portfolio montre comment je résous des problèmes désorganisés grâce à des solutions numériques structurées, utilisables et évolutives. J'applique cette même approche axée sur les systèmes à ma façon d'enseigner l'anglais.",
+        "btnText": "Voir le Portfolio"
       },
       "medium": {
         "title": "Blog Medium",

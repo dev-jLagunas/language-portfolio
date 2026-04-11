@@ -1,12 +1,13 @@
 <script setup>
-const { locale, locales, setLocale, t } = useI18n();
+const { locale, locales, t } = useI18n();
+const { currentTheme, changeLanguage } = useTheme(); // Global Theme Logic
 const currentYear = new Date().getFullYear();
 
 const footerNav = {
   expertise: [
-    { key: "lab", link: "#testimonials" }, // Coaching/Lab
-    { key: "design", link: "#social-proof" }, // Portfolio/UX
-    { key: "method", link: "#methodology" }, // Systems/Architecture
+    { key: "lab", link: "#testimonials" },
+    { key: "design", link: "#social-proof" },
+    { key: "method", link: "#methodology" },
   ],
   network: [
     { name: "Language Switch", link: "https://youtube.com/@moeandjuan" },
@@ -20,13 +21,13 @@ const footerNav = {
 const langNames = {
   en: "English",
   es: "Español",
-  ja: "日本語",
+  jp: "日本語",
   fr: "Français",
 };
 </script>
 
 <template>
-  <footer :class="['main-footer', `theme-${locale}`]">
+  <footer :class="['main-footer', currentTheme]">
     <div class="container">
       <div class="footer-grid">
         <div class="brand-column">
@@ -41,8 +42,11 @@ const langNames = {
               <button
                 v-for="lang in locales"
                 :key="lang.code"
-                :class="['lang-pill', { active: locale === lang.code }]"
-                @click="setLocale(lang.code)"
+                :class="[
+                  'lang-pill',
+                  { active: currentTheme === `theme-${lang.code}` },
+                ]"
+                @click="changeLanguage(lang.code)"
               >
                 {{ langNames[lang.code] || lang.code }}
               </button>
@@ -268,9 +272,6 @@ ul {
   font-weight: 800;
 }
 
-/* =========================
-   MEDIA QUERIES
-   ========================= */
 @media (width <= 768px) {
   .footer-grid {
     grid-template-columns: 1fr;
@@ -281,7 +282,7 @@ ul {
     flex-direction: column;
     align-items: flex-start;
     gap: 2rem;
-    padding-bottom: 80px; /* Space for Mobile Tab Bar */
+    padding-bottom: 80px;
   }
 
   .legal-links {

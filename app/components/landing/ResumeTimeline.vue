@@ -1,7 +1,8 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
 
-const { locale, t } = useI18n();
+const { t } = useI18n();
+const { currentTheme, isChangingLanguage } = useTheme();
 
 const timelineKeys = [
   "irc",
@@ -16,7 +17,6 @@ const timelineKeys = [
   "youtube",
 ];
 
-// Mapping of timeline keys to visual image paths based on the provided clues
 const visualMap = {
   irc: "/images/visuals/english-assistant-visual.png",
   ucsd: "/images/visuals/ucsd-linguistics-visual.png",
@@ -37,7 +37,7 @@ const nextJob = () => {
   if (activeIndex.value < timelineKeys.length - 1) {
     activeIndex.value++;
   } else {
-    activeIndex.value = 0; // Loop back to start
+    activeIndex.value = 0;
   }
 };
 
@@ -47,7 +47,7 @@ const prevJob = () => {
 
 const setJob = (index) => {
   activeIndex.value = index;
-  resetAutoplay(); // Reset timer on manual interaction
+  resetAutoplay();
 };
 
 const startAutoplay = () => {
@@ -80,7 +80,8 @@ onUnmounted(() => {
 
 <template>
   <section
-    :class="['app', 'resume-page', `theme-${locale}`]"
+    ref="sectionRef"
+    :class="['app', 'resume-page', currentTheme]"
     id="resume-timeline"
     data-step="4"
   >
@@ -134,7 +135,12 @@ onUnmounted(() => {
         <div
           v-for="(key, index) in timelineKeys"
           :key="key"
-          :class="['b-card', 'job-card', getCardClass(index)]"
+          :class="[
+            'b-card',
+            'job-card',
+            getCardClass(index),
+            { 'is-transitioning': isChangingLanguage },
+          ]"
           @click="setJob(index)"
         >
           <div class="card-header">
@@ -234,10 +240,9 @@ onUnmounted(() => {
   z-index: 5;
 }
 
-/* AVATAR SITTING LOGIC */
 .sitting-avatar-wrapper {
   position: absolute;
-  top: -45px; /* Sits on top of the active card */
+  top: -45px;
   left: 50%;
   transform: translateX(-50%);
   width: 120px;
@@ -286,10 +291,16 @@ onUnmounted(() => {
   height: 500px;
   display: flex;
   flex-direction: column;
-  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition:
+    all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
+    background-color 0.4s ease;
   will-change: transform, opacity;
   cursor: pointer;
   background: var(--bg-card);
+}
+
+.job-card.is-transitioning .card-body {
+  visibility: hidden;
 }
 
 .card-header {
@@ -382,7 +393,6 @@ onUnmounted(() => {
   opacity: 0.8;
 }
 
-/* COVER FLOW STATES */
 .is-active {
   transform: translateX(0) scale(1);
   opacity: 1;

@@ -1,5 +1,6 @@
 <script setup>
-const { locale, t } = useI18n();
+const { t, locale } = useI18n();
+const { currentTheme, isChangingLanguage } = useTheme();
 const { $gsap } = useNuxtApp();
 const container = ref(null);
 let ctx;
@@ -9,59 +10,78 @@ const students = [
     key: "hobbyist",
     image: "/images/characters/avatar-grandma.png",
     tags: ["tag1", "tag2", "tag3"],
+    icon: "ph:coffee-bold",
   },
   {
     key: "professional",
     image: "/images/characters/avatar-businesswoman.png",
     tags: ["tag1", "tag2", "tag3"],
+    icon: "ph:briefcase-bold",
   },
   {
     key: "explorer",
     image: "/images/characters/avatar-expat.png",
     tags: ["tag1", "tag2", "tag3"],
+    icon: "ph:airplane-tilt-bold",
   },
   {
     key: "next_gen",
     image: "/images/characters/avatar-prof.png",
     tags: ["tag1", "tag2", "tag3"],
+    icon: "ph:student-bold",
   },
   {
     key: "test_taker",
     image: "/images/characters/char-student.png",
     tags: ["tag1", "tag2", "tag3"],
+    icon: "ph:exam-bold",
+    imageClass: "scale-down",
   },
 ];
+
+watch(locale, async () => {
+  await nextTick();
+  ScrollTrigger.refresh();
+});
 
 onMounted(() => {
   ctx = $gsap.context(() => {
     const cards = $gsap.utils.toArray(".student-card");
+    cards.forEach((card) => {
+      const inner = card.querySelector(".card-inner");
+      const imgTarget = card.querySelector(".avatar-target");
 
-    cards.forEach((card, i) => {
-      $gsap.to(card, {
-        scrollTrigger: {
-          trigger: card,
-          start: "top 100px",
-          endTrigger: container.value,
-          end: "bottom top",
-          pin: true,
-          pinSpacing: false,
-          scrub: true,
-          invalidateOnRefresh: true,
-        },
-      });
-
-      if (i < cards.length - 1) {
-        $gsap.to(card.querySelector(".card-inner"), {
-          scale: 0.9,
-          opacity: 0.1,
+      $gsap.fromTo(
+        inner,
+        { y: 100, opacity: 0, rotationX: 10, scale: 0.95 },
+        {
+          y: 0,
+          opacity: 1,
+          rotationX: 0,
+          scale: 1,
           scrollTrigger: {
-            trigger: cards[i + 1],
-            start: "top 80%",
-            end: "top 100px",
+            trigger: card,
+            start: "top 90%",
+            end: "top 60%",
+            scrub: 1,
+            invalidateOnRefresh: true,
+          },
+        },
+      );
+
+      $gsap.fromTo(
+        imgTarget,
+        { y: -15 },
+        {
+          y: 15,
+          scrollTrigger: {
+            trigger: card,
+            start: "top bottom",
+            end: "bottom top",
             scrub: true,
           },
-        });
-      }
+        },
+      );
     });
   }, container.value);
 });
@@ -73,43 +93,70 @@ onUnmounted(() => {
 
 <template>
   <section ref="container" class="teach-section" id="who-i-help" data-step="1">
-    <div class="texture-grid"></div>
-
     <div class="content-limit">
       <h2 class="section-title">{{ t("who.section_title") }}</h2>
 
-      <div class="stack-wrapper">
+      <div class="grid-wrapper">
         <div
           v-for="(student, index) in students"
           :key="index"
           class="student-card"
         >
-          <div :class="['card-inner', `theme-${locale}`]">
-            <img
-              src="/images/avatars/avatar-guiding.png"
-              class="guiding-avatar"
-              alt=""
-              aria-hidden="true"
-            />
-
-            <div class="card-image">
-              <img
-                :src="student.image"
-                :alt="t(`who.students.${student.key}.title`)"
-              />
-            </div>
-            <div class="card-content">
-              <h3 class="card-title">
-                {{ t(`who.students.${student.key}.title`) }}
-              </h3>
-              <p class="card-text">
-                {{ t(`who.students.${student.key}.description`) }}
-              </p>
-              <div class="tag-group">
-                <span v-for="tagKey in student.tags" :key="tagKey" class="tag">
-                  {{ t(`who.students.${student.key}.tags.${tagKey}`) }}
-                </span>
+          <div
+            :class="[
+              'card-inner',
+              currentTheme,
+              { 'is-transitioning': isChangingLanguage },
+            ]"
+          >
+            <div class="card-header">
+              <div class="header-id">
+                <Icon name="ph:identification-card-bold" class="ui-icon" />
+                <span>ID-0{{ index + 1 }}</span>
               </div>
+              <div class="header-icon-box">
+                <Icon :name="student.icon" class="profile-icon" />
+              </div>
+            </div>
+
+            <div class="card-body">
+              <div class="image-compartment">
+                <div class="crosshair top-left"></div>
+                <div class="crosshair bottom-right"></div>
+                <img
+                  :src="student.image"
+                  :alt="t(`who.students.${student.key}.title`)"
+                  :class="['avatar-target', student.imageClass]"
+                />
+              </div>
+
+              <div class="content-compartment">
+                <h3 class="card-title">
+                  {{ t(`who.students.${student.key}.title`) }}
+                </h3>
+                <p class="card-text">
+                  {{ t(`who.students.${student.key}.description`) }}
+                </p>
+                <div class="tag-group">
+                  <div
+                    v-for="tagKey in student.tags"
+                    :key="tagKey"
+                    class="tag-box"
+                  >
+                    <span>{{
+                      t(`who.students.${student.key}.tags.${tagKey}`)
+                    }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="guiding-stamp">
+              <img
+                src="/images/avatars/avatar-guiding.png"
+                alt=""
+                aria-hidden="true"
+              />
             </div>
           </div>
         </div>
@@ -122,63 +169,48 @@ onUnmounted(() => {
 .teach-section {
   position: relative;
   background-color: var(--bg-main);
-  padding: 6rem var(--space-unit) 0 var(--space-unit);
+  padding: 5rem var(--space-unit);
   z-index: 5;
-  overflow: hidden;
+  perspective: 1000px;
 }
 
 .content-limit {
-  position: relative;
   max-width: 1000px;
   margin: 0 auto;
-  z-index: 2;
 }
 
 .section-title {
   font-family: var(--font-display);
-  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-size: clamp(2rem, 5vw, 3.5rem);
   text-align: center;
   color: var(--text-dark);
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
+  text-transform: uppercase;
 }
 
-.stack-wrapper {
+.grid-wrapper {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: 5rem;
 }
 
 .student-card {
   width: 100%;
-  margin-bottom: 40vh;
   display: flex;
   justify-content: center;
 }
 
 .card-inner {
   position: relative;
-  border: var(--brutalist-border-thick);
-  box-shadow: var(--shadow-lg);
-  display: grid;
-  grid-template-columns: 1fr 1.5fr;
-  align-items: center;
-  gap: 3rem;
-  padding: 3.5rem;
   width: 100%;
-  transform-origin: center top;
-  backface-visibility: hidden;
-  transition: background-color 0.4s ease;
+  border: var(--brutalist-border-thick);
+  box-shadow: 8px 8px 0px var(--text-dark);
+  display: flex;
+  flex-direction: column;
+  background: white;
 }
 
-.guiding-avatar {
-  position: absolute;
-  bottom: -100px;
-  left: -50px;
-  height: 150px;
-  z-index: 10;
-  pointer-events: none;
-}
-
+/* Theme Colors */
 .theme-en {
   background-color: var(--color-en);
 }
@@ -192,86 +224,185 @@ onUnmounted(() => {
   background-color: var(--color-fr);
 }
 
-.card-image img {
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: var(--brutalist-border-thick);
+  background: var(--text-light);
+}
+
+.header-id {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-family: var(--font-main);
+  font-weight: 900;
+  font-size: 0.75rem;
+}
+
+.header-icon-box {
+  padding: 0.5rem 1rem;
+  border-left: var(--brutalist-border-thick);
+  background: var(--text-dark);
+  color: var(--text-light);
+}
+
+.card-body {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+}
+
+.image-compartment {
+  position: relative;
+  border-right: var(--brutalist-border-thick);
+  padding: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+  background-size: 10px 10px;
+}
+
+.avatar-target {
   width: 100%;
-  max-height: 400px;
-  object-fit: contain;
+  max-width: 200px;
+  height: auto;
+  filter: drop-shadow(4px 4px 0px rgba(0, 0, 0, 0.1));
+}
+
+.avatar-target.scale-down {
+  max-width: 130px;
+}
+
+.content-compartment {
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .card-title {
   font-family: var(--font-display);
-  font-size: clamp(1.8rem, 4vw, 2.5rem);
-  margin-bottom: 1.5rem;
-  color: var(--text-dark);
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  line-height: 1.1;
 }
 
 .card-text {
   font-family: var(--font-main);
-  font-size: 1.15rem;
-  line-height: 1.6;
-  margin-bottom: 2rem;
-  color: var(--text-dark);
+  font-size: 1.05rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
 }
 
 .tag-group {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  gap: 0.5rem;
 }
 
-.tag {
-  background: var(--text-dark);
-  color: var(--text-light);
-  padding: 0.6rem 1rem;
-  border-radius: 4px;
-  font-size: 0.75rem;
+.tag-box {
+  background: var(--text-light);
+  padding: 0.3rem 0.7rem;
+  border: 2px solid var(--text-dark);
+  font-family: var(--font-main);
+  font-size: 0.7rem;
   font-weight: 800;
   text-transform: uppercase;
 }
 
+.guiding-stamp {
+  position: absolute;
+  bottom: -25px;
+  right: -20px;
+  width: 90px;
+  pointer-events: none;
+}
+
+/* CROSSHAIRS */
+.crosshair {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+}
+.top-left {
+  top: 8px;
+  left: 8px;
+  border-top: 2px solid var(--text-dark);
+  border-left: 2px solid var(--text-dark);
+}
+.bottom-right {
+  bottom: 8px;
+  right: 8px;
+  border-bottom: 2px solid var(--text-dark);
+  border-right: 2px solid var(--text-dark);
+}
+
 /* =========================
-   MEDIA QUERIES (iPhone 13 / Mobile Fix)
+   MOBILE RESPONSIVE FIX
    ========================= */
 @media (width <= 850px) {
-  .student-card {
-    margin-bottom: 30vh;
+  .teach-section {
+    padding: 4rem 1rem;
+  }
+  .grid-wrapper {
+    gap: 3rem;
+  }
+  .card-body {
+    grid-template-columns: 1fr;
   }
 
-  .card-inner {
-    grid-template-columns: 1fr;
-    padding: 1.5rem;
-    gap: 1rem;
+  .image-compartment {
+    border-right: none;
+    border-bottom: var(--brutalist-border-thick);
+    padding: 1rem;
+    height: 180px; /* Locked height to prevent vertical bloat */
+  }
+
+  .avatar-target {
+    max-width: 140px;
+  }
+  .avatar-target.scale-down {
+    max-width: 100px;
+  }
+
+  .content-compartment {
+    padding: 1.5rem 1.25rem;
     text-align: center;
   }
 
-  .guiding-avatar {
-    height: 120px;
-    left: -50px;
-    bottom: -70px;
-  }
-
-  .card-image img {
-    max-height: 180px;
-  }
-
   .card-title {
-    margin-bottom: 0.75rem;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
   }
-
   .card-text {
-    font-size: 1rem;
-    margin-bottom: 1.25rem;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
     line-height: 1.4;
   }
-
   .tag-group {
     justify-content: center;
   }
 
-  .tag {
-    padding: 0.4rem 0.8rem;
-    font-size: 0.65rem;
+  .guiding-stamp {
+    width: 70px;
+    bottom: -15px;
+    right: -10px;
+  }
+}
+
+@media (width <= 400px) {
+  /* Ultra-small screens (iPhone SE) */
+  .image-compartment {
+    height: 140px;
+  }
+  .avatar-target {
+    max-width: 110px;
+  }
+  .card-title {
+    font-size: 1.3rem;
   }
 }
 </style>

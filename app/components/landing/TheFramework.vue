@@ -1,5 +1,6 @@
 <script setup>
-const { locale, t } = useI18n();
+const { t, locale } = useI18n();
+const { currentTheme } = useTheme();
 const { $gsap } = useNuxtApp();
 const sectionRef = ref(null);
 const scrollRef = ref(null);
@@ -12,6 +13,11 @@ const steps = [
   { key: "step4", icon: "ph:globe-hemisphere-west-bold" },
   { key: "step5", icon: "ph:arrows-clockwise-bold" },
 ];
+
+watch(locale, async () => {
+  await nextTick();
+  ScrollTrigger.refresh();
+});
 
 onMounted(() => {
   ctx = $gsap.context(() => {
@@ -58,7 +64,7 @@ onUnmounted(() => {
           <div class="card-inner">
             <div class="step-header">
               <Icon :name="step.icon" class="step-icon" />
-              <span :class="['step-tag', `theme-${locale}`]">
+              <span :class="['step-tag', currentTheme]">
                 {{ t(`framework.steps.${step.key}.label`) }}
               </span>
             </div>
@@ -143,15 +149,12 @@ onUnmounted(() => {
   padding: 4rem 3rem;
   position: relative;
   overflow: hidden;
-  height: 425px; /* Slight height bump for icon spacing */
+  height: 425px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-/* -------------------------
-   NEW ICON & TAG STYLES
-   ------------------------- */
 .step-header {
   display: flex;
   flex-direction: column;
@@ -192,9 +195,6 @@ onUnmounted(() => {
   background-color: var(--color-fr);
 }
 
-/* -------------------------
-   CONTENT STYLES
-   ------------------------- */
 .step-title {
   font-family: var(--font-display);
   font-size: 2.5rem;
@@ -240,9 +240,6 @@ onUnmounted(() => {
   }
 }
 
-/* =========================
-   MEDIA QUERIES
-   ========================= */
 @media (width <= 768px) {
   .framework-section {
     height: auto;
@@ -266,3 +263,4 @@ onUnmounted(() => {
   }
 }
 </style>
+```

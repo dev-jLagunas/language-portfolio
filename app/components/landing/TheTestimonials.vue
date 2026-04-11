@@ -1,5 +1,6 @@
 <script setup>
-const { locale, t } = useI18n();
+const { t, locale } = useI18n();
+const { currentTheme, isChangingLanguage } = useTheme();
 const { $gsap } = useNuxtApp();
 const sectionRef = ref(null);
 let ctx;
@@ -11,22 +12,27 @@ const testimonials = [
   { key: "saki", image: "/images/characters/avatar-takumi.png" },
 ];
 
+// Force GSAP to recalculate when text height changes
+watch(locale, async () => {
+  await nextTick();
+  ScrollTrigger.refresh();
+});
+
 onMounted(() => {
   ctx = $gsap.context(() => {
     const cards = $gsap.utils.toArray(".testimonial-card");
 
     cards.forEach((card, i) => {
       $gsap.from(card, {
-        y: 60,
-        opacity: 0,
-        scale: 0.9,
-        rotation: i % 2 === 0 ? -1 : 1,
-        duration: 0.7,
-        ease: "back.out(1.5)",
+        y: 80, // Increased for a more dramatic pop
+        rotation: i % 2 === 0 ? -2 : 2,
+        duration: 0.8,
+        ease: "back.out(1.7)",
         scrollTrigger: {
           trigger: card,
-          start: "top 90%",
+          start: "top 95%", // Starts a bit later for better impact
           toggleActions: "play none none reverse",
+          invalidateOnRefresh: true,
         },
       });
     });
@@ -39,12 +45,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section
-    ref="sectionRef"
-    class="testimonials-section"
-    id="testimonials"
-    data-step="3"
-  >
+  <section ref="sectionRef" class="testimonials-section" id="testimonials">
     <div class="container">
       <div class="intro">
         <h2 class="display-xl">{{ t("testimonials.title") }}</h2>
@@ -55,7 +56,11 @@ onUnmounted(() => {
         <div
           v-for="(item, index) in testimonials"
           :key="index"
-          :class="['testimonial-card', `theme-${locale}`]"
+          :class="[
+            'testimonial-card',
+            currentTheme,
+            { 'is-transitioning': isChangingLanguage },
+          ]"
         >
           <div class="texture-grid"></div>
 
@@ -93,10 +98,11 @@ onUnmounted(() => {
 
 <style scoped>
 .testimonials-section {
-  padding: var(--section-padding);
+  padding: 8rem var(--space-unit);
   background-color: var(--bg-main);
   position: relative;
   z-index: 30;
+  overflow: hidden; /* Prevents rotation from causing horizontal scroll */
 }
 
 .container {
@@ -107,33 +113,30 @@ onUnmounted(() => {
 .intro {
   text-align: center;
   margin-bottom: 5rem;
+}
 
-  & .title {
-    font-family: var(--font-display);
-    font-size: clamp(3rem, 7vw, 4.5rem);
-    color: var(--text-dark);
-    margin-bottom: 1rem;
-  }
+.display-xl {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 7vw, 4.5rem);
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+}
 
-  & .subtitle {
-    font-family: var(--font-main);
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 0.3em;
-    font-weight: 800;
-    opacity: 0.5;
-  }
+.subtitle {
+  font-family: var(--font-main);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  font-weight: 800;
+  opacity: 0.5;
 }
 
 .testimonial-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-  gap: 8rem 3rem; /* Extra vertical gap for the breakout image */
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 8rem 3rem;
 }
 
-/* -------------------------
-   CARD ARCHITECTURE
-   ------------------------- */
 .testimonial-card {
   position: relative;
   padding: 3rem;
@@ -143,7 +146,21 @@ onUnmounted(() => {
   flex-direction: column;
   background-color: var(--bg-card);
   overflow: visible;
-  transition: transform 0.3s ease;
+  transition:
+    background-color 0.4s ease,
+    opacity 0.3s ease;
+  opacity: 1 !important; /* Forces visibility */
+}
+
+/* We keep the visual lock for the language swap, 
+   but we only lower it to 0.5 so it never truly disappears.
+*/
+.testimonial-card.is-transitioning {
+  opacity: 0.5 !important;
+}
+
+.testimonial-card.is-transitioning .card-inner {
+  visibility: hidden;
 }
 
 .theme-en {
@@ -176,87 +193,67 @@ onUnmounted(() => {
   height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center content for better alignment with polaroid */
-  text-align: center;
+  align-items: center;
 }
 
-/* -------------------------
-   HEADER (NAME & ROLE)
-   ------------------------- */
 .user-meta {
   display: flex;
   flex-direction: column;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
   width: 100%;
-
-  & .name {
-    font-family: var(--font-main);
-    font-weight: 900;
-    font-size: 1.4rem;
-    text-transform: uppercase;
-    color: var(--text-dark);
-    letter-spacing: 0.02em;
-  }
-
-  & .role {
-    font-family: var(--font-main);
-    font-size: 0.8rem;
-    font-weight: 700;
-    opacity: 0.5;
-    color: var(--text-dark);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-  }
 }
 
-/* -------------------------
-   STORY & QUOTES
-   ------------------------- */
+.name {
+  font-family: var(--font-main);
+  font-weight: 900;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  color: var(--text-dark);
+}
+
+.role {
+  font-family: var(--font-main);
+  font-size: 0.8rem;
+  font-weight: 700;
+  opacity: 0.5;
+  text-transform: uppercase;
+}
+
 .story-wrapper {
   position: relative;
-  padding: 0 1rem;
-  margin-bottom: 4rem; /* Space for polaroid below */
+  width: 100%;
 }
 
 .story {
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   line-height: 1.3;
   color: var(--text-dark);
-  position: relative;
-  z-index: 1;
-  text-align: start;
+  text-align: left;
 }
 
 .quote-mark {
   font-family: var(--font-display);
-  font-size: 8rem;
+  font-size: 7rem;
   color: var(--text-dark);
-  opacity: 0.15;
-  line-height: 1;
+  opacity: 0.1;
   position: absolute;
-  user-select: none;
 }
 
 .quote-mark.open {
-  top: -45px;
-  left: -30px;
-  transform: rotate(-15deg);
+  top: -30px;
+  left: -20px;
 }
-
 .quote-mark.close {
-  bottom: -100px;
-  right: 10px;
-  transform: rotate(15deg);
+  bottom: -60px;
+  right: -10px;
 }
 
-/* -------------------------
-   CENTERED PINNED POLAROID
-   ------------------------- */
 .image-anchor {
   position: relative;
   width: 100%;
-  height: 60px; /* Acts as a spacer for the absolute image */
+  height: 60px;
+  margin-top: 3rem;
 }
 
 .pinned-polaroid {
@@ -264,42 +261,23 @@ onUnmounted(() => {
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 225px; /* Bigger presence as requested */
+  width: 200px;
   height: auto;
-  z-index: 10;
-  filter: drop-shadow(8px 8px 0px rgba(0, 0, 0, 0.2));
-  transition: transform 0.3s ease;
+  filter: drop-shadow(6px 6px 0px rgba(0, 0, 0, 0.15));
 }
 
-.testimonial-card:hover .pinned-polaroid {
-  transform: translateX(-50%) translateY(-5px) scale(1.02);
-}
-
-/* =========================
-   MEDIA QUERIES
-   ========================= */
-@media (width <= 900px) {
+@media (width <= 768px) {
   .testimonial-grid {
-    grid-template-columns: 1fr;
-    gap: 8rem;
+    gap: 6rem 1rem;
   }
-
   .testimonial-card {
-    padding: 2rem 0.5rem;
+    padding: 2rem 1.5rem;
   }
-
   .story {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
   }
-
   .pinned-polaroid {
-    width: 200px;
-  }
-}
-
-@media (width >= 1024px) {
-  .pinned-polaroid {
-    width: 240px;
+    width: 160px;
   }
 }
 </style>

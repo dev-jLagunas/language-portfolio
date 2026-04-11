@@ -1,6 +1,7 @@
 <script setup>
-const { locale, setLocale, t } = useI18n();
-const { activeIndex, setActiveIndex } = useSectionTracker(); // Shared Global State
+const { t } = useI18n();
+const { currentTheme, changeLanguage } = useTheme();
+const { activeIndex, setActiveIndex } = useSectionTracker();
 
 const props = defineProps({
   isOpen: Boolean,
@@ -31,11 +32,10 @@ const platforms = [
 ];
 
 const handleLocaleChange = (code) => {
-  setLocale(code);
+  changeLanguage(code);
 };
 
 const handleNavClick = async (index, href) => {
-  // Update the global state immediately so the avatar starts moving
   setActiveIndex(index);
 
   await new Promise((resolve) => setTimeout(resolve, 300));
@@ -53,7 +53,7 @@ const handleNavClick = async (index, href) => {
 <template>
   <Transition name="brutal-gate">
     <div v-if="isOpen" class="sidebar-overlay" @click.self="$emit('close')">
-      <aside :class="['sidebar', `theme-${locale}`]">
+      <aside :class="['sidebar', currentTheme]">
         <button
           class="sidebar-close"
           @click="$emit('close')"
@@ -69,7 +69,10 @@ const handleNavClick = async (index, href) => {
               <button
                 v-for="lang in languages"
                 :key="lang.code"
-                :class="['lang-btn', { 'is-active': locale === lang.code }]"
+                :class="[
+                  'lang-btn',
+                  { 'is-active': currentTheme === `theme-${lang.code}` },
+                ]"
                 @click="handleLocaleChange(lang.code)"
               >
                 {{ lang.label }}
