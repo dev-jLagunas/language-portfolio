@@ -9,6 +9,14 @@ export const useTheme = () => {
   );
   const isChangingLanguage = useState<boolean>("is-changing-lang", () => false);
 
+  watch(
+    locale,
+    (newLocale) => {
+      currentTheme.value = `theme-${newLocale}`;
+    },
+    { immediate: true },
+  );
+
   const changeLanguage = async (newLocale: LocaleCode) => {
     if (newLocale === locale.value) return;
 
@@ -16,8 +24,6 @@ export const useTheme = () => {
 
     try {
       await setLocale(newLocale);
-      currentTheme.value = `theme-${newLocale}`;
-
       await nextTick();
 
       setTimeout(() => {
