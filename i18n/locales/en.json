@@ -5,14 +5,6 @@
     "book_lesson": "Contact Me",
     "avatar_alt": "Juan Avatar"
   },
-  "mobile_nav": {
-    "students": "Students",
-    "system": "System",
-    "testimonials": "Reviews",
-    "resume": "Resume",
-    "links": "Links",
-    "contact": "Contact"
-  },
   "sidebar": {
     "system_language": "System Language",
     "close_alt": "Close",
@@ -25,6 +17,14 @@
       "contact": "Contact"
     }
   },
+  "mobile_nav": {
+    "students": "Students",
+    "system": "Approach",
+    "testimonials": "Reviews",
+    "resume": "Resume",
+    "links": "Links",
+    "contact": "Contact"
+  },
   "hero": {
     "content": {
       "title": "English Teacher & Coach",
@@ -34,25 +34,25 @@
     "stage": {
       "alt_student": "Student",
       "eiken": {
-        "student": "I need help with my Eiken score!",
+        "student": "I need help with my TOEFL score!",
         "juan": "No problem. Let's build a system."
       },
       "travel": {
         "student": "I'm traveling to London next month!",
-        "juan": "Exciting! Let's prep your travel English."
+        "juan": "Let's prep your travel English."
       },
       "business": {
-        "student": "I have a big presentation on Friday.",
-        "juan": "We'll nail that pitch together."
+        "student": "I have a big presentation in three months.",
+        "juan": "I'll make sure you're ready."
       }
     },
     "specs": {
       "location": "ISHIKAWA_JP",
-      "education": "LINGÜÍSTICA_UCSD",
-      "bio": "4_GATOS",
+      "education": "LINGUISTICS_UCSD",
+      "bio": "4_CATS",
       "level": "JLPT_N2",
-      "experience": "10+ AÑOS JPN",
-      "type": "ARQUITECTO_UX"
+      "experience": "10+ YEARS JAPAN",
+      "type": "UX_PRODUCT_DESIGN"
     }
   },
   "stats": {
@@ -75,7 +75,7 @@
     "students": {
       "test_taker": {
         "title": "The Test-Taker",
-        "description": "Preparing for Eiken, TOEFL, or TOEIC? I help you bridge the gap between knowing grammar and hitting your target score. I’ve helped students secure the scores they needed to move abroad and change their lives.",
+        "description": "Preparing for Eiken, TOEFL, or TOEIC or another English test? I help you bridge the gap between knowing grammar and hitting your target score. I’ve helped students secure the scores they needed to move abroad and change their lives.",
         "tags": {
           "tag1": "Eiken / TOEFL",
           "tag2": "Proven Strategy",
@@ -84,7 +84,7 @@
       },
       "professional": {
         "title": "The Professional",
-        "description": "High-stakes meetings or international presentations? I’ve taught at global companies like Fujitsu and Hino. We refine your professional voice so you can lead with confidence in any corporate environment.",
+        "description": "High-stakes meetings or international presentations? I’ve taught at global companies like Fujitsu and Eizo. We refine your professional voice so you can lead with confidence in any corporate environment.",
         "tags": {
           "tag1": "Business English",
           "tag2": "Corporate Skill",
@@ -121,39 +121,39 @@
     }
   },
   "framework": {
-    "title": "My 5-Point System",
-    "subtitle": "A complete approach for serious students.",
+    "title": "My Approach",
+    "subtitle": "How we'll go about meeting your goals.",
     "steps": {
       "step1": {
         "title": "The Diagnostic Audit",
         "label": "Point 01",
-        "description": "We don't do generic placement tests. I analyze your current speech and writing to find the specific bottlenecks holding you back from the next level."
+        "description": "I'm not a fan of generic placement tests. I analyze your current speech and writing to find the specific bottlenecks holding you back from the next level."
       },
       "step2": {
-        "title": "Linguistic Logic",
+        "title": "Language History",
         "label": "Point 02",
-        "description": "I use my background in Linguistics to explain the 'why' behind the language. Once you understand the system, you stop memorizing and start communicating."
+        "description": "I use my background in Linguistics and my teaching experience to identify your specific language needs for use cases like professional communication or standardized tests."
       },
       "step3": {
         "title": "High-Stakes Prep",
         "label": "Point 03",
-        "description": "We focus on the moments that matter. Whether it's a TOEFL exam, a corporate presentation, or a visa interview, we build the exact tools you need to succeed."
+        "description": "We then focus on what matters to you. Whether it's a TOEFL exam, a corporate presentation, or a visa interview, we build the exact tools you need to succeed."
       },
       "step4": {
         "title": "Cultural Nuance",
         "label": "Point 04",
-        "description": "English is more than just words. I teach you the social 'unwritten rules' and pragmatics I've learned from living and working in global environments."
+        "description": "English is more than just words. I teach you the social unwritten rules and pragmatics I've learned from living and working in global environments."
       },
       "step5": {
         "title": "The Work Loop",
         "label": "Point 05",
-        "description": "I provide direct, honest feedback. We iterate on your progress with the same intensity I bring to my own work. No fluff—just steady, measurable growth."
+        "description": "I provide direct, honest feedback. We iterate on your progress using a consistent pattern to build confidence in the language and fuel further growth."
       }
     }
   },
   "testimonials": {
-    "title": "Success Stories",
-    "subtitle": "Real Results from Real People",
+    "title": "Student Success Stories",
+    "subtitle": "Real Results from My Past Students",
     "labels": {
       "log": "LOG NO.",
       "verified": "VERIFIED RESULT"
@@ -162,22 +162,22 @@
       "hiroki": {
         "name": "Satoshi M.",
         "role": "Business Executive",
-        "story": "Six months before moving to the U.S., I needed to improve my TOEIC score and prepare for daily life. Juan prepped me for everything—from the test to social nuances. Two years later, I still see the impact of that training."
+        "story": "Six months before moving to the U.S., I needed to improve my TOEIC score and prepare for daily life. Juan helped me with everything, including cultural norms that might surprise me in a rural area. I still see the impact of that experience today."
       },
       "elena": {
         "name": "Mina K.",
         "role": "University Student",
-        "story": "I needed a specific TOEFL score to study abroad. After several attempts on my own, I worked with Juan and passed on my first try after only three months. He helped me make my goal of moving abroad a reality."
+        "story": "I needed a specific TOEFL score to study abroad. After several attempts on my own, I worked with Juan and passed on my first try after only three months. He helped make my goal a reality. The test wasn't easy, but it was great having someone who truly understood the challenge."
       },
       "kenji": {
         "name": "Dr. Park",
         "role": "University Professor",
-        "story": "During my sabbatical at UCSD, Juan pushed my English in a way that was challenging but highly effective for my research. Despite our different backgrounds, he understood exactly how to help me adjust and grow."
+        "story": "During my sabbatical at UCSD, I was paired with Juan in the English in Action program. We met once a week for two years. It was great to have his help with English related to my work, but also just to have someone to chat with."
       },
       "saki": {
         "name": "Takumi O.",
-        "role": "Professional Learner",
-        "story": "I used to be very shy and worried about my grammar. Juan helped me realize that English is about communication and personality. Now, I'm the one making jokes and leading conversations in group settings."
+        "role": "Lifelong Learner",
+        "story": "I used to be very shy and worried about my grammar. Juan helped me realize that English is about communication and personality. I started to thoroughly enjoy speaking English because I was no longer putting so much pressure on myself to be perfect."
       }
     }
   },
@@ -194,43 +194,43 @@
       "language_friends": {
         "title": "Language Friends Series",
         "type": "Author / Children's Books",
-        "desc": "A series of books designed for natural language acquisition through storytelling.",
-        "details": "Language Friends is a children's book series launched on Amazon. Drawing on my background in linguistics, these stories focus on natural acquisition patterns rather than rote memorization. They are built to help young learners (and parents) engage with English through high-interest narratives and clear visual systems.",
-        "btnText": "View on Amazon"
+        "desc": "A book series designed for natural language acquisition through repetition and instructional UX, such as color and visual association.",
+        "details": "Language Friends is a children's book series launched on Amazon and Rakuten Kobo. Drawing on my background in linguistics, these books focus on natural acquisition patterns rather than rote memorization. They help young learners and their parents engage with English through fun visuals and clear learning systems.",
+        "btnText": "View Website"
       },
       "yt_challenge": {
         "title": "Juan & Moe's Language Switch",
-        "type": "Learning / YT",
-        "desc": "Real-time language challenges and breakdown scripts. Seeing the system in action.",
-        "details": "This YouTube channel documents a real-time language challenge with my wife. We document the struggle, the systems, and the breakthroughs of learning in a bilingual environment. It provides students with a look at how a high-agency approach to language actually works in daily life.",
+        "type": "Learning / YouTube",
+        "desc": "Real-time language challenges and scripts in English and Japanese. Growing our language skills together.",
+        "details": "This YouTube channel documents a real-time language challenge with my wife. We document the struggle, the systems, and the breakthroughs of learning in a bilingual environment. It shows students how a high-agency approach to language works in daily life.",
         "btnText": "Watch Channel"
       },
       "english_lab": {
-        "title": "The English Lab (Official)",
-        "type": "Education / YT",
-        "desc": "Deep dives into the linguistics and systems behind high-speed language acquisition.",
-        "details": "The English Lab is where I break down the mechanics of English. I move away from 'classroom' English and focus on the systems—phonology, syntax, and pragmatics—that allow adults to communicate at a professional level quickly.",
+        "title": "The English Lab",
+        "type": "Entertainment / YouTube",
+        "desc": "A mix of English, humor, and simple storytelling in a distinct visual style.",
+        "details": "The English Lab features short videos showing how to use expressive English in everyday—and sometimes absurd—situations. My goal is to help you learn without it feeling like work.",
         "btnText": "Watch Channel"
       },
       "portfolio": {
         "title": "Product & UX Portfolio",
-        "type": "Systems / Design",
-        "desc": "The architectural thinking applied to digital products, now applied to language.",
-        "details": "My work as a Product Designer and Systems Architect. This portfolio showcases how I solve disorganized problems through structured, usable, and scalable digital solutions. I apply this same 'Systems First' mindset to how I teach English.",
+        "type": "Designer",
+        "desc": "I also work as a freelance UX/Product Designer. Here you'll find my professional portfolio.",
+        "details": "My work as a Product Designer. This portfolio showcases how I solve complex problems through structured, scalable digital solutions. I apply this same 'Systems First' mindset to how I teach English.",
         "btnText": "View Portfolio"
       },
       "unsplash": {
         "title": "Photography",
         "type": "Visual Perspective",
-        "desc": "A personal collection of moments captured while exploring the world through a lens.",
-        "details": "I love the process of photography. There is something grounding about spending an afternoon walking around and capturing life as it happens. It's how I reset my creative systems. Please check out my work.",
+        "desc": "A collection of my photography, captured primarily with a Fuji X-S20.",
+        "details": "I love the process of photography. There is something grounding about capturing life as it happens. It is how I reset my creative systems. Please feel free to check out my work.",
         "btnText": "View Photos"
       },
       "medium": {
         "title": "Medium Blog",
         "type": "Writing / Logic",
-        "desc": "Articles on UX, pedagogy, and the intersection of systems architecture and life.",
-        "details": "I write about the intersection of design, language, and logic. My articles explore how we can use architectural thinking to improve our learning habits, our work-flows, and our ability to communicate complex ideas.",
+        "desc": "Articles on UX, pedagogy, and design systems.",
+        "details": "I write about the intersection of design, language, and logic. My articles explore how we can use architectural thinking to improve our learning habits, workflows, and our ability to communicate complex ideas.",
         "btnText": "Read Articles"
       }
     }
@@ -270,66 +270,70 @@
       "network": "Network"
     },
     "nav": {
-      "lab": "The English Lab",
-      "design": "Product Design",
-      "method": "Systems & Logic",
-      "privacy": "Privacy",
-      "terms": "Terms"
+      "approach": "My Approach",
+      "history": "Career Path",
+      "results": "Success Stories",
+      "language_friends": "Language Friends",
+      "yt_challenge": "Language Switch",
+      "english_lab": "The English Lab",
+      "portfolio": "UX Portfolio",
+      "unsplash": "Photography",
+      "medium": "Articles"
     },
     "location": "Operating from Ishikawa, Japan.",
     "built_with": "Built with"
   },
   "resume": {
-    "title": "Resume Timeline",
-    "tagline": "A quick overview of my career",
+    "title": "Career Timeline",
+    "tagline": "A quick overview of my professional journey",
     "items": {
       "irc": {
         "year": "2011",
         "company": "IRC",
-        "role": "Teacher Assistant",
-        "desc": "Assisted in teaching English to Iraqi refugees; focused on initial cultural and linguistic integration."
+        "role": "Teaching Assistant",
+        "desc": "Assisted in teaching English to Iraqi refugees, focusing on facilitating small-group activities."
       },
       "ucsd": {
         "year": "2012 — 2015",
         "company": "UC San Diego",
-        "role": "Linguistics Degree",
-        "desc": "Completed Bachelor's in Linguistics; specialized in structural systems and cognitive patterns of language."
+        "role": "B.A. in Linguistics",
+        "desc": "Completed my degree with a focus on syntax and phonetics—core concepts that continue to shape my analytical approach to teaching."
       },
       "eia": {
         "year": "2012 — 2015",
-        "company": "English in Action",
+        "company": "English in Action Program",
         "role": "English Partner",
-        "desc": "Volunteered as a linguistic partner for international students and professors to bridge communication gaps."
+        "desc": "Volunteered as a language partner for international students and professors to bridge communication gaps."
       },
       "aeon": {
         "year": "2015 — 2018",
         "company": "AEON (Japan)",
-        "role": "Teacher of Distinction",
-        "desc": "Taught 500+ students; dispatched to global firms like Fujitsu and Komatsu; trained other educators."
+        "role": "English Instructor",
+        "desc": "Taught 300+ students; dispatched to global firms like Fujitsu and Eizo. Developed custom curricula and received the Teacher of Distinction award."
       },
       "westgate": {
         "year": "2018 — 2019",
         "company": "Westgate",
         "role": "University Instructor",
-        "desc": "Taught intensive English programs at Tokyo University and Meiji University (Izumi Campus)."
+        "desc": "Taught intensive English programs at Meiji University (Izumi Campus) in Tokyo."
       },
       "boe": {
         "year": "2019 — 2020",
         "company": "Board of Education",
-        "role": "Direct Hire ALT",
-        "desc": "Language specialist for local schools; focused on curriculum delivery and student engagement."
+        "role": "Assistant Language Teacher",
+        "desc": "Language assistant for local schools, focusing on curriculum delivery and student engagement."
       },
       "cafe": {
         "year": "2021 — 2024",
         "company": "Cafe Triangle",
         "role": "Owner & Operator",
-        "desc": "Managed end-to-end spatial design and business logic in a high-accountability autonomous environment."
+        "desc": "Managed daily business operations alongside my wife; responsible for digital presence and web development."
       },
       "freelance": {
-        "year": "2023 — Present",
-        "company": "Design Lab",
+        "year": "2024 — Present",
+        "company": "Freelance",
         "role": "UX & Product Designer",
-        "desc": "Self-taught systems architect; building scalable digital solutions through a linguistic and structural lens."
+        "desc": "I merge thoughtful product design with clean visual systems, building end-to-end digital products for international audiences."
       },
       "friends": {
         "year": "2025",
@@ -341,7 +345,7 @@
         "year": "2026",
         "company": "YouTube",
         "role": "Content Educator",
-        "desc": "Teaching English and documenting Japanese language challenges to show real-world learning logic."
+        "desc": "Teaching English and documenting Japanese language challenges to demonstrate real-world learning logic."
       }
     }
   }

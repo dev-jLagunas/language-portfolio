@@ -19,7 +19,7 @@
   },
   "mobile_nav": {
     "students": "Alumnos",
-    "system": "Sistema",
+    "system": "Enfoque",
     "testimonials": "Reseñas",
     "resume": "CV",
     "links": "Enlaces",
@@ -34,16 +34,16 @@
     "stage": {
       "alt_student": "Estudiante",
       "eiken": {
-        "student": "¡Necesito ayuda con mi puntaje de Eiken!",
-        "juan": "Sin problema. Construyamos un sistema."
+        "student": "¡Necesito ayuda con mi puntaje de TOEFL!",
+        "juan": "Sin problema. Vamos a crear un sistema."
       },
       "travel": {
-        "student": "¡Viajo a Londres el próximo mes!",
-        "juan": "¡Qué emocionante! Preparemos tu inglés de viaje."
+        "student": "¡Voy a viajar a Londres el próximo mes!",
+        "juan": "Vamos a preparar tu inglés para el viaje."
       },
       "business": {
-        "student": "Tengo una presentación importante el viernes.",
-        "juan": "Lograremos ese discurso juntos."
+        "student": "Tengo una presentación importante en tres meses.",
+        "juan": "Me aseguraré de que estés listo."
       }
     },
     "specs": {
@@ -121,59 +121,63 @@
     }
   },
   "framework": {
-    "title": "Mi Sistema de 5 Puntos",
-    "subtitle": "Un enfoque completo para estudiantes comprometidos.",
+    "title": "Mi Enfoque",
+    "subtitle": "Cómo lograremos alcanzar tus metas.",
     "steps": {
       "step1": {
-        "title": "Auditoría Diagnóstica",
+        "title": "Auditoría de Diagnóstico",
         "label": "Punto 01",
-        "description": "No hacemos pruebas de nivel genéricas. Analizo tu habla y escritura actuales para encontrar los obstáculos específicos que te impiden alcanzar el siguiente nivel."
+        "description": "No me gustan los exámenes de nivel genéricos. Analizo tu forma actual de hablar y escribir para encontrar los obstáculos específicos que te impiden llegar al siguiente nivel."
       },
       "step2": {
-        "title": "Lógica Lingüística",
+        "title": "Historial Lingüístico",
         "label": "Punto 02",
-        "description": "Uso mi formación en Lingüística para explicar el 'porqué' detrás del idioma. Una vez que entiendes el sistema, dejas de memorizar y empiezas a comunicar."
+        "description": "Utilizo mi formación en Lingüística y mi experiencia docente para definir tus necesidades específicas, ya sea para comunicación profesional o exámenes oficiales."
       },
       "step3": {
-        "title": "Preparación de Alto Nivel",
+        "title": "Preparación Crítica",
         "label": "Punto 03",
-        "description": "Nos enfocamos en los momentos importantes. Ya sea un examen TOEFL, una presentación corporativa o una entrevista de visa, creamos las herramientas exactas para tu éxito."
+        "description": "Nos enfocamos en lo que te importa. Ya sea el TOEFL, una presentación corporativa o una entrevista de visa, desarrollamos las herramientas exactas que necesitas para tener éxito."
       },
       "step4": {
         "title": "Matices Culturales",
         "label": "Punto 04",
-        "description": "El inglés es más que solo palabras. Te enseño las 'reglas no escritas' y la pragmática social que he aprendido viviendo y trabajando en entornos globales."
+        "description": "El inglés es más que solo palabras. Te enseño las reglas sociales no escritas y la pragmática que he aprendido viviendo y trabajando en entornos globales."
       },
       "step5": {
-        "title": "El Ciclo de Trabajo",
+        "title": "Ciclo de Trabajo",
         "label": "Punto 05",
-        "description": "Ofrezco retroalimentación directa y honesta. Iteramos sobre tu progreso con la misma intensidad que aplico a mi propio trabajo. Sin rodeos, solo crecimiento constante."
+        "description": "Ofrezco retroalimentación directa y honesta. Trabajamos en tu progreso con un patrón constante para generar una confianza que impulse tu crecimiento futuro."
       }
     }
   },
   "testimonials": {
     "title": "Historias de Éxito",
-    "subtitle": "Resultados Reales de Personas Reales",
+    "subtitle": "Resultados Reales de mis Exalumnos",
+    "labels": {
+      "log": "REGISTRO NO.",
+      "verified": "RESULTADO VERIFICADO"
+    },
     "items": {
       "hiroki": {
         "name": "Satoshi M.",
         "role": "Ejecutivo de Negocios",
-        "story": "Seis meses antes de mudarme a EE. UU., necesitaba mejorar mi TOEIC y prepararme para la vida diaria. Juan me preparó para todo, desde el examen hasta los matices sociales. Dos años después, sigo viendo el impacto."
+        "story": "Seis meses antes de mudarme a EE. UU., necesitaba mejorar mi puntaje de TOEIC y prepararme para la vida diaria. Juan me ayudó con todo, incluso con las normas culturales que podrían sorprenderme al vivir en una zona rural. Sigo viendo el impacto de esa experiencia hoy en día."
       },
       "elena": {
         "name": "Mina K.",
         "role": "Estudiante Universitaria",
-        "story": "Necesitaba un puntaje TOEFL específico para estudiar en el extranjero. Después de varios intentos por mi cuenta, trabajé con Juan y lo logré en el primer intento tras solo tres meses. Él hizo realidad mi meta de mudarme."
+        "story": "Necesitaba un puntaje específico en el TOEFL para estudiar en el extranjero. Después de varios intentos por mi cuenta, trabajé con Juan y pasé en mi primer intento tras solo tres meses. Él hizo realidad mi meta. El examen no fue fácil, pero fue bueno contar con alguien que realmente entendía el reto."
       },
       "kenji": {
         "name": "Dr. Park",
         "role": "Profesor Universitario",
-        "story": "Durante mi estancia en UCSD, Juan impulsó mi inglés de una manera desafiante pero efectiva para mi investigación. A pesar de nuestras diferencias, entendió exactamente cómo ayudarme a adaptarme y crecer."
+        "story": "Durante mi año sabático en UCSD, me asignaron a Juan en el programa English in Action. Nos reunimos una vez por semana durante dos años. Fue genial contar con su ayuda para el inglés relacionado con mi trabajo, pero también simplemente tener a alguien con quien platicar."
       },
       "saki": {
         "name": "Takumi O.",
-        "role": "Estudiante Profesional",
-        "story": "Solía ser muy tímido y me preocupaba mi gramática. Juan me ayudó a entender que el inglés se trata de comunicación y personalidad. Ahora soy yo quien hace bromas y lidera las conversaciones en grupo."
+        "role": "Aprendiz Permanente",
+        "story": "Solía ser muy tímido y me preocupaba mi gramática. Juan me ayudó a entender que el inglés se trata de comunicación y personalidad. Empecé a disfrutar mucho hablar inglés porque dejé de presionarme tanto por ser perfecto."
       }
     }
   },
@@ -190,43 +194,43 @@
       "language_friends": {
         "title": "Serie Language Friends",
         "type": "Autor / Libros Infantiles",
-        "desc": "Una serie de libros diseñados para la adquisición natural del lenguaje a través de cuentos.",
-        "details": "Language Friends es una serie de libros infantiles lanzada en Amazon. Basándome en mi formación en lingüística, estas historias se centran en patrones de adquisición natural en lugar de la memorización. Están diseñadas para ayudar a los jóvenes alumnos a interactuar con el inglés a través de narrativas interesantes.",
-        "btnText": "Ver en Amazon"
+        "desc": "Una serie de libros diseñados para la adquisición natural del lenguaje mediante la repetición y UX instruccional.",
+        "details": "Language Friends es una serie de libros infantiles lanzada en Amazon y Rakuten Kobo. Basada en mi formación lingüística, se enfoca en patrones de adquisición natural en lugar de memorización. Ayuda a niños y padres a interactuar con el inglés mediante visuales divertidos y sistemas claros.",
+        "btnText": "Ver Sitio Web"
       },
       "yt_challenge": {
-        "title": "Language Switch de Juan y Moe",
-        "type": "Aprendizaje / YT",
-        "desc": "Desafíos lingüísticos en tiempo real. Observando el sistema en acción.",
-        "details": "Este canal de YouTube documenta un desafío lingüístico con mi esposa. Documentamos el esfuerzo, los sistemas y los avances de aprender en un entorno bilingüe. Ofrece a los estudiantes una visión de cómo funciona un enfoque de alta agencia en la vida diaria.",
+        "title": "Juan & Moe's Language Switch",
+        "type": "Aprendizaje / YouTube",
+        "desc": "Retos de idiomas en tiempo real y guiones en inglés y japonés. Mejorando nuestras habilidades juntos.",
+        "details": "Este canal documenta un reto lingüístico con mi esposa. Mostramos el esfuerzo, los sistemas y los logros de aprender en un entorno bilingüe. Ofrece a los alumnos una visión real de cómo funciona un enfoque proactivo en la vida diaria.",
         "btnText": "Ver Canal"
       },
       "english_lab": {
-        "title": "The English Lab (Oficial)",
-        "type": "Educación / YT",
-        "desc": "Análisis profundos sobre la lingüística y los sistemas de adquisición de idiomas.",
-        "details": "The English Lab es donde desgloso la mecánica del inglés. Me alejo del inglés de 'salón de clases' y me enfoco en los sistemas —fonología, sintaxis y pragmática— que permiten a los adultos comunicarse a nivel profesional rápidamente.",
+        "title": "The English Lab",
+        "type": "Educación / Entretenimiento / YouTube",
+        "desc": "Una mezcla de inglés, humor y narración con un estilo visual único.",
+        "details": "En The English Lab creo videos cortos sobre cómo usar un inglés más expresivo en situaciones cotidianas o incluso absurdas. ¡Mi meta es ayudarte a aprender sin que parezca que estás estudiando!",
         "btnText": "Ver Canal"
+      },
+      "portfolio": {
+        "title": "Portafolio de Producto y UX",
+        "type": "Diseñador",
+        "desc": "También trabajo como diseñador UX/Product freelance. Aquí puedes ver mi portafolio profesional.",
+        "details": "Mi trabajo como diseñador de producto. Este portafolio muestra cómo resuelvo problemas complejos mediante soluciones digitales estructuradas y escalables. Aplico esta misma mentalidad de 'Sistemas Primero' a mis clases de inglés.",
+        "btnText": "Ver Portafolio"
       },
       "unsplash": {
         "title": "Fotografía",
         "type": "Perspectiva Visual",
-        "desc": "Una colección personal de momentos capturados explorando el mundo a través del lente.",
-        "details": "Me encanta el proceso fotográfico. Pasar una tarde caminando y capturando la vida tal como sucede es algo que me centra. Es mi forma de reiniciar mis sistemas creativos. Te invito a ver mi trabajo.",
+        "desc": "Una colección de mis fotografías. Actualmente utilizo una Fuji X-S20.",
+        "details": "Amo el proceso de la fotografía. Capturar la vida tal como sucede me ayuda a centrarme y a reiniciar mis sistemas creativos. Te invito a echar un vistazo a mi trabajo.",
         "btnText": "Ver Fotos"
-      },
-      "portfolio": {
-        "title": "Portafolio de UX y Producto",
-        "type": "Sistemas / Diseño",
-        "desc": "El pensamiento arquitectónico aplicado a productos digitales, ahora aplicado al idioma.",
-        "details": "Mi trabajo como Diseñador de Producto. Este portafolio muestra cómo resuelvo problemas desorganizados a través de soluciones digitales estructuradas, utilizables y escalables. Aplico esta misma mentalidad de 'Sistemas Primero' a mi forma de enseñar inglés.",
-        "btnText": "Ver Portafolio"
       },
       "medium": {
         "title": "Blog en Medium",
         "type": "Escritura / Lógica",
-        "desc": "Artículos sobre UX, pedagogía y la intersección entre sistemas y vida.",
-        "details": "Escribo sobre la intersección del diseño, el lenguaje y la lógica. Mis artículos exploran cómo podemos usar el pensamiento arquitectónico para mejorar nuestros hábitos de aprendizaje y flujos de trabajo.",
+        "desc": "Artículos sobre UX, pedagogía y otros temas relacionados al diseño.",
+        "details": "Escribo sobre la intersección entre diseño, lenguaje y lógica. Mis artículos exploran cómo usar el pensamiento arquitectónico para mejorar nuestros hábitos de aprendizaje y nuestra comunicación.",
         "btnText": "Leer Artículos"
       }
     }
@@ -259,85 +263,89 @@
     }
   },
   "footer": {
-    "mission": "Desglosando sistemas lingüísticos para ayudar a profesionales a comunicarse con claridad y confianza. Del diseño UX al coaching de alta agencia.",
+    "mission": "Desglosando sistemas de lenguaje para ayudar a profesionales a comunicarse con claridad y confianza. Desde diseño UX hasta coaching de alto nivel.",
     "switcher_label": "Seleccionar Idioma",
     "columns": {
       "expertise": "Experiencia",
       "network": "Red"
     },
     "nav": {
-      "lab": "The English Lab",
-      "design": "Diseño de Producto",
-      "method": "Sistemas y Lógica",
-      "privacy": "Privacidad",
-      "terms": "Términos"
+      "approach": "Mi Enfoque",
+      "history": "Trayectoria",
+      "results": "Casos de Éxito",
+      "language_friends": "Language Friends",
+      "yt_challenge": "Language Switch",
+      "english_lab": "The English Lab",
+      "portfolio": "Portafolio UX",
+      "unsplash": "Fotografía",
+      "medium": "Artículos"
     },
     "location": "Operando desde Ishikawa, Japón.",
     "built_with": "Construido con"
   },
   "resume": {
     "title": "Trayectoria Profesional",
-    "tagline": "Un resumen de mi carrera",
+    "tagline": "Un resumen rápido de mi carrera",
     "items": {
       "irc": {
         "year": "2011",
         "company": "IRC",
         "role": "Asistente de Profesor",
-        "desc": "Apoyo en la enseñanza de inglés a refugiados iraquíes; enfoque en la integración cultural y lingüística inicial."
+        "desc": "Apoyé en la enseñanza de inglés a refugiados iraquíes, enfocándome en actividades sencillas de grupo."
       },
       "ucsd": {
         "year": "2012 — 2015",
         "company": "UC San Diego",
         "role": "Licenciatura en Lingüística",
-        "desc": "Especialización en sistemas estructurales y patrones cognitivos del lenguaje."
+        "desc": "Estudié a fondo la sintaxis y fonética; conceptos clave que definen mi metodología de enseñanza actual."
       },
       "eia": {
         "year": "2012 — 2015",
-        "company": "English in Action",
-        "role": "Compañero Lingüístico",
-        "desc": "Voluntario como socio lingüístico para estudiantes y profesores internacionales para cerrar brechas de comunicación."
+        "company": "Programa English in Action",
+        "role": "Compañero de Idioma",
+        "desc": "Voluntario como socio lingüístico para estudiantes y profesores internacionales para facilitar la comunicación."
       },
       "aeon": {
         "year": "2015 — 2018",
         "company": "AEON (Japón)",
-        "role": "Profesor de Distinción",
-        "desc": "Enseñé a más de 500 alumnos; asignado a empresas globales como Fujitsu y Komatsu; capacitador de otros educadores."
+        "role": "Instructor de Inglés",
+        "desc": "Enseñé a más de 300 alumnos; asignado a empresas globales como Fujitsu y Eizo. Gané el premio 'Teacher of Distinction'."
       },
       "westgate": {
         "year": "2018 — 2019",
         "company": "Westgate",
         "role": "Instructor Universitario",
-        "desc": "Programas intensivos de inglés en la Universidad de Tokio y la Universidad de Meiji (Campus Izumi)."
+        "desc": "Impartí programas intensivos de inglés en la Universidad Meiji (Campus Izumi) en Tokio."
       },
       "boe": {
         "year": "2019 — 2020",
-        "company": "Junta de Educación",
-        "role": "ALT de Contratación Directa",
-        "desc": "Especialista en idiomas para escuelas locales; enfoque en la entrega del currículo y participación estudiantil."
+        "company": "Secretaría de Educación",
+        "role": "Asistente de Idiomas (ALT)",
+        "desc": "Asistente en escuelas locales, enfocado en la impartición de currículo y participación estudiantil."
       },
       "cafe": {
         "year": "2021 — 2024",
         "company": "Cafe Triangle",
-        "role": "Propietario y Operador",
-        "desc": "Gestión del diseño espacial y lógica de negocio en un entorno autónomo de alta responsabilidad."
+        "role": "Dueño y Operador",
+        "desc": "Gestioné las operaciones del negocio junto a mi esposa; responsable del diseño y desarrollo del sitio web."
       },
       "freelance": {
-        "year": "2023 — Presente",
-        "company": "Laboratorio de Diseño",
+        "year": "2024 — Presente",
+        "company": "Freelance",
         "role": "Diseñador de Producto y UX",
-        "desc": "Arquitecto de sistemas autodidacta; creación de soluciones digitales escalables desde una perspectiva estructural."
+        "desc": "Combino el diseño de productos con sistemas visuales limpios, creando productos digitales de principio a fin."
       },
       "friends": {
         "year": "2025",
         "company": "Language Friends",
         "role": "Autor y Fundador",
-        "desc": "Lanzamiento de una serie de libros infantiles digitales diseñados para la exposición temprana al inglés."
+        "desc": "Lancé una serie de libros infantiles digitales diseñados para la exposición temprana al inglés."
       },
       "youtube": {
         "year": "2026",
         "company": "YouTube",
         "role": "Educador de Contenido",
-        "desc": "Enseñanza de inglés y documentación de retos en japonés para mostrar la lógica del aprendizaje real."
+        "desc": "Enseñando inglés y documentando retos con el idioma japonés para mostrar la lógica del aprendizaje real."
       }
     }
   }

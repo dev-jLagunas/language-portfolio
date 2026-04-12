@@ -45,7 +45,12 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section ref="sectionRef" class="testimonials-section" id="testimonials">
+  <section
+    ref="sectionRef"
+    class="testimonials-section"
+    id="testimonials"
+    data-step="3"
+  >
     <div class="container">
       <div class="intro">
         <h2 class="display-xl">{{ t("testimonials.title") }}</h2>

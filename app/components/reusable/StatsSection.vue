@@ -3,7 +3,7 @@ const { t } = useI18n();
 
 const sourceStats = [
   { number: "3+", key: "ux_systems" },
-  { number: "1,000+", key: "professionals_coached" },
+  { number: "600+", key: "professionals_coached" },
   { number: "4", key: "languages_spoken" },
   { number: "10+", key: "years_japan" },
   { number: "N2", key: "jlpt_certified" },

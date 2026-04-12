@@ -8,19 +8,19 @@ let ctx;
 const resources = [
   {
     key: "language_friends",
-    link: "https://amazon.com/author/juanlagunas",
+    link: "https://the-language-friends.com/",
     img: "/images/links/language-friends-img.png",
     hasModal: true,
   },
   {
     key: "yt_challenge",
-    link: "https://youtube.com/@moeandjuan",
+    link: "https://www.youtube.com/@LanguageSwitch-JM",
     img: "/images/links/language-switch-img.png",
     hasModal: true,
   },
   {
     key: "english_lab",
-    link: "https://youtube.com/@theenglishlab",
+    link: "https://www.youtube.com/@TheEnglishLab_1",
     img: "/images/links/language-lab-img.png",
     hasModal: true,
   },

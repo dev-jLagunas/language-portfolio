@@ -1,27 +1,28 @@
 <script setup>
 const { locale, locales, t } = useI18n();
-const { currentTheme, changeLanguage } = useTheme(); // Global Theme Logic
+const { currentTheme, changeLanguage } = useTheme();
 const currentYear = new Date().getFullYear();
 
 const footerNav = {
   expertise: [
-    { key: "lab", link: "#testimonials" },
-    { key: "design", link: "#social-proof" },
-    { key: "method", link: "#methodology" },
+    { key: "approach", link: "#framework" },
+    { key: "history", link: "#resume-timeline" },
+    { key: "results", link: "#testimonials" },
   ],
   network: [
-    { name: "Language Switch", link: "https://youtube.com/@moeandjuan" },
-    { name: "The English Lab", link: "https://youtube.com/@theenglishlab" },
-    { name: "Behance", link: "https://behance.net/juan-lagunas" },
-    { name: "Language Friends", link: "https://amazon.com/author/juanlagunas" },
-    { name: "Photography", link: "#" },
+    { key: "language_friends", link: "https://the-language-friends.com/" },
+    { key: "yt_challenge", link: "https://www.youtube.com/@LanguageSwitch-JM" },
+    { key: "english_lab", link: "https://www.youtube.com/@TheEnglishLab_1" },
+    { key: "portfolio", link: "https://juan-lagunas.com" },
+    { key: "unsplash", link: "https://unsplash.com/@jlag_photos" },
+    { key: "medium", link: "#" },
   ],
 };
 
 const langNames = {
   en: "English",
   es: "Español",
-  jp: "日本語",
+  ja: "日本語",
   fr: "Français",
 };
 </script>
@@ -69,10 +70,10 @@ const langNames = {
           <div class="nav-column">
             <span class="column-title">{{ t("footer.columns.network") }}</span>
             <ul>
-              <li v-for="item in footerNav.network" :key="item.name">
-                <a :href="item.link" target="_blank" rel="noopener">{{
-                  item.name
-                }}</a>
+              <li v-for="item in footerNav.network" :key="item.key">
+                <a :href="item.link" target="_blank" rel="noopener">
+                  {{ t(`footer.nav.${item.key}`) }}
+                </a>
               </li>
             </ul>
           </div>
