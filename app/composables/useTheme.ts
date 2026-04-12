@@ -3,16 +3,8 @@ export const useTheme = () => {
 
   type LocaleCode = "en" | "es" | "jp" | "fr";
 
-  const currentTheme = ref(`theme-${locale.value}`);
-  const isChangingLanguage = useState<boolean>("is-changing-lang", () => false);
-
-  watch(
-    locale,
-    (newLocale) => {
-      currentTheme.value = `theme-${newLocale}`;
-    },
-    { immediate: true },
-  );
+  const currentTheme = computed(() => `theme-${locale.value}`);
+  const isChangingLanguage = ref(false);
 
   const changeLanguage = async (newLocale: LocaleCode) => {
     if (newLocale === locale.value) return;

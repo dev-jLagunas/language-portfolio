@@ -1,14 +1,15 @@
 <script setup>
-const { currentTheme } = useTheme();
-const isMounted = ref(false);
-
-onMounted(() => {
-  isMounted.value = true;
-});
+const { currentTheme, isChangingLanguage } = useTheme();
 </script>
 
 <template>
-  <div :class="['app-wrapper', isMounted ? currentTheme : 'theme-en']">
+  <div
+    :class="[
+      'app-wrapper',
+      currentTheme,
+      { 'is-transitioning': isChangingLanguage },
+    ]"
+  >
     <TheNavbar />
     <TheMobileNavbar />
 
@@ -38,16 +39,20 @@ body {
   transition: background-color 0.4s ease;
 }
 
-.app-wrapper.theme-en {
+.app-wrapper.is-transitioning {
+  opacity: 0.8;
+}
+
+.theme-en {
   background-color: var(--color-en);
 }
-.app-wrapper.theme-es {
+.theme-es {
   background-color: var(--color-es);
 }
-.app-wrapper.theme-jp {
+.theme-jp {
   background-color: var(--color-jp);
 }
-.app-wrapper.theme-fr {
+.theme-fr {
   background-color: var(--color-fr);
 }
 
