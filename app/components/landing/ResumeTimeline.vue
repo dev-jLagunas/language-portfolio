@@ -18,16 +18,16 @@ const timelineKeys = [
 ];
 
 const visualMap = {
-  irc: "/images/visuals/english-assistant-visual.png",
-  ucsd: "/images/visuals/ucsd-linguistics-visual.png",
-  eia: "/images/visuals/english-action-visual.png",
-  aeon: "/images/visuals/aeon-school-visual.png",
-  westgate: "/images/visuals/meiji-university-visual.png",
-  boe: "/images/visuals/alt-school-visual.png",
-  cafe: "/images/visuals/cafe-triangle-visual.png",
-  freelance: "/images/visuals/ux-design-visual.png",
-  friends: "/images/visuals/language-friends-visuals.png",
-  youtube: "/images/visuals/youtube-channels-visual.png",
+  irc: "/images/visuals/english-assistant-visual.webp",
+  ucsd: "/images/visuals/ucsd-linguistics-visual.webp",
+  eia: "/images/visuals/english-action-visual.webp",
+  aeon: "/images/visuals/aeon-school-visual.webp",
+  westgate: "/images/visuals/meiji-university-visual.webp",
+  boe: "/images/visuals/alt-school-visual.webp",
+  cafe: "/images/visuals/cafe-triangle-visual.webp",
+  freelance: "/images/visuals/ux-design-visual.webp",
+  friends: "/images/visuals/language-friends-visuals.webp",
+  youtube: "/images/visuals/youtube-channels-visual.webp",
 };
 
 const activeIndex = ref(0);
@@ -110,7 +110,7 @@ onUnmounted(() => {
           :style="{ opacity: activeIndex !== null ? 1 : 0 }"
         >
           <img
-            src="/images/avatars/avatar-sitting.png"
+            src="/images/avatars/avatar-sitting.webp"
             alt="Juan sitting"
             class="avatar-sitting-img"
           />

@@ -177,7 +177,7 @@ onUnmounted(() => {
             <div v-else key="success-view" class="success-card">
               <div class="success-visual">
                 <img
-                  src="/images/avatars/avatar-sitting.png"
+                  src="/images/avatars/avatar-sitting.webp"
                   alt="Success"
                   class="success-avatar"
                 />
@@ -197,7 +197,7 @@ onUnmounted(() => {
               <span class="dot"></span> {{ t("contact.identity.location") }}
             </div>
             <img
-              src="/images/visuals/ishikawa-map-brutalist.png"
+              src="/images/visuals/ishikawa-map-brutalist.webp"
               alt="Ishikawa Japan Map"
               class="custom-map-img"
             />
@@ -205,7 +205,7 @@ onUnmounted(() => {
 
           <div class="bio-content">
             <img
-              src="/images/avatars/avatar-pointing.png"
+              src="/images/avatars/avatar-pointing.webp"
               alt="Juan Lagunas"
               class="mini-avatar"
             />

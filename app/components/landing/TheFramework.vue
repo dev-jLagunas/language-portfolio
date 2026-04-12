@@ -80,7 +80,7 @@ onUnmounted(() => {
 
           <img
             v-if="index === steps.length - 1"
-            src="/images/avatars/avatar-pushing.png"
+            src="/images/avatars/avatar-pushing.webp"
             class="pushing-avatar"
             alt="Juan pushing"
           />

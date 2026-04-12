@@ -38,7 +38,7 @@ export default defineNuxtConfig({
           content:
             "Straightforward, high-level English instruction for people serious about their progress. No fluff, just results.",
         },
-        { property: "og:image", content: "https://i.imgur.com/JRSlPLS.png" },
+        { property: "og:image", content: "https://i.imgur.com/JRSlPLS.webp" },
 
         // Twitter
         { name: "twitter:card", content: "summary_large_image" },
@@ -52,7 +52,7 @@ export default defineNuxtConfig({
           content:
             "Move your life forward with better English. Specialist coaching using linguistic strategy.",
         },
-        { name: "twitter:image", content: "https://i.imgur.com/JRSlPLS.png" },
+        { name: "twitter:image", content: "https://i.imgur.com/JRSlPLS.webp" },
       ],
       link: [
         { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },

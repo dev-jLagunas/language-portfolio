@@ -5,12 +5,16 @@ const { locale, t } = useI18n();
 const { activeIndex } = useSectionTracker();
 
 const navItems = [
-  { key: "students", href: "#who-i-help", icon: "students-icon.png" },
-  { key: "system", href: "#framework", icon: "framework-icon.png" },
-  { key: "testimonials", href: "#testimonials", icon: "testimonials-icon.png" },
-  { key: "resume", href: "#resume-timeline", icon: "resume-icon.png" },
-  { key: "links", href: "#social-proof", icon: "links-icon.png" },
-  { key: "contact", href: "#contact", icon: "contact-icon.png" },
+  { key: "students", href: "#who-i-help", icon: "students-icon.webp" },
+  { key: "system", href: "#framework", icon: "framework-icon.webp" },
+  {
+    key: "testimonials",
+    href: "#testimonials",
+    icon: "testimonials-icon.webp",
+  },
+  { key: "resume", href: "#resume-timeline", icon: "resume-icon.webp" },
+  { key: "links", href: "#social-proof", icon: "links-icon.webp" },
+  { key: "contact", href: "#contact", icon: "contact-icon.webp" },
 ];
 
 const scrollToSection = (href) => {

@@ -6,10 +6,10 @@ const sectionRef = ref(null);
 let ctx;
 
 const testimonials = [
-  { key: "hiroki", image: "/images/characters/avatar-satoshi.png" },
-  { key: "elena", image: "/images/characters/avatar-mina.png" },
-  { key: "kenji", image: "/images/characters/avatar-park.png" },
-  { key: "saki", image: "/images/characters/avatar-takumi.png" },
+  { key: "hiroki", image: "/images/characters/avatar-satoshi.webp" },
+  { key: "elena", image: "/images/characters/avatar-mina.webp" },
+  { key: "kenji", image: "/images/characters/avatar-park.webp" },
+  { key: "saki", image: "/images/characters/avatar-takumi.webp" },
 ];
 
 watch(locale, async () => {

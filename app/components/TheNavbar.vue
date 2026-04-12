@@ -61,7 +61,7 @@ const scrollToSection = (href) => {
         </div>
 
         <img
-          :src="`/images/avatars/avatar-${activeLocaleCode}.png`"
+          :src="`/images/avatars/avatar-${activeLocaleCode}.webp`"
           :alt="$t('nav.avatar_alt')"
           class="nav-avatar"
         />

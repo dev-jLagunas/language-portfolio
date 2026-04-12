@@ -7,19 +7,19 @@ const conversations = [
   {
     key: "eiken",
 
-    studentImg: "/images/characters/char-student.png",
+    studentImg: "/images/characters/char-student.webp",
   },
 
   {
     key: "travel",
 
-    studentImg: "/images/characters/char-traveller.png",
+    studentImg: "/images/characters/char-traveller.webp",
   },
 
   {
     key: "business",
 
-    studentImg: "/images/characters/char-business-man.png",
+    studentImg: "/images/characters/char-business-man.webp",
   },
 ];
 
@@ -107,7 +107,7 @@ onMounted(() => {
         </Transition>
 
         <img
-          src="/images/avatars/avatar-thumbs-up.png"
+          src="/images/avatars/avatar-thumbs-up.webp"
           class="avatar-img juan-img"
           alt="Juan"
         />

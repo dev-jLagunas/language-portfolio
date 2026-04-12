@@ -9,44 +9,44 @@ const resources = [
   {
     key: "language_friends",
     link: "https://the-language-friends.com/",
-    img: "/images/links/language-friends-img.png",
+    img: "/images/links/language-friends-img.webp",
     hasModal: true,
   },
   {
     key: "yt_challenge",
     link: "https://www.youtube.com/@LanguageSwitch-JM",
-    img: "/images/links/language-switch-img.png",
+    img: "/images/links/language-switch-img.webp",
     hasModal: true,
   },
   {
     key: "english_lab",
     link: "https://www.youtube.com/@TheEnglishLab_1",
-    img: "/images/links/language-lab-img.png",
+    img: "/images/links/language-lab-img.webp",
     hasModal: true,
   },
   {
     key: "portfolio",
     link: "https://juan-lagunas.com",
-    img: "/images/links/ux-portfolio-img.png",
+    img: "/images/links/ux-portfolio-img.webp",
     hasModal: true,
   },
   {
     key: "unsplash",
     link: "https://unsplash.com/@jlag_photos",
-    img: "/images/links/unsplash-img.png",
+    img: "/images/links/unsplash-img.webp",
     hasModal: true,
   },
   {
     key: "medium",
-    link: "#",
-    img: "/images/links/medium-blog.png",
+    link: "https://medium.com/@dev.jlagunas",
+    img: "/images/links/medium-blog.webp",
     hasModal: true,
   },
 ];
 
 const secondaryLinks = [
-  { key: "github", link: "https://github.com/juan-lagunas" },
-  { key: "instagram", link: "#" },
+  { key: "github", link: "https://github.com/dev-jLagunas" },
+  { key: "instagram", link: "https://www.instagram.com/j.lag_works/" },
 ];
 
 const openModal = (item) => {

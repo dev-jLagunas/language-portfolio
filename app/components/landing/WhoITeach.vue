@@ -8,31 +8,31 @@ let ctx;
 const students = [
   {
     key: "hobbyist",
-    image: "/images/characters/avatar-grandma.png",
+    image: "/images/characters/avatar-grandma.webp",
     tags: ["tag1", "tag2", "tag3"],
     icon: "ph:coffee-bold",
   },
   {
     key: "professional",
-    image: "/images/characters/avatar-businesswoman.png",
+    image: "/images/characters/avatar-businesswoman.webp",
     tags: ["tag1", "tag2", "tag3"],
     icon: "ph:briefcase-bold",
   },
   {
     key: "explorer",
-    image: "/images/characters/avatar-expat.png",
+    image: "/images/characters/avatar-expat.webp",
     tags: ["tag1", "tag2", "tag3"],
     icon: "ph:airplane-tilt-bold",
   },
   {
     key: "next_gen",
-    image: "/images/characters/avatar-prof.png",
+    image: "/images/characters/avatar-prof.webp",
     tags: ["tag1", "tag2", "tag3"],
     icon: "ph:student-bold",
   },
   {
     key: "test_taker",
-    image: "/images/characters/char-student.png",
+    image: "/images/characters/char-student.webp",
     tags: ["tag1", "tag2", "tag3"],
     icon: "ph:exam-bold",
     imageClass: "scale-down",

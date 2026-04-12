@@ -125,7 +125,7 @@ const handleNavClick = async (index, href) => {
                 transform: `translateY(calc(var(--var-step-height) * ${activeIndex}))`,
               }"
             >
-              <img src="/images/avatars/avatar-elevator.png" alt="Juan" />
+              <img src="/images/avatars/avatar-elevator.webp" alt="Juan" />
             </div>
           </div>
         </nav>
