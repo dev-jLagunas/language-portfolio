@@ -38,28 +38,35 @@ const statsList = [...sourceStats, ...sourceStats];
   background-color: var(--bg-main);
   overflow: hidden;
   position: relative;
-  -webkit-mask-image: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 1) 10%,
-    rgba(0, 0, 0, 1) 90%,
-    rgba(0, 0, 0, 0) 100%
-  );
-  mask-image: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 1) 10%,
-    rgba(0, 0, 0, 1) 90%,
-    rgba(0, 0, 0, 0) 100%
-  );
   margin-top: 4rem;
+}
+
+.marquee::before,
+.marquee::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 150px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.marquee::before {
+  left: 0;
+  background: linear-gradient(to right, var(--bg-main), transparent);
+}
+
+.marquee::after {
+  right: 0;
+  background: linear-gradient(to left, var(--bg-main), transparent);
 }
 
 .marquee-track {
   display: flex;
   align-items: center;
   gap: 2rem;
-  width: calc((200px * 20) + (2rem * 19));
+  width: fit-content;
   animation: scrollMarquee 40s linear infinite;
 
   &:hover {
@@ -101,7 +108,7 @@ const statsList = [...sourceStats, ...sourceStats];
     transform: translateX(0);
   }
   100% {
-    transform: translateX(calc(-100px * 20));
+    transform: translateX(-50%);
   }
 }
 
@@ -110,12 +117,17 @@ const statsList = [...sourceStats, ...sourceStats];
    ========================= */
 @media (width <= 768px) {
   .marquee {
-    padding: 0rem 0;
-    margin-top: 4rem;
+    padding: 0.5rem 0;
+    margin-top: 3rem;
   }
 
   .stat-card {
     flex: 0 0 160px;
+  }
+
+  .marquee::before,
+  .marquee::after {
+    width: 60px;
   }
 
   .stat-number {
@@ -123,13 +135,7 @@ const statsList = [...sourceStats, ...sourceStats];
   }
 
   .stat-label {
-    font-size: 0.75rem;
-  }
-
-  @keyframes scrollMarquee {
-    100% {
-      transform: translateX(calc(-80px * 20));
-    }
+    font-size: 0.7rem;
   }
 }
 </style>

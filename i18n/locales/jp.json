@@ -121,33 +121,33 @@
     }
   },
   "framework": {
-    "title": "Mon Approche",
-    "subtitle": "Comment nous allons atteindre vos objectifs.",
+    "title": "私のアプローチ",
+    "subtitle": "あなたの目標を達成するための進め方です。",
     "steps": {
       "step1": {
-        "title": "L'Audit de Diagnostic",
-        "label": "Point 01",
-        "description": "Je n'aime pas les tests de niveau classiques. J'analyse votre façon de parler et d'écrire pour trouver les points bloquants qui vous empêchent de progresser."
+        "title": "診断的アセスメント",
+        "label": "ポイント01",
+        "description": "私は一般的なレベル分けテストは好みではありません。あなたの現在のスピーキングとライティングを分析し、次のレベルに進むのを妨げている具体的なボトルネックを見つけます。"
       },
       "step2": {
-        "title": "Histoire du Langage",
-        "label": "Point 02",
-        "description": "J'utilise ma formation en linguistique pour identifier vos besoins spécifiques, comme la communication professionnelle ou les examens."
+        "title": "言語履歴",
+        "label": "ポイント02",
+        "description": "私は言語学の背景と指導経験を活かし、ビジネスでのコミュニケーションや標準化試験などの用途に応じて、あなたに必要な言語ニーズを特定します。"
       },
       "step3": {
-        "title": "Préparation Importante",
-        "label": "Point 03",
-        "description": "Nous nous concentrons sur ce qui est important pour vous : le TOEFL, une présentation ou un entretien de visa. Nous créons les outils pour réussir."
+        "title": "重要対策",
+        "label": "ポイント03",
+        "description": "その後、あなたにとって重要なことに集中します。TOEFL試験、企業でのプレゼンテーション、ビザ面接などに向けて、成功に必要な具体的なスキルを構築します。"
       },
       "step4": {
-        "title": "Nuances Culturelles",
-        "label": "Point 04",
-        "description": "L'anglais n'est pas seulement des mots. Je vous enseigne les règles sociales et la communication que j'ai apprises en travaillant à l'étranger."
+        "title": "文化的ニュアンス",
+        "label": "ポイント04",
+        "description": "英語は単なる言葉以上のものです。私は、国際的な環境での生活と仕事を通じて学んだ、社会的な暗黙のルールや語用論を教えます。"
       },
       "step5": {
-        "title": "Le Cycle de Travail",
-        "label": "Point 05",
-        "description": "Je donne des commentaires directs et honnêtes. Nous travaillons ensemble pour construire votre confiance et progresser rapidement."
+        "title": "ワークループ",
+        "label": "ポイント05",
+        "description": "私は率直で正直なフィードバックを提供します。一貫したパターンで進捗を繰り返し改善し、言語への自信を高め、さらなる成長につなげます。"
       }
     }
   },

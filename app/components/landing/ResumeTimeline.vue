@@ -181,9 +181,12 @@ onUnmounted(() => {
   display: flex;
   flex-direction: column;
   position: relative;
-  background-color: transparent;
+  background-color: var(--bg-main) !important;
+
+  padding-bottom: 4rem;
 }
 
+/* Variables remain scoped to the section so the card header works */
 .theme-en {
   --card-theme-color: var(--color-en);
 }

@@ -214,14 +214,13 @@ onUnmounted(() => {
   background-color: var(--bg-main);
   position: relative;
   overflow: hidden;
-  margin-bottom: 4rem;
 }
 
 .container {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 4rem 1.5rem;
 }
 
 .header-flex {

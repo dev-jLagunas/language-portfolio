@@ -12,7 +12,6 @@ const testimonials = [
   { key: "saki", image: "/images/characters/avatar-takumi.png" },
 ];
 
-// Force GSAP to recalculate when text height changes
 watch(locale, async () => {
   await nextTick();
   ScrollTrigger.refresh();
@@ -24,13 +23,13 @@ onMounted(() => {
 
     cards.forEach((card, i) => {
       $gsap.from(card, {
-        y: 80, // Increased for a more dramatic pop
+        y: 80,
         rotation: i % 2 === 0 ? -2 : 2,
         duration: 0.8,
         ease: "back.out(1.7)",
         scrollTrigger: {
           trigger: card,
-          start: "top 95%", // Starts a bit later for better impact
+          start: "top 95%",
           toggleActions: "play none none reverse",
           invalidateOnRefresh: true,
         },
@@ -107,7 +106,7 @@ onUnmounted(() => {
   background-color: var(--bg-main);
   position: relative;
   z-index: 30;
-  overflow: hidden; /* Prevents rotation from causing horizontal scroll */
+  overflow: hidden;
 }
 
 .container {
@@ -136,10 +135,14 @@ onUnmounted(() => {
   opacity: 0.5;
 }
 
+/* --- UPDATED GRID LOGIC --- */
 .testimonial-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 8rem 3rem;
+  /* Strictly 2 columns for desktop/tablet */
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8rem 4rem;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 .testimonial-card {
@@ -154,12 +157,9 @@ onUnmounted(() => {
   transition:
     background-color 0.4s ease,
     opacity 0.3s ease;
-  opacity: 1 !important; /* Forces visibility */
+  opacity: 1 !important;
 }
 
-/* We keep the visual lock for the language swap, 
-   but we only lower it to 0.5 so it never truly disappears.
-*/
 .testimonial-card.is-transitioning {
   opacity: 0.5 !important;
 }
@@ -271,18 +271,20 @@ onUnmounted(() => {
   filter: drop-shadow(6px 6px 0px rgba(0, 0, 0, 0.15));
 }
 
-@media (width <= 768px) {
+/* --- MOBILE RESPONSIVE --- */
+@media (width <= 850px) {
   .testimonial-grid {
-    gap: 6rem 1rem;
+    grid-template-columns: 1fr; /* Switch to 1 column earlier */
+    gap: 7rem 0;
   }
   .testimonial-card {
-    padding: 2rem 1.5rem;
+    padding: 2.5rem 1.5rem;
   }
   .story {
-    font-size: 1.15rem;
+    font-size: 1.2rem;
   }
   .pinned-polaroid {
-    width: 160px;
+    width: 180px;
   }
 }
 </style>

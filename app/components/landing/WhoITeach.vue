@@ -47,28 +47,40 @@ watch(locale, async () => {
 onMounted(() => {
   ctx = $gsap.context(() => {
     const cards = $gsap.utils.toArray(".student-card");
-    cards.forEach((card) => {
+
+    cards.forEach((card, index) => {
       const inner = card.querySelector(".card-inner");
       const imgTarget = card.querySelector(".avatar-target");
 
+      // Determine direction: Even = Left (-X), Odd = Right (+X)
+      const xOffset = index % 2 === 0 ? -150 : 150;
+
+      // Card Slide + Perspective Reveal
       $gsap.fromTo(
         inner,
-        { y: 100, opacity: 0, rotationX: 10, scale: 0.95 },
         {
-          y: 0,
+          x: xOffset,
+          opacity: 0,
+          rotationY: index % 2 === 0 ? -15 : 15, // Subtle Y rotation based on side
+          scale: 0.9,
+        },
+        {
+          x: 0,
           opacity: 1,
-          rotationX: 0,
+          rotationY: 0,
           scale: 1,
+          ease: "power2.out",
           scrollTrigger: {
             trigger: card,
-            start: "top 90%",
-            end: "top 60%",
+            start: "top 95%",
+            end: "top 65%",
             scrub: 1,
             invalidateOnRefresh: true,
           },
         },
       );
 
+      // Image Parallax
       $gsap.fromTo(
         imgTarget,
         { y: -15 },
@@ -150,14 +162,6 @@ onUnmounted(() => {
                 </div>
               </div>
             </div>
-
-            <div class="guiding-stamp">
-              <img
-                src="/images/avatars/avatar-guiding.png"
-                alt=""
-                aria-hidden="true"
-              />
-            </div>
           </div>
         </div>
       </div>
@@ -171,7 +175,8 @@ onUnmounted(() => {
   background-color: var(--bg-main);
   padding: 5rem var(--space-unit);
   z-index: 5;
-  perspective: 1000px;
+  perspective: 1200px;
+  overflow-x: hidden; /* Prevents slide-in from causing horizontal scroll */
 }
 
 .content-limit {
@@ -208,6 +213,7 @@ onUnmounted(() => {
   display: flex;
   flex-direction: column;
   background: white;
+  transform-style: preserve-3d;
 }
 
 /* Theme Colors */
@@ -313,14 +319,6 @@ onUnmounted(() => {
   text-transform: uppercase;
 }
 
-.guiding-stamp {
-  position: absolute;
-  bottom: -25px;
-  right: -20px;
-  width: 90px;
-  pointer-events: none;
-}
-
 /* CROSSHAIRS */
 .crosshair {
   position: absolute;
@@ -358,7 +356,7 @@ onUnmounted(() => {
     border-right: none;
     border-bottom: var(--brutalist-border-thick);
     padding: 1rem;
-    height: 180px; /* Locked height to prevent vertical bloat */
+    height: 180px;
   }
 
   .avatar-target {
@@ -385,16 +383,9 @@ onUnmounted(() => {
   .tag-group {
     justify-content: center;
   }
-
-  .guiding-stamp {
-    width: 70px;
-    bottom: -15px;
-    right: -10px;
-  }
 }
 
 @media (width <= 400px) {
-  /* Ultra-small screens (iPhone SE) */
   .image-compartment {
     height: 140px;
   }
