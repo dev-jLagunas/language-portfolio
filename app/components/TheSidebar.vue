@@ -26,9 +26,10 @@ const menuItems = [
 ];
 
 const platforms = [
-  { name: "Cambly", url: "#" },
-  { name: "NativeTalk", url: "#" },
-  { name: "iTalki", url: "#" },
+  {
+    name: "CafeTalk",
+    url: "https://cafetalk.com/tutor/profile/?c=eJzzsEyNzDLNdc5KtywvyE0JNK1INPMst7UFAGZMCCA.&pv=eJwL88_NNzbPL_ANifDKN8l0S_ILNy4qt7UFAGV2B_0.&lang=en",
+  },
 ];
 
 const handleLocaleChange = (code) => {

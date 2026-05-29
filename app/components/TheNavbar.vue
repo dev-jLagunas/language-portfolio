@@ -14,9 +14,11 @@ const activeLocaleCode = computed(() =>
 );
 
 const platforms = [
-  { name: "Cambly", url: "#", icon: "ph:video-camera-bold" },
-  { name: "NativeTalk", url: "#", icon: "ph:chats-bold" },
-  { name: "iTalki", url: "#", icon: "ph:student-bold" },
+  {
+    name: "CafeTalk",
+    url: "https://cafetalk.com/tutor/profile/?c=eJzzsEyNzDLNdc5KtywvyE0JNK1INPMst7UFAGZMCCA.&pv=eJwL88_NNzbPL_ANifDKN8l0S_ILNy4qt7UFAGV2B_0.&lang=en",
+    icon: "ph:video-camera-bold",
+  },
 ];
 
 const toggleSidebar = () => {

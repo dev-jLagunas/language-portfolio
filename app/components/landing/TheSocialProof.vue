@@ -14,7 +14,7 @@ const resources = [
   },
   {
     key: "yt_challenge",
-    link: "https://www.youtube.com/@LanguageSwitch-JM",
+    link: "https://www.youtube.com/@JuanTeachesEnglish",
     img: "/images/links/language-switch-img.webp",
     hasModal: true,
   },
